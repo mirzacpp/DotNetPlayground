@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewBag.PageTitle = "Dashboard";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="callout callout-info">
+            <h4>Info!</h4>
+            <p>
+                @Localizer["welcome.message", "vlado"]
+            </p>
+        </div>
+    </div>
+</div>

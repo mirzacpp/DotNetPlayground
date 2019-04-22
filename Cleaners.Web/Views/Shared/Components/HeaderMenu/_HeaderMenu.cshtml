@@ -1,0 +1,29 @@
+﻿@inject IViewLocalizer Localizer
+@inject Cleaners.Web.Infrastructure.AppSettings.AppInfoConfig AppInfo
+<header class="main-header">
+    <a href="@Url.RouteUrl("Default")" class="logo">
+        <span class="logo-mini"><b>@AppInfo.ShortName</b></span>
+        <span class="logo-lg"><b>@AppInfo.FullName</b></span>
+    </a>
+    <nav class="navbar navbar-static-top">
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        </a>
+        <div class="navbar-custom-menu">
+            <form asp-route="@AccountRoutes.Logout" id="logoutForm">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a id="logout">
+                            <i class="fa fa-sign-out margin-r-5"></i>
+                            @Localizer[ResourceKeys.Logout]
+                        </a>
+                    </li>
+                </ul>
+            </form>
+            <script>
+                $('#logout').click(function () {
+                    $('#logoutForm').submit();
+                });
+            </script>
+        </div>
+    </nav>
+</header>

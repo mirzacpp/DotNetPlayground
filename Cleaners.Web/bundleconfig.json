@@ -1,0 +1,22 @@
+[
+  {
+    "outputFileName": "wwwroot/css/main.min.css",
+    "inputFiles": [
+      "wwwroot/css/bootstrap.css",
+      "wwwroot/css/select2.css",
+      "wwwroot/css/adminlte.css",
+      "wwwroot/css/fontawesome.css",
+      "wwwroot/css/skinblue.css"
+    ]    
+  },
+  {
+    "outputFileName": "wwwroot/js/main.min.js",
+    "inputFiles": [
+      "wwwroot/js/jquery.js",
+      "wwwroot/js/jquery.unobtrusive-ajax.js",
+      "wwwroot/js/bootstrap.js",
+      "wwwroot/js/adminlte.js",
+      "wwwroot/js/admin.js"
+    ]
+  }
+]

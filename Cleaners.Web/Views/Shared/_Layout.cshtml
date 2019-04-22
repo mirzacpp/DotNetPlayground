@@ -1,0 +1,57 @@
+﻿@inject Cleaners.Web.Infrastructure.Alerts.IAlertManager AlertManager;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Title</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/main.min.css" />
+    </environment>
+    @RenderSection("styles", required: false)
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <environment include="Development">
+        <script src="~/js/main.min.js"></script>
+    </environment>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <vc:header-menu></vc:header-menu>
+        <vc:navigation-menu></vc:navigation-menu>
+        <div class="loader-block" style="display:none"></div>
+        <div class="content-wrapper">
+            <section class="content-header">
+                @foreach (var alert in AlertManager.Alerts)
+                {
+                    <div class="alert alert-@alert.Type.ToString().ToLowerInvariant() alert-dismissible" role="alert">
+                        <button asp-if="alert.IsDismissable" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4 asp-if="@(!string.IsNullOrEmpty(alert.Title))" class="alert-heading">@alert.Title</h4>
+                        @alert.Text
+                    </div>
+                }
+                <h1>@ViewBag.PageTitle</h1>
+            </section>
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
+            </div>
+            <strong>Copyright © 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            reserved.
+        </footer>
+    </div>
+    <div id="modal-container" class="modal fade" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <script>
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

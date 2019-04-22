@@ -1,0 +1,80 @@
+﻿msgid "hello.world"
+msgstr "Dobro došli"
+
+msgid "welcome.message"
+msgstr "Dobrodošli na {0} templejt."
+
+msgid "required.field"
+msgstr "Obavezno polje"
+
+msgid "username"
+msgstr "Korisničko ime"
+
+msgid "password"
+msgstr "Lozinka"
+
+msgid "concurrency.failure"
+msgstr "Došlo je do greške prilikom sačuvanja, zapis je već ažuriran."
+
+msgid "default.error"
+msgstr "Došlo je do nepoznate greške."
+
+msgid "duplicate.email"
+msgstr "Email '{0}' je zauzet."
+
+msgid "duplicate.role.name"
+msgstr "Uloga '{0}' već postoji."
+
+msgid "duplicate.user.name"
+msgstr "Korisničko ime '{0}' je zauzeto."
+
+msgid "invalid.email"
+msgstr "Email '{0}' nije validan."
+
+msgid "invalid.role.name"
+msgstr "Uloga '{0}' nije validna."
+
+msgid "invalid.token"
+msgstr "Token nije validan."
+
+msgid "invalid.user.name"
+msgstr "Korisničko ime '{0}' nije validno, može sadržavati samo slova i brojeve."
+
+msgid "login.already.associated"
+msgstr "Korisnik s unesenim login podacima već postoji."
+
+msgid "password.mismatch"
+msgstr "Lozinke se ne poklapaju."
+
+msgid "password.requires.digit"
+msgstr "Lozinka mora sadržavati minimalno 1 broj ('0'-'9')."
+
+msgid "password.requires.lower"
+msgstr "Lozinka mora sadržavati minimalno 1 malo slovo ('a'-'z')."
+
+msgid "password.requires.non.alphanumeric"
+msgstr "Lozinka mora sadržavati minimalno 1 specijalni karakter."
+
+msgid "password.requires.unique.chars"
+msgstr "Lozinka mora sadržavati minimalno {0} jedinstveni karakter."
+
+msgid "password.requires.upper"
+msgstr "Lozinka mora sadržavati minimalno 1 veliko slovo."
+
+msgid "password.too.short"
+msgstr "Lozinka mora sadržavati minimalno {0} karaktera."
+
+msgid "user.already.has.password"
+msgstr "Korisnik već ima postavljenu lozinku."
+
+msgid "user.already.in.role"
+msgstr "Korisnik se već nalazi u ulozi {0}."
+
+msgid "user.lockout.not.enabled"
+msgstr "Zaključavanje računa nije omogućeno za ovog korisnika."
+
+msgid "user.not.in.role"
+msgstr "Korisnik se ne nalazi u ulozi {0}."
+
+msgid "email.not.confirmed"
+msgstr "Email zahtijeva potvrdu."

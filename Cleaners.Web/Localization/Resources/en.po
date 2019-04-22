@@ -1,0 +1,80 @@
+﻿msgid "hello.world"
+msgstr "Hello world my brother"
+
+msgid "welcome.message"
+msgstr "Welcome to {0} template my friend."
+
+msgid "required.field"
+msgstr "Required field"
+
+msgid "username"
+msgstr "Username"
+
+msgid "password"
+msgstr "Password"
+
+msgid "concurrency.failure"
+msgstr "Optimistic concurrency failure, object has been modified."
+
+msgid "default.error"
+msgstr "An unknown failure has occurred."
+
+msgid "duplicate.email"
+msgstr "Email '{0}' is already taken."
+
+msgid "duplicate.role.name"
+msgstr "Role name '{0}' is invalid."
+
+msgid "duplicate.user.name"
+msgstr "User Name '{0}' is already taken."
+
+msgid "invalid.email"
+msgstr "Email '{0}' is invalid."
+
+msgid "invalid.role.name"
+msgstr "Role name '{0}' is invalid."
+
+msgid "invalid.token"
+msgstr "Invalid token."
+
+msgid "invalid.user.name"
+msgstr "User name '{0}' is invalid, can only contain letters or digits."
+
+msgid "login.already.associated"
+msgstr "A user with this login already exists."
+
+msgid "password.mismatch"
+msgstr "Incorrect password."
+
+msgid "password.requires.digit"
+msgstr "Passwords must have at least 1 digit ('0'-'9')."
+
+msgid "password.requires.lower"
+msgstr "Passwords must have at least 1 lowercase ('a'-'z')."
+
+msgid "password.requires.non.alphanumeric"
+msgstr "Passwords must have at least 1 non alphanumeric character."
+
+msgid "password.requires.unique.chars"
+msgstr "Passwords must have at least {0} unique character."
+
+msgid "password.requires.upper"
+msgstr "Passwords must have at least {0} uppercase ('A'-'Z')."
+
+msgid "password.too.short"
+msgstr "Passwords must be at least {0} characters."
+
+msgid "user.already.has.password"
+msgstr "User already has a password set."
+
+msgid "user.already.in.role"
+msgstr "User already in role '{0}'."
+
+msgid "user.lockout.not.enabled"
+msgstr "Lockout is not enabled for this user."
+
+msgid "user.not.in.role"
+msgstr "User is not in role '{0}'."
+
+msgid "email.not.confirmed"
+msgstr "Email requires verification."

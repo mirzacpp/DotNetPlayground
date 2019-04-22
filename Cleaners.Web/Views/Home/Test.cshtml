@@ -1,0 +1,9 @@
+﻿@model Cleaners.Web.Models.TestModel
+
+<p>@System.Globalization.CultureInfo.CurrentCulture</p>
+<p>@System.Globalization.CultureInfo.CurrentUICulture</p>
+<form asp-action="test">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input asp-for="Number"/>
+    <button type="submit">Go</button>
+</form>

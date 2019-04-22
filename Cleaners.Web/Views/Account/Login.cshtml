@@ -1,0 +1,56 @@
+﻿@model LoginModel
+@inject IViewLocalizer Localizer
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/main.min.css" />
+    </environment>
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-box-body">
+            <div class="login-logo">
+                <a>
+                    Some app name
+                </a>
+            </div>
+            <form asp-action="Login">
+                <input asp-for="ReturnUrl" type="hidden" />
+                <partial name="_ValidationSummary" />
+                <div class="form-group has-feedback">
+                    <input asp-for="Username" class="form-control" />
+                    <span class="fa fa-user form-control-feedback"></span>
+                    <span asp-validation-for="Username" class="text-error"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input asp-for="Password" class="form-control" />
+                    <span class="fa fa-lock form-control-feedback"></span>
+                    <span asp-validation-for="Password" class="text-error"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox">
+                            <label>
+                                <input asp-for="RememberMe" /> @Localizer[ResourceKeys.RememberMe]
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <button class="btn bg-green btn-block btn-flat">
+                            <i class="fa fa-sign-in margin-r-5"></i>@Localizer[ResourceKeys.Login]
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
