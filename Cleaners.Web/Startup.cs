@@ -27,7 +27,11 @@ namespace Cleaners.Web
 
             services.ConfigureLocalization();
 
+            services.ConfigureAutoMapper();
+
             services.ConfigureDatabase(Configuration);
+
+            services.RegisterServices();
 
             services.ConfigureAntiforgery();
 

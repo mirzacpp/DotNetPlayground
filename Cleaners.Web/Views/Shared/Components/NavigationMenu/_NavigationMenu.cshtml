@@ -1,12 +1,19 @@
-﻿<aside class="main-sidebar">
+﻿@inject IViewLocalizer Localizer
+<aside class="main-sidebar">
     <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
             <li>
-                <a asp-route="Default">
+                <a asp-route="@HomeRoutes.Index">
                     <i class="fa fa-dashboard margin-r-5">
-                    </i><span>Dashboard</span>
+                    </i><span>@Localizer[ResourceKeys.Dashboard]</span>
                 </a>
-            </li>            
+            </li>
+            <li>
+                <a asp-route="@UserRoutes.Index">
+                    <i class="fa fa-users margin-r-5">
+                    </i><span>@Localizer[ResourceKeys.Users]</span>
+                </a>
+            </li>
         </ul>
     </section>
 </aside>

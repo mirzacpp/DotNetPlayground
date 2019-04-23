@@ -7,6 +7,7 @@
 
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
@@ -16,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cleaners.Data\Cleaners.Data.csproj" />
+    <ProjectReference Include="..\Cleaners.Services\Cleaners.Services.csproj" />
   </ItemGroup>
 
 
@@ -33,6 +35,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="App_Data\Logs\" />
   </ItemGroup>
 
 </Project>

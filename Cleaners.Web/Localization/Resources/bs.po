@@ -1,4 +1,6 @@
-﻿msgid "hello.world"
+﻿#Translation entries for bs culture
+
+msgid "hello.world"
 msgstr "Dobro došli"
 
 msgid "welcome.message"
@@ -6,6 +8,9 @@ msgstr "Dobrodošli na {0} templejt."
 
 msgid "required.field"
 msgstr "Obavezno polje"
+
+msgid "users"
+msgstr "Korisnici"
 
 msgid "username"
 msgstr "Korisničko ime"

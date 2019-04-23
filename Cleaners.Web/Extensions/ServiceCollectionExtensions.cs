@@ -1,12 +1,18 @@
-﻿using Cleaners.Core.Constants;
+﻿using AutoMapper;
+using Cleaners.Core.Constants;
 using Cleaners.Core.Domain;
+using Cleaners.Core.Interfaces;
 using Cleaners.Data;
+using Cleaners.Services.Roles;
+using Cleaners.Services.Users;
 using Cleaners.Web.Configuration;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Infrastructure.AppSettings;
 using Cleaners.Web.Infrastructure.Authentication;
+using Cleaners.Web.Infrastructure.AutoMapper;
 using Cleaners.Web.Infrastructure.Localization;
 using Cleaners.Web.Localization;
+using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -116,6 +122,20 @@ namespace Cleaners.Web.Extensions
         }
 
         /// <summary>
+        /// Registers auto mapper services
+        /// </summary>
+        /// <param name="services"></param>
+        public static void ConfigureAutoMapper(this IServiceCollection services)
+        {
+            var mapperConfiguration = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile<AutoMapperConfig>();
+            });
+
+            services.AddSingleton(mapperConfiguration.CreateMapper());
+        }
+
+        /// <summary>
         /// Registers database services
         /// </summary>
         /// <param name="services"></param>
@@ -125,6 +145,25 @@ namespace Cleaners.Web.Extensions
             {
                 options.UseSqlServer(configuration.GetConnectionString(DatabaseConstants.ConnectionString));
             });
+
+            services.AddScoped<DbContext, FealDbContext>();
+            services.AddScoped<IRepository, EfRepository>();
+
+            //services.AddScoped<DatabaseInitializr>();
+        }
+
+        /// <summary>
+        /// Registers all necessary application services
+        /// </summary>
+        /// <param name="services"></param>
+        public static void RegisterServices(this IServiceCollection services)
+        {
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoleService, RoleService>();
+
+            services.AddScoped<IUserModelService, UserModelService>();
+
+            services.AddScoped<ISelectListProviderService, SelectListProviderService>();
         }
 
         /// <summary>
@@ -133,6 +172,8 @@ namespace Cleaners.Web.Extensions
         /// <param name="services"></param>
         public static void ConfigureIdentity(this IServiceCollection services)
         {
+            //services.AddAuthentication
+
             services.AddIdentity<User, Role>()
                    .AddEntityFrameworkStores<FealDbContext>()
                    // Register localized error messages

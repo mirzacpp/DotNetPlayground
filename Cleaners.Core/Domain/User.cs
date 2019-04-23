@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Cleaners.Core.Domain
 {
     public class User :
-        IdentityUser<int>, ISoftDeletableEntity, IAuditableEntity
+        IdentityUser<int>, IEntity, ISoftDeletableEntity, IAuditableEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

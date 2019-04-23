@@ -1,14 +1,46 @@
-﻿msgid "hello.world"
+﻿#Translation entries for en-US culture
+
+msgid "hello.world"
 msgstr "Hello world my brother"
 
 msgid "welcome.message"
 msgstr "Welcome to {0} template my friend."
+
+msgid "users"
+msgstr "Users"
 
 msgid "required.field"
 msgstr "Required field"
 
 msgid "username"
 msgstr "Username"
+
+msgid "first.name"
+msgstr "First name"
+
+msgid "last.name"
+msgstr "Last name"
+
+msgid "phone.number"
+msgstr "Phone number"
+
+msgid "password.confirmed"
+msgstr "Confirmed password"
+
+msgid "active"
+msgstr "Active"
+
+msgid "lockout.enabled"
+msgstr "Lockout enabled"
+
+msgid "lockout.enabled.info"
+msgstr "Lock users account after {0} invalid attempts"
+
+msgid "email"
+msgstr "Email"
+
+msgid "email"
+msgstr "Email"
 
 msgid "password"
 msgstr "Password"

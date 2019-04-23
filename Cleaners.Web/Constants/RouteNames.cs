@@ -15,4 +15,11 @@
         public const string Login = "Account.Login";
         public const string Logout = "Account.Logout";
     }
+
+    public static class UserRoutes
+    {
+        public const string Index = "User.Index";
+        public const string Data = "User.Data";
+        public const string Create = "User.Create";
+    }
 }
