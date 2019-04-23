@@ -38,6 +38,8 @@ namespace Cleaners.Services.Users
                 throw new ArgumentNullException(nameof(user));
             }
 
+            // Generate token for email confirmation.
+            // Same tokens are send to users(Part of confirmation URI) when confirmation is their responsibility
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
             return await _userManager.ConfirmEmailAsync(user, token);
