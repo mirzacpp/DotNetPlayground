@@ -22,14 +22,7 @@
         <div class="loader-block" style="display:none"></div>
         <div class="content-wrapper">
             <section class="content-header">
-                @foreach (var alert in AlertManager.Alerts)
-                {
-                    <div class="alert alert-@alert.Type.ToString().ToLowerInvariant() alert-dismissible" role="alert">
-                        <button asp-if="alert.IsDismissable" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h4 asp-if="@(!string.IsNullOrEmpty(alert.Title))" class="alert-heading">@alert.Title</h4>
-                        @alert.Text
-                    </div>
-                }
+                <partial name="_Alerts" />                
                 <h1>@ViewBag.PageTitle</h1>
             </section>
             <section class="content">

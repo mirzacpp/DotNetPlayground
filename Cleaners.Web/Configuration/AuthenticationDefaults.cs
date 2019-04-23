@@ -14,6 +14,7 @@
         public const int RequiredUniqueChars = 3;
         public const bool RequireConfirmedEmail = true;
         public const bool RequireConfirmedPhoneNumber = false;
+        public const bool RequireUniqueEmail = true;
         public const bool HttpOnly = true;
         public const bool SlidingExpiration = true;
         public const string AccessDeniedPath = "/Accounts/AccessDenied";

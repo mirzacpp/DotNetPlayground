@@ -1,8 +1,10 @@
 ﻿using Cleaners.Core.Domain;
 using Cleaners.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cleaners.Services.Users
@@ -29,14 +31,54 @@ namespace Cleaners.Services.Users
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         }
 
+        public async Task<IdentityResult> ConfirmEmailAsync(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+            return await _userManager.ConfirmEmailAsync(user, token);
+        }
+
+        public async Task<IdentityResult> CreateAsync(User user, string password)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            // Since we don' use IRepository.Create, we will set creation date manually
+            user.CreationDateUtc = DateTime.UtcNow;
+            // Email confirmation is only required when client requests for new account
+            user.EmailConfirmed = true;
+
+            return await _userManager.CreateAsync(user, password);
+        }
+
+        public async Task<IdentityResult> UpdateAsync(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            // Since we don' use IRepository.Update, we will set update date manually
+            user.LastUpdateDateUtc = DateTime.UtcNow;
+
+            return await _userManager.UpdateAsync(user);
+        }
+
         public IEnumerable<User> Get()
         {
-            return _repository.Get<User>();
+            return _userManager.Users.ToList();
         }
 
         public async Task<IEnumerable<User>> GetAsync()
         {
-            return await _repository.GetAsync<User>();
+            return await _userManager.Users.ToListAsync();
         }
     }
 }

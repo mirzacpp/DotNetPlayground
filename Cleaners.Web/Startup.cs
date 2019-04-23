@@ -38,7 +38,7 @@ namespace Cleaners.Web
             // Configures identity for authentication and authorization
             services.ConfigureIdentity();
 
-            services.AddScoped<IAlertManager, AlertManager>();
+            services.AddScoped<IAlertManager, TempDataAlertManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

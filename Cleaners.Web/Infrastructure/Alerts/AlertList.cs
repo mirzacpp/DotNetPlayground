@@ -23,5 +23,7 @@ namespace Cleaners.Web.Infrastructure.Alerts
         {
             Add(new AlertItem(AlertType.Info, text, title, isDismissable));
         }
+
+        public static AlertList Empty => new AlertList();
     }
 }

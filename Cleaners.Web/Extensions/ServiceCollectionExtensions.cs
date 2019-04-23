@@ -193,6 +193,8 @@ namespace Cleaners.Web.Extensions
 
                 options.SignIn.RequireConfirmedEmail = AuthenticationDefaults.RequireConfirmedEmail;
                 options.SignIn.RequireConfirmedPhoneNumber = AuthenticationDefaults.RequireConfirmedPhoneNumber;
+
+                options.User.RequireUniqueEmail = AuthenticationDefaults.RequireUniqueEmail;
             });
 
             services.ConfigureApplicationCookie(options =>

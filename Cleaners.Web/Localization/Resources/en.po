@@ -64,7 +64,7 @@ msgid "duplicate.role.name"
 msgstr "Role name '{0}' is invalid."
 
 msgid "duplicate.user.name"
-msgstr "User Name '{0}' is already taken."
+msgstr "Username '{0}' is already taken."
 
 msgid "invalid.email"
 msgstr "Email '{0}' is invalid."
