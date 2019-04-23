@@ -1,5 +1,6 @@
 ﻿@model LoginModel
 @inject IViewLocalizer Localizer
+@inject Cleaners.Web.Infrastructure.AppSettings.AppInfoConfig AppInfo
 @{
     Layout = null;
 }
@@ -8,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login</title>
+    <title>@Localizer["welcome.message", AppInfo.FullName]</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <environment include="Development">
         <link rel="stylesheet" href="~/css/main.min.css" />
@@ -18,9 +19,7 @@
     <div class="login-box">
         <div class="login-box-body">
             <div class="login-logo">
-                <a>
-                    Some app name
-                </a>
+                <a>@AppInfo.FullName</a>
             </div>
             <form asp-action="Login">
                 <input asp-for="ReturnUrl" type="hidden" />
@@ -44,8 +43,9 @@
                         </div>
                     </div>
                     <div class="col-xs-4">
-                        <button class="btn bg-green btn-block btn-flat">
-                            <i class="fa fa-sign-in margin-r-5"></i>@Localizer[ResourceKeys.Login]
+                        <button class="btn btn-danger btn-block btn-flat">
+                            <i class="fa fa-sign-in margin-r-5"></i>
+                            @Localizer[ResourceKeys.Login]
                         </button>
                     </div>
                 </div>

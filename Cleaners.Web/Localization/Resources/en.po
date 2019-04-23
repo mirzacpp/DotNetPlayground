@@ -1,10 +1,7 @@
 ﻿#Translation entries for en-US culture
 
-msgid "hello.world"
-msgstr "Hello world my brother"
-
 msgid "welcome.message"
-msgstr "Welcome to {0} template my friend."
+msgstr "Welcome to {0} panel."
 
 msgid "users"
 msgstr "Users"
@@ -44,6 +41,15 @@ msgstr "Email"
 
 msgid "password"
 msgstr "Password"
+
+msgid "roles"
+msgstr "Roles"
+
+msgid "select.roles"
+msgstr "Select roles"
+
+msgid "empty.select.list.warning"
+msgstr "Selection for this drop-down is required. Since this list is currently empty, you won't be able to finish create process."
 
 msgid "concurrency.failure"
 msgstr "Optimistic concurrency failure, object has been modified."

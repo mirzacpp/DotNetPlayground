@@ -1,10 +1,7 @@
 ﻿#Translation entries for bs culture
 
-msgid "hello.world"
-msgstr "Dobro došli"
-
 msgid "welcome.message"
-msgstr "Dobrodošli na {0} templejt."
+msgstr "Dobrodošli na {0} panel."
 
 msgid "required.field"
 msgstr "Obavezno polje"
@@ -14,6 +11,12 @@ msgstr "Korisnici"
 
 msgid "username"
 msgstr "Korisničko ime"
+
+msgid "first.name"
+msgstr "Ime"
+
+msgid "last.name"
+msgstr "Prezime"
 
 msgid "password"
 msgstr "Lozinka"

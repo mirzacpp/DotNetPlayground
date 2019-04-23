@@ -4,8 +4,8 @@
     ViewBag.PageTitle = Localizer[ResourceKeys.Users];
 }
 
-<script src="~/js/select2.js"></script>
-@*Load locales for select2 list*@
+<script src="~/js/select2/select2.js"></script>
+<script src="~/js/select2/locales/@Html.Raw(CultureInfo.CurrentCulture.ToString() + ".js")"></script>
 
 <div class="row">
     <div class="col-md-12">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-sm-9">
                                 <input asp-for="Email" class="form-control">
-                                <span asp-validation-for="Email" class="text-danger"></span>
+                                <span asp-validation-for="Email" class="text-error"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-sm-9">
                                 <input asp-for="UserName" class="form-control">
-                                <span asp-validation-for="UserName" class="text-danger"></span>
+                                <span asp-validation-for="UserName" class="text-error"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-sm-9">
                                 <input asp-for="PhoneNumber" class="form-control">
-                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                <span asp-validation-for="PhoneNumber" class="text-error"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -80,9 +80,7 @@
                             <div class="col-sm-9">
                                 <select asp-for="RoleIds" asp-items="Model.Roles" class="form-control select2"></select>
                                 <span asp-validation-for="RoleIds" class="text-error"></span>
-                                <div asp-if="Model.Roles.Any()" class="text-warning">
-                                    Vrijednosti padajuće liste su obavezne za odabir. S obzirom da je lista prazna, proces kreiranja novog zapisa nije moguće završiti.
-                                </div>
+                                <div asp-if="!Model.Roles.Any()" class="text-warning">@Localizer["empty.select.list.warning"]                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -150,5 +148,8 @@
     </div>
 </div>
 <script>
-    $('#@Html.IdFor(m => m.RoleIds)').select2();
+    $('#@Html.IdFor(m => m.RoleIds)').select2({
+        placeholder: '@Localizer["select.roles"]',
+        language: '@CultureInfo.CurrentCulture.ToString()'
+    });
 </script>
