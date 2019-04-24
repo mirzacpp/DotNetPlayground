@@ -1,13 +1,12 @@
 ﻿@inject IViewLocalizer Localizer
 @inject Cleaners.Web.Infrastructure.AppSettings.AppInfoConfig AppInfo
 <header class="main-header">
-    <a href="@Url.RouteUrl("Default")" class="logo">
+    <a href="@Url.RouteUrl(HomeRoutes.Index)" class="logo">
         <span class="logo-mini"><b>@AppInfo.ShortName</b></span>
         <span class="logo-lg"><b>@AppInfo.FullName</b></span>
     </a>
     <nav class="navbar navbar-static-top">
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        </a>
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"></a>
         <div class="navbar-custom-menu">
             <form asp-route="@AccountRoutes.Logout" id="logoutForm">
                 <ul class="nav navbar-nav">

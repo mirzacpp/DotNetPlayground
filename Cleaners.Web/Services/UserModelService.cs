@@ -16,7 +16,17 @@ namespace Cleaners.Web.Services
             _selectListService = selectListService ?? throw new ArgumentNullException(nameof(selectListService));
         }
 
-        public async Task PrepareModel(UserCreateModel model)
+        public async Task PrepareCreateModel(UserCreateModel model)
+        {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            model.Roles = await _selectListService.GetRolesAsync();
+        }
+
+        public async Task PrepareUpdateModel(UserUpdateModel model)
         {
             if (model == null)
             {

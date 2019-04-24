@@ -22,7 +22,7 @@ namespace Cleaners.Web.Services
                 .Select(r => new SelectListItem
                 {
                     Text = r.Name,
-                    Value = r.Id.ToString()
+                    Value = r.Name
                 })
                 .ToList();
         }

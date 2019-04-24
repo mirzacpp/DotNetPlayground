@@ -5,8 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Cleaners.Web.Models.Users
 {
-    public class UserCreateModel
+    public class UserUpdateModel
     {
+        public int Id { get; set; }
+
         [Display(Name = ResourceKeys.FirstName)]
         [Required(ErrorMessage = ResourceKeys.RequiredField)]
         public string FirstName { get; set; }
@@ -23,17 +25,6 @@ namespace Cleaners.Web.Models.Users
         [Display(Name = ResourceKeys.UserName)]
         [Required(ErrorMessage = ResourceKeys.RequiredField)]
         public string UserName { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = ResourceKeys.Password)]
-        [Required(ErrorMessage = ResourceKeys.RequiredField)]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Compare(nameof(Password), ErrorMessage = "password.mismatch")]
-        [Display(Name = ResourceKeys.PasswordConfirmed)]
-        [Required(ErrorMessage = ResourceKeys.RequiredField)]
-        public string PasswordConfirmed { get; set; }
 
         [Display(Name = ResourceKeys.PhoneNumber)]
         public string PhoneNumber { get; set; }

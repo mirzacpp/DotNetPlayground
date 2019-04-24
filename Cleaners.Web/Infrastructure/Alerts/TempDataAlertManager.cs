@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Cleaners.Web.Extensions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
-using System.Linq;
 
 namespace Cleaners.Web.Infrastructure.Alerts
 {
@@ -24,15 +24,11 @@ namespace Cleaners.Web.Infrastructure.Alerts
             get
             {
                 var tempDataDictionary = _tempDataDictionaryFactory.GetTempData(_httpContextAccessor.HttpContext);
+                var alerts = tempDataDictionary.Get<AlertList>("notification.key");
 
-                if (!tempDataDictionary.Keys.Any())
-                {
-                    return AlertList.Empty;
-                }
+                //return alerts == null ? AlertList.Empty : alerts;
 
-                var list = (AlertList)tempDataDictionary["notification.key"];
-
-                return list;
+                return alerts ?? AlertList.Empty;
             }
         }
     }

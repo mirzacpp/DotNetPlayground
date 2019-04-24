@@ -8,7 +8,10 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <a asp-route="@UserRoutes.Create">@Localizer["create"]</a>
+                <a class="btn btn-danger btn-flat" asp-route="@UserRoutes.Create">
+                    <i class="fa fa-plus-square margin-r-5"></i>
+                    @Localizer["create"]
+                </a>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
@@ -25,9 +28,12 @@
                             <tr>
                                 <td>@item.FirstName</td>
                                 <td>@item.LastName</td>
-                                <td>Ok</td>
+                                <td>
+                                    <a asp-route="@UserRoutes.Update" asp-route-id="@item.Id">E</a>
+                                    <a asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id">C</a>
+                                </td>
                             </tr>
-                        }                        
+                        }
                     </tbody>
                 </table>
             </div>

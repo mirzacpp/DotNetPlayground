@@ -24,7 +24,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using System;
-using System.Globalization;
 using System.Linq;
 
 namespace Cleaners.Web.Extensions
@@ -97,15 +96,11 @@ namespace Cleaners.Web.Extensions
 
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                var cultures = new[]
-                {
-                    new CultureInfo("en-US"),
-                    new CultureInfo("bs"),
-                };
+                var cultures = LocalizationDefaults.GetSupportedCultureInfos();
 
                 options.SupportedCultures = cultures;
                 options.SupportedUICultures = cultures;
-                options.DefaultRequestCulture = new RequestCulture(new CultureInfo(LocalizationDefaults.DefaultCulture));
+                options.DefaultRequestCulture = new RequestCulture(LocalizationDefaults.GetDefaultCultureInfo());
                 options.FallBackToParentCultures = true;
                 options.FallBackToParentUICultures = true;
 

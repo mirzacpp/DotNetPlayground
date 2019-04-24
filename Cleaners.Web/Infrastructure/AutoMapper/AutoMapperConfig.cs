@@ -15,6 +15,8 @@ namespace Cleaners.Web.Infrastructure.AutoMapper
 
             CreateMap<User, UserModel>();
             CreateMap<UserCreateModel, User>();
+            CreateMap<UserUpdateModel, User>();
+            CreateMap<User, UserUpdateModel>();
 
             #endregion User
         }

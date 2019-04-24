@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Title</title>
+    <title>@ViewBag.PageTitle</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <environment include="Development">
         <link rel="stylesheet" href="~/css/main.min.css" />
@@ -22,7 +22,7 @@
         <div class="loader-block" style="display:none"></div>
         <div class="content-wrapper">
             <section class="content-header">
-                <partial name="_Alerts" />                
+                <partial name="_Alerts" />
                 <h1>@ViewBag.PageTitle</h1>
             </section>
             <section class="content">

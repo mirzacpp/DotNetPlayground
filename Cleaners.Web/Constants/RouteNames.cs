@@ -21,5 +21,7 @@
         public const string Index = "User.Index";
         public const string Data = "User.Data";
         public const string Create = "User.Create";
+        public const string Update = "User.Update";
+        public const string ConfirmEmail = "User.ConfirmEmail";
     }
 }

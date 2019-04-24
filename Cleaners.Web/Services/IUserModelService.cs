@@ -8,6 +8,8 @@ namespace Cleaners.Web.Services
     /// </summary>
     public interface IUserModelService
     {
-        Task PrepareModel(UserCreateModel model);
+        Task PrepareCreateModel(UserCreateModel model);
+
+        Task PrepareUpdateModel(UserUpdateModel model);
     }
 }

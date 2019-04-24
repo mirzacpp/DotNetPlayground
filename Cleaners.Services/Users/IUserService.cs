@@ -12,6 +12,12 @@ namespace Cleaners.Services.Users
     {
         IEnumerable<User> Get();
 
+        Task<User> GetByIdAsync(int id);
+
+        Task<bool> ExistsAsync(int id);
+
+        Task<IEnumerable<string>> GetRolesAsync(User user);
+
         Task<IEnumerable<User>> GetAsync();
 
         Task<IdentityResult> CreateAsync(User user, string password);
@@ -19,5 +25,7 @@ namespace Cleaners.Services.Users
         Task<IdentityResult> UpdateAsync(User user);
 
         Task<IdentityResult> ConfirmEmailAsync(User user);
+
+        Task<IdentityResult> AddToRolesAsync(User user, IEnumerable<string> roles);
     }
 }

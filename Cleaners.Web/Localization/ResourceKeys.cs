@@ -6,6 +6,7 @@
     public static class ResourceKeys
     {
         public const string Login = "login";
+        public const string Submit = "submit";
         public const string Email = "email";
         public const string FirstName = "first.name";
         public const string LastName = "last.name";

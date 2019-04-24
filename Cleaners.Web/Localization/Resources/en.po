@@ -33,6 +33,15 @@ msgstr "Lockout enabled"
 msgid "lockout.enabled.info"
 msgstr "Lock users account after {0} invalid attempts"
 
+msgid "account.active.info"
+msgstr "Mark user account as active"
+
+msgid "create.new.user"
+msgstr "Create new user"
+
+msgid "update.user"
+msgstr "Update user"
+
 msgid "email"
 msgstr "Email"
 

@@ -9,8 +9,6 @@ namespace Cleaners.Web.Controllers
     [Route("localization")]
     public class LocalizationController : FealControllerBase
     {
-        
-
         #region Methods
 
         /// <summary>
