@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Cleaners.Web.Localization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 
 namespace Cleaners.Web.Infrastructure.Authentication
@@ -30,7 +31,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(ConcurrencyFailure),
-                Description = _localizer["concurrency.failure"]
+                Description = _localizer[ResourceKeys.ConcurrencyFailure]
             };
         }
 
@@ -39,7 +40,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(DefaultError),
-                Description = _localizer["default.error"]
+                Description = _localizer[ResourceKeys.DefaultError]
             };
         }
 
@@ -48,7 +49,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(DuplicateEmail),
-                Description = _localizer["duplicate.email", email]
+                Description = _localizer[ResourceKeys.DuplicateEmail, email]
             };
         }
 

@@ -8,12 +8,21 @@
                     </i><span>@Localizer[ResourceKeys.Dashboard]</span>
                 </a>
             </li>
-            <li>
-                <a asp-route="@UserRoutes.Index">
-                    <i class="fa fa-users margin-r-5">
-                    </i><span>@Localizer[ResourceKeys.Users]</span>
-                </a>
-            </li>
+            @if (User.IsAdmin())
+            {
+                <li>
+                    <a asp-route="@UserRoutes.Index">
+                        <i class="fa fa-users margin-r-5">
+                        </i><span>@Localizer[ResourceKeys.Users]</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-route="@RoleRoutes.Index">
+                        <i class="fa fa-id-card margin-r-5">
+                        </i><span>@Localizer[ResourceKeys.Roles]</span>
+                    </a>
+                </li>
+            }
         </ul>
     </section>
 </aside>

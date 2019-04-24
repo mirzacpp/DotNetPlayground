@@ -45,9 +45,6 @@ msgstr "Update user"
 msgid "email"
 msgstr "Email"
 
-msgid "email"
-msgstr "Email"
-
 msgid "password"
 msgstr "Password"
 
@@ -59,6 +56,9 @@ msgstr "Select roles"
 
 msgid "empty.select.list.warning"
 msgstr "Selection for this drop-down is required. Since this list is currently empty, you won't be able to finish create process."
+
+msgid "dashboard"
+msgstr "Dashboard"
 
 msgid "concurrency.failure"
 msgstr "Optimistic concurrency failure, object has been modified."

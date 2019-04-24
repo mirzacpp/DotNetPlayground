@@ -6,6 +6,7 @@
     public static class ResourceKeys
     {
         public const string Login = "login";
+        public const string Add = "Add";
         public const string Submit = "submit";
         public const string Email = "email";
         public const string FirstName = "first.name";
@@ -24,5 +25,8 @@
         public const string Cancel = "cancel";
         public const string Save = "save";
         public const string Roles = "roles";
+        public const string ConcurrencyFailure = "concurrency.failure";
+        public const string DefaultError = "default.error";
+        public const string DuplicateEmail = "duplicate.email";
     }
 }

@@ -24,4 +24,12 @@
         public const string Update = "User.Update";
         public const string ConfirmEmail = "User.ConfirmEmail";
     }
+
+    public static class RoleRoutes
+    {
+        public const string Index = "Role.Index";
+        public const string Data = "Role.Data";
+        public const string Create = "Role.Create";
+        public const string Update = "Role.Update";
+    }
 }

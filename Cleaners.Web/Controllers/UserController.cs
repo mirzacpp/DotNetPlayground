@@ -4,8 +4,10 @@ using Cleaners.Services.Users;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
+using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Models.Users;
 using Cleaners.Web.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System;
@@ -19,6 +21,7 @@ namespace Cleaners.Web.Controllers
     /// Handles all requests for user
     /// </summary>
     [Route("users")]
+    [Authorize(Roles = RoleNames.Admin)]
     public class UserController : FealControllerBase
     {
         private readonly IUserService _userService;

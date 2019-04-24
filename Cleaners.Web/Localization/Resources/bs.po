@@ -18,8 +18,47 @@ msgstr "Ime"
 msgid "last.name"
 msgstr "Prezime"
 
+msgid "phone.number"
+msgstr "Telefon"
+
+msgid "password.confirmed"
+msgstr "Potvrda lozinke"
+
+msgid "active"
+msgstr "Aktivan"
+
+msgid "lockout.enabled"
+msgstr "Zaključavanje omogućeno"
+
+msgid "lockout.enabled.info"
+msgstr "Zaključaj korisniči račun nakon {0} neuspješnih pokušaja"
+
+msgid "account.active.info"
+msgstr "Označi račun kao aktivan"
+
+msgid "create.new.user"
+msgstr "Kreiraj novog korisnika"
+
+msgid "update.user"
+msgstr "Ažuriraj korisnika"
+
+msgid "email"
+msgstr "Email"
+
 msgid "password"
 msgstr "Lozinka"
+
+msgid "roles"
+msgstr "Uloge"
+
+msgid "select.roles"
+msgstr "Odaberite uloge"
+
+msgid "empty.select.list.warning"
+msgstr "Odabir vrijednost iz padajuće liste je obavezan. S obzirom da je lista trenutno prazna, dodavanje nije moguće.
+
+msgid "dashboard"
+msgstr "Korisnička ploča"
 
 msgid "concurrency.failure"
 msgstr "Došlo je do greške prilikom sačuvanja, zapis je već ažuriran."
