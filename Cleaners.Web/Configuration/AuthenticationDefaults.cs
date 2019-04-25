@@ -3,6 +3,9 @@
     /// <summary>
     /// Authentication configuration
     /// </summary>
+    /// <remarks>
+    /// Move to appsettings later ?
+    /// </remarks>
     public static class AuthenticationDefaults
     {
         public const bool LockoutEnabled = true;
@@ -20,5 +23,6 @@
         public const string AccessDeniedPath = "/Accounts/AccessDenied";
         public const string LoginPath = "/Accounts/Login";
         public const string LogoutPath = "/Accounts/Logout";
+        public const string AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     }
 }

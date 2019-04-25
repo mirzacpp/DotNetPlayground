@@ -1,4 +1,5 @@
 ﻿using Cleaners.Web.Configuration;
+using Cleaners.Web.Constants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ namespace Cleaners.Web.Controllers
         /// </summary>
         /// <param name="culture">Selected culture</param>
         /// <returns>Previous or home page</returns>
-        [Route("{culture}")]
+        [Route("{culture}", Name = LocalizationRoutes.ChangeLanguage)]
         public IActionResult ChangeLanguage(string culture)
         {
             Response.Cookies.Append(

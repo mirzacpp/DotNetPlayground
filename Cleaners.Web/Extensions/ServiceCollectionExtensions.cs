@@ -186,10 +186,15 @@ namespace Cleaners.Web.Extensions
                 options.Password.RequiredLength = AuthenticationDefaults.RequiredLength;
                 options.Password.RequiredUniqueChars = AuthenticationDefaults.RequiredUniqueChars;
 
+                options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.MaxFailedAccessAttempts = 6;                
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+
                 options.SignIn.RequireConfirmedEmail = AuthenticationDefaults.RequireConfirmedEmail;
                 options.SignIn.RequireConfirmedPhoneNumber = AuthenticationDefaults.RequireConfirmedPhoneNumber;
 
                 options.User.RequireUniqueEmail = AuthenticationDefaults.RequireUniqueEmail;
+                options.User.AllowedUserNameCharacters = AuthenticationDefaults.AllowedUserNameCharacters;
             });
 
             services.ConfigureApplicationCookie(options =>

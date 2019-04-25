@@ -58,7 +58,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(DuplicateRoleName),
-                Description = _localizer["duplicate.role.name", role]
+                Description = _localizer[ResourceKeys.DuplicateRoleName, role]
             };
         }
 
@@ -67,7 +67,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(DuplicateUserName),
-                Description = _localizer["duplicate.user.name", userName]
+                Description = _localizer[ResourceKeys.DuplicateUserName, userName]
             };
         }
 
@@ -76,7 +76,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(InvalidEmail),
-                Description = _localizer["invalid.email", email]
+                Description = _localizer[ResourceKeys.InvalidEmail, email]
             };
         }
 
@@ -85,7 +85,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(InvalidRoleName),
-                Description = _localizer["invalid.role.name", role]
+                Description = _localizer[ResourceKeys.InvalidRoleName, role]
             };
         }
 
@@ -94,7 +94,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(InvalidToken),
-                Description = _localizer["invalid.token"]
+                Description = _localizer[ResourceKeys.InvalidToken]
             };
         }
 
@@ -103,7 +103,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(InvalidUserName),
-                Description = _localizer["invalid.user.name", userName]
+                Description = _localizer[ResourceKeys.InvalidUserName, userName]
             };
         }
 
@@ -112,7 +112,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(LoginAlreadyAssociated),
-                Description = _localizer["login.already.associated"]
+                Description = _localizer[ResourceKeys.LoginAlreadyAssociated]
             };
         }
 
@@ -121,7 +121,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(PasswordMismatch),
-                Description = _localizer["password.mismatch"]
+                Description = _localizer[ResourceKeys.PasswordMismatch]
             };
         }
 
@@ -130,7 +130,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(PasswordRequiresDigit),
-                Description = _localizer["password.requires.digit"]
+                Description = _localizer[ResourceKeys.PasswordRequiresDigit]
             };
         }
 
@@ -139,7 +139,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(PasswordRequiresLower),
-                Description = _localizer["password.requires.lower"]
+                Description = _localizer[ResourceKeys.PasswordRequiresLower]
             };
         }
 
@@ -148,7 +148,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(PasswordRequiresNonAlphanumeric),
-                Description = _localizer["password.requires.non.alphanumeric"]
+                Description = _localizer[ResourceKeys.PasswordRequiresNonAlphanumeric]
             };
         }
 
@@ -157,7 +157,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(PasswordRequiresUniqueChars),
-                Description = _localizer["password.requires.unique.chars", uniqueChars]
+                Description = _localizer[ResourceKeys.PasswordRequiresUniqueChars, uniqueChars]
             };
         }
 
@@ -166,7 +166,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(PasswordRequiresUpper),
-                Description = _localizer["password.requires.upper"]
+                Description = _localizer[ResourceKeys.PasswordRequiresUpper]
             };
         }
 
@@ -175,7 +175,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(PasswordTooShort),
-                Description = _localizer["password.too.short", length]
+                Description = _localizer[ResourceKeys.PasswordTooShort, length]
             };
         }
 
@@ -184,7 +184,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(RecoveryCodeRedemptionFailed),
-                Description = _localizer["recovery.code.redemption.failed"]
+                Description = _localizer[ResourceKeys.RecoveryCodeRedemptionFailed]
             };
         }
 
@@ -193,7 +193,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(UserAlreadyHasPassword),
-                Description = _localizer["user.already.has.password"]
+                Description = _localizer[ResourceKeys.UserAlreadyHasPassword]
             };
         }
 
@@ -202,7 +202,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(UserAlreadyInRole),
-                Description = _localizer["user.already.in.role"]
+                Description = _localizer[ResourceKeys.UserAlreadyInRole]
             };
         }
 
@@ -211,7 +211,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(UserLockoutNotEnabled),
-                Description = _localizer["user.lockout.not.enabled"]
+                Description = _localizer[ResourceKeys.UserLockoutNotEnabled]
             };
         }
 
@@ -220,7 +220,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(UserNotInRole),
-                Description = _localizer["user.not.in.role", role]
+                Description = _localizer[ResourceKeys.UserNotInRole, role]
             };
         }
 

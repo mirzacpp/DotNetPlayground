@@ -8,16 +8,55 @@
     <nav class="navbar navbar-static-top">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"></a>
         <div class="navbar-custom-menu">
-            <form asp-route="@AccountRoutes.Logout" id="logoutForm">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a id="logout">
-                            <i class="fa fa-sign-out margin-r-5"></i>
-                            @Localizer[ResourceKeys.Logout]
-                        </a>
-                    </li>
-                </ul>
-            </form>
+            <ul class="nav navbar-nav">
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-language"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Odaberite jezik</li>
+                        <li>
+                            <ul class="menu">
+                                @foreach (var item in LocalizationDefaults.GetSupportedCultures())
+                                {
+                                    <li>
+                                        <a asp-route="@LocalizationRoutes.ChangeLanguage" asp-route-culture="@item.Name">
+                                            <img src="~/img/flags/@item.Icon" /> @item.DisplayName
+                                        </a>
+                                    </li>
+                                }
+                                <li>
+                                    <a href="#">
+                                        <img src="~/img/flags/en.png" /> Engleski
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/img/users/user.png" class="user-image" alt="User Image">
+                        <span class="hidden-xs">@User.Identity.Name</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <img src="~/img/users/user.png" class="img-circle" alt="User Image">
+                            <p>@User.Identity.Name</p>
+                        </li>
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <form asp-route="@AccountRoutes.Logout" id="logoutForm">
+                                <div class="pull-right">
+                                    <a id="logout" class="btn btn-default btn-flat">@Localizer[ResourceKeys.Logout]</a>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
             <script>
                 $('#logout').click(function () {
                     $('#logoutForm').submit();

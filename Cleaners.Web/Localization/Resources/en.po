@@ -125,3 +125,33 @@ msgstr "User is not in role '{0}'."
 
 msgid "email.not.confirmed"
 msgstr "Email requires verification."
+
+msgid "invalid.login.data"
+msgstr "Incorrect username or password."
+
+msgid "account.locked.out"
+msgstr "Account is currently locked out."
+
+msgid "account.locked.out"
+msgstr "Account is currently not allowed to access."
+
+msgid "account.requires.two.factor"
+msgstr "Account requires two factor verification."           
+
+msgid "remember.me"
+msgstr "Remember me"
+
+msgid "login"
+msgstr "Login"
+
+msgid "logout"
+msgstr "Logout"
+
+msgid "cancel"
+msgstr "Cancel"
+
+msgid "save"
+msgstr "Save"
+
+msgid "submit"
+msgstr "Submit"

@@ -125,3 +125,33 @@ msgstr "Korisnik se ne nalazi u ulozi {0}."
 
 msgid "email.not.confirmed"
 msgstr "Email zahtijeva potvrdu."
+
+msgid "invalid.login.data"
+msgstr "Pogrešno korisničko ime ili lozinka."
+
+msgid "account.locked.out"
+msgstr "Korisnički račun je trenutno zaključan."
+
+msgid "account.locked.out"
+msgstr "Korisnički račun nema pravo pristupa."
+
+msgid "account.requires.two.factor"
+msgstr "Korisnički račun zahtijeva two factor potvrdu."
+
+msgid "remember.me"
+msgstr "Zapamti me"
+
+msgid "login"
+msgstr "Prijava"
+
+msgid "logout"
+msgstr "Odjava"
+
+msgid "cancel"
+msgstr "Odustani"
+
+msgid "save"
+msgstr "Sačuvaj"
+
+msgid "Submit"
+msgstr "Potvrdi"

@@ -25,6 +25,11 @@
         public const string ConfirmEmail = "User.ConfirmEmail";
     }
 
+    public static class LocalizationRoutes
+    {
+        public const string ChangeLanguage = "Localization.ChangeLanguage";
+    }
+
     public static class RoleRoutes
     {
         public const string Index = "Role.Index";

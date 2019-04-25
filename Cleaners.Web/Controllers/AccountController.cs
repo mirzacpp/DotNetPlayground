@@ -2,6 +2,7 @@
 using Cleaners.Web.Configuration;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
+using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -105,7 +106,7 @@ namespace Cleaners.Web.Controllers
             // Required because Identity doesn't check IsActive and IsDeleted values
             if (user == null || user.IsDeleted || !user.IsActive)
             {
-                ModelState.AddModelError(_localizer["invalid.login.data"]);
+                ModelState.AddModelError(_localizer[ResourceKeys.InvalidLoginData]);
 
                 return false;
             }
@@ -116,14 +117,14 @@ namespace Cleaners.Web.Controllers
         [NonAction]
         private void ProcessSignInResult(Microsoft.AspNetCore.Identity.SignInResult result)
         {
-            ModelState.AddModelErrorIf(result.IsLockedOut, _localizer["account.locked.out"]);
-            ModelState.AddModelErrorIf(result.IsNotAllowed, _localizer["account.not.allowed"]);
-            ModelState.AddModelErrorIf(result.RequiresTwoFactor, _localizer["account.requires.two.factor"]);
+            ModelState.AddModelErrorIf(result.IsLockedOut, _localizer[ResourceKeys.AccountLockedOut]);
+            ModelState.AddModelErrorIf(result.IsNotAllowed, _localizer[ResourceKeys.AccountNotAllowed]);
+            ModelState.AddModelErrorIf(result.RequiresTwoFactor, _localizer[ResourceKeys.AccountRequiresTwoFactor]);
 
             // Required so we don't end up with failed login without message
-            if (!result.IsLockedOut || !result.IsNotAllowed || !result.RequiresTwoFactor)
+            if (!result.IsLockedOut && !result.IsNotAllowed && !result.RequiresTwoFactor)
             {
-                ModelState.AddModelError(_localizer["invalid.login.data"]);
+                ModelState.AddModelError(_localizer[ResourceKeys.InvalidLoginData]);
             }
         }
 
