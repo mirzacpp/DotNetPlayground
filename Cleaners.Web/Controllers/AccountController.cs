@@ -2,6 +2,7 @@
 using Cleaners.Web.Configuration;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
+using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Account;
 using Microsoft.AspNetCore.Authorization;
@@ -21,17 +22,20 @@ namespace Cleaners.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IStringLocalizer<AccountController> _localizer;
+        private readonly IdentityConfig _identityConfig;
 
         #endregion Fields
 
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            IStringLocalizer<AccountController> localizer)
+            IStringLocalizer<AccountController> localizer,
+            IdentityConfig identityConfig)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _localizer = localizer;
+            _identityConfig = identityConfig;
         }
 
         #region Methods
@@ -65,7 +69,8 @@ namespace Cleaners.Web.Controllers
                 return View(nameof(Login), model);
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: AuthenticationDefaults.LockoutEnabled);
+            var result = await _signInManager
+                .PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: _identityConfig.DefaultOptions.LockoutEnabled);
 
             if (result.Succeeded)
             {

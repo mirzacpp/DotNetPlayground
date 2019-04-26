@@ -36,7 +36,7 @@ namespace Cleaners.Web
             services.ConfigureAntiforgery();
 
             // Configures identity for authentication and authorization
-            services.ConfigureIdentity();
+            services.ConfigureIdentity(Configuration);
 
             services.AddScoped<IAlertManager, TempDataAlertManager>();
         }

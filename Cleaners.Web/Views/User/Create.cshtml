@@ -1,5 +1,6 @@
 ﻿@model Cleaners.Web.Models.Users.UserCreateModel
 @inject IViewLocalizer Localizer
+@inject Cleaners.Web.Infrastructure.Authentication.IdentityConfig IdentityConfig
 @{
     ViewBag.PageTitle = Localizer[ResourceKeys.Users];
 }
@@ -81,7 +82,7 @@
                             <div class="col-sm-9">
                                 <select asp-for="SelectedRoles" asp-items="Model.Roles" class="form-control select2"></select>
                                 <span asp-validation-for="SelectedRoles" class="text-error"></span>
-                                <div asp-if="!Model.Roles.Any()" class="text-warning">@Localizer["empty.select.list.warning"]                                </div>
+                                <div asp-if="!Model.Roles.Any()" class="text-warning">@Localizer["empty.select.list.warning"]</div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -129,16 +130,17 @@
                             <div class="col-sm-9">
                                 <div class="checkbox">
                                     <label>
-                                        <input asp-for="LockoutEnabled"> (@Localizer["lockout.enabled.info", 2])
+                                        <input asp-for="LockoutEnabled"> (@Localizer["lockout.enabled.info", IdentityConfig.LockoutOptions.MaxFailedAccessAttempts, IdentityConfig.LockoutOptions.DefaultLockoutTimeSpan])
                                     </label>
                                 </div>
+                                <div asp-if="IdentityConfig.DefaultOptions.LockoutEnabled" class="text-warning">@Localizer["lockout.disabled.note"]</div>
                             </div>
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-default btn-flat">
+                        <a asp-route="@UserRoutes.Index" class="btn btn-default btn-flat">
                             <i class="fa fa-times margin-r-5"></i>@Localizer[ResourceKeys.Cancel]
-                        </button>
+                        </a>
                         <button type="submit" class="btn btn-danger pull-right btn-flat">
                             <i class="fa fa-save margin-r-5"></i>@Localizer[ResourceKeys.Save]
                         </button>
@@ -152,5 +154,5 @@
     $('#@Html.IdFor(m => m.SelectedRoles)').select2({
         placeholder: '@Localizer["select.roles"]',
         language: '@CultureInfo.CurrentCulture.ToString()'
-    }).select2('val', 'Admin');
+    });
 </script>

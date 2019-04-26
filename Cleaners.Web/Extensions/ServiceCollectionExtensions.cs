@@ -60,9 +60,12 @@ namespace Cleaners.Web.Extensions
         public static void ConfigureAppSettings(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<AppInfoConfig>(configuration.GetSection(AppSettings.AppInfo));
+            // Register IdentityOptions so it can be used in application
+            services.Configure<IdentityConfig>(configuration.GetSection(AppSettings.Identity));
 
             // Allows config to be injected directly as instance without IOptionsSnapshot<>
             services.AddScoped(provider => provider.GetRequiredService<IOptionsSnapshot<AppInfoConfig>>().Value);
+            services.AddScoped(provider => provider.GetRequiredService<IOptionsSnapshot<IdentityConfig>>().Value);
         }
 
         /// <summary>
@@ -165,7 +168,7 @@ namespace Cleaners.Web.Extensions
         /// Registers identity services
         /// </summary>
         /// <param name="services"></param>
-        public static void ConfigureIdentity(this IServiceCollection services)
+        public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
         {
             //services.AddAuthentication
 
@@ -175,27 +178,28 @@ namespace Cleaners.Web.Extensions
                    .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
                    .AddDefaultTokenProviders();
 
-            // Load this settings from appsettings.config
+            // Configure IdentityOptions from appsettings.json
+            services.Configure<IdentityOptions>(configuration);
 
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireDigit = AuthenticationDefaults.RequireDigit;
-                options.Password.RequireLowercase = AuthenticationDefaults.RequireLowercase;
-                options.Password.RequireNonAlphanumeric = AuthenticationDefaults.RequireNonAlphanumeric;
-                options.Password.RequireUppercase = AuthenticationDefaults.RequireUppercase;
-                options.Password.RequiredLength = AuthenticationDefaults.RequiredLength;
-                options.Password.RequiredUniqueChars = AuthenticationDefaults.RequiredUniqueChars;
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    options.Password.RequireDigit = AuthenticationDefaults.RequireDigit;
+            //    options.Password.RequireLowercase = AuthenticationDefaults.RequireLowercase;
+            //    options.Password.RequireNonAlphanumeric = AuthenticationDefaults.RequireNonAlphanumeric;
+            //    options.Password.RequireUppercase = AuthenticationDefaults.RequireUppercase;
+            //    options.Password.RequiredLength = AuthenticationDefaults.RequiredLength;
+            //    options.Password.RequiredUniqueChars = AuthenticationDefaults.RequiredUniqueChars;
 
-                options.Lockout.AllowedForNewUsers = true;
-                options.Lockout.MaxFailedAccessAttempts = 6;                
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+            //    options.Lockout.AllowedForNewUsers = true;
+            //    options.Lockout.MaxFailedAccessAttempts = 6;
+            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
 
-                options.SignIn.RequireConfirmedEmail = AuthenticationDefaults.RequireConfirmedEmail;
-                options.SignIn.RequireConfirmedPhoneNumber = AuthenticationDefaults.RequireConfirmedPhoneNumber;
+            //    options.SignIn.RequireConfirmedEmail = AuthenticationDefaults.RequireConfirmedEmail;
+            //    options.SignIn.RequireConfirmedPhoneNumber = AuthenticationDefaults.RequireConfirmedPhoneNumber;
 
-                options.User.RequireUniqueEmail = AuthenticationDefaults.RequireUniqueEmail;
-                options.User.AllowedUserNameCharacters = AuthenticationDefaults.AllowedUserNameCharacters;
-            });
+            //    options.User.RequireUniqueEmail = AuthenticationDefaults.RequireUniqueEmail;
+            //    options.User.AllowedUserNameCharacters = AuthenticationDefaults.AllowedUserNameCharacters;
+            //});
 
             services.ConfigureApplicationCookie(options =>
             {

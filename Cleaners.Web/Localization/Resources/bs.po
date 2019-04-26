@@ -31,7 +31,10 @@ msgid "lockout.enabled"
 msgstr "Zaključavanje omogućeno"
 
 msgid "lockout.enabled.info"
-msgstr "Zaključaj korisniči račun nakon {0} neuspješnih pokušaja"
+msgstr "Zaključaj korisniči račun nakon {0} neuspješnih pokušaja na {1}."
+
+msgid "lockout.disabled.note"
+msgstr "Zaključavanje korisničkog računa je trenutno onemogućeno za sve korisnike."
 
 msgid "account.active.info"
 msgstr "Označi račun kao aktivan"
@@ -132,7 +135,7 @@ msgstr "Pogrešno korisničko ime ili lozinka."
 msgid "account.locked.out"
 msgstr "Korisnički račun je trenutno zaključan."
 
-msgid "account.locked.out"
+msgid "account.not.allowed"
 msgstr "Korisnički račun nema pravo pristupa."
 
 msgid "account.requires.two.factor"

@@ -31,7 +31,10 @@ msgid "lockout.enabled"
 msgstr "Lockout enabled"
 
 msgid "lockout.enabled.info"
-msgstr "Lock users account after {0} invalid attempts"
+msgstr "Lock users account after {0} invalid attempts for {1}."
+
+msgid "lockout.disabled.note"
+msgstr "User lockout is currently disabled for all users."
 
 msgid "account.active.info"
 msgstr "Mark user account as active"
@@ -132,7 +135,7 @@ msgstr "Incorrect username or password."
 msgid "account.locked.out"
 msgstr "Account is currently locked out."
 
-msgid "account.locked.out"
+msgid "account.not.allowed"
 msgstr "Account is currently not allowed to access."
 
 msgid "account.requires.two.factor"
