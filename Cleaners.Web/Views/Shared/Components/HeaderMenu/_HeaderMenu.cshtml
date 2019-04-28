@@ -1,7 +1,8 @@
 ﻿@inject IViewLocalizer Localizer
 @inject Cleaners.Web.Infrastructure.AppSettings.AppInfoConfig AppInfo
+
 <header class="main-header">
-    <a href="@Url.RouteUrl(HomeRoutes.Index)" class="logo">
+    <a asp-route="@HomeRoutes.Index" class="logo">
         <span class="logo-mini"><b>@AppInfo.ShortName</b></span>
         <span class="logo-lg"><b>@AppInfo.FullName</b></span>
     </a>
@@ -14,22 +15,17 @@
                         <i class="fa fa-language"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Odaberite jezik</li>
+                        <li class="header">@Localizer[ResourceKeys.SelectLanguage]</li>
                         <li>
                             <ul class="menu">
                                 @foreach (var item in LocalizationDefaults.GetSupportedCultures())
                                 {
                                     <li>
                                         <a asp-route="@LocalizationRoutes.ChangeLanguage" asp-route-culture="@item.Name">
-                                            <img src="~/img/flags/@item.Icon" /> @item.DisplayName
+                                            <img alt="Flag image" src="~/img/flags/@item.Icon" /> @Localizer[item.DisplayName.ToLowerInvariant()]
                                         </a>
                                     </li>
-                                }
-                                <li>
-                                    <a href="#">
-                                        <img src="~/img/flags/en.png" /> Engleski
-                                    </a>
-                                </li>
+                                }                               
                             </ul>
                         </li>
                     </ul>
@@ -46,7 +42,7 @@
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a asp-route="@AccountRoutes.Profile" class="btn btn-default btn-flat">@Localizer[ResourceKeys.Profile]</a>
                             </div>
                             <form asp-route="@AccountRoutes.Logout" id="logoutForm">
                                 <div class="pull-right">

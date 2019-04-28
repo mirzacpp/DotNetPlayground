@@ -1,11 +1,16 @@
-﻿@using Cleaners.Web
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization
+
+@using Cleaners.Web
 @using Cleaners.Web.Models
-@using Cleaners.Web.Models.Account
 @using Cleaners.Web.Constants
 @using Cleaners.Web.Extensions
 @using Cleaners.Web.Localization
-@using Microsoft.AspNetCore.Mvc.Localization
-@using System.Globalization
+@using Cleaners.Web.Models.Account
+@using Cleaners.Web.Models.Users
+@using Cleaners.Web.Models.Roles
+@using Cleaners.Web.Infrastructure
+@using Cleaners.Web.Infrastructure.Authentication
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, Cleaners.Web

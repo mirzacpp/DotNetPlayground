@@ -5,8 +5,8 @@ using Cleaners.Core.Interfaces;
 using Cleaners.Data;
 using Cleaners.Services.Roles;
 using Cleaners.Services.Users;
-using Cleaners.Web.Configuration;
 using Cleaners.Web.Constants;
+using Cleaners.Web.Infrastructure;
 using Cleaners.Web.Infrastructure.AppSettings;
 using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Infrastructure.AutoMapper;
@@ -47,6 +47,7 @@ namespace Cleaners.Web.Extensions
 
             mvcBuilder.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
             mvcBuilder.AddDataAnnotationsLocalization();
+
             mvcBuilder.AddCookieTempDataProvider(options =>
             {
                 options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.TempDataCookie}";
@@ -90,7 +91,6 @@ namespace Cleaners.Web.Extensions
         /// <param name="services"></param>
         public static void ConfigureLocalization(this IServiceCollection services)
         {
-            // Find a way to register locale resources from .Core project
             // Use NullStringLocalizerFactory instead of default ResourceManagerStringLocalizer
             services.AddSingleton<IStringLocalizerFactory, NullStringLocalizerFactory>();
 
@@ -170,8 +170,6 @@ namespace Cleaners.Web.Extensions
         /// <param name="services"></param>
         public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddAuthentication
-
             services.AddIdentity<User, Role>()
                    .AddEntityFrameworkStores<FealDbContext>()
                    // Register localized error messages
@@ -181,36 +179,17 @@ namespace Cleaners.Web.Extensions
             // Configure IdentityOptions from appsettings.json
             services.Configure<IdentityOptions>(configuration);
 
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    options.Password.RequireDigit = AuthenticationDefaults.RequireDigit;
-            //    options.Password.RequireLowercase = AuthenticationDefaults.RequireLowercase;
-            //    options.Password.RequireNonAlphanumeric = AuthenticationDefaults.RequireNonAlphanumeric;
-            //    options.Password.RequireUppercase = AuthenticationDefaults.RequireUppercase;
-            //    options.Password.RequiredLength = AuthenticationDefaults.RequiredLength;
-            //    options.Password.RequiredUniqueChars = AuthenticationDefaults.RequiredUniqueChars;
-
-            //    options.Lockout.AllowedForNewUsers = true;
-            //    options.Lockout.MaxFailedAccessAttempts = 6;
-            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
-
-            //    options.SignIn.RequireConfirmedEmail = AuthenticationDefaults.RequireConfirmedEmail;
-            //    options.SignIn.RequireConfirmedPhoneNumber = AuthenticationDefaults.RequireConfirmedPhoneNumber;
-
-            //    options.User.RequireUniqueEmail = AuthenticationDefaults.RequireUniqueEmail;
-            //    options.User.AllowedUserNameCharacters = AuthenticationDefaults.AllowedUserNameCharacters;
-            //});
-
+            // Configure cookie authentication
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.AuthenticationCookie}";
-                options.Cookie.HttpOnly = AuthenticationDefaults.HttpOnly;
+                options.Cookie.HttpOnly = CookieAuthenticationDefaults.HttpOnly;
                 options.Cookie.Expiration = TimeSpan.FromDays(30);
                 options.ExpireTimeSpan = TimeSpan.FromDays(3);
-                options.AccessDeniedPath = AuthenticationDefaults.AccessDeniedPath;
-                options.LoginPath = AuthenticationDefaults.LoginPath;
-                options.LogoutPath = AuthenticationDefaults.LogoutPath;
-                options.SlidingExpiration = AuthenticationDefaults.SlidingExpiration;
+                options.AccessDeniedPath = CookieAuthenticationDefaults.AccessDeniedPath;
+                options.LoginPath = CookieAuthenticationDefaults.LoginPath;
+                options.LogoutPath = CookieAuthenticationDefaults.LogoutPath;
+                options.SlidingExpiration = CookieAuthenticationDefaults.SlidingExpiration;
             });
         }
 

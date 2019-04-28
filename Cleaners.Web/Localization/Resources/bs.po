@@ -158,3 +158,117 @@ msgstr "Sačuvaj"
 
 msgid "Submit"
 msgstr "Potvrdi"
+
+msgid "details"
+msgstr "Detalji"
+
+msgid "invalid.current.password"
+msgstr "Pogrešna trenutna lozinka."
+
+msgid "current.password"
+msgstr "Trenutna lozinka"
+
+msgid "new.password"
+msgstr "Nova lozinka"
+
+msgid "change.password"
+msgstr "Promjena lozinke"
+
+msgid "profile"
+msgstr "Profil"
+
+msgid "email.confirmed"
+msgstr "Email potvrđen"
+
+msgid "access.failed.count"
+msgstr "Broj neuspješnih pokušaja"
+
+msgid "lockout.end"
+msgstr "Završetak zaključavanja"
+
+msgid "creation.date"
+msgstr "Datum kreiranja"
+
+msgid "last.update.date"
+msgstr "Posljednje ažuriranje"
+
+msgid "settings"
+msgstr "Postavke"
+
+msgid "user.accounts"
+msgstr "Korisnički računi"
+
+msgid "max.failed.access.attempts"
+msgstr "Maksimalan broj neuspješnih pokušaja"
+
+msgid "default.lockout.time.span"
+msgstr "Vrijeme trajanja zaključavanja"
+
+msgid "allowed.for.new.users"
+msgstr "Dozvoljeno za nove korisnike"
+
+msgid "require.digit"
+msgstr "Zahtijeva broj"
+
+msgid "require.lowercase"
+msgstr "Zahtijeva malo slovo"
+
+msgid "require.uppercase"
+msgstr "Zahtijeva veliko slovo"
+
+msgid "require.non.alphanumeric"
+msgstr "Zahtijeva specijalni karakter"
+
+msgid "required.length"
+msgstr "Zahtijevana dužina"
+
+msgid "required.unique.chars"
+msgstr "Zahtijevani jedinstveni karakteri"
+
+msgid "require.confirmed.email"
+msgstr "Zahtijeva potvrđen email"
+
+msgid "require.confirmed.phone.number"
+msgstr "Zahtijeva potvrđen telefon"
+
+msgid "require.unique.email"
+msgstr "Zahtijeva jedinstven email"
+
+msgid "allowed.username.characters"
+msgstr "Dozvoljeni karakteri za korisničko ime"
+
+msgid "lockout.settings"
+msgstr "Postavke zaključavanja"
+
+msgid "password.settings"
+msgstr "Postavke lozinke"
+
+msgid "sign.in.settings"
+msgstr "Postavke prijave"
+
+msgid "user.settings"
+msgstr "Postavke korisnika"
+
+msgid "authentication.settings"
+msgstr "Postavke autentifikacije"
+
+msgid "select.language"
+msgstr "Odaberite jezik"
+
+msgid "english"
+msgstr "Engleski"
+
+msgid "bosnian"
+msgstr "Bosanski"
+
+msgid "name"
+msgstr "Naziv"
+
+msgid "create.record"
+msgstr "Kreiranje zapisa"
+
+msgid "update.record"
+msgstr "Ažuriranje zapisa"
+
+msgid "delete.record"
+msgstr "Brisanje zapisa"

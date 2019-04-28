@@ -7,11 +7,11 @@
 
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
     <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="OrchardCore.Localization.Core" Version="1.0.0-beta2-70992" />
+    <PackageReference Include="OrchardCore.Localization.Core" Version="1.0.0-beta3-71077" />
   </ItemGroup>
 
 

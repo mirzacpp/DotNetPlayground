@@ -1,7 +1,8 @@
-﻿@inject Cleaners.Web.Infrastructure.Alerts.IAlertManager AlertManager;
+﻿@inject Cleaners.Web.Infrastructure.Alerts.IAlertManager AlertManager
 <!DOCTYPE html>
 <html>
 <head>
+    <meta translate="no" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@ViewBag.PageTitle</title>
@@ -20,6 +21,7 @@
         <vc:header-menu></vc:header-menu>
         <vc:navigation-menu></vc:navigation-menu>
         <div class="loader-block" style="display:none"></div>
+        <div class="loading" style="display:none"></div>
         <div class="content-wrapper">
             <section class="content-header">
                 <partial name="_Alerts" />

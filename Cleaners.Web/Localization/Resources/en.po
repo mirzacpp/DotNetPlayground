@@ -158,3 +158,117 @@ msgstr "Save"
 
 msgid "submit"
 msgstr "Submit"
+
+msgid "details"
+msgstr "Details"
+
+msgid "invalid.current.password"
+msgstr "Invalid current password."
+
+msgid "current.password"
+msgstr "Current password"
+
+msgid "new.password"
+msgstr "New password"
+
+msgid "change.password"
+msgstr "Change password"
+
+msgid "profile"
+msgstr "Profile"
+
+msgid "email.confirmed"
+msgstr "Email confirmed"
+
+msgid "access.failed.count"
+msgstr "Access failed count"
+
+msgid "lockout.end"
+msgstr "Lockout end"
+
+msgid "creation.date"
+msgstr "Creation date"
+
+msgid "last.update.date"
+msgstr "Last update date"
+
+msgid "settings"
+msgstr "Settings"
+
+msgid "user.accounts"
+msgstr "User accounts"
+
+msgid "max.failed.access.attempts"
+msgstr "Max failed access attempts"
+
+msgid "default.lockout.time.span"
+msgstr "Default lockout time span"
+
+msgid "allowed.for.new.users"
+msgstr "Allowed for new users"
+
+msgid "require.digit"
+msgstr "Require digit"
+
+msgid "require.lowercase"
+msgstr "Require lowercase"
+
+msgid "require.uppercase"
+msgstr "Require uppercase"
+
+msgid "require.non.alphanumeric"
+msgstr "Require non alphanumeric"
+
+msgid "required.length"
+msgstr "Required length"
+
+msgid "required.unique.chars"
+msgstr "Required unique chars"
+
+msgid "require.confirmed.email"
+msgstr "Require confirmed email"
+
+msgid "require.confirmed.phone.number"
+msgstr "Require confirmed phone number"
+
+msgid "require.unique.email"
+msgstr "Require unique email"
+
+msgid "allowed.username.characters"
+msgstr "Allowed username characters"
+
+msgid "lockout.settings"
+msgstr "Lockout settings"
+
+msgid "password.settings"
+msgstr "Password settings"
+
+msgid "sign.in.settings"
+msgstr "Sign in settings"
+
+msgid "user.settings"
+msgstr "User settings"
+
+msgid "authentication.settings"
+msgstr "Authentication settings"
+
+msgid "select.language"
+msgstr "Select your language"
+
+msgid "english"
+msgstr "English"
+
+msgid "bosnian"
+msgstr "Bosnian"
+
+msgid "name"
+msgstr "Name"
+
+msgid "create.record"
+msgstr "Create record"
+
+msgid "update.record"
+msgstr "Update record"
+
+msgid "delete.record"
+msgstr "Delete record"

@@ -1,4 +1,4 @@
-﻿namespace Cleaners.Web.Configuration
+﻿namespace Cleaners.Web.Infrastructure
 {
     public static class CookieDefaults
     {

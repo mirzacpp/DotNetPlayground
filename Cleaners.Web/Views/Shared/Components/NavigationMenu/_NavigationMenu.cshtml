@@ -10,17 +10,20 @@
             </li>
             @if (User.IsAdmin())
             {
-                <li>
-                    <a asp-route="@UserRoutes.Index">
-                        <i class="fa fa-users margin-r-5">
-                        </i><span>@Localizer[ResourceKeys.Users]</span>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span>@Localizer[ResourceKeys.UserAccounts]</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
-                </li>
-                <li>
-                    <a asp-route="@RoleRoutes.Index">
-                        <i class="fa fa-id-card margin-r-5">
-                        </i><span>@Localizer[ResourceKeys.Roles]</span>
-                    </a>
+                    <ul class="treeview-menu">
+                        <li><a asp-route="@UserRoutes.Index"><i class="fa fa-chevron-circle-right margin-r-5"></i>@Localizer[ResourceKeys.Users]</a></li>
+                        <li><a asp-route="@RoleRoutes.Index"><i class="fa fa-chevron-circle-right margin-r-5"></i>@Localizer[ResourceKeys.Roles]</a></li>
+                        <li><a asp-route="@AccountRoutes.Profile"><i class="fa fa-chevron-circle-right margin-r-5"></i>@Localizer[ResourceKeys.Profile]</a></li>
+                        <li><a asp-route="@SettingsRoutes.AuthenticationSettings"><i class="fa fa-chevron-circle-right margin-r-5"></i>@Localizer[ResourceKeys.Setting]</a></li>
+                    </ul>
                 </li>
             }
         </ul>

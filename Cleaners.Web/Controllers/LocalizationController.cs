@@ -1,5 +1,5 @@
-﻿using Cleaners.Web.Configuration;
-using Cleaners.Web.Constants;
+﻿using Cleaners.Web.Constants;
+using Cleaners.Web.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;

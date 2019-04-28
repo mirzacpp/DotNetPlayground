@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Cleaners.Core.Domain;
+using Cleaners.Web.Models.Roles;
 using Cleaners.Web.Models.Users;
 
 namespace Cleaners.Web.Infrastructure.AutoMapper
@@ -17,8 +18,18 @@ namespace Cleaners.Web.Infrastructure.AutoMapper
             CreateMap<UserCreateModel, User>();
             CreateMap<UserUpdateModel, User>();
             CreateMap<User, UserUpdateModel>();
+            CreateMap<User, UserDetailsModel>();
 
             #endregion User
+
+            #region Role
+
+            CreateMap<Role, RoleModel>();
+            CreateMap<RoleCreateModel, Role>();
+            CreateMap<RoleUpdateModel, Role>();
+            CreateMap<Role, RoleUpdateModel>();
+
+            #endregion Role
         }
     }
 }

@@ -1,0 +1,11 @@
+﻿@model UserDetailsModel
+@inject IViewLocalizer Localizer
+@{
+    ViewBag.PageTitle = Localizer[ResourceKeys.Details];
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <partial name="_UserDetails" model="Model" />
+    </div>
+</div>

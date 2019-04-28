@@ -1,0 +1,26 @@
+﻿@model IEnumerable<UserModel>
+@inject IViewLocalizer Localizer
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer[ResourceKeys.FirstName]</th>
+            <th>@Localizer[ResourceKeys.LastName]</th>
+            <th>th</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>
+                    <a asp-route="@UserRoutes.Update" asp-route-id="@item.Id">E</a>
+                    <a asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id">C</a>
+                    <a asp-route="@UserRoutes.Details" asp-route-id="@item.Id">C</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

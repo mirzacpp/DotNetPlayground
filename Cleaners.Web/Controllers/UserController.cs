@@ -13,6 +13,7 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Cleaners.Web.Controllers
@@ -46,11 +47,23 @@ namespace Cleaners.Web.Controllers
         [HttpGet("", Name = UserRoutes.Index)]
         public IActionResult Index()
         {
-            var users = _userService.Get();
-            var model = _mapper.Map<IEnumerable<User>, IEnumerable<UserModel>>(users);
             //TempData["notification.key"] = new AlertList { new AlertItem(AlertType.Success, "Ok vlado") };
 
-            return View(model: model);
+            return View();
+        }
+
+        /// <summary>
+        /// Returns table data for home page
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("data", Name = UserRoutes.Data)]
+        public IActionResult Data()
+        {
+            Thread.Sleep(2000);
+            var users = _userService.Get();
+            var model = _mapper.Map<IEnumerable<User>, IEnumerable<UserModel>>(users);
+
+            return PartialView("_Data", model);
         }
 
         [HttpGet("create", Name = UserRoutes.Create)]
@@ -164,6 +177,21 @@ namespace Cleaners.Web.Controllers
             ModelState.AddModelErrors(result.Errors.Select(e => e.Description));
 
             return PartialView("_ConfirmEmail", model);
+        }
+
+        [HttpGet("{id}/details", Name = UserRoutes.Details)]
+        public async Task<IActionResult> Details(int id)
+        {
+            var user = await _userService.GetByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = _mapper.Map<User, UserDetailsModel>(user);
+
+            return View(nameof(Details), model);
         }
 
         // Implementiraj deaktivaciju/aktivaciju

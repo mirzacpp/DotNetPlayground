@@ -20,6 +20,16 @@ namespace Cleaners.Services.Roles
             _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
         }
 
+        public async Task<IdentityResult> CreateAsync(Role role)
+        {
+            if (role == null)
+            {
+                throw new ArgumentNullException(nameof(role));
+            }
+
+            return await _roleManager.CreateAsync(role);
+        }
+
         public IEnumerable<Role> GetAll()
         {
             return _roleManager.Roles.ToList();
@@ -28,6 +38,21 @@ namespace Cleaners.Services.Roles
         public async Task<IEnumerable<Role>> GetAllAsync()
         {
             return await _roleManager.Roles.ToListAsync();
+        }
+
+        public async Task<Role> GetByIdAsync(int id)
+        {
+            return await _roleManager.FindByIdAsync(id.ToString());
+        }
+
+        public async Task<IdentityResult> UpdateAsync(Role role)
+        {
+            if (role == null)
+            {
+                throw new ArgumentNullException(nameof(role));
+            }
+
+            return await _roleManager.UpdateAsync(role);
         }
     }
 }

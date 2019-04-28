@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Cleaners.Web.Infrastructure.Alerts
 {
+    [JsonObject]
     public class AlertList : List<AlertItem>
     {
         public void Success(string text, string title = null, bool isDismissable = true)

@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using System;
 
 namespace Cleaners.Web
 {
@@ -57,7 +59,7 @@ namespace Cleaners.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
-            app.ConfigureLocalization();
+            app.ConfigureLocalization();            
 
             app.UseMvc(routes =>
             {

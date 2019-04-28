@@ -1,0 +1,182 @@
+﻿@inject IdentityConfig IdentityConfig
+@inject IViewLocalizer Localizer
+@{
+    ViewBag.PageTitle = Localizer[ResourceKeys.AuthenticationSettings];
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-horizontal">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Localizer[ResourceKeys.LockoutSettings]
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.LockoutEnabled]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.DefaultOptions.LockoutEnabled"></icon-condition>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.MaxFailedAccessAttempts]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @IdentityConfig.LockoutOptions.MaxFailedAccessAttempts
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.DefaultLockoutTimeSpan]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @IdentityConfig.LockoutOptions.DefaultLockoutTimeSpan
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.AllowedForNewUsers]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.LockoutOptions.AllowedForNewUsers"></icon-condition>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Localizer[ResourceKeys.PasswordSettings]                        
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequireDigit]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.PasswordOptions.RequireDigit"></icon-condition>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequireLowercase]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.PasswordOptions.RequireLowercase"></icon-condition>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequireUppercase]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.PasswordOptions.RequireUppercase"></icon-condition>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequireNonAlphanumeric]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.PasswordOptions.RequireNonAlphanumeric"></icon-condition>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequiredLength]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @IdentityConfig.PasswordOptions.RequiredLength
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequiredUniqueChars]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @IdentityConfig.PasswordOptions.RequiredUniqueChars
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Localizer[ResourceKeys.SignInSettings]
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequireConfirmedEmail]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.SignInOptions.RequireConfirmedEmail"></icon-condition>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequireConfirmedPhoneNumber]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.SignInOptions.RequireConfirmedPhoneNumber"></icon-condition>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Localizer[ResourceKeys.UserSettings]
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.RequireUniqueEmail]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <icon-condition asp-status="IdentityConfig.UserOptions.RequireUniqueEmail"></icon-condition>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.AllowedUserNameCharacters]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @IdentityConfig.UserOptions.AllowedUserNameCharacters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

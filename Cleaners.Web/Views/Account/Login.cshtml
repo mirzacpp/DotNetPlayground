@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta translate="no"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@Localizer[ResourceKeys.Login]</title>
@@ -50,6 +51,14 @@
                     </div>
                 </div>
             </form>
+            <div class="languages">
+                @foreach (var item in LocalizationDefaults.GetSupportedCultures())
+                {
+                    <a asp-route="@LocalizationRoutes.ChangeLanguage" asp-route-culture="@item.Name">
+                        <img alt="Flag image" src="~/img/flags/@item.Icon" title="@Localizer[item.DisplayName.ToLowerInvariant()]" />
+                    </a>
+                }
+            </div>
         </div>
     </div>
 </body>

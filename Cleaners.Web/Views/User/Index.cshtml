@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Cleaners.Web.Models.Users.UserModel>
-@inject IViewLocalizer Localizer
+﻿@inject IViewLocalizer Localizer
 @{
     ViewBag.PageTitle = Localizer[ResourceKeys.Users];
 }
@@ -13,39 +12,7 @@
                     @Localizer[ResourceKeys.Add]
                 </a>
             </div>
-            <div class="box-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>@Localizer[ResourceKeys.FirstName]</th>
-                            <th>@Localizer[ResourceKeys.LastName]</th>
-                            <th>th</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.FirstName</td>
-                                <td>@item.LastName</td>
-                                <td>
-                                    <a asp-route="@UserRoutes.Update" asp-route-id="@item.Id">E</a>
-                                    <a asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id">C</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div class="box-footer clearfix">
-                <ul class="pagination pagination no-margin pull-right">
-                    <li><a href="#">«</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">»</a></li>
-                </ul>
-            </div>
+            <ajax-loader class="box-body" asp-ajax-route="@UserRoutes.Data" asp-ajax-blockui="true"></ajax-loader>
         </div>
     </div>
 </div>

@@ -1,0 +1,19 @@
+﻿@model UserDetailsModel
+@inject IViewLocalizer Localizer
+@{
+    ViewBag.PageTitle = Localizer[ResourceKeys.Profile];
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a class="btn btn-danger btn-flat" asp-route="@AccountRoutes.ChangePassword">
+                    <i class="fa fa-lock margin-r-5"></i>
+                    @Localizer[ResourceKeys.ChangePassword]
+                </a>
+            </div>
+        </div>
+        <partial name="_UserDetails" model="Model" />
+    </div>
+</div>

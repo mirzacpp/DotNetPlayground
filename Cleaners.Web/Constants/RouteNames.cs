@@ -14,6 +14,13 @@
     {
         public const string Login = "Account.Login";
         public const string Logout = "Account.Logout";
+        public const string ChangePassword = "Account.ChangePassword";
+        public const string Profile = "Account.Profile";
+    }
+
+    public static class SettingsRoutes
+    {
+        public const string AuthenticationSettings = "Settings.AuthenticationSettings";
     }
 
     public static class UserRoutes
@@ -23,6 +30,7 @@
         public const string Create = "User.Create";
         public const string Update = "User.Update";
         public const string ConfirmEmail = "User.ConfirmEmail";
+        public const string Details = "User.Details";
     }
 
     public static class LocalizationRoutes

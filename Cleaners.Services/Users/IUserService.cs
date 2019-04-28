@@ -27,5 +27,7 @@ namespace Cleaners.Services.Users
         Task<IdentityResult> ConfirmEmailAsync(User user);
 
         Task<IdentityResult> AddToRolesAsync(User user, IEnumerable<string> roles);
+
+        Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword);
     }
 }

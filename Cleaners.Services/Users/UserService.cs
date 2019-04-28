@@ -40,7 +40,7 @@ namespace Cleaners.Services.Users
 
             // Generate token for email confirmation.
             // Same tokens are send to users(Part of confirmation URI) when confirmation is their responsibility
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);            
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
             return await _userManager.ConfirmEmailAsync(user, token);
         }
@@ -118,6 +118,28 @@ namespace Cleaners.Services.Users
             }
 
             return await _userManager.GetRolesAsync(user);
+        }
+
+        public async Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            if (string.IsNullOrEmpty(currentPassword))
+            {
+                throw new ArgumentException(nameof(currentPassword));
+            }
+
+            if (string.IsNullOrEmpty(newPassword))
+            {
+                throw new ArgumentException(nameof(newPassword));
+            }
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
         }
     }
 }
