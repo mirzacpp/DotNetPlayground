@@ -272,3 +272,45 @@ msgstr "Update record"
 
 msgid "delete.record"
 msgstr "Delete record"
+
+msgid "add"
+msgstr "Add"
+
+msgid "version"
+msgstr "Version"
+
+msgid "copyright"
+msgstr "<strong>Copyright © {0} <a href="{1}">{2}</a>.</strong> All rights reserved."
+
+msgid "not.found.text"
+msgstr "The page you requested was not found."
+
+msgid "not.found.title"
+msgstr "Not found"
+
+msgid "forbidden.title"
+msgstr "Forbidden"
+
+msgid "forbidden.text"
+msgstr "You are not allowed to view this page."
+
+msgid "error.title"
+msgstr "Error"
+
+msgid "error.text"
+msgstr "Error occurred while processing your request"
+
+msgid "create.record.successful"
+msgstr "Record has been created successfully"
+
+msgid "update.record.successful"
+msgstr "Record has been updated successfully"
+
+msgid "email.confirmation"
+msgstr "Email confirmation"
+
+msgid "confirmation.message"
+msgstr "Do you wish to proceed with this operation?"
+
+msgid "submit"
+msgstr "Submit"

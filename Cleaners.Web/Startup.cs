@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System;
 
 namespace Cleaners.Web
 {
@@ -22,6 +20,8 @@ namespace Cleaners.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddFealMvc();
+
+            services.AddHttpContextAccessor();
 
             services.ConfigureAppSettings(Configuration);
 
@@ -40,7 +40,7 @@ namespace Cleaners.Web
             // Configures identity for authentication and authorization
             services.ConfigureIdentity(Configuration);
 
-            services.AddScoped<IAlertManager, TempDataAlertManager>();
+            services.AddScoped<TempDataAlertManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,21 +52,16 @@ namespace Cleaners.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePagesWithReExecute("/error/{0}");
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
-            app.ConfigureLocalization();            
+            app.ConfigureLocalization();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

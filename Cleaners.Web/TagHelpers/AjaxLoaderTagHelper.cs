@@ -33,10 +33,16 @@ namespace Cleaners.Web.TagHelpers
 
         #endregion Fields
 
+        #region Constructor
+
         public AjaxLoaderTagHelper(IUrlHelperFactory urlHelperFactory)
         {
             _urlHelperFactory = urlHelperFactory;
         }
+
+        #endregion Constructor
+
+        #region Properties
 
         [HtmlAttributeName("asp-ajax-action")]
         public string Action { get; set; }
@@ -72,6 +78,10 @@ namespace Cleaners.Web.TagHelpers
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
+        #endregion Properties
+
+        #region Methods
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             var div = new TagBuilder("div");
@@ -84,8 +94,6 @@ namespace Cleaners.Web.TagHelpers
             div.InnerHtml.AppendHtml(GenerateScriptTag(targetUri, targetId));
 
             div.AddCssClass(output.Attributes["class"]?.Value.ToString());
-
-            //div.CopyHtmlAttribute("class", context);
 
             // We don't want to render <ajax-load></ajax-load> element around div
             output.TagName = null;
@@ -139,5 +147,7 @@ namespace Cleaners.Web.TagHelpers
 
             return urlHelper.Action(Action, Controller, routeValues);
         }
+
+        #endregion Methods
     }
 }

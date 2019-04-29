@@ -1,4 +1,4 @@
-﻿@model Cleaners.Web.Models.Users.UserConfirmationModel
+﻿@model UserConfirmationModel
 @inject IViewLocalizer Localizer
 <div id="modal-block">
     <div class="modal-header">
@@ -7,14 +7,14 @@
             <span aria-hidden="true"></span>
         </button>
     </div>
-    @*<form asp-action="Delete" autocomplete="off" method="post" data-ajax="true" data-ajax-target="modal-block" data-ajax-mode="resubmit">*@
-    <div class="modal-body">
-        @*<input asp-for="Id" type="hidden" />*@
-        <h4 class="text-error">@Localizer["email.confirmation.message"]</h4>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">@Localizer[ResourceKeys.Cancel]</button>
-        <button type="submit" class="btn btn-danger btn-flat">@Localizer[ResourceKeys.Submit]</button>
-    </div>
-    @*</form>*@
+    <form asp-action="Delete" data-ajax="true">
+        <div class="modal-body">
+            <input asp-for="Id" />
+            <h4 class="text-error">@Localizer["confirmation.message"]</h4>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">@Localizer[ResourceKeys.Cancel]</button>
+            <button type="submit" class="btn btn-danger btn-flat">@Localizer[ResourceKeys.Submit]</button>
+        </div>
+    </form>
 </div>

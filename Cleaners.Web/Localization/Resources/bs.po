@@ -272,3 +272,45 @@ msgstr "Ažuriranje zapisa"
 
 msgid "delete.record"
 msgstr "Brisanje zapisa"
+
+msgid "add"
+msgstr "Dodaj"
+
+msgid "version"
+msgstr "Verzija"
+
+msgid "copyright"
+msgstr "<strong>Copyright © {0} <a href="{1}">{2}</a>.</strong> Sva prava pridržana."
+
+msgid "not.found.text"
+msgstr "Traženi sadržaj nije pronađen. Vratite se na početnu stranicu i pokušajte ponovno."
+
+msgid "not.found.title"
+msgstr "Not found"
+
+msgid "forbidden.title"
+msgstr "Forbidden"
+
+msgid "forbidden.text"
+msgstr "Nemate pristup ovoj stranici."
+
+msgid "error.title"
+msgstr "Greška"
+
+msgid "error.text"
+msgstr "Došlo je do greške prilikom obrade vašeg zahtjeva."
+
+msgid "create.record.successful"
+msgstr "Uspješno ste kreirali novi zapis."
+
+msgid "update.record.successful"
+msgstr "Uspješno ste ažurirali odabrani zapis."
+
+msgid "email.confirmation"
+msgstr "Potvrda emaila"
+
+msgid "confirmation.message"
+msgstr "Da li sigurno želite izvršiti ovu operaciju?"
+
+msgid "submit"
+msgstr "Potvrdi"

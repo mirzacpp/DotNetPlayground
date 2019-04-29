@@ -6,6 +6,9 @@
     public static class ResourceKeys
     {
         public const string Login = "login";
+        public const string CreateRecordSuccessful = "create.record.successful";
+        public const string UpdateRecordSuccessful = "update.record.successful";
+        public const string DeleteRecordSuccessful = "delete.record.successful";
         public const string UpdateRecord = "update.record";
         public const string CreateRecord = "create.record";
         public const string DeleteRecord = "delete.record";
@@ -87,5 +90,11 @@
         public const string RequireConfirmedEmail = "require.confirmed.email";
         public const string RequireUniqueEmail = "require.unique.email";
         public const string AllowedUserNameCharacters = "allowed.username.characters";
+        public const string NotFoundTitle = "not.found.title";
+        public const string NotFoundText = "not.found.text";
+        public const string ForbiddenTitle = "forbidden.title";
+        public const string ForbiddenText = "forbidden.text";
+        public const string ErrorTitle = "error.title";
+        public const string ErrorText = "error.text";
     }
 }

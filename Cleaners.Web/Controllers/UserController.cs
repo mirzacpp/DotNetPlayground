@@ -5,6 +5,7 @@ using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Authentication;
+using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Users;
 using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -13,7 +14,6 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Cleaners.Web.Controllers
@@ -25,19 +25,28 @@ namespace Cleaners.Web.Controllers
     [Authorize(Roles = RoleNames.Admin)]
     public class UserController : FealControllerBase
     {
+        #region Fields
+
         private readonly IUserService _userService;
         private readonly IUserModelService _userModelService;
-        private readonly IMapper _mapper;
-        private readonly IAlertManager _alertManager;
         private readonly IStringLocalizer<UserController> _localizer;
+        private readonly TempDataAlertManager _tempDataAlertManager;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService userService, IUserModelService userModelService, IMapper mapper, IAlertManager alertManager, IStringLocalizer<UserController> localizer)
+        #endregion Fields
+
+        public UserController(
+            IUserService userService,
+            IUserModelService userModelService,
+            IStringLocalizer<UserController> localizer,
+            TempDataAlertManager tempDataAlertManager,
+            IMapper mapper)
         {
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
             _userModelService = userModelService ?? throw new ArgumentNullException(nameof(userModelService));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _alertManager = alertManager ?? throw new ArgumentNullException(nameof(alertManager));
             _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
+            _tempDataAlertManager = tempDataAlertManager ?? throw new ArgumentNullException(nameof(tempDataAlertManager));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         /// <summary>
@@ -45,12 +54,7 @@ namespace Cleaners.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("", Name = UserRoutes.Index)]
-        public IActionResult Index()
-        {
-            //TempData["notification.key"] = new AlertList { new AlertItem(AlertType.Success, "Ok vlado") };
-
-            return View();
-        }
+        public IActionResult Index() => View();
 
         /// <summary>
         /// Returns table data for home page
@@ -59,7 +63,6 @@ namespace Cleaners.Web.Controllers
         [HttpGet("data", Name = UserRoutes.Data)]
         public IActionResult Data()
         {
-            Thread.Sleep(2000);
             var users = _userService.Get();
             var model = _mapper.Map<IEnumerable<User>, IEnumerable<UserModel>>(users);
 
@@ -102,7 +105,7 @@ namespace Cleaners.Web.Controllers
 
                 if (addToRolesResult.Succeeded)
                 {
-                    // Create notification for success
+                    _tempDataAlertManager.Success(_localizer[ResourceKeys.CreateRecordSuccessful]);
 
                     return RedirectToRoute(UserRoutes.Index);
                 }

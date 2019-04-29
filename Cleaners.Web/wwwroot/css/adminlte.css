@@ -5860,21 +5860,6 @@ table.text-center th {
     padding: 5px 15px;
     border-radius: 3px;
 }
-
-.loader-block {
-    position: fixed;
-    padding: 5px;
-    top: 1.4%;
-    right: 50%;
-    width: 24px;
-    height: 24px;
-    z-index: 9999;
-    background: url(../../../Content/template/img/loader.svg) no-repeat;
-}
-#notify {
-    font-size: 16px;
-    font-weight: 600;
-}
 .label-wrapper {
     display: table;
     float: right;
@@ -5919,8 +5904,8 @@ table.text-center th {
   -o-animation: spinner 1500ms infinite linear;
   animation: spinner 1500ms infinite linear;
   border-radius: 0.5em;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  -webkit-box-shadow: rgba(208, 9, 9, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(208, 9, 9, 0.75) 1.5em 0 0 0, rgba(34, 45, 50, 0.75) 1.1em 1.1em 0 0, rgba(208, 9, 9, 0.75) 0 1.5em 0 0, rgba(34, 45, 50, 0.75) -1.1em 1.1em 0 0, rgba(208, 9, 9, 0.75) -1.5em 0 0 0, rgba(34, 45, 50, 0.75) -1.1em -1.1em 0 0, rgba(208, 9, 9, 0.75) 0 -1.5em 0 0, rgba(34, 45, 50, 0.75) 1.1em -1.1em 0 0;
 }
 
 /* Animation */

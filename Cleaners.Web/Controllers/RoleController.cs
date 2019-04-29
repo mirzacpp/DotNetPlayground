@@ -3,10 +3,13 @@ using Cleaners.Core.Domain;
 using Cleaners.Services.Roles;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
+using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Authentication;
+using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,11 +25,15 @@ namespace Cleaners.Web.Controllers
     {
         private readonly IRoleService _roleService;
         private readonly IMapper _mapper;
+        private readonly TempDataAlertManager _tempDataAlertManager;
+        private readonly IStringLocalizer<RoleController> _localizer;
 
-        public RoleController(IRoleService roleService, IMapper mapper)
+        public RoleController(IRoleService roleService, IMapper mapper, TempDataAlertManager tempDataAlertManager, IStringLocalizer<RoleController> localizer)
         {
             _roleService = roleService ?? throw new ArgumentNullException(nameof(roleService));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _tempDataAlertManager = tempDataAlertManager ?? throw new ArgumentNullException(nameof(tempDataAlertManager));
+            _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
         }
 
         [HttpGet("", Name = RoleRoutes.Index)]
@@ -48,6 +55,8 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
+                _tempDataAlertManager.Success(_localizer[ResourceKeys.CreateRecordSuccessful]);
+
                 return RedirectToRoute(RoleRoutes.Index);
             }
 
@@ -79,20 +88,22 @@ namespace Cleaners.Web.Controllers
                 return View(model);
             }
 
-            // Retrieve role if already being tracked, so we don't end up with tracking exceptions
-            // Note that we also need ConcurrencyStamp column for successful update
+            // Retrieve role if already being tracked, so we don't end up with tracking exceptions.
+            // Note that we also need ConcurrencyStamp column for successful update.
             var role = await _roleService.GetByIdAsync(model.Id);
 
             if (role == null)
             {
                 return NotFound();
-            }
+            }            
 
             role = _mapper.Map<RoleUpdateModel, Role>(model, role);
             var result = await _roleService.UpdateAsync(role);
 
             if (result.Succeeded)
             {
+                _tempDataAlertManager.Success(_localizer[ResourceKeys.UpdateRecordSuccessful]);
+
                 return RedirectToRoute(RoleRoutes.Index);
             }
 

@@ -1,4 +1,5 @@
-﻿@inject Cleaners.Web.Infrastructure.Alerts.IAlertManager AlertManager
+﻿@inject AppInfoConfig AppInfoConfig
+@inject IViewLocalizer Localizer
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,6 @@
     <div class="wrapper">
         <vc:header-menu></vc:header-menu>
         <vc:navigation-menu></vc:navigation-menu>
-        <div class="loader-block" style="display:none"></div>
         <div class="loading" style="display:none"></div>
         <div class="content-wrapper">
             <section class="content-header">
@@ -33,10 +33,9 @@
         </div>
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <b>Version</b> 2.4.0
+                <b>@Localizer["version"]</b> @AppInfoConfig.Version
             </div>
-            <strong>Copyright © 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-            reserved.
+            @Localizer["copyright", DateTime.UtcNow.Year, AppInfoConfig.DeveloperSite, AppInfoConfig.FullName]            
         </footer>
     </div>
     <div id="modal-container" class="modal fade" data-backdrop="static" data-keyboard="false">

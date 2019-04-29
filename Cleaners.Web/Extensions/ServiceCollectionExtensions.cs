@@ -46,7 +46,7 @@ namespace Cleaners.Web.Extensions
             });
 
             mvcBuilder.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
-            mvcBuilder.AddDataAnnotationsLocalization();
+            mvcBuilder.AddDataAnnotationsLocalization();            
 
             mvcBuilder.AddCookieTempDataProvider(options =>
             {

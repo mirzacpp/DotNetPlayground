@@ -15,7 +15,7 @@ namespace Cleaners.Web.Extensions
         /// <param name="tempData"></param>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public static void Insert<T>(this ITempDataDictionary tempData, string key, T value) where T : class
+        public static void InsertSerialized<T>(this ITempDataDictionary tempData, string key, T value) where T : class
         {
             tempData[key] = JsonConvert.SerializeObject(value);
         }
@@ -27,11 +27,11 @@ namespace Cleaners.Web.Extensions
         /// <param name="tempData"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static T Get<T>(this ITempDataDictionary tempData, string key) where T : class
+        public static T GetDeserialized<T>(this ITempDataDictionary tempData, string key) where T : class
         {
             tempData.TryGetValue(key, out object value);
 
             return value == null ? null : JsonConvert.DeserializeObject<T>((string)value);
-        }
+        }       
     }
 }
