@@ -8,13 +8,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@ViewBag.PageTitle</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/main.min.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/select2.css" />
+        <link rel="stylesheet" href="~/css/adminlte.css" />
+        <link rel="stylesheet" href="~/css/fontawesome.css" />
+        <link rel="stylesheet" href="~/css/skin-red.css" />
     </environment>
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/bundles/main.min.css" asp-append-version="true" />
+    </environment>
+
     @RenderSection("styles", required: false)
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">    
+
     <environment include="Development">
-        <script src="~/js/main.min.js"></script>
+        <script src="~/js/jquery.js"></script>
+        <script src="~/js/jquery.unobtrusive-ajax.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/adminlte.js"></script>
+        <script src="~/js/ajax.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/bundles/main.min.js" asp-append-version="true"></script>
     </environment>
 </head>
 <body class="hold-transition skin-red sidebar-mini">
@@ -35,7 +55,7 @@
             <div class="pull-right hidden-xs">
                 <b>@Localizer["version"]</b> @AppInfoConfig.Version
             </div>
-            @Localizer["copyright", DateTime.UtcNow.Year, AppInfoConfig.DeveloperSite, AppInfoConfig.FullName]            
+            @Localizer["copyright", DateTime.UtcNow.Year, AppInfoConfig.DeveloperSite, AppInfoConfig.FullName]
         </footer>
     </div>
     <div id="modal-container" class="modal fade" data-backdrop="static" data-keyboard="false">

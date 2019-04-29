@@ -1,5 +1,6 @@
 ﻿// Executes ajax GET request against given URI
 var loader = '.loading';
+var htmlRegex = '/<[a-z][\s\S]*>/i';
 
 function getData(action, target, blockUi) {
     var $target = $('#' + target);
@@ -12,6 +13,21 @@ function getData(action, target, blockUi) {
         $target.html(data);
         $(loader).hide();
     });
+}
+
+// Handles success of ajax request
+function onSuccess(element, data) {
+    // Check if response is of type text/html
+    if (/<[a-z][\s\S]*>/i.test(data)) {
+        console.log(data);
+    }
+    else {
+        
+    }
+}
+
+// Handles errors of ajax request
+function onError(data) {
 }
 
 function makeRequest(element, options) {
@@ -37,16 +53,10 @@ function makeRequest(element, options) {
     $.ajax(options);
 }
 
+// Executes ajax request for all form elements that contains "data-ajax" attribute
 $(document).on("submit", "form[data-ajax=true]", function (event) {
     event.preventDefault();
 
-    var val = '<div>Ok vlada</div>';
-    var val2 = 'Ok vlada';
-
-    // Check for HTML markup
-    console.log(/<[a-z][\s\S]*>/i.test(val));
-    console.log(/<[a-z][\s\S]*>/i.test(val2));
-    
     makeRequest(this, {
         // Create ajax options based on form attributes
         url: this.action,

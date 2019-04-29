@@ -40,6 +40,7 @@
 
   <ItemGroup>
     <Folder Include="App_Data\Logs\" />
+    <Folder Include="wwwroot\bundles\" />
   </ItemGroup>
 
 </Project>

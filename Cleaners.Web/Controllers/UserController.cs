@@ -163,21 +163,21 @@ namespace Cleaners.Web.Controllers
         [HttpPost("{id}/confirm-email")]
         public async Task<IActionResult> ConfirmEmail(UserConfirmationModel model)
         {
-            var user = await _userService.GetByIdAsync(model.Id);
+            //var user = await _userService.GetByIdAsync(model.Id);
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var result = await _userService.ConfirmEmailAsync(user);
+            //var result = await _userService.ConfirmEmailAsync(user);
 
-            if (result.Succeeded)
-            {
-                // Append notification and redirect
-            }
+            //if (result.Succeeded)
+            //{
+            //    // Append notification and redirect
+            //}
 
-            ModelState.AddModelErrors(result.Errors.Select(e => e.Description));
+            //ModelState.AddModelErrors(result.Errors.Select(e => e.Description));
 
             return PartialView("_ConfirmEmail", model);
         }

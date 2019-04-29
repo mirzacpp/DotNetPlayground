@@ -1,16 +1,16 @@
 [
   {
-    "outputFileName": "wwwroot/css/main.min.css",
+    "outputFileName": "wwwroot/bundles/main.min.css",
     "inputFiles": [
       "wwwroot/css/bootstrap.css",
       "wwwroot/css/select2.css",
       "wwwroot/css/adminlte.css",
       "wwwroot/css/fontawesome.css",
       "wwwroot/css/skin-red.css"
-    ]    
+    ]
   },
   {
-    "outputFileName": "wwwroot/js/main.min.js",
+    "outputFileName": "wwwroot/bundles/main.min.js",
     "inputFiles": [
       "wwwroot/js/jquery.js",
       "wwwroot/js/jquery.unobtrusive-ajax.js",
