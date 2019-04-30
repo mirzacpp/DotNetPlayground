@@ -139,7 +139,33 @@ namespace Cleaners.Services.Users
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-            return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);            
+        }
+
+        public async Task<IdentityResult> DeleteAsync(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            // Since we don' use IRepository.SoftDelete, we will do it manually
+            user.IsDeleted = true;
+
+            return await _userManager.UpdateAsync(user);
+        }
+
+        public async Task<IdentityResult> RestoreAsync(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            // Since we don' use IRepository.Restore, we will do it manually
+            user.IsDeleted = false;
+
+            return await _userManager.UpdateAsync(user);
         }
     }
 }

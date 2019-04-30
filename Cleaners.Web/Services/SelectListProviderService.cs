@@ -16,7 +16,7 @@ namespace Cleaners.Web.Services
             _roleService = roleService ?? throw new ArgumentNullException(nameof(roleService));
         }
 
-        public IEnumerable<SelectListItem> GetRoles()
+        public IEnumerable<SelectListItem> GetRolesWithNames()
         {
             return _roleService.GetAll()
                 .Select(r => new SelectListItem
@@ -27,14 +27,14 @@ namespace Cleaners.Web.Services
                 .ToList();
         }
 
-        public async Task<IEnumerable<SelectListItem>> GetRolesAsync()
+        public async Task<IEnumerable<SelectListItem>> GetRolesWithNamesAsync()
         {
             var roles = await _roleService.GetAllAsync();
 
             return roles.Select(r => new SelectListItem
             {
                 Text = r.Name,
-                Value = r.Id.ToString()
+                Value = r.Name.ToString()
             })
             .ToList();
         }

@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cleaners.Web.Controllers
@@ -110,10 +109,10 @@ namespace Cleaners.Web.Controllers
                     return RedirectToRoute(UserRoutes.Index);
                 }
 
-                ModelState.AddModelErrors(addToRolesResult.Errors.Select(e => e.Description));
+                ModelState.AddModelErrors(addToRolesResult.Errors.GetDescriptions());
             }
 
-            ModelState.AddModelErrors(createResult.Errors.Select(e => e.Description));
+            ModelState.AddModelErrors(createResult.Errors.GetDescriptions());
 
             return await ReturnResult();
         }
@@ -137,8 +136,55 @@ namespace Cleaners.Web.Controllers
             return View(model: model);
         }
 
+        [HttpPost("{id}/update")]
+        public async Task<IActionResult> Update(UserUpdateModel model)
+        {
+            // Local method so we don't repeat ourselves
+            async Task<IActionResult> ReturnResult()
+            {
+                await _userModelService.PrepareUpdateModel(model);
+
+                return View(model: model);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return await ReturnResult();
+            }
+
+            var user = await _userService.GetByIdAsync(model.Id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user = _mapper.Map<UserUpdateModel, User>(model, user);
+
+            var updateResult = await _userService.UpdateAsync(user);
+
+            if (updateResult.Succeeded)
+            {
+                // Add user to roles after user was successfully created
+                var addToRolesResult = await _userService.AddToRolesAsync(user, model.SelectedRoles);
+
+                if (addToRolesResult.Succeeded)
+                {
+                    _tempDataAlertManager.Success(_localizer[ResourceKeys.UpdateRecordSuccessful]);
+
+                    return RedirectToRoute(UserRoutes.Index);
+                }
+
+                ModelState.AddModelErrors(addToRolesResult.Errors.GetDescriptions());
+            }
+
+            ModelState.AddModelErrors(updateResult.Errors.GetDescriptions());
+
+            return await ReturnResult();
+        }
+
         /// <summary>
-        /// Returns modal dialog for users email confirmation
+        /// Returns modal dialog for email confirmation
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -163,25 +209,126 @@ namespace Cleaners.Web.Controllers
         [HttpPost("{id}/confirm-email")]
         public async Task<IActionResult> ConfirmEmail(UserConfirmationModel model)
         {
-            //var user = await _userService.GetByIdAsync(model.Id);
+            var user = await _userService.GetByIdAsync(model.Id);
 
-            //if (user == null)
-            //{
-            //    return NotFound();
-            //}
+            if (user == null)
+            {
+                return NotFound();
+            }
 
-            //var result = await _userService.ConfirmEmailAsync(user);
+            var result = await _userService.ConfirmEmailAsync(user);
 
-            //if (result.Succeeded)
-            //{
-            //    // Append notification and redirect
-            //}
+            if (result.Succeeded)
+            {
+                _tempDataAlertManager.Success(_localizer[ResourceKeys.ConfirmEmailSuccessful]);
 
-            //ModelState.AddModelErrors(result.Errors.Select(e => e.Description));
+                return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
+            }
+
+            ModelState.AddModelErrors(result.Errors.GetDescriptions());
 
             return PartialView("_ConfirmEmail", model);
         }
 
+        /// <summary>
+        /// Returns modal dialog for delete confirmation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}/delete", Name = UserRoutes.Delete)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (!await _userService.ExistsAsync(id))
+            {
+                return NotFound();
+            }
+
+            var model = new UserConfirmationModel { Id = id };
+
+            return PartialView("_Delete", model);
+        }
+
+        /// <summary>
+        /// Confirms delete operation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("{id}/delete")]
+        public async Task<IActionResult> Delete(UserConfirmationModel model)
+        {
+            var user = await _userService.GetByIdAsync(model.Id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userService.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                _tempDataAlertManager.Success(_localizer[ResourceKeys.DeleteRecordSuccessful]);
+
+                return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
+            }
+
+            ModelState.AddModelErrors(result.Errors.GetDescriptions());
+
+            return PartialView("_Delete", model);
+        }
+
+        /// <summary>
+        /// Returns modal dialog for restore confirmation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}/restore", Name = UserRoutes.Restore)]
+        public async Task<IActionResult> Restore(int id)
+        {
+            if (!await _userService.ExistsAsync(id))
+            {
+                return NotFound();
+            }
+
+            var model = new UserConfirmationModel { Id = id };
+
+            return PartialView("_Restore", model);
+        }
+
+        /// <summary>
+        /// Confirms delete operation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("{id}/restore")]
+        public async Task<IActionResult> Restore(UserConfirmationModel model)
+        {
+            var user = await _userService.GetByIdAsync(model.Id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userService.RestoreAsync(user);
+
+            if (result.Succeeded)
+            {
+                _tempDataAlertManager.Success(_localizer[ResourceKeys.RestoreRecordSuccessful]);
+
+                return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
+            }
+
+            ModelState.AddModelErrors(result.Errors.GetDescriptions());
+
+            return PartialView("_Restore", model);
+        }
+
+        /// <summary>
+        /// Returns page with selected user details
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}/details", Name = UserRoutes.Details)]
         public async Task<IActionResult> Details(int id)
         {
@@ -194,7 +341,7 @@ namespace Cleaners.Web.Controllers
 
             var model = _mapper.Map<User, UserDetailsModel>(user);
 
-            return View(nameof(Details), model);
+            return View(model);
         }
 
         // Implementiraj deaktivaciju/aktivaciju

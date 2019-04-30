@@ -1,24 +1,35 @@
 ﻿@model IEnumerable<UserModel>
 @inject IViewLocalizer Localizer
-
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>@Localizer[ResourceKeys.FirstName]</th>
-            <th>@Localizer[ResourceKeys.LastName]</th>
-            <th>th</th>
+            <th>@Localizer[ResourceKeys.Name]</th>
+            <th>@Localizer[ResourceKeys.Email]</th>
+            <th>@Localizer[ResourceKeys.EmailConfirmed]</th>
+            <th>@Localizer[ResourceKeys.CreationDate]</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.FirstName</td>
-                <td>@item.LastName</td>
                 <td>
-                    <a asp-route="@UserRoutes.Update" asp-route-id="@item.Id">E</a>
-                    <a asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id">C</a>
-                    <a asp-route="@UserRoutes.Details" asp-route-id="@item.Id">C</a>
+                    <span asp-if="item.IsDeleted" title="@Localizer["record.deleted"]"><i class="fa fa-trash text-error"></i></span>
+                    @item.FirstName @item.LastName
+                </td>
+                <td>@item.Email</td>
+                <td><icon-condition asp-status="item.EmailConfirmed"></icon-condition></td>
+                <td>@item.CreationDateUtc.ToLocalTimeWithFormat()</td>
+                <td>
+                    <ul>
+                        <li><a asp-route="@UserRoutes.Update" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a></li>
+                        <li><a asp-if="!item.EmailConfirmed" asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-unlock"></i></a></li>
+                        <li><a asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-unlock"></i></a></li>
+                        <li><a asp-route="@UserRoutes.Details" asp-route-id="@item.Id"><i class="fa fa-file-text-o"></i></a></li>
+                        <li><a asp-if="!item.IsDeleted" asp-route="@UserRoutes.Delete" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-trash text-error"></i></a></li>
+                        <li><a asp-if="item.IsDeleted" asp-route="@UserRoutes.Restore" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-history text-error"></i></a></li>
+                    </ul>
                 </td>
             </tr>
         }

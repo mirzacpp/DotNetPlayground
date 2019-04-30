@@ -1,5 +1,6 @@
 ﻿using Cleaners.Web.Models.Users;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cleaners.Web.Services
@@ -23,7 +24,7 @@ namespace Cleaners.Web.Services
                 throw new ArgumentNullException(nameof(model));
             }
 
-            model.Roles = await _selectListService.GetRolesAsync();
+            model.Roles = await _selectListService.GetRolesWithNamesAsync();
         }
 
         public async Task PrepareUpdateModel(UserUpdateModel model)
@@ -33,7 +34,11 @@ namespace Cleaners.Web.Services
                 throw new ArgumentNullException(nameof(model));
             }
 
-            model.Roles = await _selectListService.GetRolesAsync();
+            model.Roles = await _selectListService.GetRolesWithNamesAsync();
+
+            // Since select2 doesn't preselect selected values, we will do that manually (Check Update.cshtml)
+            // Take only roles that are not set for user
+            model.Roles = model.Roles.Where(r => !model.SelectedRoles.Contains(r.Value)).ToList();
         }
     }
 }

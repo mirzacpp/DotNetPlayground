@@ -202,7 +202,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
             return new IdentityError
             {
                 Code = nameof(UserAlreadyInRole),
-                Description = _localizer[ResourceKeys.UserAlreadyInRole]
+                Description = _localizer[ResourceKeys.UserAlreadyInRole, role]
             };
         }
 

@@ -1,13 +1,13 @@
-﻿@model UserConfirmationModel
+﻿@model RoleConfirmationModel
 @inject IViewLocalizer Localizer
 <div id="modal-block">
     <div class="modal-header">
-        <h5 class="modal-title">@Localizer[ResourceKeys.EmailConfirmation]</h5>
+        <h5 class="modal-title">@Localizer[ResourceKeys.DeleteRecord]</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"></span>
         </button>
     </div>
-    <form asp-action="ConfirmEmail" data-ajax="true" data-ajax-update="modal-block">
+    <form asp-action="Delete" data-ajax="true" data-ajax-update="modal-block">
         <div class="modal-body">
             <partial name="_ValidationSummary" />
             <input asp-for="Id" />

@@ -15,6 +15,10 @@ namespace Cleaners.Services.Roles
 
         Task<Role> GetByIdAsync(int id);
 
+        Task<bool> ExistsAsync(int id);
+
         Task<IdentityResult> UpdateAsync(Role role);
+
+        Task<IdentityResult> DeleteAsync(Role role);
     }
 }

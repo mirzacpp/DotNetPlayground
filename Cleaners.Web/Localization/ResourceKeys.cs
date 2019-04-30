@@ -6,15 +6,23 @@
     public static class ResourceKeys
     {
         public const string Login = "login";
+        public const string Back = "back";
+        public const string ConfirmationMessage = "confirmation.message";
+        public const string ConfirmEmailSuccessful = "confirm.email.successful";
+        public const string ChangePasswordSuccessful = "change.password.successful";
         public const string CreateRecordSuccessful = "create.record.successful";
         public const string UpdateRecordSuccessful = "update.record.successful";
         public const string DeleteRecordSuccessful = "delete.record.successful";
+        public const string RestoreRecordSuccessful = "restore.record.successful";
+        public const string EmailConfirmation = "email.confirmation";
         public const string UpdateRecord = "update.record";
         public const string CreateRecord = "create.record";
         public const string DeleteRecord = "delete.record";
+        public const string RestoreRecord = "restore.record";
         public const string Name = "name";
         public const string LockoutSettings = "lockout.settings";
         public const string SelectLanguage = "select.language";
+        public const string SelectRoles = "select.roles";
         public const string PasswordSettings = "password.settings";
         public const string SignInSettings = "sign.in.settings";
         public const string UserSettings = "user.settings";
@@ -32,7 +40,7 @@
         public const string NewPassword = "new.password";
         public const string Details = "details";
         public const string LockoutEnd = "lockout.end";
-        public const string Add = "Add";
+        public const string Add = "add";
         public const string Submit = "submit";
         public const string Email = "email";
         public const string FirstName = "first.name";
@@ -96,5 +104,9 @@
         public const string ForbiddenText = "forbidden.text";
         public const string ErrorTitle = "error.title";
         public const string ErrorText = "error.text";
+        public const string EmptySelectListWarning = "empty.select.list.warning";
+        public const string AccountActiveInfo = "account.active.info";
+        public const string LockoutEnabledInfo = "lockout.enabled.info";
+        public const string LockoutDisabledNote = "lockout.disabled.note";
     }
 }

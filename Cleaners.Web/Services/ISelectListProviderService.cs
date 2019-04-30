@@ -6,8 +6,8 @@ namespace Cleaners.Web.Services
 {
     public interface ISelectListProviderService
     {
-        IEnumerable<SelectListItem> GetRoles();
+        IEnumerable<SelectListItem> GetRolesWithNames();
 
-        Task<IEnumerable<SelectListItem>> GetRolesAsync();
+        Task<IEnumerable<SelectListItem>> GetRolesWithNamesAsync();
     }
 }

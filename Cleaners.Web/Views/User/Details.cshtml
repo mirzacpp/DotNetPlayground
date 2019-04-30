@@ -6,6 +6,14 @@
 
 <div class="row">
     <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a class="btn btn-danger btn-flat" href="@Url.PreviousPage()">
+                    <i class="fa fa-angle-left margin-r-5"></i>
+                    @Localizer[ResourceKeys.Back]
+                </a>
+            </div>
+        </div>
         <partial name="_UserDetails" model="Model" />
     </div>
 </div>

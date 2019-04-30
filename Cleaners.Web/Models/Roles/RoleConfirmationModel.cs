@@ -2,7 +2,7 @@
 
 namespace Cleaners.Web.Models.Roles
 {
-    public class RoleUpdateModel : RoleCreateModel
+    public class RoleConfirmationModel
     {
         [HiddenInput]
         public int Id { get; set; }

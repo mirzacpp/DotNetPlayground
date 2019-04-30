@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">@Localizer["create.new.user"]</h3>
+                <h3 class="box-title">@Localizer[ResourceKeys.CreateRecord]</h3>
             </div>
             <div class="box-body">
                 <form asp-action="Create" class="form-horizontal">
@@ -82,7 +82,7 @@
                             <div class="col-sm-9">
                                 <select asp-for="SelectedRoles" asp-items="Model.Roles" class="form-control select2"></select>
                                 <span asp-validation-for="SelectedRoles" class="text-error"></span>
-                                <div asp-if="!Model.Roles.Any()" class="text-warning">@Localizer["empty.select.list.warning"]</div>
+                                <div asp-if="!Model.Roles.Any()" class="text-warning">@Localizer[ResourceKeys.EmptySelectListWarning]</div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -116,7 +116,7 @@
                             <div class="col-sm-9">
                                 <div class="checkbox">
                                     <label>
-                                        <input asp-for="IsActive"> (@Localizer["account.active.info"])
+                                        <input asp-for="IsActive"> (@Localizer[ResourceKeys.AccountActiveInfo])
                                     </label>
                                 </div>
                             </div>
@@ -130,10 +130,10 @@
                             <div class="col-sm-9">
                                 <div class="checkbox">
                                     <label>
-                                        <input asp-for="LockoutEnabled"> (@Localizer["lockout.enabled.info", IdentityConfig.LockoutOptions.MaxFailedAccessAttempts, IdentityConfig.LockoutOptions.DefaultLockoutTimeSpan])
+                                        <input asp-for="LockoutEnabled"> (@Localizer[ResourceKeys.LockoutEnabledInfo, IdentityConfig.LockoutOptions.MaxFailedAccessAttempts, IdentityConfig.LockoutOptions.DefaultLockoutTimeSpan])
                                     </label>
                                 </div>
-                                <div asp-if="IdentityConfig.DefaultOptions.LockoutEnabled" class="text-warning">@Localizer["lockout.disabled.note"]</div>
+                                <div asp-if="IdentityConfig.DefaultOptions.LockoutEnabled" class="text-warning">@Localizer[ResourceKeys.LockoutDisabledNote]</div>
                             </div>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
 </div>
 <script>
     $('#@Html.IdFor(m => m.SelectedRoles)').select2({
-        placeholder: '@Localizer["select.roles"]',
+        placeholder: '@Localizer[ResourceKeys.SelectRoles]',
         language: '@CultureInfo.CurrentCulture.ToString()'
     });
 </script>

@@ -22,12 +22,11 @@
     </environment>
 
     @RenderSection("styles", required: false)
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <environment include="Development">
-        <script src="~/js/jquery.js"></script>
-        <script src="~/js/jquery.unobtrusive-ajax.js"></script>
+        <script src="~/js/jquery.js"></script>        
         <script src="~/js/bootstrap.js"></script>
         <script src="~/js/adminlte.js"></script>
         <script src="~/js/ajax.js"></script>
@@ -43,8 +42,8 @@
         <vc:navigation-menu></vc:navigation-menu>
         <div class="loading" style="display:none"></div>
         <div class="content-wrapper">
+            <partial name="_Alerts" />
             <section class="content-header">
-                <partial name="_Alerts" />
                 <h1>@ViewBag.PageTitle</h1>
             </section>
             <section class="content">
@@ -65,6 +64,23 @@
         </div>
     </div>
     <script>
+        $('body').on('click', '.modal-link', function (e) {
+            e.preventDefault();
+            var anchor = $(e.target),
+                size = anchor.data("modal-size") || "";
+            if (size) {
+                $('#modalDialog').addClass("modal-" + size);
+            }
+            else {
+                $('#modalDialog').prop("class", "modal-dialog");
+            }
+            $(this).attr('data-target', '#modal-container');
+            $(this).attr('data-toggle', 'modal');
+        });
+
+        $('#modal-container').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
     </script>
     @RenderSection("scripts", required: false)
 </body>

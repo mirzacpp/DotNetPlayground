@@ -1,24 +1,25 @@
-﻿@model UserConfirmationModel
+﻿@model RoleUpdateModel
 @inject IViewLocalizer Localizer
 <div id="modal-block">
     <div class="modal-header">
-        <h5 class="modal-title">@Localizer[ResourceKeys.EmailConfirmation]</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"></span>
-        </button>
+        <h4 class="modal-title">@Localizer[ResourceKeys.UpdateRecord]</h4>
     </div>
-    <form asp-action="ConfirmEmail" data-ajax="true" data-ajax-update="modal-block">
+    <form asp-action="Update" data-ajax="true" data-ajax-update="modal-block">
         <div class="modal-body">
             <partial name="_ValidationSummary" />
             <input asp-for="Id" />
-            <h4 class="text-error">@Localizer[ResourceKeys.ConfirmationMessage]</h4>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control m-input" />
+                <span asp-validation-for="Name" class="text-error"></span>
+            </div>
         </div>
         <div class="modal-footer">
             <button data-dismiss="modal" class="btn btn-default btn-flat pull-left">
                 <i class="fa fa-times margin-r-5"></i>@Localizer[ResourceKeys.Cancel]
             </button>
             <button type="submit" class="btn btn-danger pull-right btn-flat">
-                <i class="fa fa-save margin-r-5"></i>@Localizer[ResourceKeys.Submit]
+                <i class="fa fa-save margin-r-5"></i>@Localizer[ResourceKeys.Save]
             </button>
         </div>
     </form>

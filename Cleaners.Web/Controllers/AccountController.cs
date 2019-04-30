@@ -3,6 +3,7 @@ using Cleaners.Core.Domain;
 using Cleaners.Services.Users;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
+using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Account;
@@ -11,11 +12,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using System.Linq;
+using System;
 using System.Threading.Tasks;
 
 namespace Cleaners.Web.Controllers
 {
+    /// <summary>
+    /// Handles all account based requests
+    /// </summary>
     [Authorize]
     [Route("account")]
     public class AccountController : Controller
@@ -26,21 +30,17 @@ namespace Cleaners.Web.Controllers
         private readonly IMapper _mapper;
         private readonly IStringLocalizer<AccountController> _localizer;
         private readonly IdentityConfig _identityConfig;
+        private readonly TempDataAlertManager _tempDataAlertManager;
 
-        public AccountController(
-            UserManager<User> userManager,
-            SignInManager<User> signInManager,
-            IMapper mapper,
-            IStringLocalizer<AccountController> localizer,
-            IUserService userService,
-            IdentityConfig identityConfig)
+        public AccountController(UserManager<User> userManager, IUserService userService, SignInManager<User> signInManager, IMapper mapper, IStringLocalizer<AccountController> localizer, IdentityConfig identityConfig, TempDataAlertManager tempDataAlertManager)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _mapper = mapper;
-            _localizer = localizer;
-            _identityConfig = identityConfig;
-            _userService = userService;
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
+            _signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
+            _identityConfig = identityConfig ?? throw new ArgumentNullException(nameof(identityConfig));
+            _tempDataAlertManager = tempDataAlertManager ?? throw new ArgumentNullException(nameof(tempDataAlertManager));
         }
 
         #region Methods
@@ -55,7 +55,7 @@ namespace Cleaners.Web.Controllers
                 ReturnUrl = returnUrl
             };
 
-            return View(nameof(Login), model);
+            return View(model);
         }
 
         [AllowAnonymous]
@@ -64,14 +64,14 @@ namespace Cleaners.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(nameof(Login), model);
+                return View(model);
             }
 
             var user = await _userManager.FindByNameAsync(model.Username);
 
             if (!ValidateLoginInput(user))
             {
-                return View(nameof(Login), model);
+                return View(model);
             }
 
             var result = await _signInManager
@@ -84,7 +84,7 @@ namespace Cleaners.Web.Controllers
 
             ProcessSignInResult(result);
 
-            return View(nameof(Login), model);
+            return View(model);
         }
 
         [HttpPost("logout", Name = AccountRoutes.Logout)]
@@ -110,7 +110,7 @@ namespace Cleaners.Web.Controllers
 
             var model = _mapper.Map<User, UserDetailsModel>(user);
 
-            return View(nameof(Profile), model);
+            return View(model);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Cleaners.Web.Controllers
                 return NotFound();
             }
 
-            return View(nameof(ChangePassword));
+            return View(new AccountChangePasswordModel());
         }
 
         [HttpPost("change-password")]
@@ -134,7 +134,7 @@ namespace Cleaners.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(nameof(ChangePassword), model);
+                return View(model);
             }
 
             var user = await _userManager.GetUserAsync(User);
@@ -149,20 +149,21 @@ namespace Cleaners.Web.Controllers
             {
                 ModelState.AddModelError(_localizer[ResourceKeys.InvalidCurrentPassword]);
 
-                return View(nameof(ChangePassword), model);
+                return View(model);
             }
 
             var result = await _userService.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
 
             if (result.Succeeded)
             {
-                // Return user back to profile page
+                _tempDataAlertManager.Success(_localizer[ResourceKeys.ChangePasswordSuccessful]);
+
                 return RedirectToRoute(AccountRoutes.Profile);
             }
 
-            ModelState.AddModelErrors(result.Errors.Select(e => e.Description));
+            ModelState.AddModelErrors(result.Errors.GetDescriptions());
 
-            return View(nameof(ChangePassword));
+            return View(model);
         }
 
         #endregion Methods

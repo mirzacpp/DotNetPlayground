@@ -24,6 +24,10 @@ namespace Cleaners.Services.Users
 
         Task<IdentityResult> UpdateAsync(User user);
 
+        Task<IdentityResult> DeleteAsync(User user);
+
+        Task<IdentityResult> RestoreAsync(User user);
+
         Task<IdentityResult> ConfirmEmailAsync(User user);
 
         Task<IdentityResult> AddToRolesAsync(User user, IEnumerable<string> roles);

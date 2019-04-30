@@ -29,6 +29,8 @@
         public const string Data = "User.Data";
         public const string Create = "User.Create";
         public const string Update = "User.Update";
+        public const string Delete = "User.Delete";
+        public const string Restore = "User.Restore";
         public const string ConfirmEmail = "User.ConfirmEmail";
         public const string Details = "User.Details";
     }
@@ -44,5 +46,6 @@
         public const string Data = "Role.Data";
         public const string Create = "Role.Create";
         public const string Update = "Role.Update";
+        public const string Delete = "Role.Delete";
     }
 }

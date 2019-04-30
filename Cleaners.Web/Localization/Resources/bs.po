@@ -118,13 +118,13 @@ msgid "user.already.has.password"
 msgstr "Korisnik već ima postavljenu lozinku."
 
 msgid "user.already.in.role"
-msgstr "Korisnik se već nalazi u ulozi {0}."
+msgstr "Korisnik se već nalazi u ulozi '{0}'."
 
 msgid "user.lockout.not.enabled"
 msgstr "Zaključavanje računa nije omogućeno za ovog korisnika."
 
 msgid "user.not.in.role"
-msgstr "Korisnik se ne nalazi u ulozi {0}."
+msgstr "Korisnik se ne nalazi u ulozi '{0}'."
 
 msgid "email.not.confirmed"
 msgstr "Email zahtijeva potvrdu."
@@ -273,6 +273,9 @@ msgstr "Ažuriranje zapisa"
 msgid "delete.record"
 msgstr "Brisanje zapisa"
 
+msgid "restore.record"
+msgstr "Vraćanje zapisa"
+
 msgid "add"
 msgstr "Dodaj"
 
@@ -306,6 +309,12 @@ msgstr "Uspješno ste kreirali novi zapis."
 msgid "update.record.successful"
 msgstr "Uspješno ste ažurirali odabrani zapis."
 
+msgid "delete.record.successful"
+msgstr "Uspješno ste izbrisali odabrani zapis."
+
+msgid "restore.record.successful"
+msgstr "Uspješno ste vratili odabrani zapis."
+
 msgid "email.confirmation"
 msgstr "Potvrda emaila"
 
@@ -314,3 +323,13 @@ msgstr "Da li sigurno želite izvršiti ovu operaciju?"
 
 msgid "submit"
 msgstr "Potvrdi"
+
+msgid "confirm.email.successful"
+msgstr "Uspješno ste potvrdili email odabranog korisnika."
+
+msgid "change.password.successful"
+msgstr "Uspješno ste promijenili lozinku."
+
+msgid "back"
+msgstr "Nazad"
+

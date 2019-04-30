@@ -30,6 +30,21 @@ namespace Cleaners.Services.Roles
             return await _roleManager.CreateAsync(role);
         }
 
+        public async Task<IdentityResult> DeleteAsync(Role role)
+        {
+            if (role == null)
+            {
+                throw new ArgumentNullException(nameof(role));
+            }
+
+            return await _roleManager.DeleteAsync(role);
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await GetByIdAsync(id) != null;
+        }
+
         public IEnumerable<Role> GetAll()
         {
             return _roleManager.Roles.ToList();

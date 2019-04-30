@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Cleaners.Web.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace Cleaners.Web.Controllers
         /// <returns>Redirect result</returns>
         protected IActionResult RedirectToPreviousUrl()
         {
-            var urlReferrer = HttpContext.Request.Headers["Referer"].FirstOrDefault();
+            var urlReferrer = HttpContext.GetRefererHeader();
 
             if (urlReferrer == null)
             {

@@ -1,4 +1,5 @@
 ﻿using Cleaners.Web.Localization;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Cleaners.Web.Models.Users
@@ -37,5 +38,7 @@ namespace Cleaners.Web.Models.Users
 
         [Display(Name = ResourceKeys.LockoutEnd)]
         public string LockoutEnd { get; set; }
+
+        public IEnumerable<string> Roles { get; set; }
     }
 }

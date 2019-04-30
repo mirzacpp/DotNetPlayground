@@ -273,6 +273,9 @@ msgstr "Update record"
 msgid "delete.record"
 msgstr "Delete record"
 
+msgid "restore.record"
+msgstr "Restore record"
+
 msgid "add"
 msgstr "Add"
 
@@ -301,10 +304,16 @@ msgid "error.text"
 msgstr "Error occurred while processing your request"
 
 msgid "create.record.successful"
-msgstr "Record has been created successfully"
+msgstr "Record has been created successfully."
 
 msgid "update.record.successful"
-msgstr "Record has been updated successfully"
+msgstr "Record has been updated successfully."
+
+msgid "delete.record.successful"
+msgstr "Record has been deleted successfully."
+
+msgid "restore.record.successful"
+msgstr "Record has been restored successfully."
 
 msgid "email.confirmation"
 msgstr "Email confirmation"
@@ -314,3 +323,12 @@ msgstr "Do you wish to proceed with this operation?"
 
 msgid "submit"
 msgstr "Submit"
+
+msgid "confirm.email.successful"
+msgstr "Email has been confirmed successfully."
+
+msgid "change.password.successful"
+msgstr "Password has been changed successfully."
+
+msgid "back"
+msgstr "Back"
