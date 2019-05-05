@@ -31,6 +31,7 @@
         public const string Update = "User.Update";
         public const string Delete = "User.Delete";
         public const string Restore = "User.Restore";
+        public const string ChangePassword = "User.ChangePassword";
         public const string ConfirmEmail = "User.ConfirmEmail";
         public const string Details = "User.Details";
     }

@@ -108,5 +108,6 @@
         public const string AccountActiveInfo = "account.active.info";
         public const string LockoutEnabledInfo = "lockout.enabled.info";
         public const string LockoutDisabledNote = "lockout.disabled.note";
+        public const string RecordDeleted = "record.deleted";
     }
 }

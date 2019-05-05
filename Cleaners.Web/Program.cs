@@ -20,8 +20,7 @@ namespace Cleaners.Web
                .ReadFrom.Configuration(configuration)
                .CreateLogger();
 
-            var host = CreateWebHostBuilder(args)
-                .Build();
+            var host = CreateWebHostBuilder(args).Build();
 
             host.Run();
         }
@@ -37,11 +36,11 @@ namespace Cleaners.Web
             .ConfigureKestrel(options => options.AddServerHeader = false)
             .ConfigureLogging((hostContext, config) =>
             {
-                // Remove default logger provider
+                // Remove default logger providers
                 config.ClearProviders();
             })
             // Register serilog as logging provider
-            //.UseSerilog()
+            .UseSerilog()
             .UseStartup<Startup>();
     }
 }

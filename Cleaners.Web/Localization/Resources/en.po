@@ -31,7 +31,7 @@ msgid "lockout.enabled"
 msgstr "Lockout enabled"
 
 msgid "lockout.enabled.info"
-msgstr "Lock users account after {0} invalid attempts for {1}."
+msgstr "Lock users account after {0} invalid attempts for configured time ({1})."
 
 msgid "lockout.disabled.note"
 msgstr "User lockout is currently disabled for all users."
@@ -332,3 +332,6 @@ msgstr "Password has been changed successfully."
 
 msgid "back"
 msgstr "Back"
+
+msgid "record.deleted"
+msgstr "Record marked as deleted"

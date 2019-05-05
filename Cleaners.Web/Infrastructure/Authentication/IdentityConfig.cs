@@ -34,5 +34,7 @@ namespace Cleaners.Web.Infrastructure.Authentication
     public class DefaultOptions
     {
         public bool LockoutEnabled { get; set; }
+
+        public bool InternalPasswordChangeEnabled { get; set; }
     }
 }

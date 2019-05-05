@@ -130,7 +130,7 @@
                             <div class="col-sm-9">
                                 <div class="checkbox">
                                     <label>
-                                        <input asp-for="LockoutEnabled"> (@Localizer[ResourceKeys.LockoutEnabledInfo, IdentityConfig.LockoutOptions.MaxFailedAccessAttempts, IdentityConfig.LockoutOptions.DefaultLockoutTimeSpan])
+                                        <input asp-for="LockoutEnabled"> (@Localizer[ResourceKeys.LockoutEnabledInfo, IdentityConfig.LockoutOptions.MaxFailedAccessAttempts, IdentityConfig.LockoutOptions.DefaultLockoutTimeSpan.Format()])
                                     </label>
                                 </div>
                                 <div asp-if="IdentityConfig.DefaultOptions.LockoutEnabled" class="text-warning">@Localizer[ResourceKeys.LockoutDisabledNote]</div>

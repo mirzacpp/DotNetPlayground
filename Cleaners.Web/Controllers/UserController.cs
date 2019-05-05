@@ -165,8 +165,7 @@ namespace Cleaners.Web.Controllers
 
             if (updateResult.Succeeded)
             {
-                // Add user to roles after user was successfully created
-                var addToRolesResult = await _userService.AddToRolesAsync(user, model.SelectedRoles);
+                var addToRolesResult = await _userService.AddToRolesAsync(user, model.SelectedRoles);                
 
                 if (addToRolesResult.Succeeded)
                 {

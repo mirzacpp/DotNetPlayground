@@ -52,9 +52,9 @@ namespace Cleaners.Web.Extensions
             return ((DateTime)dateTime).ToString(_formats[format]);
         }
 
-        public static string ToLocalTimeWithFormat(this DateTime date, DateTimeFormat format = DateTimeFormat.DateTime)
+        public static string ToLocalTimeWithFormat(this DateTime dateTime, DateTimeFormat format = DateTimeFormat.DateTime)
         {
-            return date.ToLocalTime().ToString(_formats[format]);
+            return dateTime.ToLocalTime().ToString(_formats[format]);
         }
 
         #endregion Methods

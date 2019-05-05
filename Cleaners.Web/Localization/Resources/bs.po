@@ -31,7 +31,7 @@ msgid "lockout.enabled"
 msgstr "Zaključavanje omogućeno"
 
 msgid "lockout.enabled.info"
-msgstr "Zaključaj korisniči račun nakon {0} neuspješnih pokušaja na {1}."
+msgstr "Zaključaj korisniči račun nakon {0} neuspješnih pokušaja na zadano vrijeme ({1})."
 
 msgid "lockout.disabled.note"
 msgstr "Zaključavanje korisničkog računa je trenutno onemogućeno za sve korisnike."
@@ -333,3 +333,5 @@ msgstr "Uspješno ste promijenili lozinku."
 msgid "back"
 msgstr "Nazad"
 
+msgid "record.deleted"
+msgstr "Zapis označen kao izbrisan"
