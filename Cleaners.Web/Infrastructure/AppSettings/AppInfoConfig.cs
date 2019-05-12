@@ -12,6 +12,7 @@
         public string ShortName { get; set; }
         public string Version { get; set; }
         public string TitleDelimiter { get; set; }
-        public string DeveloperSite { get; set; }
+        public string Developer { get; set; }
+        public string DevelopersSite { get; set; }
     }
 }

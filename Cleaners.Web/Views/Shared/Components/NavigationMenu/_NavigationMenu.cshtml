@@ -4,8 +4,8 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li>
                 <a asp-route="@HomeRoutes.Index">
-                    <i class="fa fa-dashboard margin-r-5">
-                    </i><span>@Localizer[ResourceKeys.Dashboard]</span>
+                    <i class="fa fa-dashboard margin-r-5"></i>
+                    <span>@Localizer[ResourceKeys.Dashboard]</span>
                 </a>
             </li>
             @if (User.IsAdmin())
@@ -26,6 +26,12 @@
                     </ul>
                 </li>
             }
+            <li>
+                <a asp-route="@HomeRoutes.About">
+                    <i class="fa fa-circle-o text-aqua"></i>
+                    <span>About</span>
+                </a>
+            </li>
         </ul>
     </section>
 </aside>

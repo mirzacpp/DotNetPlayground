@@ -20,17 +20,24 @@
                     @item.FirstName @item.LastName
                 </td>
                 <td>@item.Email</td>
-                <td><icon-condition asp-status="item.EmailConfirmed"></icon-condition></td>
+                <td><icon-condition status="item.EmailConfirmed"></icon-condition></td>
                 <td>@item.CreationDateUtc.ToLocalTimeWithFormat()</td>
-                <td>
-                    <ul>
-                        <li><a asp-route="@UserRoutes.Update" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a></li>
-                        <li><a asp-if="!item.EmailConfirmed" asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-unlock"></i></a></li>
-                        <li><a asp-route="@UserRoutes.Details" asp-route-id="@item.Id"><i class="fa fa-file-text-o"></i></a></li>
-                        <li><a asp-if="IdentityConfig.DefaultOptions.InternalPasswordChangeEnabled" asp-route="@UserRoutes.ChangePassword" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-lock text-error"></i></a></li>
-                        <li><a asp-if="!item.IsDeleted" asp-route="@UserRoutes.Delete" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-trash text-error"></i></a></li>
-                        <li><a asp-if="item.IsDeleted" asp-route="@UserRoutes.Restore" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-history text-error"></i></a></li>
-                    </ul>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-cog margin-r-5"></i>@Localizer[ResourceKeys.Actions]
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a asp-route="@UserRoutes.Update" asp-route-id="@item.Id"><i class="fa fa-pencil margin-r-5"></i>@Localizer[ResourceKeys.Update]</a></li>
+                            <li><a asp-if="!item.EmailConfirmed" asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-thumbs-up margin-r-5"></i>@Localizer[ResourceKeys.EmailConfirmation]</a></li>
+                            <li><a asp-route="@UserRoutes.Details" asp-route-id="@item.Id"><i class="fa fa-file-text-o margin-r-5"></i>@Localizer[ResourceKeys.Details]</a></li>
+                            <li class="divider"></li>
+                            <li><a asp-if="IdentityConfig.DefaultOptions.InternalPasswordResetEnabled" asp-route="@UserRoutes.ResetPassword" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-key margin-r-5"></i>@Localizer[ResourceKeys.ResetPassword]</a></li>
+                            <li><a asp-if="IdentityConfig.DefaultOptions.LockoutEnabled" asp-route="@AccountRoutes.LockAccount" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-lock margin-r-5"></i>@Localizer[ResourceKeys.AccountLockout]</a></li>
+                            <li><a asp-if="!item.IsDeleted" asp-route="@UserRoutes.Delete" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-trash margin-r-5"></i>@Localizer[ResourceKeys.Delete]</a></li>
+                            <li><a asp-if="item.IsDeleted" asp-route="@UserRoutes.Restore" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-history margin-r-5"></i>@Localizer[ResourceKeys.Restore]</a></li>
+                        </ul>
+                    </div>                    
                 </td>
             </tr>
         }

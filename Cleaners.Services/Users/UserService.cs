@@ -85,7 +85,7 @@ namespace Cleaners.Services.Users
 
         public async Task<User> GetByIdAsync(int id)
         {
-            // There is no UserManager<TUser, TKey> so we will have to convert value to string.
+            // There is no UserManager<TUser, TKey> so we will have to convert id value to string.
             // This is ok because ids will be converted to string anyway
             return await _userManager.FindByIdAsync(id.ToString());
         }
@@ -108,6 +108,21 @@ namespace Cleaners.Services.Users
             }
 
             return await _userManager.AddToRolesAsync(user, roles);
+        }
+
+        public async Task<IdentityResult> RemoveFromRolesAsync(User user, IEnumerable<string> roles)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            if (roles == null)
+            {
+                throw new ArgumentNullException(nameof(roles));
+            }
+
+            return await _userManager.RemoveFromRolesAsync(user, roles);
         }
 
         public async Task<IEnumerable<string>> GetRolesAsync(User user)
@@ -137,9 +152,44 @@ namespace Cleaners.Services.Users
                 throw new ArgumentException(nameof(newPassword));
             }
 
+            return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(User user, string newPassword)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            if (string.IsNullOrEmpty(newPassword))
+            {
+                throw new ArgumentException(nameof(newPassword));
+            }
+
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-            return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);            
+            return await _userManager.ResetPasswordAsync(user, token, newPassword);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(User user, string token, string newPassword)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            if (token == null)
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
+            if (string.IsNullOrEmpty(newPassword))
+            {
+                throw new ArgumentException(nameof(newPassword));
+            }
+
+            return await _userManager.ChangePasswordAsync(user, token, newPassword);
         }
 
         public async Task<IdentityResult> DeleteAsync(User user)
@@ -166,6 +216,16 @@ namespace Cleaners.Services.Users
             user.IsDeleted = false;
 
             return await _userManager.UpdateAsync(user);
+        }
+
+        public async Task<IdentityResult> LockAccount(User user, DateTime? lockoutEndUtc)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            return await _userManager.SetLockoutEndDateAsync(user, lockoutEndUtc);
         }
     }
 }

@@ -144,10 +144,10 @@ msgstr "Korisnički račun zahtijeva two factor potvrdu."
 msgid "remember.me"
 msgstr "Zapamti me"
 
-msgid "login"
+msgid "sign.in"
 msgstr "Prijava"
 
-msgid "logout"
+msgid "sign.out"
 msgstr "Odjava"
 
 msgid "cancel"
@@ -283,7 +283,7 @@ msgid "version"
 msgstr "Verzija"
 
 msgid "copyright"
-msgstr "<strong>Copyright © {0} <a href="{1}">{2}</a>.</strong> Sva prava pridržana."
+msgstr "<strong>Copyright © {0} <a href="{1}" target="_blank">{2}</a>.</strong> Sva prava pridržana."
 
 msgid "not.found.text"
 msgstr "Traženi sadržaj nije pronađen. Vratite se na početnu stranicu i pokušajte ponovno."
@@ -335,3 +335,45 @@ msgstr "Nazad"
 
 msgid "record.deleted"
 msgstr "Zapis označen kao izbrisan"
+
+msgid "update"
+msgstr "Ažuriraj"
+
+msgid "delete"
+msgstr "Izbriši"
+
+msgid "restore"
+msgstr "Vrati"
+
+msgid "actions"
+msgstr "Akcije"
+
+msgid "reset.password.successful"
+msgstr "Uspješno ste resetovali lozinku."
+
+msgid "reset.password"
+msgstr "Reset lozinke"
+
+msgid "full.name"
+msgstr "Puni naziv"
+
+msgid "short.name"
+msgstr "Skraćeni naziv"
+
+msgid "developer"
+msgstr "Developer"
+
+msgid "developers.site"
+msgstr "Stranica developera"
+
+msgid "lockout.end.info"
+msgstr "Ukoliko vrijeme isteka zaključvanja nije odabrano, koristit će se predefinisano ({0})."
+
+msgid "account.lockout"
+msgstr "Zaključavanje računa"
+
+msgid "account.lockout.successful"
+msgstr "Uspješno ste zaključali odabrani račun."
+
+msgid "account.unlock.successful"
+msgstr "Uspješno ste otključali odabrani račun."

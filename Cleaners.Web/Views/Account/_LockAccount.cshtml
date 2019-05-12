@@ -1,0 +1,36 @@
+﻿@model AccountLockoutModel
+@inject IViewLocalizer Localizer
+@inject IdentityConfig IdentityConfig
+<div id="modal-block">
+    <div class="modal-header">
+        <h4 class="modal-title">@Localizer[ResourceKeys.AccountLockout]</h4>
+    </div>
+    <form asp-action="LockAccount" data-ajax="true" data-ajax-update="modal-block">
+        <div class="modal-body">
+            <partial name="_ValidationSummary" />
+            <input asp-for="UserId" />
+            <div class="form-group">
+                <label asp-for="LockoutEndUtc"></label>
+                <input asp-for="LockoutEndUtc" class="form-control m-input" />
+                <span asp-validation-for="LockoutEndUtc" class="text-error"></span>
+                <div class="text-info">@Localizer[ResourceKeys.LockoutEndInfo, IdentityConfig.LockoutOptions.DefaultLockoutTimeSpan.Format()]</div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="LockoutDisabled"> Disable lockout for this account
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a data-dismiss="modal" class="btn btn-default btn-flat pull-left">
+                <i class="fa fa-times margin-r-5"></i>@Localizer[ResourceKeys.Cancel]
+            </a>
+            <button type="submit" class="btn btn-danger pull-right btn-flat">
+                <i class="fa fa-save margin-r-5"></i>@Localizer[ResourceKeys.Save]
+            </button>
+        </div>
+    </form>
+</div>

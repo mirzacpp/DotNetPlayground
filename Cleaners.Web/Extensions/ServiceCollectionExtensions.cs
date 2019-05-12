@@ -46,7 +46,7 @@ namespace Cleaners.Web.Extensions
             });
 
             mvcBuilder.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
-            mvcBuilder.AddDataAnnotationsLocalization();            
+            mvcBuilder.AddDataAnnotationsLocalization();
 
             mvcBuilder.AddCookieTempDataProvider(options =>
             {
@@ -66,7 +66,8 @@ namespace Cleaners.Web.Extensions
 
             // Allows config to be injected directly as instance without IOptionsSnapshot<>
             services.AddScoped(provider => provider.GetRequiredService<IOptionsSnapshot<AppInfoConfig>>().Value);
-            services.AddScoped(provider => provider.GetRequiredService<IOptionsSnapshot<IdentityConfig>>().Value);
+            // Allows config to be injected directly as instance without IOptions<>
+            services.AddSingleton(provider => provider.GetRequiredService<IOptions<IdentityConfig>>().Value);
         }
 
         /// <summary>
@@ -170,6 +171,10 @@ namespace Cleaners.Web.Extensions
         /// <param name="services"></param>
         public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
         {
+            // Register internal password change filter as singleton
+            // Note that if we use IOptionsSnapshot instead of IOptions, we should register this as scoped
+            services.AddSingleton<InternalPasswordResetFilter>();
+
             services.AddIdentity<User, Role>()
                    .AddEntityFrameworkStores<FealDbContext>()
                    // Register localized error messages

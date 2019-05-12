@@ -166,6 +166,74 @@ namespace Cleaners.Web.Controllers
             return View(model);
         }
 
+        [HttpGet("{id}/lock-account", Name = AccountRoutes.LockAccount)]
+        public async Task<IActionResult> LockAccount(int id)
+        {
+            var user = await _userService.GetByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new AccountLockoutModel { UserId = id, };
+
+            return PartialView("_LockAccount", model);
+        }
+
+        [HttpPost("{id}/lock-account")]
+        public async Task<IActionResult> LockAccount(AccountLockoutModel model)
+        {
+            var user = await _userService.GetByIdAsync(model.UserId);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Use shared lockout result variable
+            IdentityResult lockoutResult;
+
+            // Local method for both operations bellow
+            IActionResult ResultSuccess(string resourceKey)
+            {
+                _tempDataAlertManager.Success(_localizer[resourceKey]);
+
+                return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
+            }
+
+            // Disabled lockout if requested
+            if (model.LockoutDisabled)
+            {
+                // We will just pass null to overwrite current lockout time
+                lockoutResult = await _userService.LockAccount(user, null);
+
+                if (lockoutResult.Succeeded)
+                {
+                    return ResultSuccess(ResourceKeys.AccountUnlockSuccessful);
+                }
+            }
+            else
+            {
+                // Use default lockout time if not specified
+                model.LockoutEndUtc = model.LockoutEndUtc != null ?
+                    model.LockoutEndUtc :
+                    DateTime.UtcNow.Add(_identityConfig.LockoutOptions.DefaultLockoutTimeSpan);
+
+                lockoutResult = await _userService.LockAccount(user, model.LockoutEndUtc.Value);
+
+                if (lockoutResult.Succeeded)
+                {
+                    return ResultSuccess(ResourceKeys.AccountLockoutSuccessful);
+                }
+            }
+
+            // Error occured while setting lockout end
+            ModelState.AddModelErrors(lockoutResult.Errors.GetDescriptions());
+
+            return PartialView("_LockAccount", model);
+        }
+
         #endregion Methods
 
         #region Utils

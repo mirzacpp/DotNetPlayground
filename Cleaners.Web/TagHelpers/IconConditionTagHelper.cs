@@ -7,15 +7,15 @@ namespace Cleaners.Web.TagHelpers
     /// Display true or false with icon for given condition
     /// </summary>
     /// <remarks>
-    /// Enable classes overriding
+    /// Enable attributes overriding?
     /// </remarks>
-    [HtmlTargetElement("icon-condition", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("icon-condition")]
     public class IconConditionTagHelper : TagHelper
     {
         private static readonly string _successClass = "text-success";
         private static readonly string _errorClass = "text-error";
 
-        [HtmlAttributeName("asp-status")]
+        [HtmlAttributeName("status")]
         public bool Status { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)

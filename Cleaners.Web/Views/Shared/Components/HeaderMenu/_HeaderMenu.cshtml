@@ -1,5 +1,5 @@
 ﻿@inject IViewLocalizer Localizer
-@inject Cleaners.Web.Infrastructure.AppSettings.AppInfoConfig AppInfo
+@inject AppInfoConfig AppInfo
 
 <header class="main-header">
     <a asp-route="@HomeRoutes.Index" class="logo">
@@ -46,7 +46,7 @@
                             </div>
                             <form asp-route="@AccountRoutes.Logout" id="logoutForm">
                                 <div class="pull-right">
-                                    <a id="logout" class="btn btn-default btn-flat">@Localizer[ResourceKeys.Logout]</a>
+                                    <a id="logout" class="btn btn-default btn-flat">@Localizer[ResourceKeys.SignOut]</a>
                                 </div>
                             </form>
                         </li>

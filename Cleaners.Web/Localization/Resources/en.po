@@ -144,11 +144,11 @@ msgstr "Account requires two factor verification."
 msgid "remember.me"
 msgstr "Remember me"
 
-msgid "login"
-msgstr "Login"
+msgid "sign.in"
+msgstr "Sign In"
 
-msgid "logout"
-msgstr "Logout"
+msgid "sign.out"
+msgstr "Sign Out"
 
 msgid "cancel"
 msgstr "Cancel"
@@ -283,7 +283,7 @@ msgid "version"
 msgstr "Version"
 
 msgid "copyright"
-msgstr "<strong>Copyright © {0} <a href="{1}">{2}</a>.</strong> All rights reserved."
+msgstr "<strong>Copyright © {0} <a href="{1}" target="_blank">{2}</a>.</strong> All rights reserved."
 
 msgid "not.found.text"
 msgstr "The page you requested was not found."
@@ -335,3 +335,45 @@ msgstr "Back"
 
 msgid "record.deleted"
 msgstr "Record marked as deleted"
+
+msgid "update"
+msgstr "Update"
+
+msgid "delete"
+msgstr "Delete"
+
+msgid "restore"
+msgstr "Restore"
+
+msgid "actions"
+msgstr "Actions"
+
+msgid "reset.password.successful"
+msgstr "Password has been reset successfully."
+
+msgid "reset.password"
+msgstr "Reset password"
+
+msgid "full.name"
+msgstr "Full name"
+
+msgid "short.name"
+msgstr "Short name"
+
+msgid "developer"
+msgstr "Developer"
+
+msgid "developers.site"
+msgstr "Developers site"
+
+msgid "lockout.end.info"
+msgstr "If lockout end is not selected, predefined time will be used ({0})."
+
+msgid "account.lockout"
+msgstr "Account lockout"
+
+msgid "account.lockout.successful"
+msgstr "Account has been locked successfully."
+
+msgid "account.unlock.successful"
+msgstr "Account has been unlocked successfully."

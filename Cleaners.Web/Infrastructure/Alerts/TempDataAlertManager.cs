@@ -33,12 +33,18 @@ namespace Cleaners.Web.Infrastructure.Alerts
 
         #endregion Fields
 
+        #region Constructor
+
         public TempDataAlertManager(IHttpContextAccessor httpContextAccessor, ITempDataDictionaryFactory tempDataDictionaryFactory)
         {
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
             _tempDataDictionaryFactory = tempDataDictionaryFactory ?? throw new ArgumentNullException(nameof(tempDataDictionaryFactory));
             _tempDataDictionary = _tempDataDictionaryFactory.GetTempData(_httpContextAccessor.HttpContext);
         }
+
+        #endregion Constructor
+
+        #region Methods
 
         public void Success(string message, string title = "", bool isDismissable = true)
         {
@@ -80,5 +86,7 @@ namespace Cleaners.Web.Infrastructure.Alerts
         {
             return _tempDataDictionary.GetDeserialized<List<AlertItem>>(_tempDataKey) ?? new List<AlertItem>();
         }
+
+        #endregion Methods
     }
 }

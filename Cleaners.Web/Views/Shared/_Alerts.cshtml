@@ -1,11 +1,10 @@
 ﻿@inject TempDataAlertManager AlertManager
 @foreach (var alert in AlertManager.GetAll())
 {
-    <div class="alert alert-@alert.Type.ToString().ToLowerInvariant() alert-dismissible" role="alert">
-        <h4 asp-if="!string.IsNullOrEmpty(alert.Title)" class="alert-heading">@alert.Title</h4>
-        <button asp-if="alert.IsDismissable" type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        @alert.Text
-    </div>
+    <alert text="@alert.Text"
+           title="@alert.Title"
+           dismissable="@alert.IsDismissable"
+           type="@alert.Type"
+           class="no-margin">
+    </alert>
 }

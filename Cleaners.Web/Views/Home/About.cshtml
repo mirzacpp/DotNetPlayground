@@ -1,0 +1,61 @@
+﻿@inject AppInfoConfig AppInfoConfig
+@inject IViewLocalizer Localizer
+@{
+    ViewBag.PageTitle = Localizer[ResourceKeys.AuthenticationSettings];
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-horizontal">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        O aplikaciji
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.FullName]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @AppInfoConfig.FullName
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.ShortName]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @AppInfoConfig.ShortName
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.Developer]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                @AppInfoConfig.Developer
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="label-wrapper">
+                                    <label>@Localizer[ResourceKeys.DevelopersSite]</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <a href="@AppInfoConfig.DevelopersSite" target="_blank">@AppInfoConfig.DevelopersSite</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

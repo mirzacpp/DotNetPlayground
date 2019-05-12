@@ -5,6 +5,7 @@ namespace Cleaners.Web.Extensions
 {
     /// <summary>
     /// Extension methods for <see cref="System.TimeSpan"/>
+    /// Check https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-timespan-format-strings for more info
     /// </summary>
     public static class TimeSpanExtensions
     {
@@ -12,7 +13,8 @@ namespace Cleaners.Web.Extensions
 
         private static readonly Dictionary<TimeSpanFormat, string> _formats = new Dictionary<TimeSpanFormat, string>
         {
-            { TimeSpanFormat.DayHourMinuteSecond, "{0:%d}d / {0:%h}h / {0:%m}m / {0:%s}s" }
+            { TimeSpanFormat.DayHourMinuteSecond, "{0:%d}d / {0:%h}h / {0:%m}m / {0:%s}s" },
+            { TimeSpanFormat.HourMinuteSecond, "{0:%h}h / {0:%m}m / {0:%s}s" }
         };
 
         #endregion Fields
@@ -34,6 +36,7 @@ namespace Cleaners.Web.Extensions
         public enum TimeSpanFormat
         {
             DayHourMinuteSecond = 0,
+            HourMinuteSecond = 1,
         }
 
         #endregion Formats

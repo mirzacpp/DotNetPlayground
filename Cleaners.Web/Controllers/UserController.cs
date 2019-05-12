@@ -165,16 +165,28 @@ namespace Cleaners.Web.Controllers
 
             if (updateResult.Succeeded)
             {
-                var addToRolesResult = await _userService.AddToRolesAsync(user, model.SelectedRoles);                
+                // Get current roles for selected user
+                var currentRoles = await _userService.GetRolesAsync(user);
 
-                if (addToRolesResult.Succeeded)
+                // Remove user from these roles
+                var removeFromRolesResult = await _userService.RemoveFromRolesAsync(user, currentRoles);
+
+                // If succeeded, add user to currently selected roles
+                if (removeFromRolesResult.Succeeded)
                 {
-                    _tempDataAlertManager.Success(_localizer[ResourceKeys.UpdateRecordSuccessful]);
+                    var addToRolesResult = await _userService.AddToRolesAsync(user, model.SelectedRoles);
 
-                    return RedirectToRoute(UserRoutes.Index);
+                    if (addToRolesResult.Succeeded)
+                    {
+                        _tempDataAlertManager.Success(_localizer[ResourceKeys.UpdateRecordSuccessful]);
+
+                        return RedirectToRoute(UserRoutes.Index);
+                    }
+
+                    ModelState.AddModelErrors(addToRolesResult.Errors.GetDescriptions());
                 }
 
-                ModelState.AddModelErrors(addToRolesResult.Errors.GetDescriptions());
+                ModelState.AddModelErrors(removeFromRolesResult.Errors.GetDescriptions());
             }
 
             ModelState.AddModelErrors(updateResult.Errors.GetDescriptions());
@@ -343,10 +355,54 @@ namespace Cleaners.Web.Controllers
             return View(model);
         }
 
+        [ServiceFilter(typeof(InternalPasswordResetFilter))]
+        [HttpGet("{id}/reset-password", Name = UserRoutes.ResetPassword)]
+        public async Task<IActionResult> ResetPassword(int id)
+        {
+            if (!await _userService.ExistsAsync(id))
+            {
+                return NotFound();
+            }
+
+            var model = new UserResetPasswordModel { Id = id };
+
+            return PartialView("_ResetPassword", model);
+        }
+
+        [ServiceFilter(typeof(InternalPasswordResetFilter))]
+        [HttpPost("{id}/reset-password")]
+        public async Task<IActionResult> ResetPassword(UserResetPasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_ResetPassword", model);
+            }
+
+            var user = await _userService.GetByIdAsync(model.Id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userService.ResetPasswordAsync(user, model.NewPassword);
+
+            if (result.Succeeded)
+            {
+                _tempDataAlertManager.Success(_localizer[ResourceKeys.ResetPasswordSuccessful]);
+
+                return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
+            }
+
+            ModelState.AddModelErrors(result.Errors.GetDescriptions());
+
+            return PartialView("_ResetPassword", model);
+        }        
+
         // Implementiraj deaktivaciju/aktivaciju
         // -||- ručnu potvrdu računa
         // -||- create, update, delete
         // -||- Promjenu lozinke za trenutnog korisnika
-        // -||-
+        // -||- zakljucavanje i otkljucavanje korisnickog racuna
     }
 }
