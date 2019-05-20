@@ -19,8 +19,6 @@ namespace Cleaners.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddFealMvc();
-
             services.AddHttpContextAccessor();
 
             services.ConfigureAppSettings(Configuration);
@@ -41,6 +39,10 @@ namespace Cleaners.Web
             services.ConfigureIdentity(Configuration);
 
             services.AddScoped<TempDataAlertManager>();
+
+            services.ConfigureMiniProfiler();
+
+            services.ConfigureMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +62,9 @@ namespace Cleaners.Web
             app.UseStaticFiles();
             app.UseAuthentication();
             app.ConfigureLocalization();
+
+            // Since mini-profiler is lightweight we can leave it ON for all evironment types
+            app.UseMiniProfiler();
 
             app.UseMvcWithDefaultRoute();
         }

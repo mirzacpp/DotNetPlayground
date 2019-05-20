@@ -36,7 +36,7 @@ namespace Cleaners.Web.Extensions
         /// Registers MVC services
         /// </summary>
         /// <param name="services"></param>
-        public static void AddFealMvc(this IServiceCollection services)
+        public static void ConfigureMvc(this IServiceCollection services)
         {
             var mvcBuilder = services.AddMvc(options =>
             {
@@ -52,6 +52,27 @@ namespace Cleaners.Web.Extensions
             {
                 options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.TempDataCookie}";
             });
+        }
+
+        /// <summary>
+        /// Registers MiniProfiler services
+        /// </summary>
+        /// <param name="services"></param>
+        public static void ConfigureMiniProfiler(this IServiceCollection services)
+        {
+            services.AddMiniProfiler(options =>
+            {
+                options.PopupRenderPosition = StackExchange.Profiling.RenderPosition.BottomLeft;
+                options.PopupShowTimeWithChildren = true;
+                options.RouteBasePath = "/profiler";
+                options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
+
+                // Authorize access to mini profiler data
+                options.ResultsAuthorize = request => request.HttpContext.User.IsSupport();
+                options.ResultsListAuthorize = request => request.HttpContext.User.IsSupport();
+            })
+            // Track database calls
+            .AddEntityFramework();
         }
 
         /// <summary>

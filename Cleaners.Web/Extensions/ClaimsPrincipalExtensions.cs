@@ -17,6 +17,16 @@ namespace Cleaners.Web.Extensions
             return claims.IsInRole(RoleNames.Admin);
         }
 
+        /// <summary>
+        /// Shorthand method for User.isInRole(RoleNames.Support)
+        /// </summary>
+        /// <param name="claims"></param>
+        /// <returns></returns>
+        public static bool IsSupport(this ClaimsPrincipal claims)
+        {
+            return claims.IsInRole(RoleNames.Support);
+        }
+
         #endregion Methods
     }
 }

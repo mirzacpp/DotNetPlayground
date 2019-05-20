@@ -24,11 +24,17 @@ namespace Cleaners.Web.Controllers
     [Route("roles")]
     public class RoleController : FealControllerBase
     {
+        #region Fields
+
         private readonly IRoleService _roleService;
         private readonly IMapper _mapper;
         private readonly TempDataAlertManager _tempDataAlertManager;
         private readonly IStringLocalizer<RoleController> _localizer;
         private readonly ILogger<RoleController> _logger;
+
+        #endregion Fields
+
+        #region Constructor
 
         public RoleController(IRoleService roleService, IMapper mapper, TempDataAlertManager tempDataAlertManager, IStringLocalizer<RoleController> localizer, ILogger<RoleController> logger)
         {
@@ -39,7 +45,7 @@ namespace Cleaners.Web.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-
+        #endregion Constructor
 
         #region Methods
 

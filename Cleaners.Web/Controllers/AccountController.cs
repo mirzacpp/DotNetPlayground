@@ -24,6 +24,8 @@ namespace Cleaners.Web.Controllers
     [Route("account")]
     public class AccountController : Controller
     {
+        #region Fields
+
         private readonly UserManager<User> _userManager;
         private readonly IUserService _userService;
         private readonly SignInManager<User> _signInManager;
@@ -31,6 +33,10 @@ namespace Cleaners.Web.Controllers
         private readonly IStringLocalizer<AccountController> _localizer;
         private readonly IdentityConfig _identityConfig;
         private readonly TempDataAlertManager _tempDataAlertManager;
+
+        #endregion Fields
+
+        #region Methods
 
         public AccountController(UserManager<User> userManager, IUserService userService, SignInManager<User> signInManager, IMapper mapper, IStringLocalizer<AccountController> localizer, IdentityConfig identityConfig, TempDataAlertManager tempDataAlertManager)
         {
@@ -42,6 +48,8 @@ namespace Cleaners.Web.Controllers
             _identityConfig = identityConfig ?? throw new ArgumentNullException(nameof(identityConfig));
             _tempDataAlertManager = tempDataAlertManager ?? throw new ArgumentNullException(nameof(tempDataAlertManager));
         }
+
+        #endregion Methods
 
         #region Methods
 

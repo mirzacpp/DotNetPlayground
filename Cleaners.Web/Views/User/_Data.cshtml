@@ -16,7 +16,7 @@
         {
             <tr>
                 <td>
-                    <span asp-if="item.IsDeleted" title="@Localizer[ResourceKeys.RecordDeleted]"><i class="fa fa-trash text-error"></i></span>
+                    <span include-if="item.IsDeleted" title="@Localizer[ResourceKeys.RecordDeleted]"><i class="fa fa-trash text-error"></i></span>
                     @item.FirstName @item.LastName
                 </td>
                 <td>@item.Email</td>
@@ -29,13 +29,13 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a asp-route="@UserRoutes.Update" asp-route-id="@item.Id"><i class="fa fa-pencil margin-r-5"></i>@Localizer[ResourceKeys.Update]</a></li>
-                            <li><a asp-if="!item.EmailConfirmed" asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-thumbs-up margin-r-5"></i>@Localizer[ResourceKeys.EmailConfirmation]</a></li>
+                            <li><a include-if="!item.EmailConfirmed" asp-route="@UserRoutes.ConfirmEmail" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-thumbs-up margin-r-5"></i>@Localizer[ResourceKeys.EmailConfirmation]</a></li>
                             <li><a asp-route="@UserRoutes.Details" asp-route-id="@item.Id"><i class="fa fa-file-text-o margin-r-5"></i>@Localizer[ResourceKeys.Details]</a></li>
                             <li class="divider"></li>
-                            <li><a asp-if="IdentityConfig.DefaultOptions.InternalPasswordResetEnabled" asp-route="@UserRoutes.ResetPassword" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-key margin-r-5"></i>@Localizer[ResourceKeys.ResetPassword]</a></li>
-                            <li><a asp-if="IdentityConfig.DefaultOptions.LockoutEnabled" asp-route="@AccountRoutes.LockAccount" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-lock margin-r-5"></i>@Localizer[ResourceKeys.AccountLockout]</a></li>
-                            <li><a asp-if="!item.IsDeleted" asp-route="@UserRoutes.Delete" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-trash margin-r-5"></i>@Localizer[ResourceKeys.Delete]</a></li>
-                            <li><a asp-if="item.IsDeleted" asp-route="@UserRoutes.Restore" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-history margin-r-5"></i>@Localizer[ResourceKeys.Restore]</a></li>
+                            <li><a include-if="IdentityConfig.DefaultOptions.InternalPasswordResetEnabled" asp-route="@UserRoutes.ResetPassword" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-key margin-r-5"></i>@Localizer[ResourceKeys.ResetPassword]</a></li>
+                            <li><a include-if="IdentityConfig.DefaultOptions.LockoutEnabled" asp-route="@AccountRoutes.LockAccount" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-lock margin-r-5"></i>@Localizer[ResourceKeys.AccountLockout]</a></li>
+                            <li><a include-if="!item.IsDeleted" asp-route="@UserRoutes.Delete" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-trash margin-r-5"></i>@Localizer[ResourceKeys.Delete]</a></li>
+                            <li><a exclude-if="!item.IsDeleted" asp-route="@UserRoutes.Restore" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-history margin-r-5"></i>@Localizer[ResourceKeys.Restore]</a></li>
                         </ul>
                     </div>                    
                 </td>

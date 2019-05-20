@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="~/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/select2.css" />
         <link rel="stylesheet" href="~/css/adminlte.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/fontawesome.css" />
         <link rel="stylesheet" href="~/css/skin-red.css" />
     </environment>
@@ -42,7 +43,7 @@
         <vc:navigation-menu></vc:navigation-menu>
         <div class="loading" style="display:none"></div>
         <div class="content-wrapper">
-            <partial name="_Alerts" />
+            <partial name="_Alerts" />                       
             <section class="content-header">
                 <h1>@ViewBag.PageTitle</h1>
             </section>
@@ -63,6 +64,7 @@
             </div>
         </div>
     </div>
+    <mini-profiler />
     <script>
         $('body').on('click', '.modal-link', function (e) {
             e.preventDefault();
