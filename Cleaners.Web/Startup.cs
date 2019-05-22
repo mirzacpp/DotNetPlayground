@@ -1,5 +1,6 @@
 ﻿using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
+using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +42,8 @@ namespace Cleaners.Web
             services.AddScoped<TempDataAlertManager>();
 
             services.ConfigureMiniProfiler();
+
+            services.AddScoped<ICsvFileService, CsvFileService>();
 
             services.ConfigureMvc();
         }
