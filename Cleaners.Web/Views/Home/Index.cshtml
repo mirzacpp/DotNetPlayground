@@ -4,7 +4,21 @@
 }
 
 <div class="row">
-    <div class="col-md-12">
+    <div id="testBlock" class="col-md-12">
         This page is empty
     </div>
 </div>
+<script>
+    var eventSource = new EventSource('/TestSSE/2');
+
+    // on connection open event handler
+    eventSource.onopen = event => console.info('Connection opened');
+
+    // on message received event handler
+    eventSource.onmessage = event => {        
+        console.log(event.data);
+    };
+
+    // on error occured event handler
+    eventSource.onerror = event => console.error(event);
+</script>

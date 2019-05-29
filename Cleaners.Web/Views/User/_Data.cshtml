@@ -37,7 +37,7 @@
                             <li><a include-if="!item.IsDeleted" asp-route="@UserRoutes.Delete" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-trash margin-r-5"></i>@Localizer[ResourceKeys.Delete]</a></li>
                             <li><a exclude-if="!item.IsDeleted" asp-route="@UserRoutes.Restore" data-toggle="modal" data-target="#modal-container" asp-route-id="@item.Id"><i class="fa fa-history margin-r-5"></i>@Localizer[ResourceKeys.Restore]</a></li>
                         </ul>
-                    </div>                    
+                    </div>
                 </td>
             </tr>
         }

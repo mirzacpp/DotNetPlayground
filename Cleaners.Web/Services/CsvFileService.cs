@@ -24,6 +24,11 @@ namespace Cleaners.Web.Services
             // Iterate over collection properties
             foreach (var member in data)
             {
+                if (true)
+                {
+                    Console.WriteLine(2);
+                }
+
                 // Use reflection to get data for every property
                 foreach (var property in member.GetType().GetProperties())
                 {
