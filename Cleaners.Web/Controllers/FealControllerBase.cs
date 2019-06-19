@@ -8,7 +8,7 @@ namespace Cleaners.Web.Controllers
     /// <summary>
     /// Base controller
     /// </summary>
-    public class FealControllerBase : Controller
+    public class AdminControllerBase : Controller
     {
         #region Methods
 

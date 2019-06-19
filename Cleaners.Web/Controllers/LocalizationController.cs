@@ -8,7 +8,7 @@ using System;
 namespace Cleaners.Web.Controllers
 {
     [Route("localization")]
-    public class LocalizationController : FealControllerBase
+    public class LocalizationController : AdminControllerBase
     {
         #region Methods
 

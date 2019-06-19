@@ -22,7 +22,7 @@ namespace Cleaners.Web.Controllers
     /// </summary>
     [Route("users")]
     [Authorize(Roles = RoleNames.Admin)]
-    public class UserController : FealControllerBase
+    public class UserController : AdminControllerBase
     {
         #region Fields
 

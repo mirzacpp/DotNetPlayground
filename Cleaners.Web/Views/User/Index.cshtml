@@ -2,16 +2,19 @@
 @{
     ViewBag.PageTitle = Localizer[ResourceKeys.Users];
 }
-
+@section SectionButtons {
+    <a class="btn btn-danger btn-flat" asp-route="@UserRoutes.Create">
+        <i class="fa fa-plus-square margin-r-5"></i>
+        @Localizer[ResourceKeys.Add]
+    </a>
+    <a class="btn btn-info btn-flat" asp-route="@UserRoutes.Create">
+        <i class="fa fa-plus-square margin-r-5"></i>
+        @Localizer[ResourceKeys.Add]
+    </a>
+}
 <div class="row">
     <div class="col-md-12">
         <div class="box">
-            <div class="box-header">
-                <a class="btn btn-danger btn-flat" asp-route="@UserRoutes.Create">
-                    <i class="fa fa-plus-square margin-r-5"></i>
-                    @Localizer[ResourceKeys.Add]
-                </a>
-            </div>
             <ajax-loader class="box-body" asp-ajax-route="@UserRoutes.Data" asp-ajax-blockui="true"></ajax-loader>
         </div>
     </div>
