@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Cleaners.Web.Services
 {
+    /// <summary>
+    /// TODO: Move this to Cleaners project ?
+    /// </summary>
     public class CsvFileService : ICsvFileService
     {
         /// <summary>
@@ -24,11 +27,6 @@ namespace Cleaners.Web.Services
             // Iterate over collection properties
             foreach (var member in data)
             {
-                if (true)
-                {
-                    Console.WriteLine(2);
-                }
-
                 // Use reflection to get data for every property
                 foreach (var property in member.GetType().GetProperties())
                 {

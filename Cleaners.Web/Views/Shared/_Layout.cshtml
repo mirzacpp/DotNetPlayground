@@ -31,6 +31,7 @@
         <script src="~/js/bootstrap.js"></script>
         <script src="~/js/adminlte.js"></script>
         <script src="~/js/ajax.js"></script>
+        <script src="~/js/site.js"></script>
     </environment>
 
     <environment names="Staging,Production">
@@ -43,7 +44,9 @@
         <vc:navigation-menu></vc:navigation-menu>
         <div class="loading" style="display:none"></div>
         <div class="content-wrapper">
-            <partial name="_Alerts" />                       
+            <div id="alertBlock">
+                <partial name="_Alerts" />
+            </div>
             <section class="content-header">
                 <h1>@ViewBag.PageTitle</h1>
             </section>

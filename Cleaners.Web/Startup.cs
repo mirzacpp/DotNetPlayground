@@ -1,10 +1,12 @@
 ﻿using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
+using Cleaners.Web.Infrastructure.AppNavigation;
 using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace Cleaners.Web
 {
@@ -46,6 +48,15 @@ namespace Cleaners.Web
             services.AddScoped<ICsvFileService, CsvFileService>();
 
             services.ConfigureMvc();
+
+            services.AddSingleton<IApplicationSectionService<string>, DefaultApplicationSectionService<string>>(_ =>
+            {
+                var sectionProvider = new DefaultApplicationSectionService<string>();
+
+                sectionProvider.Sections = new List<SectionMemeber<>() 
+
+                return sectionProvider;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

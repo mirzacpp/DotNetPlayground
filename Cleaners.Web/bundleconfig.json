@@ -13,10 +13,11 @@
   {
     "outputFileName": "wwwroot/bundles/main.min.js",
     "inputFiles": [
-      "wwwroot/js/jquery.js",      
+      "wwwroot/js/jquery.js",
       "wwwroot/js/bootstrap.js",
       "wwwroot/js/adminlte.js",
-      "wwwroot/js/ajax.js"
+      "wwwroot/js/ajax.js",
+      "wwwroot/js/site.js"
     ]
   }
 ]
