@@ -33,7 +33,7 @@ namespace Cleaners.Web
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .ConfigureKestrel(options => options.AddServerHeader = false)
+            .ConfigureKestrel(options => options.AddServerHeader = false)            
             .ConfigureLogging((hostContext, config) =>
             {
                 // Remove default logger providers

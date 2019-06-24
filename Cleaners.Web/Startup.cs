@@ -1,12 +1,12 @@
 ﻿using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
-using Cleaners.Web.Infrastructure.AppNavigation;
+using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
+using System.IO;
 
 namespace Cleaners.Web
 {
@@ -47,16 +47,16 @@ namespace Cleaners.Web
 
             services.AddScoped<ICsvFileService, CsvFileService>();
 
-            services.ConfigureMvc();
-
-            services.AddSingleton<IApplicationSectionService<string>, DefaultApplicationSectionService<string>>(_ =>
+            services.AddScoped<ICleanersFileProvider, CleanersFileProvider>(factory =>
             {
-                var sectionProvider = new DefaultApplicationSectionService<string>();
+                //Directory.Crea
 
-                sectionProvider.Sections = new List<SectionMemeber<>() 
+                var fileProvider = new CleanersFileProvider(@"C:\\ITO\\Renata");
 
-                return sectionProvider;
+                return fileProvider;
             });
+
+            services.ConfigureMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
 ﻿using Cleaners.Web.Constants;
+using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -17,14 +18,27 @@ namespace Cleaners.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ICsvFileService _csvFileService;
-        
-        public HomeController(ICsvFileService csvFileService)
+        private readonly ICleanersFileProvider _fileProvider;
+
+        public HomeController(ICsvFileService csvFileService, ICleanersFileProvider fileProvider)
         {
             _csvFileService = csvFileService ?? throw new ArgumentNullException(nameof(csvFileService));
+            _fileProvider = fileProvider ?? throw new ArgumentNullException(nameof(fileProvider));
         }
 
         [Route("", Name = HomeRoutes.Index)]
         public IActionResult Index() => View();
+
+        [Route("test")]
+        public IActionResult Test()
+        {
+            //_fileProvider.CreateDirectory(_fileProvider.MapPath("vlado", "vladika"));
+
+            //var directoryInfo = _fileProvider.FileProvider.GetDirectoryContents("Vlado");
+            //var files = directoryInfo.Select(c => c.PhysicalPath).ToList();
+
+            return Content(_fileProvider.MapPath("~/cao/sta"));            
+        }
 
         [Route("about", Name = HomeRoutes.About)]
         public IActionResult About() => View();

@@ -3,7 +3,7 @@
     /// <summary>
     /// Default section member implementation
     /// </summary>
-    public class SectionMemeber<TSection> : ISectionMember<TSection>
+    public class SectionMemeber<TSection> /*: ISectionMember<TSection>*/
     {
         public SectionMemeber(TSection section, bool isAvailable)
         {
