@@ -11,7 +11,7 @@ namespace Cleaners.Web.Controllers
     /// </summary>
     [Route("settings")]
     [Authorize(Roles = RoleNames.Admin)]
-    public class SettingsController : FealControllerBase
+    public class SettingsController : AdminControllerBase
     {
         #region Methods
 

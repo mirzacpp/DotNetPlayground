@@ -44,11 +44,13 @@
         <vc:navigation-menu></vc:navigation-menu>
         <div class="loading" style="display:none"></div>
         <div class="content-wrapper">
-            <div id="alertBlock">
-                <partial name="_Alerts" />
-            </div>
-            <section class="content-header">
-                <h1>@ViewBag.PageTitle</h1>
+            <partial name="_Alerts" />
+            <section class="content-header clearfix">
+                <h1 class="pull-left">@ViewBag.PageTitle</h1>
+                @*Use this section to define main buttons. Use section to avoid repeating HTML*@
+                <div class="pull-right">
+                    @RenderSection("SectionButtons", required: false)
+                </div>
             </section>
             <section class="content">
                 @RenderBody()
