@@ -11,10 +11,10 @@ namespace Cleaners.Data
     /// </summary>
     public class DatabaseInitializr
     {
-        private readonly FealDbContext _context;
+        private readonly CorvoDbContext _context;
         private readonly UserManager<User> _userManager;
 
-        public DatabaseInitializr(FealDbContext context)
+        public DatabaseInitializr(CorvoDbContext context)
         {
             _context = context;
         }

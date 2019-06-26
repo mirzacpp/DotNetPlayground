@@ -8,7 +8,7 @@ namespace Cleaners.Web.Controllers
     /// <summary>
     /// Base controller
     /// </summary>
-    public class AdminControllerBase : Controller
+    public class CorvoControllerBase : Controller
     {
         #region Methods
 

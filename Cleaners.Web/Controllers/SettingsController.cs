@@ -11,7 +11,7 @@ namespace Cleaners.Web.Controllers
     /// </summary>
     [Route("settings")]
     [Authorize(Roles = RoleNames.Admin)]
-    public class SettingsController : AdminControllerBase
+    public class SettingsController : CorvoControllerBase
     {
         #region Methods
 

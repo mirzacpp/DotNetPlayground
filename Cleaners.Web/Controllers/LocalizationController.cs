@@ -8,7 +8,7 @@ using System;
 namespace Cleaners.Web.Controllers
 {
     [Route("localization")]
-    public class LocalizationController : AdminControllerBase
+    public class LocalizationController : CorvoControllerBase
     {
         #region Methods
 

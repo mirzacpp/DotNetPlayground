@@ -4,19 +4,20 @@ using System.IO;
 
 namespace Cleaners.Web.Infrastructure.Files
 {
-    public class CleanersFileProvider : ICleanersFileProvider
+    /// <summary>
+    /// Default implementation for custom file provider
+    /// </summary>
+    public class CorvoFileProvider : ICorvoFileProvider
     {
-        public CleanersFileProvider(string rootPath)
+        public CorvoFileProvider(CorvoFileProviderOptions options)
         {
-            if (string.IsNullOrEmpty(rootPath))
+            if (string.IsNullOrEmpty(options.BasePath))
             {
-                throw new ArgumentException($"Parameter {nameof(rootPath)} cannot be null or empty.");
+                throw new ArgumentException($"Parameter {nameof(options.BasePath)} cannot be null or empty.");
             }
 
-            // Check if rootPath is absolute or map it with ContentRootPath if relative ?
-
-            BasePath = rootPath;
-            FileProvider = new PhysicalFileProvider(rootPath);
+            BasePath = options.BasePath;
+            FileProvider = new PhysicalFileProvider(options.BasePath);
         }
 
         public IFileProvider FileProvider { get; }

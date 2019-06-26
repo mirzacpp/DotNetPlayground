@@ -1,11 +1,14 @@
-﻿using Microsoft.Extensions.FileProviders;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.FileProviders;
 
 namespace Cleaners.Web.Infrastructure.Files
 {
     /// <summary>
-    /// File provider service that can be used for content outside application directory
+    /// Physical file provider
+    /// This provider can be used if we don't want to store files inside application directory
+    /// For inside application files use default <see cref="IHostingEnvironment.ContentRootFileProvider"/>
     /// </summary>
-    public interface ICleanersFileProvider
+    public interface ICorvoFileProvider
     {
         IFileProvider FileProvider { get; }
 
@@ -21,5 +24,7 @@ namespace Cleaners.Web.Infrastructure.Files
         string MapPath(string relativePath);
 
         bool IsRootPath(string path);
+
+
     }
 }

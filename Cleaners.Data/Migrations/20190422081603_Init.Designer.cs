@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cleaners.Data.Migrations
 {
-    [DbContext(typeof(FealDbContext))]
+    [DbContext(typeof(CorvoDbContext))]
     [Migration("20190422081603_Init")]
     partial class Init
     {

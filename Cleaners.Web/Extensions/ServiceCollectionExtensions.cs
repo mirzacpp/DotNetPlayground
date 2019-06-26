@@ -68,6 +68,7 @@ namespace Cleaners.Web.Extensions
                 options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
 
                 // Authorize access to mini profiler data
+                // Only for users in "Support" role
                 options.ResultsAuthorize = request => request.HttpContext.User.IsSupport();
                 options.ResultsListAuthorize = request => request.HttpContext.User.IsSupport();
             })
@@ -81,9 +82,9 @@ namespace Cleaners.Web.Extensions
         /// <param name="services"></param>
         public static void ConfigureAppSettings(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<AppInfoConfig>(configuration.GetSection(AppSettings.AppInfo));
+            services.Configure<AppInfoConfig>(configuration.GetSection(AppSettingsSectionNames.AppInfo));
             // Register IdentityOptions so it can be used in application
-            services.Configure<IdentityConfig>(configuration.GetSection(AppSettings.Identity));
+            services.Configure<IdentityConfig>(configuration.GetSection(AppSettingsSectionNames.Identity));
 
             // Allows config to be injected directly as instance without IOptionsSnapshot<>
             services.AddScoped(provider => provider.GetRequiredService<IOptionsSnapshot<AppInfoConfig>>().Value);
@@ -100,7 +101,7 @@ namespace Cleaners.Web.Extensions
             services.Configure<RazorViewEngineOptions>(options =>
             {
                 // Clear all view locations, so we avoid Razor searching for views inside Pages folder
-                // Register areas
+                // Register areas if necessary
                 options.ViewLocationFormats.Clear();
                 options.ViewLocationFormats.Add($"/Views/{{1}}/{{0}}{RazorViewEngine.ViewExtension}");
                 options.ViewLocationFormats.Add($"/Views/Shared/{{0}}{RazorViewEngine.ViewExtension}");
@@ -115,8 +116,7 @@ namespace Cleaners.Web.Extensions
         {
             // Use NullStringLocalizerFactory instead of default ResourceManagerStringLocalizer
             services.AddSingleton<IStringLocalizerFactory, NullStringLocalizerFactory>();
-
-            //IStringLocalizerFactory
+            
             services.AddPortableObjectLocalization(options => options.ResourcesPath = LocalizationDefaults.ResourcesPath);
 
             services.Configure<RequestLocalizationOptions>(options =>
@@ -161,12 +161,12 @@ namespace Cleaners.Web.Extensions
         /// <param name="services"></param>
         public static void ConfigureDatabase(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<FealDbContext>(options =>
+            services.AddDbContext<CorvoDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString(DatabaseConstants.ConnectionString));
             });
 
-            services.AddScoped<DbContext, FealDbContext>();
+            services.AddScoped<DbContext, CorvoDbContext>();
             services.AddScoped<IRepository, EfRepository>();
 
             //services.AddScoped<DatabaseInitializr>();
@@ -180,9 +180,7 @@ namespace Cleaners.Web.Extensions
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
-
             services.AddScoped<IUserModelService, UserModelService>();
-
             services.AddScoped<ISelectListProviderService, SelectListProviderService>();
         }
 
@@ -197,7 +195,7 @@ namespace Cleaners.Web.Extensions
             services.AddSingleton<InternalPasswordResetFilter>();
 
             services.AddIdentity<User, Role>()
-                   .AddEntityFrameworkStores<FealDbContext>()
+                   .AddEntityFrameworkStores<CorvoDbContext>()
                    // Register localized error messages
                    .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
                    .AddDefaultTokenProviders();

@@ -22,7 +22,7 @@ namespace Cleaners.Web.Controllers
     /// </summary>
     [Authorize(Roles = RoleNames.Admin)]
     [Route("roles")]
-    public class RoleController : AdminControllerBase
+    public class RoleController : CorvoControllerBase
     {
         #region Fields
 

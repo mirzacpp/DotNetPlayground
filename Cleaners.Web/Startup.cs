@@ -1,4 +1,5 @@
-﻿using Cleaners.Web.Extensions;
+﻿using Cleaners.Web.Constants;
+using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
@@ -6,7 +7,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.IO;
 
 namespace Cleaners.Web
 {
@@ -47,14 +47,10 @@ namespace Cleaners.Web
 
             services.AddScoped<ICsvFileService, CsvFileService>();
 
-            services.AddScoped<ICleanersFileProvider, CleanersFileProvider>(factory =>
-            {
-                //Directory.Crea
+            // Register file provider options from appsettings
+            services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
 
-                var fileProvider = new CleanersFileProvider(@"C:\\ITO\\Renata");
-
-                return fileProvider;
-            });
+            services.AddCorvoFileProvider();
 
             services.ConfigureMvc();
         }
@@ -73,7 +69,9 @@ namespace Cleaners.Web
             }
 
             app.UseHttpsRedirection();
+            // Serve files from wwwroot directory
             app.UseStaticFiles();
+
             app.UseAuthentication();
             app.ConfigureLocalization();
 

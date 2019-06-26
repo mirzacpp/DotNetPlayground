@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cleaners.Data.Migrations
 {
-    [DbContext(typeof(FealDbContext))]
+    [DbContext(typeof(CorvoDbContext))]
     partial class FealDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

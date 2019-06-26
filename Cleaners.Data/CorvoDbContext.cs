@@ -7,10 +7,10 @@ namespace Cleaners.Data
     /// <summary>
     /// DbContext implementation
     /// </summary>
-    public class FealDbContext
+    public class CorvoDbContext
         : IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
-        public FealDbContext(DbContextOptions<FealDbContext> options)
+        public CorvoDbContext(DbContextOptions<CorvoDbContext> options)
             : base(options)
         {
         }
@@ -24,7 +24,7 @@ namespace Cleaners.Data
 
             // Load entity configurations from this assembly
             // This line has to go after the base OnModelCreating call
-            builder.ApplyConfigurationsFromAssembly(typeof(FealDbContext).Assembly);
+            builder.ApplyConfigurationsFromAssembly(typeof(CorvoDbContext).Assembly);
         }
     }
 }

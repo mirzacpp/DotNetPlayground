@@ -50,6 +50,7 @@
 
   <ItemGroup>
     <Folder Include="App_Data\Logs\" />
+    <Folder Include="StaticFiles\" />
     <Folder Include="wwwroot\bundles\" />
   </ItemGroup>
 

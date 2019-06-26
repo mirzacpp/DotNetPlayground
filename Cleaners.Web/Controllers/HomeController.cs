@@ -18,9 +18,9 @@ namespace Cleaners.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ICsvFileService _csvFileService;
-        private readonly ICleanersFileProvider _fileProvider;
+        private readonly ICorvoFileProvider _fileProvider;
 
-        public HomeController(ICsvFileService csvFileService, ICleanersFileProvider fileProvider)
+        public HomeController(ICsvFileService csvFileService, ICorvoFileProvider fileProvider)
         {
             _csvFileService = csvFileService ?? throw new ArgumentNullException(nameof(csvFileService));
             _fileProvider = fileProvider ?? throw new ArgumentNullException(nameof(fileProvider));

@@ -3,7 +3,7 @@
 namespace Cleaners.Web.Controllers
 {
     [Route("signal-r")]
-    public class SignalRController : AdminControllerBase
+    public class SignalRController : CorvoControllerBase
     {
         public IActionResult Index() => View();
     }
