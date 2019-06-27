@@ -1,10 +1,12 @@
 ﻿using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
+using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO;
 
 namespace Cleaners.Web
 {
@@ -44,6 +46,15 @@ namespace Cleaners.Web
             services.ConfigureMiniProfiler();
 
             services.AddScoped<ICsvFileService, CsvFileService>();
+
+            services.AddScoped<ICleanersFileProvider, CleanersFileProvider>(factory =>
+            {
+                //Directory.Crea
+
+                var fileProvider = new CleanersFileProvider(@"C:\\ITO\\Renata");
+
+                return fileProvider;
+            });
 
             services.ConfigureMvc();
         }
