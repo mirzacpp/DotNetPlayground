@@ -3,7 +3,7 @@ var corvo = corvo || {};
 (function ($) {
     corvo.charts = corvo.charts || {};
 
-    // Some random colors
+    // Base bootstrap colors
     corvo.charts.colors = [
         '#007bff',
         '#6c757d',
@@ -14,7 +14,6 @@ var corvo = corvo || {};
     ];
 
     corvo.charts.getDefinedRandomColor = function () {
-        console.log(corvo.charts.colors[corvo.utils.getRandomNumber(corvo.charts.colors.length)]);
-        return corvo.charts.colors[corvo.utils.getRandomNumber(corvo.charts.colors.length)];
+        return corvo.charts.colors[corvo.utils.getRandomNumber(corvo.charts.colors.length - 1)];
     };
 })(jQuery);
