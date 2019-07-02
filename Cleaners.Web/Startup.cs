@@ -3,8 +3,11 @@ using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
+using Cleaners.Web.TagHelpers;
+using Cleaners.Web.TagHelpers.Nav;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -48,9 +51,11 @@ namespace Cleaners.Web
             services.AddScoped<ICsvFileService, CsvFileService>();
 
             // Register file provider options from appsettings
-            services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
+             services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
+             services.AddCorvoFileProvider();
 
-            services.AddCorvoFileProvider();
+            //services.AddScoped<ITagHelperComponent, MetaTagHelperComponent>();
+            services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
 
             services.ConfigureMvc();
         }

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleaners.Web", "Cleaners.Web\Cleaners.Web.csproj", "{5E994385-11F1-4BFE-9A8C-61962C314063}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleaners.Web", "Cleaners.Web\Cleaners.Web.csproj", "{5E994385-11F1-4BFE-9A8C-61962C314063}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleaners.Core", "Cleaners.Core\Cleaners.Core.csproj", "{5199EE22-A31F-4F87-A183-9F5F0E6CFED4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleaners.Core", "Cleaners.Core\Cleaners.Core.csproj", "{5199EE22-A31F-4F87-A183-9F5F0E6CFED4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleaners.Data", "Cleaners.Data\Cleaners.Data.csproj", "{0A541291-426D-473E-9F5D-D59EEDAF3D9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleaners.Data", "Cleaners.Data\Cleaners.Data.csproj", "{0A541291-426D-473E-9F5D-D59EEDAF3D9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleaners.Services", "Cleaners.Services\Cleaners.Services.csproj", "{DF6B8763-1C58-4B88-9769-1758CA64262D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleaners.Services", "Cleaners.Services\Cleaners.Services.csproj", "{DF6B8763-1C58-4B88-9769-1758CA64262D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvo.AspNetCore.Mvc.UI.TagHelpers", "Corvo.AspNetCore.Mvc.UI.TagHelpers\Corvo.AspNetCore.Mvc.UI.TagHelpers.csproj", "{344DBC7D-A906-4FC5-99DC-E2D40317DB19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DF6B8763-1C58-4B88-9769-1758CA64262D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF6B8763-1C58-4B88-9769-1758CA64262D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF6B8763-1C58-4B88-9769-1758CA64262D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344DBC7D-A906-4FC5-99DC-E2D40317DB19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344DBC7D-A906-4FC5-99DC-E2D40317DB19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344DBC7D-A906-4FC5-99DC-E2D40317DB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344DBC7D-A906-4FC5-99DC-E2D40317DB19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

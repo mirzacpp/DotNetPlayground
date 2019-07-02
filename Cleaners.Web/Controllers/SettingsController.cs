@@ -2,7 +2,6 @@
 using Cleaners.Web.Infrastructure.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Cleaners.Web.Filters;
 
 namespace Cleaners.Web.Controllers
 {
