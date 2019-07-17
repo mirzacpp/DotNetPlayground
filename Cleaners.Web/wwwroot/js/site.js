@@ -67,28 +67,36 @@
         console.log(message, styles || "");
     };
 
+    corvo.logger.styles = {
+        DEBUG: 'background: #6c757d; padding: 1px 4px; border-radius: 2px',
+        INFO: 'background: #17a2b8; padding: 1px 4px; border-radius: 2px',
+        WARN: 'background: #ffc107; padding: 1px 4px; border-radius: 2px',
+        ERROR: 'background: #dc3545; padding: 1px 4px; border-radius: 2px',
+        FATAL: 'background: #dc3545; padding: 1px 4px; border-radius: 2px'
+    };
+
     corvo.logger.info = function (message) {
-        corvo.logger.log("%cINFO: ", corvo.logger.levels.INFO, "color: #17a2b8; font-size: 16px");
+        corvo.logger.log("%cINFO %cCao", corvo.logger.levels.INFO, corvo.logger.styles.INFO, 'color: #fff');
         corvo.logger.log(message, corvo.logger.levels.INFO);
     };
 
     corvo.logger.debug = function (message) {
-        corvo.logger.log("DEBUG: ", corvo.logger.levels.DEBUG, "color: #6c757d; font-size: 16px");
+        corvo.logger.log("%cDEBUG", corvo.logger.levels.DEBUG, corvo.logger.styles.DEBUG);
         corvo.logger.log(message, corvo.logger.levels.DEBUG);
     };
 
     corvo.logger.warn = function (message) {
-        corvo.logger.log("WARN: ", corvo.logger.levels.WARN, "color: #ffc107; font-size: 16px");
+        corvo.logger.log("%cWARN", corvo.logger.levels.WARN, corvo.logger.styles.WARN);
         corvo.logger.log(message, corvo.logger.levels.WARN);
     };
 
     corvo.logger.error = function (message) {
-        corvo.logger.log("ERROR: ", corvo.logger.levels.ERROR, "color: #dc3545; font-size: 16px");
+        corvo.logger.log("%cERROR", corvo.logger.levels.ERROR, corvo.logger.styles.ERROR);
         corvo.logger.log(message, corvo.logger.levels.ERROR);
     };
 
     corvo.logger.fatal = function (message) {
-        corvo.logger.log("FATAL: ", corvo.logger.levels.FATAL, "color: #dc3545; font-size: 16px");
+        corvo.logger.log("%cFATAL", corvo.logger.levels.FATAL, corvo.logger.styles.FATAL);
         corvo.logger.log(message, corvo.logger.levels.FATAL);
     };
 

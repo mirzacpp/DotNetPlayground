@@ -24,7 +24,5 @@ namespace Cleaners.Web.Infrastructure.Files
         string MapPath(string relativePath);
 
         bool IsRootPath(string path);
-
-
     }
 }

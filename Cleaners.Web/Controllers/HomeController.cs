@@ -1,9 +1,11 @@
-﻿using Cleaners.Web.Constants;
+﻿using Cleaners.Services;
+using Cleaners.Web.Constants;
 using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.IO;
 
 namespace Cleaners.Web.Controllers
 {
@@ -26,7 +28,18 @@ namespace Cleaners.Web.Controllers
         [Route("test")]
         public IActionResult Test()
         {
-            return Content(_fileProvider.MapPath("~/cao/sta"));
+            try
+            {
+                throw new FileNotFoundException();
+            }
+            catch (FileNotFoundException)
+            {
+                return Conflict($"FileNotFound");
+            }
+            catch (Exception ex)
+            {
+                return Conflict($"{(ex.StackTrace)}  /  {ex.Message}");
+            }
         }
 
         [Route("about", Name = HomeRoutes.About)]

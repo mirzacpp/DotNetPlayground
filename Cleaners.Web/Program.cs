@@ -28,7 +28,7 @@ namespace Cleaners.Web
         public static IConfigurationBuilder CreateConfigurationBuilder(string environment) =>
             new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)            
             .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true);
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

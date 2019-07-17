@@ -16,6 +16,9 @@ namespace Cleaners.Web.Infrastructure.Files
             {
                 var options = serviceProvider.GetService<IOptions<CorvoFileProviderOptions>>().Value;
 
+                // Define default settings in case user doesnt provide ones ?
+                options = options ?? new CorvoFileProviderOptions();
+
                 // Invoke additional configuration from delegate if any
                 configuration?.Invoke(options);
 
