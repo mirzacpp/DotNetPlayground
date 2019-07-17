@@ -15,11 +15,13 @@ namespace Cleaners.Web.Controllers
     {
         private readonly ICsvFileService _csvFileService;
         private readonly ICorvoFileProvider _fileProvider;
+        private readonly ISelectListProviderService _selectListProviderService;
 
-        public HomeController(ICsvFileService csvFileService, ICorvoFileProvider fileProvider)
+        public HomeController(ICsvFileService csvFileService, ICorvoFileProvider fileProvider, ISelectListProviderService selectListProviderService)
         {
             _csvFileService = csvFileService ?? throw new ArgumentNullException(nameof(csvFileService));
             _fileProvider = fileProvider ?? throw new ArgumentNullException(nameof(fileProvider));
+            _selectListProviderService = selectListProviderService ?? throw new ArgumentNullException(nameof(selectListProviderService));
         }
 
         [Route("", Name = HomeRoutes.Index)]
