@@ -1,0 +1,3 @@
+﻿namespace Corvo.AspNetCore.Mvc
+{
+}

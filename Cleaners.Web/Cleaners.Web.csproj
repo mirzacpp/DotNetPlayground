@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Cleaners.Data\Cleaners.Data.csproj" />
     <ProjectReference Include="..\Cleaners.Services\Cleaners.Services.csproj" />
+    <ProjectReference Include="..\Corvo.AspNetCore.Mvc\Corvo.AspNetCore.Mvc.csproj" />
   </ItemGroup>
 
 

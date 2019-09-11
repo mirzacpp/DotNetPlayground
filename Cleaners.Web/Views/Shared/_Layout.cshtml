@@ -25,18 +25,6 @@
     @RenderSection("styles", required: false)
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-    <environment include="Development">
-        <script src="~/js/jquery.js"></script>
-        <script src="~/js/bootstrap.js"></script>
-        <script src="~/js/adminlte.js"></script>
-        <script src="~/js/ajax.js"></script>
-        <script src="~/js/site.js"></script>
-    </environment>
-
-    <environment names="Staging,Production">
-        <script src="~/bundles/main.min.js" asp-append-version="true"></script>
-    </environment>
 </head>
 <body class="hold-transition skin-red sidebar-mini">
     <div class="wrapper">
@@ -68,9 +56,24 @@
             <div class="modal-content">
             </div>
         </div>
-    </div>    
+    </div>
+
+    @*Invoke mini profiler tag helper*@
     <mini-profiler />
+
+    <environment include="Development">
+        <script src="~/js/jquery.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/adminlte.js"></script>
+        <script src="~/js/ajax.js"></script>
+        <script src="~/js/site.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/bundles/main.min.js" asp-append-version="true"></script>
+    </environment>
+
     <script>
+        // Refactor with tag helper and separate .js file
         $('body').on('click', '.modal-link', function (e) {
             e.preventDefault();
             var anchor = $(e.target),

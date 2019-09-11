@@ -25,7 +25,7 @@
                                             <img alt="Flag image" src="~/img/flags/@item.Icon" /> @Localizer[item.DisplayName.ToLowerInvariant()]
                                         </a>
                                     </li>
-                                }                               
+                                }
                             </ul>
                         </li>
                     </ul>
@@ -54,8 +54,10 @@
                 </li>
             </ul>
             <script>
-                $('#logout').click(function () {
-                    $('#logoutForm').submit();
+                $(function () {
+                    $('#logout').click(function () {
+                        $('#logoutForm').submit();
+                    });
                 });
             </script>
         </div>
