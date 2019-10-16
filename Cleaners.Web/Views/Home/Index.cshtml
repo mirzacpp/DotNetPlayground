@@ -6,12 +6,20 @@
 <div class="row">
     <div id="testBlock" class="col-md-12">
         This page is empty
+        <form asp-controller="Home" asp-action="Submit">
+            <input name="value" value="Parameter value" type="text" />                       
+            <button type="submit">Submit1</button>
+            <button type="submit" name="submit" value="submitter">Submit2</button>
+        </form>
     </div>
 </div>
-<script>
-    corvo.logger.info('This is some random text.');
-    corvo.logger.debug('This is some random text.');
-    corvo.logger.warn('This is some random text.');
-    corvo.logger.error('This is some random text.');
-    corvo.logger.fatal('This is some random text.');
-</script>
+
+@section Scripts {
+    <script>
+        corvo.logger.info('This is some random text.');
+        corvo.logger.debug('This is some random text.', "DateTime");
+        corvo.logger.warn('This is some random text.');
+        corvo.logger.error('This is some random text.');
+        corvo.logger.fatal('This is some random text.');
+    </script>
+}

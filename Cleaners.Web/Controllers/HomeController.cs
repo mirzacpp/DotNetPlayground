@@ -1,7 +1,7 @@
-﻿using Cleaners.Services;
-using Cleaners.Web.Constants;
+﻿using Cleaners.Web.Constants;
 using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
+using Corvo.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,6 +26,21 @@ namespace Cleaners.Web.Controllers
 
         [Route("", Name = HomeRoutes.Index)]
         public IActionResult Index() => View();
+
+        [HttpPost]
+        public IActionResult Submit(string value)
+        {
+            return Json($"Action: {nameof(Submit)}, with param {value}");
+        }
+
+        [HttpPost]
+        [ActionName(nameof(Submit))]
+        //[FormValueRequired()]
+        [FormValueRequired("submit2")]
+        public IActionResult Submit2(string value)
+        {
+            return Json($"Action: {nameof(Submit2)}, with param {value}");
+        }
 
         [Route("test")]
         public IActionResult Test()
