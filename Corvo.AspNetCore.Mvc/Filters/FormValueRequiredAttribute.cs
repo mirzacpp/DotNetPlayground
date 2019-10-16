@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Abstractions;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Routing;
 using System;
 using System.Linq;
-using System.Net;
 
 namespace Corvo.AspNetCore.Mvc.Filters
 {
@@ -13,26 +13,34 @@ namespace Corvo.AspNetCore.Mvc.Filters
     /// </summary>
     public class FormValueRequiredAttribute : ActionMethodSelectorAttribute
     {
+        #region Fields
+
         /// <summary>
-        /// List of allowed button names
+        /// List of allowed form data element names
         /// </summary>
-        private readonly string[] _allowedFormButtonNames;
+        private readonly string[] _allowedFormDataElementNames;
 
         /// <summary>
         /// Determines if both, name and value should be validated
         /// </summary>
         private readonly bool _shouldValidateValue;
 
-        public FormValueRequiredAttribute(params string[] allowedFormButtonNames)
-            : this(true, allowedFormButtonNames)
-        {
-        }
+        #endregion Fields
 
-        public FormValueRequiredAttribute(bool shouldValidateValue, params string[] allowedFormButtonNames)
+        #region Constructors
+
+        public FormValueRequiredAttribute(params string[] allowedFormButtonNames)
+        : this(true, allowedFormButtonNames) { }
+
+        public FormValueRequiredAttribute(bool shouldValidateValue, params string[] allowedFormDataElementNames)
         {
-            _allowedFormButtonNames = allowedFormButtonNames;
+            _allowedFormDataElementNames = allowedFormDataElementNames;
             _shouldValidateValue = shouldValidateValue;
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         /// <summary>
         /// Verifies if request is allowed to invoke specified action
@@ -53,17 +61,17 @@ namespace Corvo.AspNetCore.Mvc.Filters
             }
 
             // Only POST requests should be verified
-            if (routeContext.HttpContext.Request.Method != WebRequestMethods.Http.Post)
+            if (!HttpMethods.IsPost(routeContext.HttpContext.Request.Method))
             {
                 return false;
             }
 
-            foreach (var allowedButton in _allowedFormButtonNames)
+            foreach (var allowedElement in _allowedFormDataElementNames)
             {
                 if (_shouldValidateValue)
                 {
                     // Returns value with specified key or empty string otherwise
-                    var value = routeContext.HttpContext.Request.Form[allowedButton];
+                    var value = routeContext.HttpContext.Request.Form[allowedElement];
 
                     if (!string.IsNullOrEmpty(value))
                     {
@@ -74,7 +82,7 @@ namespace Corvo.AspNetCore.Mvc.Filters
                 {
                     // Validate for name only
                     // Allow method invocation if form collection contains entry with specified key
-                    if (routeContext.HttpContext.Request.Form.Any(v => v.Key.Equals(allowedButton, StringComparison.OrdinalIgnoreCase)))
+                    if (routeContext.HttpContext.Request.Form.Any(v => v.Key.Equals(allowedElement, StringComparison.OrdinalIgnoreCase)))
                     {
                         return true;
                     }
@@ -83,5 +91,7 @@ namespace Corvo.AspNetCore.Mvc.Filters
 
             return false;
         }
+
+        #endregion Methods
     }
 }
