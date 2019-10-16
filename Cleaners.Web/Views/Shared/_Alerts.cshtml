@@ -1,4 +1,4 @@
-﻿@inject TempDataAlertManager AlertManager
+﻿@inject IAlertManager AlertManager
 @foreach (var alert in AlertManager.GetAll())
 {
     <alert text="@alert.Text"

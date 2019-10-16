@@ -8,7 +8,7 @@ using System.Net;
 namespace Corvo.AspNetCore.Mvc.Filters
 {
     /// <summary>
-    /// Enables framework to decide which action to invoke by specifie form value.
+    /// Enables framework to decide which action should be invoked by specific form value.
     /// This is useful in case we have multiple submit buttons that invokes method with same parameters
     /// </summary>
     public class FormValueRequiredAttribute : ActionMethodSelectorAttribute
@@ -80,7 +80,7 @@ namespace Corvo.AspNetCore.Mvc.Filters
                     }
                 }
             }
-            
+
             return false;
         }
     }

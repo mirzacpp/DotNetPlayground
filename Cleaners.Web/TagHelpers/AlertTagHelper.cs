@@ -1,5 +1,4 @@
-﻿using Cleaners.Web.Infrastructure.Alerts;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Cleaners.Web.TagHelpers
@@ -63,5 +62,13 @@ namespace Cleaners.Web.TagHelpers
             output.TagName = null;
             output.Content.SetHtmlContent(wrapper);
         }
+    }
+
+    public enum AlertType
+    {
+        Success,
+        Danger,
+        Warning,
+        Info
     }
 }

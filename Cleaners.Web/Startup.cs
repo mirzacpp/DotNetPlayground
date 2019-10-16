@@ -1,10 +1,9 @@
 ﻿using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
-using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
-using Cleaners.Web.TagHelpers;
 using Cleaners.Web.TagHelpers.Nav;
+using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -44,15 +43,15 @@ namespace Cleaners.Web
             // Configures identity for authentication and authorization
             services.ConfigureIdentity(Configuration);
 
-            services.AddScoped<TempDataAlertManager>();
+            services.AddTempDataAlertManager();
 
             services.ConfigureMiniProfiler();
 
             services.AddScoped<ICsvFileService, CsvFileService>();
 
             // Register file provider options from appsettings
-             services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
-             services.AddCorvoFileProvider();
+            services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
+            services.AddCorvoFileProvider();
 
             //services.AddScoped<ITagHelperComponent, MetaTagHelperComponent>();
             services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
