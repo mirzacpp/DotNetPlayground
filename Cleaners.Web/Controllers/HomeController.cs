@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace Cleaners.Web.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = RimDev.Stuntman.Core.Constants.StuntmanAuthenticationType)]
     [Route("")]
     public class HomeController : Controller
     {

@@ -93,5 +93,6 @@
         });
     </script>
     @RenderSection("scripts", required: false)
+    @Html.Raw(Cleaners.Web.Startup.StuntmanOptions.UserPicker(User))
 </body>
 </html>

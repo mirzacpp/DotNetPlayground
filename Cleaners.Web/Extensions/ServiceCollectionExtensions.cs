@@ -195,10 +195,13 @@ namespace Cleaners.Web.Extensions
             services.AddSingleton<InternalPasswordResetFilter>();
 
             services.AddIdentity<User, Role>()
-                   .AddEntityFrameworkStores<CorvoDbContext>()
-                   // Register localized error messages
-                   .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
-                   .AddDefaultTokenProviders();
+            .AddEntityFrameworkStores<CorvoDbContext>()
+            // Register localized error messages
+            .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
+            .AddDefaultTokenProviders();
+
+            // Override authentication schema for stuntman
+            services.AddAuthentication();
 
             // Configure IdentityOptions from appsettings.json
             services.Configure<IdentityOptions>(configuration);

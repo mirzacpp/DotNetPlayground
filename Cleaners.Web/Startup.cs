@@ -9,11 +9,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RimDev.Stuntman.Core;
 
 namespace Cleaners.Web
 {
     public class Startup
     {
+        public static readonly StuntmanOptions StuntmanOptions = new StuntmanOptions();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -43,6 +46,13 @@ namespace Cleaners.Web
             // Configures identity for authentication and authorization
             services.ConfigureIdentity(Configuration);
 
+            StuntmanOptions
+            .SetUserPickerAlignment(StuntmanAlignment.Right)
+            .AddUser(new StuntmanUser("1", "mirza@ito.ba")
+                .AddClaim("given_name", "John")
+                .AddClaim("family_name", "Doe"));
+
+            services.AddStuntman(StuntmanOptions);
             services.AddTempDataAlertManager();
 
             services.ConfigureMiniProfiler();
@@ -77,6 +87,9 @@ namespace Cleaners.Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
+            // Register middleware for postmans sign-out action
+            app.UseStuntman(StuntmanOptions);
+
             app.ConfigureLocalization();
 
             // Since mini-profiler is lightweight we can leave it ON for all evironment types
