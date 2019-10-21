@@ -1,6 +1,7 @@
 ﻿using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Files;
+using Cleaners.Web.Infrastructure.Stuntman;
 using Cleaners.Web.Services;
 using Cleaners.Web.TagHelpers.Nav;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
@@ -17,12 +18,14 @@ namespace Cleaners.Web
     {
         public static readonly StuntmanOptions StuntmanOptions = new StuntmanOptions();
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
         {
             Configuration = configuration;
+            HostingEnvironment = hostingEnvironment;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment HostingEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -39,20 +42,19 @@ namespace Cleaners.Web
 
             services.ConfigureDatabase(Configuration);
 
-            services.RegisterServices();
+            services.RegisterApplicationServices();
 
             services.ConfigureAntiforgery();
 
             // Configures identity for authentication and authorization
             services.ConfigureIdentity(Configuration);
 
-            StuntmanOptions
-            .SetUserPickerAlignment(StuntmanAlignment.Right)
-            .AddUser(new StuntmanUser("1", "mirza@ito.ba")
-                .AddClaim("given_name", "John")
-                .AddClaim("family_name", "Doe"));
+            // Override authentication schema for stuntman in development mode
+            if (HostingEnvironment.IsDevelopment())
+            {
+                services.ConfigureStuntman();
+            }
 
-            services.AddStuntman(StuntmanOptions);
             services.AddTempDataAlertManager();
 
             services.ConfigureMiniProfiler();
@@ -87,8 +89,12 @@ namespace Cleaners.Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
-            // Register middleware for postmans sign-out action
-            app.UseStuntman(StuntmanOptions);
+
+            // Register stuntman middleware in development environment
+            if (env.IsDevelopment())
+            {
+                app.UseStuntman();
+            }
 
             app.ConfigureLocalization();
 

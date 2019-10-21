@@ -32,13 +32,20 @@ namespace Cleaners.Web.Controllers
         private readonly IMapper _mapper;
         private readonly IStringLocalizer<AccountController> _localizer;
         private readonly IdentityConfig _identityConfig;
-        private readonly TempDataAlertManager _tempDataAlertManager;
+        private readonly IAlertManager _alertManager;
 
         #endregion Fields
 
-        #region Methods
+        #region Constructor
 
-        public AccountController(UserManager<User> userManager, IUserService userService, SignInManager<User> signInManager, IMapper mapper, IStringLocalizer<AccountController> localizer, IdentityConfig identityConfig, TempDataAlertManager tempDataAlertManager)
+        public AccountController(
+            UserManager<User> userManager,
+            IUserService userService,
+            SignInManager<User> signInManager,
+            IMapper mapper,
+            IStringLocalizer<AccountController> localizer,
+            IdentityConfig identityConfig,
+            IAlertManager alertManager)
         {
             _userManager = userManager;
             _userService = userService;
@@ -46,10 +53,10 @@ namespace Cleaners.Web.Controllers
             _mapper = mapper;
             _localizer = localizer;
             _identityConfig = identityConfig;
-            _tempDataAlertManager = tempDataAlertManager;
+            _alertManager = alertManager;
         }
 
-        #endregion Methods
+        #endregion Constructor
 
         #region Methods
 
@@ -164,7 +171,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.ChangePasswordSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.ChangePasswordSuccessful]);
 
                 return RedirectToRoute(AccountRoutes.Profile);
             }
@@ -205,7 +212,7 @@ namespace Cleaners.Web.Controllers
             // Local method for both operations bellow
             IActionResult ResultSuccess(string resourceKey)
             {
-                _tempDataAlertManager.Success(_localizer[resourceKey]);
+                _alertManager.Success(_localizer[resourceKey]);
 
                 return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
             }

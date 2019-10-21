@@ -6,8 +6,11 @@
 <div class="row">
     <div id="testBlock" class="col-md-12">
         This page is empty
+        <p>@User.Identity.IsAuthenticated</p>
+        <p>@User.Identity.Name</p>
+        <p>@User.IsSupport()</p>
         <form asp-controller="Home" asp-action="Submit">
-            <input name="value" value="Parameter value" type="text" />                       
+            <input name="value" value="Parameter value" type="text" />
             <button type="submit">Submit1</button>
             <button type="submit" name="submit" value="submitter">Submit2</button>
         </form>

@@ -1,5 +1,7 @@
 ﻿@inject AppInfoConfig AppInfoConfig
 @inject IViewLocalizer Localizer
+@inject RimDev.Stuntman.Core.StuntmanOptions StuntmanOptions
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,6 +95,6 @@
         });
     </script>
     @RenderSection("scripts", required: false)
-    @Html.Raw(Cleaners.Web.Startup.StuntmanOptions.UserPicker(User))
+    @Html.Raw(StuntmanOptions.UserPicker(User))
 </body>
 </html>
