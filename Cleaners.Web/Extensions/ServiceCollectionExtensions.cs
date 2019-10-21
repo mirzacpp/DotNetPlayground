@@ -3,7 +3,6 @@ using Cleaners.Core.Constants;
 using Cleaners.Core.Domain;
 using Cleaners.Core.Interfaces;
 using Cleaners.Data;
-using Cleaners.Services;
 using Cleaners.Services.Roles;
 using Cleaners.Services.Users;
 using Cleaners.Web.Constants;
@@ -117,7 +116,7 @@ namespace Cleaners.Web.Extensions
         {
             // Use NullStringLocalizerFactory instead of default ResourceManagerStringLocalizer
             services.AddSingleton<IStringLocalizerFactory, NullStringLocalizerFactory>();
-            
+
             services.AddPortableObjectLocalization(options => options.ResourcesPath = LocalizationDefaults.ResourcesPath);
 
             services.Configure<RequestLocalizationOptions>(options =>
@@ -196,10 +195,13 @@ namespace Cleaners.Web.Extensions
             services.AddSingleton<InternalPasswordResetFilter>();
 
             services.AddIdentity<User, Role>()
-                   .AddEntityFrameworkStores<CorvoDbContext>()
-                   // Register localized error messages
-                   .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
-                   .AddDefaultTokenProviders();
+            .AddEntityFrameworkStores<CorvoDbContext>()
+            // Register localized error messages
+            .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
+            .AddDefaultTokenProviders();
+
+            // Override authentication schema for stuntman
+            services.AddAuthentication();
 
             // Configure IdentityOptions from appsettings.json
             services.Configure<IdentityOptions>(configuration);

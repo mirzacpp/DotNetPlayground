@@ -28,13 +28,13 @@ namespace Cleaners.Web
         public static IConfigurationBuilder CreateConfigurationBuilder(string environment) =>
             new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.db.json", optional: true, reloadOnChange: true)            
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)            
+            .AddJsonFile("appsettings.db.json", optional: true, reloadOnChange: true)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true);
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .ConfigureKestrel(options => options.AddServerHeader = false)            
+            .ConfigureKestrel(options => options.AddServerHeader = false)
             .ConfigureLogging((hostContext, config) =>
             {
                 // Remove default logger providers

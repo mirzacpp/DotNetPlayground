@@ -3,18 +3,20 @@ using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Services;
-using Cleaners.Web.TagHelpers;
 using Cleaners.Web.TagHelpers.Nav;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RimDev.Stuntman.Core;
 
 namespace Cleaners.Web
 {
     public class Startup
     {
+        public static readonly StuntmanOptions StuntmanOptions = new StuntmanOptions();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -44,6 +46,14 @@ namespace Cleaners.Web
             // Configures identity for authentication and authorization
             services.ConfigureIdentity(Configuration);
 
+            StuntmanOptions
+            .SetUserPickerAlignment(StuntmanAlignment.Right)
+            .AddUser(new StuntmanUser("1", "mirza@ito.ba")
+                .AddClaim("given_name", "John")
+                .AddClaim("family_name", "Doe"));
+
+            services.AddStuntman(StuntmanOptions);
+
             services.AddScoped<TempDataAlertManager>();
 
             services.ConfigureMiniProfiler();
@@ -51,8 +61,8 @@ namespace Cleaners.Web
             services.AddScoped<ICsvFileService, CsvFileService>();
 
             // Register file provider options from appsettings
-             services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
-             services.AddCorvoFileProvider();
+            services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
+            services.AddCorvoFileProvider();
 
             //services.AddScoped<ITagHelperComponent, MetaTagHelperComponent>();
             services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
@@ -78,6 +88,9 @@ namespace Cleaners.Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
+            // Register middleware for postmans sign-out action
+            app.UseStuntman(StuntmanOptions);
+
             app.ConfigureLocalization();
 
             // Since mini-profiler is lightweight we can leave it ON for all evironment types
