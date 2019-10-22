@@ -1,10 +1,9 @@
-﻿@inject TempDataAlertManager AlertManager
+﻿@inject IAlertManager AlertManager
 @foreach (var alert in AlertManager.GetAll())
 {
     <alert text="@alert.Text"
            title="@alert.Title"
-           dismissable="@alert.IsDismissable"
-           type="@alert.Type"
+           dismissable="@alert.IsDismissable"           
            class="no-margin">
     </alert>
 }

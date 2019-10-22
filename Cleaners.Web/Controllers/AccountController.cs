@@ -3,11 +3,11 @@ using Cleaners.Core.Domain;
 using Cleaners.Services.Users;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
-using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Account;
 using Cleaners.Web.Models.Users;
+using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -32,24 +32,31 @@ namespace Cleaners.Web.Controllers
         private readonly IMapper _mapper;
         private readonly IStringLocalizer<AccountController> _localizer;
         private readonly IdentityConfig _identityConfig;
-        private readonly TempDataAlertManager _tempDataAlertManager;
+        private readonly IAlertManager _alertManager;
 
         #endregion Fields
 
-        #region Methods
+        #region Constructor
 
-        public AccountController(UserManager<User> userManager, IUserService userService, SignInManager<User> signInManager, IMapper mapper, IStringLocalizer<AccountController> localizer, IdentityConfig identityConfig, TempDataAlertManager tempDataAlertManager)
+        public AccountController(
+            UserManager<User> userManager,
+            IUserService userService,
+            SignInManager<User> signInManager,
+            IMapper mapper,
+            IStringLocalizer<AccountController> localizer,
+            IdentityConfig identityConfig,
+            IAlertManager alertManager)
         {
-            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
-            _signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
-            _identityConfig = identityConfig ?? throw new ArgumentNullException(nameof(identityConfig));
-            _tempDataAlertManager = tempDataAlertManager ?? throw new ArgumentNullException(nameof(tempDataAlertManager));
+            _userManager = userManager;
+            _userService = userService;
+            _signInManager = signInManager;
+            _mapper = mapper;
+            _localizer = localizer;
+            _identityConfig = identityConfig;
+            _alertManager = alertManager;
         }
 
-        #endregion Methods
+        #endregion Constructor
 
         #region Methods
 
@@ -164,7 +171,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.ChangePasswordSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.ChangePasswordSuccessful]);
 
                 return RedirectToRoute(AccountRoutes.Profile);
             }
@@ -205,7 +212,7 @@ namespace Cleaners.Web.Controllers
             // Local method for both operations bellow
             IActionResult ResultSuccess(string resourceKey)
             {
-                _tempDataAlertManager.Success(_localizer[resourceKey]);
+                _alertManager.Success(_localizer[resourceKey]);
 
                 return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
             }

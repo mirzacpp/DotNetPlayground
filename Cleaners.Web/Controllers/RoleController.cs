@@ -3,10 +3,10 @@ using Cleaners.Core.Domain;
 using Cleaners.Services.Roles;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
-using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Roles;
+using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -28,7 +28,7 @@ namespace Cleaners.Web.Controllers
 
         private readonly IRoleService _roleService;
         private readonly IMapper _mapper;
-        private readonly TempDataAlertManager _tempDataAlertManager;
+        private readonly IAlertManager _alertManager;
         private readonly IStringLocalizer<RoleController> _localizer;
         private readonly ILogger<RoleController> _logger;
 
@@ -36,11 +36,11 @@ namespace Cleaners.Web.Controllers
 
         #region Constructor
 
-        public RoleController(IRoleService roleService, IMapper mapper, TempDataAlertManager tempDataAlertManager, IStringLocalizer<RoleController> localizer, ILogger<RoleController> logger)
+        public RoleController(IRoleService roleService, IMapper mapper, IAlertManager alertManager, IStringLocalizer<RoleController> localizer, ILogger<RoleController> logger)
         {
             _roleService = roleService ?? throw new ArgumentNullException(nameof(roleService));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _tempDataAlertManager = tempDataAlertManager ?? throw new ArgumentNullException(nameof(tempDataAlertManager));
+            _alertManager = alertManager ?? throw new ArgumentNullException(nameof(alertManager));
             _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
@@ -79,7 +79,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.CreateRecordSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.CreateRecordSuccessful]);
 
                 return Json(new { redirectUrl = GetIndexUrl() });
             }
@@ -126,7 +126,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.UpdateRecordSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.UpdateRecordSuccessful]);
 
                 return Json(new { redirectUrl = GetIndexUrl() });
             }
@@ -173,7 +173,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.DeleteRecordSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.DeleteRecordSuccessful]);
 
                 return Json(new { redirectUrl = GetIndexUrl() });
             }

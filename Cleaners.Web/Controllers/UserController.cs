@@ -3,11 +3,11 @@ using Cleaners.Core.Domain;
 using Cleaners.Services.Users;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
-using Cleaners.Web.Infrastructure.Alerts;
 using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Users;
 using Cleaners.Web.Services;
+using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -29,7 +29,7 @@ namespace Cleaners.Web.Controllers
         private readonly IUserService _userService;
         private readonly IUserModelService _userModelService;
         private readonly IStringLocalizer<UserController> _localizer;
-        private readonly TempDataAlertManager _tempDataAlertManager;
+        private readonly IAlertManager _alertManager;
         private readonly IMapper _mapper;
 
         #endregion Fields
@@ -38,13 +38,13 @@ namespace Cleaners.Web.Controllers
             IUserService userService,
             IUserModelService userModelService,
             IStringLocalizer<UserController> localizer,
-            TempDataAlertManager tempDataAlertManager,
+            IAlertManager alertManager,
             IMapper mapper)
         {
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
             _userModelService = userModelService ?? throw new ArgumentNullException(nameof(userModelService));
             _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
-            _tempDataAlertManager = tempDataAlertManager ?? throw new ArgumentNullException(nameof(tempDataAlertManager));
+            _alertManager = alertManager ?? throw new ArgumentNullException(nameof(alertManager));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
@@ -104,7 +104,7 @@ namespace Cleaners.Web.Controllers
 
                 if (addToRolesResult.Succeeded)
                 {
-                    _tempDataAlertManager.Success(_localizer[ResourceKeys.CreateRecordSuccessful]);
+                    _alertManager.Success(_localizer[ResourceKeys.CreateRecordSuccessful]);
 
                     return RedirectToRoute(UserRoutes.Index);
                 }
@@ -178,7 +178,7 @@ namespace Cleaners.Web.Controllers
 
                     if (addToRolesResult.Succeeded)
                     {
-                        _tempDataAlertManager.Success(_localizer[ResourceKeys.UpdateRecordSuccessful]);
+                        _alertManager.Success(_localizer[ResourceKeys.UpdateRecordSuccessful]);
 
                         return RedirectToRoute(UserRoutes.Index);
                     }
@@ -231,7 +231,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.ConfirmEmailSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.ConfirmEmailSuccessful]);
 
                 return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
             }
@@ -278,7 +278,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.DeleteRecordSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.DeleteRecordSuccessful]);
 
                 return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
             }
@@ -325,7 +325,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.RestoreRecordSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.RestoreRecordSuccessful]);
 
                 return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
             }
@@ -389,7 +389,7 @@ namespace Cleaners.Web.Controllers
 
             if (result.Succeeded)
             {
-                _tempDataAlertManager.Success(_localizer[ResourceKeys.ResetPasswordSuccessful]);
+                _alertManager.Success(_localizer[ResourceKeys.ResetPasswordSuccessful]);
 
                 return Json(new { redirectUrl = Url.RouteUrl(UserRoutes.Index) });
             }
@@ -397,7 +397,7 @@ namespace Cleaners.Web.Controllers
             ModelState.AddModelErrors(result.Errors.GetDescriptions());
 
             return PartialView("_ResetPassword", model);
-        }        
+        }
 
         // Implementiraj deaktivaciju/aktivaciju
         // -||- ručnu potvrdu računa

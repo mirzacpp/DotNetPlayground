@@ -176,7 +176,7 @@ namespace Cleaners.Web.Extensions
         /// Registers all necessary application services
         /// </summary>
         /// <param name="services"></param>
-        public static void RegisterServices(this IServiceCollection services)
+        public static void RegisterApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
@@ -198,10 +198,7 @@ namespace Cleaners.Web.Extensions
             .AddEntityFrameworkStores<CorvoDbContext>()
             // Register localized error messages
             .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
-            .AddDefaultTokenProviders();
-
-            // Override authentication schema for stuntman
-            services.AddAuthentication();
+            .AddDefaultTokenProviders();            
 
             // Configure IdentityOptions from appsettings.json
             services.Configure<IdentityOptions>(configuration);

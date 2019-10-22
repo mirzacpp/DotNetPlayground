@@ -1,4 +1,4 @@
-﻿namespace Cleaners.Web.Infrastructure.Alerts
+﻿namespace Corvo.AspNetCore.Mvc.UI.Alerts
 {
     public enum AlertType
     {

@@ -1,7 +1,5 @@
-﻿using Cleaners.Web.Extensions;
+﻿using Corvo.AspNetCore.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
 
 namespace Cleaners.Web.Controllers
 {
@@ -13,27 +11,11 @@ namespace Cleaners.Web.Controllers
         #region Methods
 
         /// <summary>
-        /// Redirects user to previous URL if local, otherwise redirects to home page
+        /// Redirects user to previous URL if local, otherwise redirects to home page.
         /// </summary>
         /// <returns>Redirect result</returns>
         protected IActionResult RedirectToPreviousUrl()
-        {
-            var urlReferrer = HttpContext.GetRefererHeader();
-
-            if (urlReferrer == null)
-            {
-                return Redirect("/");
-            }
-
-            var uri = new Uri(urlReferrer);
-
-            if (Url.IsLocalUrl(uri.PathAndQuery))
-            {
-                return Redirect(urlReferrer);
-            }
-
-            return Redirect("/");
-        }
+            => Redirect(Url.GetRefererOrFallback());
 
         #endregion Methods
     }
