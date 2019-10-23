@@ -21,7 +21,7 @@ namespace Cleaners.Web.Infrastructure.Stuntman
 
             if (options is null)
             {
-                throw new NullReferenceException($"Stuntman options could not be found.");
+                throw new NullReferenceException($"Stuntman options cannot be null.");
             }
 
             applicationBuilder.UseStuntman(options);
