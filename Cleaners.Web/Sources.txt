@@ -4,6 +4,7 @@ https://rimdev.io/
 https://dusted.codes/
 https://dot-net.awesome-programming.com/
 https://jeremyskinner.co.uk/
+https://blog.bitscry.com/
 
 #Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -17,6 +18,12 @@ https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 http://www.dotnetbull.com/2013/08/301-permanent-vs-302-temporary-status-code-aspnet-csharp-Implementation.html
 #Compile modified views
 https://gunnarpeipman.com/aspnet-core-compile-modified-views/
+#Render view inside controller 
+https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-using-ASPNET-Core-that-can-be-used-in-the-c-controlle-7173969632
+https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
+#Slugify routes
+https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
+
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
