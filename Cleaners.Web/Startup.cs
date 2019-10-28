@@ -16,8 +16,6 @@ namespace Cleaners.Web
 {
     public class Startup
     {
-        public static readonly StuntmanOptions StuntmanOptions = new StuntmanOptions();
-
         public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
         {
             Configuration = configuration;
@@ -72,9 +70,9 @@ namespace Cleaners.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (HostingEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -91,14 +89,14 @@ namespace Cleaners.Web
             app.UseAuthentication();
 
             // Register stuntman middleware in development environment
-            if (env.IsDevelopment())
+            if (HostingEnvironment.IsDevelopment())
             {
                 app.UseStuntman();
             }
 
             app.ConfigureLocalization();
 
-            // Since mini-profiler is lightweight we can leave it ON for all evironment types
+            // Since mini-profiler is lightweight we can leave it ON in all evironments
             app.UseMiniProfiler();
 
             app.UseMvcWithDefaultRoute();
