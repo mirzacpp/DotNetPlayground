@@ -12,6 +12,10 @@
     <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.0.165" />
     <PackageReference Include="MiniProfiler.EntityFrameworkCore" Version="4.0.165" />
     <PackageReference Include="OrchardCore.Localization.Core" Version="1.0.0-beta3-71077" />
@@ -29,6 +33,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Cleaners.Data\Cleaners.Data.csproj" />
     <ProjectReference Include="..\Cleaners.Services\Cleaners.Services.csproj" />
+    <ProjectReference Include="..\Cleaners\Cleaners.csproj" />
     <ProjectReference Include="..\Corvo.AspNetCore.Mvc.UI\Corvo.AspNetCore.Mvc.UI.csproj" />
     <ProjectReference Include="..\Corvo.AspNetCore.Mvc\Corvo.AspNetCore.Mvc.csproj" />
   </ItemGroup>

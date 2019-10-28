@@ -5,6 +5,8 @@ https://dusted.codes/
 https://dot-net.awesome-programming.com/
 https://jeremyskinner.co.uk/
 https://blog.bitscry.com/
+https://www.fixedbuffer.com/
+https://www.thereformedprogrammer.net/
 
 #Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -23,7 +25,8 @@ https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-usi
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 #Slugify routes
 https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
-
+#Auth
+https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/

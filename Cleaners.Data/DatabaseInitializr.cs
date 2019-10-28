@@ -14,16 +14,17 @@ namespace Cleaners.Data
         private readonly CorvoDbContext _context;
         private readonly UserManager<User> _userManager;
 
-        public DatabaseInitializr(CorvoDbContext context)
+        public DatabaseInitializr(CorvoDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public void Seed()
         {
             // Make sure database is created with latest migrations
             _context.Database.Migrate();
-            
+
             if (!_context.Users.Any())
             {
                 _userManager.CreateAsync(new User
