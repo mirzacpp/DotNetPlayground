@@ -7,6 +7,7 @@ https://jeremyskinner.co.uk/
 https://blog.bitscry.com/
 https://www.fixedbuffer.com/
 https://www.thereformedprogrammer.net/
+https://www.stevejgordon.co.uk/
 
 #Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -27,6 +28,13 @@ https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
 #Auth
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
+#Host Startup errors
+https://github.com/aspnet/EntityFrameworkCore/issues/12331
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
+#Asyncs task on startup
+https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-3/
+#Upload from base64
+https://stackoverflow.com/questions/39394129/saving-a-base64-string-as-an-image-into-a-folder-on-server-using-c-sharp-and-web
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
