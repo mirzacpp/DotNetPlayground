@@ -8,6 +8,10 @@ https://blog.bitscry.com/
 https://www.fixedbuffer.com/
 https://www.thereformedprogrammer.net/
 https://www.stevejgordon.co.uk/
+https://blog.codinghorror.com/
+https://weblogs.asp.net/dixin
+https://johnthiriet.com/
+https://blog.stephencleary.com/
 
 #Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -38,4 +42,5 @@ https://stackoverflow.com/questions/39394129/saving-a-base64-string-as-an-image-
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
-https://devblogs.microsoft.com/pfxteam/should-i-expose-synchronous-wrappers-for-asynchronous-methods/
+https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
+https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html
