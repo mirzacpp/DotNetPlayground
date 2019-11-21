@@ -9,6 +9,7 @@ https://jeremyskinner.co.uk/
 https://blog.bitscry.com/
 https://www.fixedbuffer.com/
 https://www.thereformedprogrammer.net/
+https://www.stevejgordon.co.uk/
 https://dotnetcoretutorials.com/
 https://docs.microsoft.com/en-us%5Carchive%5Cmsdn-magazine%5Cauthors%5CJulie_Lerman
 
@@ -56,6 +57,13 @@ https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
 #Code analyzers
 https://medium.com/@bharatdwarkani/top-10-code-quality-static-analysers-for-asp-net-core-1660ad7a8d61
+#Host Startup errors
+https://github.com/aspnet/EntityFrameworkCore/issues/12331
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
+#Asyncs task on startup
+https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-3/
+#Upload from base64
+https://stackoverflow.com/questions/39394129/saving-a-base64-string-as-an-image-into-a-folder-on-server-using-c-sharp-and-web
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
