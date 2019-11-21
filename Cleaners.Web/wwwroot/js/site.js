@@ -64,7 +64,7 @@
         if (level === undefined && level < corvo.logger.level) {
             return;
         }
-        
+
         console.log(message, corvo.logger.styles.MODUL, styles, corvo.logger.styles.MESSAGE);
     };
 
@@ -78,8 +78,8 @@
         FATAL: 'background: #dc3545; color:#fff; padding: 1px 4px; border-radius: 2px; margin-right: 10px'
     };
 
-    corvo.logger.info = function (message, modul = corvo.logger.modul) {        
-        corvo.logger.log(corvo.logger.levels.INFO, `%c${modul}%cINFO%c${message}`, corvo.logger.styles.INFO);        
+    corvo.logger.info = function (message, modul = corvo.logger.modul) {
+        corvo.logger.log(corvo.logger.levels.INFO, `%c${modul}%cINFO%c${message}`, corvo.logger.styles.INFO);
     };
 
     corvo.logger.debug = function (message, modul = corvo.logger.modul) {

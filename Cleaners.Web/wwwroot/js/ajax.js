@@ -1,7 +1,7 @@
-﻿// Executes ajax GET request against given URI
-var loader = '.loading';
-var htmlRegex = /<[a-z][\s\S]*>/i;
+﻿var loader = '.loading';
+var mainModalId = "#modal-container";
 
+// Executes ajax GET request against given URI
 function getData(action, target, blockUi) {
     var $target = $('#' + target);
 
@@ -28,15 +28,25 @@ function getIdAttribute(element, name) {
 }
 
 // Handles success of ajax request
-function onSuccess(element, data) {
+function onSuccess(element, data, contentType) {
     // Check if response is of type text/html and update target
-    if (htmlRegex.test(data)) {
+    if (contentType.indexOf("html") > -1) {
         $(getIdAttribute(element, "data-ajax-update")).html(data);
     }
+    else if (data.cancelRedirect) {
+        $(mainModalId).modal('hide');
+    }
     else {
-        $('#modal-container').fadeOut('slow', function () {
-            // Redirect user if request completed successfully
-            window.location.href = data.redirectUrl;
+        $(mainModalId).fadeOut('100', function () {
+            // If page contains search form, resubmit so we keep current form state
+            var target = $("form[data-form-search=true]");
+            if (target.length > 0) {
+                $(target).submit();
+            }
+            // Otherwise redirect to given Url
+            else {
+                window.location.href = data.redirectUrl;
+            }
         });
     }
 }
@@ -56,8 +66,8 @@ function makeRequest(element, options) {
                 .prop('disabled', true)
                 .html('<i class="fa fa-spinner fa-spin"></i>');
         },
-        success: function (data) {
-            onSuccess(element, data);
+        success: function (data, status, xhr) {
+            onSuccess(element, data, xhr.getResponseHeader("content-type"));
         },
         error: function (data) {
             onError(data);
