@@ -52,6 +52,8 @@ namespace Cleaners.Web.Extensions
             {
                 options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.TempDataCookie}";
             });
+
+            services.AddControllersWithViews();
         }
 
         /// <summary>
@@ -198,7 +200,7 @@ namespace Cleaners.Web.Extensions
             .AddEntityFrameworkStores<CorvoDbContext>()
             // Register localized error messages
             .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
-            .AddDefaultTokenProviders();            
+            .AddDefaultTokenProviders();
 
             // Configure IdentityOptions from appsettings.json
             services.Configure<IdentityOptions>(configuration);

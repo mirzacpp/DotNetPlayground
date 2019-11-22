@@ -10,20 +10,21 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using RimDev.Stuntman.Core;
 
 namespace Cleaners.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
         {
             Configuration = configuration;
             HostingEnvironment = hostingEnvironment;
         }
 
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment HostingEnvironment { get; }
+        public IWebHostEnvironment HostingEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -86,7 +87,9 @@ namespace Cleaners.Web
             app.UseStaticFiles();
             app.UseHttpsRedirection();
 
+            app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             // Register stuntman middleware in development environment
             if (HostingEnvironment.IsDevelopment())
@@ -99,7 +102,12 @@ namespace Cleaners.Web
             // Since mini-profiler is lightweight we can leave it ON in all evironments
             app.UseMiniProfiler();
 
-            app.UseMvcWithDefaultRoute();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

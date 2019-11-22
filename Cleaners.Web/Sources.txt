@@ -42,13 +42,17 @@ https://code-maze.com/migrations-and-seed-data-efcore/
 #IFileProviders
 https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
-#EntityFramework Core and SQL Views
+
+#ENTITYFRAMEWORK
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
+https://www.codemag.com/Article/1911062/Entity-Framework-Core-3.0-A-Foundation-for-the-Future
 #Querying with Include 
 https://github.com/aspnet/EntityFrameworkCore/issues/1833
 #IDesignTimeDbContextFactory 
 https://gunnarpeipman.com/ef-core-console-application/
 https://github.com/aspnet/EntityFrameworkCore/issues/9467
+#ENTITYFRAMEWORK
+
 #Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 
