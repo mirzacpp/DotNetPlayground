@@ -1,5 +1,7 @@
 ﻿// Usefull sources
 #Blogs:
+https://blog.codingmilitia.com/
+https://www.programmingwithwolfgang.com/
 https://rimdev.io/
 https://dusted.codes/
 https://dot-net.awesome-programming.com/
@@ -8,11 +10,16 @@ https://blog.bitscry.com/
 https://www.fixedbuffer.com/
 https://www.thereformedprogrammer.net/
 https://www.stevejgordon.co.uk/
+https://dotnetcoretutorials.com/
+https://docs.microsoft.com/en-us%5Carchive%5Cmsdn-magazine%5Cauthors%5CJulie_Lerman
 https://blog.codinghorror.com/
 https://weblogs.asp.net/dixin
 https://johnthiriet.com/
 https://blog.stephencleary.com/
 https://ardalis.com/blog
+
+#Span i memory
+https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
 
 #Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -20,8 +27,10 @@ https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-addin
 #Migrate 2.2 to 3.0
 https://andrewlock.net/exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/
 
-#ASP.NET CORE
+######################## ASP.NET CORE
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
 https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
+https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 #302 vs 301
 http://www.dotnetbull.com/2013/08/301-permanent-vs-302-temporary-status-code-aspnet-csharp-Implementation.html
 #Compile modified views
@@ -33,6 +42,30 @@ https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
 #Auth
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
+#Migracije i seed 
+https://code-maze.com/migrations-and-seed-data-efcore/
+#IFileProviders
+https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
+https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
+
+#ENTITYFRAMEWORK
+https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
+https://www.codemag.com/Article/1911062/Entity-Framework-Core-3.0-A-Foundation-for-the-Future
+#Querying with Include 
+https://github.com/aspnet/EntityFrameworkCore/issues/1833
+#IDesignTimeDbContextFactory 
+https://gunnarpeipman.com/ef-core-console-application/
+https://github.com/aspnet/EntityFrameworkCore/issues/9467
+#ENTITYFRAMEWORK
+
+#Secrets
+https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
+
+####################### .NET
+# Numerics formating
+https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
+#Code analyzers
+https://medium.com/@bharatdwarkani/top-10-code-quality-static-analysers-for-asp-net-core-1660ad7a8d61
 #Host Startup errors
 https://github.com/aspnet/EntityFrameworkCore/issues/12331
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0

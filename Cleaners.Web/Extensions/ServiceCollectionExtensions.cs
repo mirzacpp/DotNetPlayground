@@ -55,6 +55,8 @@ namespace Cleaners.Web.Extensions
             {
                 options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.TempDataCookie}";
             });
+
+            services.AddControllersWithViews();
         }
 
         /// <summary>

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cleaners.Web.Controllers
@@ -54,6 +55,18 @@ namespace Cleaners.Web.Controllers
         /// <returns></returns>
         [HttpGet("", Name = UserRoutes.Index)]
         public IActionResult Index() => View();
+
+        /// <summary>
+        /// Returns home page for users
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Test", Name = "Test")]
+        public IActionResult Test()
+        {
+            var users = _userService.Get();
+
+            return Content(users.Count().ToString());
+        }
 
         /// <summary>
         /// Returns table data for home page
