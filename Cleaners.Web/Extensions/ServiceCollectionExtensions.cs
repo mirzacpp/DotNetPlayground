@@ -11,12 +11,14 @@ using Cleaners.Web.Infrastructure.AppSettings;
 using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Infrastructure.AutoMapper;
 using Cleaners.Web.Infrastructure.Localization;
+using Cleaners.Web.Infrastructure.Routing;
 using Cleaners.Web.Localization;
 using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -43,6 +45,7 @@ namespace Cleaners.Web.Extensions
                 // Enable automatic validation of antiforgerytoken
                 // This way we don't have to always include ValidateAntiForgeryToken attribute
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
             });
 
             mvcBuilder.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
@@ -198,7 +201,7 @@ namespace Cleaners.Web.Extensions
             .AddEntityFrameworkStores<CorvoDbContext>()
             // Register localized error messages
             .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
-            .AddDefaultTokenProviders();            
+            .AddDefaultTokenProviders();
 
             // Configure IdentityOptions from appsettings.json
             services.Configure<IdentityOptions>(configuration);

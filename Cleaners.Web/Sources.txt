@@ -12,6 +12,7 @@ https://blog.codinghorror.com/
 https://weblogs.asp.net/dixin
 https://johnthiriet.com/
 https://blog.stephencleary.com/
+https://ardalis.com/blog
 
 #Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -39,6 +40,9 @@ https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view
 https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-3/
 #Upload from base64
 https://stackoverflow.com/questions/39394129/saving-a-base64-string-as-an-image-into-a-folder-on-server-using-c-sharp-and-web
+#MediatR
+https://jonhilton.net/2016/08/31/how-to-easily-extend-your-app-using-mediatr-notifications/
+https://ardalis.com/using-mediatr-in-aspnet-core-apps
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/

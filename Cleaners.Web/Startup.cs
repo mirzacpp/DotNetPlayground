@@ -1,10 +1,12 @@
 ﻿using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Files;
+using Cleaners.Web.Infrastructure.Routing;
 using Cleaners.Web.Infrastructure.Stuntman;
 using Cleaners.Web.Services;
 using Cleaners.Web.TagHelpers.Nav;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
+using Corvo.AspNetCore.Mvc.UI.Navigation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -32,6 +34,11 @@ namespace Cleaners.Web
 
             services.ConfigureAppSettings(Configuration);
 
+            services.AddRouting(conf =>
+            {
+                conf.ConstraintMap["slugify"] = typeof(SlugifyParameterTransformer);
+            });
+
             services.ConfigureRazorViewEngine();
 
             services.ConfigureLocalization();
@@ -43,6 +50,10 @@ namespace Cleaners.Web
             services.RegisterApplicationServices();
 
             services.ConfigureAntiforgery();
+
+            services.AddScoped<IFoo, FooA>();
+            services.AddScoped<IFoo, FooB>();
+            services.AddScoped<IFooResolver, FooResolver>();
 
             // Configures identity for authentication and authorization
             services.ConfigureIdentity(Configuration);
@@ -56,6 +67,13 @@ namespace Cleaners.Web
             services.AddTempDataAlertManager();
 
             services.ConfigureMiniProfiler();
+
+            services.AddSingleton<INavigationMenuManager, NavigationMenuManager>(factory =>
+            {
+                var menuManager = new NavigationMenuManager();
+
+                return menuManager;
+            });
 
             services.AddScoped<ICsvFileService, CsvFileService>();
 
@@ -99,7 +117,12 @@ namespace Cleaners.Web
             // Since mini-profiler is lightweight we can leave it ON in all evironments
             app.UseMiniProfiler();
 
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller:slugify=Home}/{action:slugify=Index}/{id?}");
+            });
         }
     }
 }
