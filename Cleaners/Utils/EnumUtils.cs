@@ -10,11 +10,19 @@ namespace Cleaners.Utils
     public static class EnumUtils
     {
         /// <summary>
-        /// Shorther way to retrieve all enum names
+        /// Shorther way to retrieve collection of Enum names
         /// </summary>
         /// <typeparam name="T">Type of enum</typeparam>
         /// <returns>Enum items</returns>
-        public static IEnumerable<T> GetEnumNames<T>() where T : Enum
-            => Enum.GetNames(typeof(T)).Cast<T>();
+        public static IEnumerable<string> GetEnumNames<T>() where T : Enum
+            => Enum.GetNames(typeof(T));
+
+        /// <summary>
+        /// Shorther way to retrieve collection of Enum values
+        /// </summary>
+        /// <typeparam name="T">Type of enum</typeparam>
+        /// <returns>Enum items</returns>
+        public static IEnumerable<T> GetEnumValues<T>() where T : Enum
+            => Enum.GetValues(typeof(T)).Cast<T>();
     }
 }

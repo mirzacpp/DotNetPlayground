@@ -1,4 +1,5 @@
-﻿using Cleaners.Web.Services;
+﻿using Ardalis.GuardClauses;
+using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cleaners.Web.Controllers
@@ -15,6 +16,11 @@ namespace Cleaners.Web.Controllers
 
         public IActionResult CallMe()
         {
+            var number = 15;
+
+            Guard.Against.Zero(number, nameof(number));
+            //Guard.Against.NegativeNumber(number, nameof(number));
+
             var instance = _fooResolver.GetInstance(nameof(FooB));
 
             return Content(instance.Name);

@@ -17,6 +17,8 @@ https://weblogs.asp.net/dixin
 https://johnthiriet.com/
 https://blog.stephencleary.com/
 https://ardalis.com/blog
+https://jonskeet.uk/
+https://kevinchalet.com/
 
 #Span i memory
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
@@ -31,6 +33,8 @@ https://andrewlock.net/exploring-the-new-project-file-program-and-the-generic-ho
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
 https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
+#App secrets
+https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.0&tabs=windows
 #302 vs 301
 http://www.dotnetbull.com/2013/08/301-permanent-vs-302-temporary-status-code-aspnet-csharp-Implementation.html
 #Compile modified views
@@ -76,8 +80,15 @@ https://stackoverflow.com/questions/39394129/saving-a-base64-string-as-an-image-
 #MediatR
 https://jonhilton.net/2016/08/31/how-to-easily-extend-your-app-using-mediatr-notifications/
 https://ardalis.com/using-mediatr-in-aspnet-core-apps
+https://dotnetcoretutorials.com/2019/04/30/the-mediator-pattern-in-net-core-part-1-whats-a-mediator/
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
 https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
 https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html
+
+#SOLID
+https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ 
+
+#DI
+https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/

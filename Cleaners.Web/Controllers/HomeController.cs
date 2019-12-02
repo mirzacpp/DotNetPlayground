@@ -15,6 +15,15 @@ namespace Cleaners.Web.Controllers
         [Route("", Name = HomeRoutes.Index)]
         public IActionResult Index() => View();
 
+        [HttpGet]
+        public IActionResult Test()
+        {
+            var values = EnumUtils.GetEnumNames<DayOfWeek>().ToList();
+            var values2 = EnumUtils.GetEnumValues<DayOfWeek>().ToList();
+
+            return Content("");
+        }
+
         [HttpPost]
         public IActionResult Submit(string value)
         {
