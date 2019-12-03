@@ -14,7 +14,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RimDev.Stuntman.Core;
-using System.ComponentModel;
 
 namespace Cleaners.Web
 {
@@ -50,9 +49,9 @@ namespace Cleaners.Web
             services.ConfigureDatabase(Configuration);
 
             services.RegisterApplicationServices();
-            
+
             services.ConfigureAntiforgery();
-            
+
             services.AddScoped<IFoo, FooA>();
             services.AddScoped<IFoo, FooB>();
             services.AddScoped<IFooResolver, FooResolver>();
