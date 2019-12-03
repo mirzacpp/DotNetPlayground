@@ -14,6 +14,7 @@ namespace Corvo.AspNetCore.Mvc.UI.TagHelpers.Breadcrumb
             output.TagName = "li";
             output.TagMode = TagMode.StartTagAndEndTag;
             output.Attributes.Add("class", "breadcrumb-item");
+            
 
             var innerHtml = string.IsNullOrWhiteSpace(Href) ?
                 Title :
