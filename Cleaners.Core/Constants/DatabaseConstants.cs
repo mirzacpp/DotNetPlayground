@@ -3,8 +3,8 @@
     /// <summary>
     /// Database constants
     /// </summary>
-    public class DatabaseConstants
+    public static class DatabaseConstants
     {
-        public const string ConnectionString = "FealConnection";
+        public const string ConnectionString = "CorvoConnection";
     }
 }

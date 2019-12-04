@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
+﻿using Ardalis.GuardClauses;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Cleaners.Web.TagHelpers
 {
     /// <summary>
     /// Allows conditions to be used as tag element
     /// </summary>
+    [HtmlTargetElement("if", Attributes = IncludeIfAttributeName)]
+    [HtmlTargetElement("if", Attributes = ExcludeIfAttributeName)]
     public class IfTagHelper : TagHelper
     {
         public const string IncludeIfAttributeName = "include-if";
@@ -17,27 +19,15 @@ namespace Cleaners.Web.TagHelpers
         [HtmlAttributeName(ExcludeIfAttributeName)]
         public bool Exclude { get; set; } = false;
 
-        public bool RenderTag { get; set; } = false;
-
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (output == null)
-            {
-                throw new ArgumentNullException(nameof(output));
-            }
+            Guard.Against.Null(context, nameof(context));
+            Guard.Against.Null(output, nameof(output));
 
             if (Exclude || !Include)
             {
                 // Avoid rendering tag name, ie. <include-if></include-if> ...
-                if (!RenderTag)
-                {
-                    output.TagName = null;
-                }
+                output.TagName = null;
                 output.SuppressOutput();
             }
         }
