@@ -75,7 +75,7 @@ namespace Cleaners.Utils
         /// <returns></returns>
         public static IEnumerable<DayOfWeek> GetDaysOfWeek()
         {
-            return EnumUtils.GetEnumNames<DayOfWeek>();
+            return EnumUtils.GetEnumValues<DayOfWeek>();
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Cleaners.Utils
         /// <returns></returns>
         public static IEnumerable<Month> GetMonthsOfYear()
         {
-            return EnumUtils.GetEnumNames<Month>();
+            return EnumUtils.GetEnumValues<Month>();
         }
 
         #region Month of year enum
