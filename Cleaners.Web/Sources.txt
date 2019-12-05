@@ -21,9 +21,13 @@ https://ardalis.com/blog
 https://jonskeet.uk/
 https://kevinchalet.com/
 https://martinfowler.com/
+https://gingter.org/
 
 #Span i memory
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
+
+#Best practices for Strings
+https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings#recommendations_for_string_usage
 
 #Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
