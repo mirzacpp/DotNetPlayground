@@ -33,13 +33,19 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
                 // Simple HTML markup generation using StringBuilder class
                 // For additional styles use embedded styles ?
                 var builder = new StringBuilder();
-                builder.Append(@"<style>table { border-collapse: collapse; width: 100%;th, td { text-align: left; padding: 8px; } th { background-color: #85C1E9; color: white; }</style>");
+                builder.Append(GetCssStyles());
                 builder.Append("<h2>Registered services</h2>");
 
                 if (_config.Services.Count > 0)
                 {
-                    builder.Append($@"<h4 style=""color:red"">There are {_config.Services.Count} registered services.</h4>");
-                    builder.Append(@"<table><tr><th>Service type</th><th>Lifetime</th><th>Implementation type</th></tr>");
+                    builder.Append($@"<h4 class=""red"">There are {_config.Services.Count} registered services.</h4>");
+                    builder.Append(@"<table class=""zui-table"">
+                        <thead><tr>
+                            <th> Service type </th>
+                            <th> Lifetime </th>
+                            <th> Implementation type </ th>
+                        </tr></thead><tbody>");
+
                     foreach (var service in _config.Services)
                     {
                         builder.Append("<tr>");
@@ -48,7 +54,7 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
                         builder.Append($"<td>{service.ImplementationType?.FullName}</td>");
                         builder.Append("</tr>");
                     }
-                    builder.Append("</table>");
+                    builder.Append("</tbody></table>");
                 }
                 else
                 {
@@ -62,6 +68,31 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
             {
                 await _next(httpContext);
             }
+        }
+
+        private string GetCssStyles()
+        {
+            return @"<style>.red {color: red} .zui-table {
+                        border: solid 1px #DDEEEE;
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        font: normal 13px Arial, sans-serif;
+                    }
+                    .zui-table thead th {
+                        background-color: #DDEFEF;
+                        border: solid 1px #DDEEEE;
+                        color: #336B6B;
+                        padding: 10px;
+                        text-align: center;
+                        text-shadow: 1px 1px 1px #fff;
+                    }
+                    .zui-table tbody td {
+                        border: solid 1px #DDEEEE;
+                        color: #333;
+                        padding: 10px;
+                        text-align: center;
+                        text-shadow: 1px 1px 1px #fff;
+                    }</style>";
         }
     }
 }
