@@ -20,9 +20,14 @@ https://blog.stephencleary.com/
 https://ardalis.com/blog
 https://jonskeet.uk/
 https://kevinchalet.com/
+https://martinfowler.com/
+https://gingter.org/
 
 #Span i memory
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
+
+#Best practices for Strings
+https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings#recommendations_for_string_usage
 
 #Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -52,6 +57,8 @@ https://code-maze.com/migrations-and-seed-data-efcore/
 #IFileProviders
 https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
+#Comma and point on form validation
+https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
 
 #ENTITYFRAMEWORK
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
@@ -95,3 +102,4 @@ https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-prin
 
 #DI
 https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/
+https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96

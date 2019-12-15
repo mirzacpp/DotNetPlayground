@@ -5,6 +5,7 @@ using Cleaners.Web.Infrastructure.Routing;
 using Cleaners.Web.Infrastructure.Stuntman;
 using Cleaners.Web.Services;
 using Cleaners.Web.TagHelpers.Nav;
+using Corvo.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Corvo.AspNetCore.Mvc.UI.Navigation;
 using Microsoft.AspNetCore.Builder;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RimDev.Stuntman.Core;
+using System.Collections.Generic;
 
 namespace Cleaners.Web
 {
@@ -86,6 +88,19 @@ namespace Cleaners.Web
             services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
 
             services.ConfigureMvc();
+
+            services.AddSingleton<RegisteredServicesConfig>(config =>
+            {
+                return new RegisteredServicesConfig
+                {
+                    Services = new List<ServiceDescriptor>(services)
+                };
+            });
+
+            //services.Configure<RegisteredServicesConfig>(config =>
+            //{
+            //    config.Services = new List<ServiceDescriptor>(services);
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -94,6 +109,7 @@ namespace Cleaners.Web
             if (HostingEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseShowRegisteredServices();
             }
             else
             {
