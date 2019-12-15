@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Ardalis.GuardClauses;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
 
 namespace Cleaners.Web.Extensions
@@ -12,6 +13,9 @@ namespace Cleaners.Web.Extensions
 
         public static void AddModelErrors(this ModelStateDictionary modelState, IDictionary<string, string> errors)
         {
+            Guard.Against.Null(modelState, nameof(modelState));
+            Guard.Against.Null(errors, nameof(errors));
+
             foreach (var error in errors)
             {
                 modelState.AddModelError(error.Key, error.Value);
@@ -20,6 +24,9 @@ namespace Cleaners.Web.Extensions
 
         public static void AddModelErrors(this ModelStateDictionary modelState, IEnumerable<string> errors)
         {
+            Guard.Against.Null(modelState, nameof(modelState));
+            Guard.Against.Null(errors, nameof(errors));
+
             foreach (var error in errors)
             {
                 modelState.AddModelError(string.Empty, error);
@@ -33,6 +40,8 @@ namespace Cleaners.Web.Extensions
         /// <param name="error"></param>
         public static void AddModelError(this ModelStateDictionary modelState, string error)
         {
+            Guard.Against.Null(modelState, nameof(modelState));
+
             modelState.AddModelError(string.Empty, error);
         }
 
@@ -44,6 +53,8 @@ namespace Cleaners.Web.Extensions
         /// <param name="error"></param>
         public static void AddModelErrorIf(this ModelStateDictionary modelState, bool condition, string error)
         {
+            Guard.Against.Null(modelState, nameof(modelState));
+
             if (condition)
             {
                 modelState.AddModelError(string.Empty, error);
