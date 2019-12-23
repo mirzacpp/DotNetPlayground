@@ -111,3 +111,6 @@ https://git-scm.com/book/id/v2/Git-Branching-Remote-Branches
 #Snippets
 https://marketplace.visualstudio.com/items?itemName=rahulsahay.Csharp-ASPNETCore&ssr=false#review-details
 https://marketplace.visualstudio.com/items?itemName=doggy8088.netcore-snippets&ssr=false#overview
+
+#INTERESTING STUFF
+https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76

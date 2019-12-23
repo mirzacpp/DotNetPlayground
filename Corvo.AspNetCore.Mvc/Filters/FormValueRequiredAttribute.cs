@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Ardalis.GuardClauses;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Routing;
@@ -29,8 +30,8 @@ namespace Corvo.AspNetCore.Mvc.Filters
 
         #region Constructors
 
-        public FormValueRequiredAttribute(params string[] allowedFormButtonNames)
-        : this(true, allowedFormButtonNames) { }
+        public FormValueRequiredAttribute(params string[] allowedFormDataElementNames)
+        : this(true, allowedFormDataElementNames) { }
 
         public FormValueRequiredAttribute(bool shouldValidateValue, params string[] allowedFormDataElementNames)
         {
@@ -50,15 +51,8 @@ namespace Corvo.AspNetCore.Mvc.Filters
         /// <returns></returns>
         public override bool IsValidForRequest(RouteContext routeContext, ActionDescriptor action)
         {
-            if (routeContext == null)
-            {
-                throw new ArgumentNullException(nameof(routeContext));
-            }
-
-            if (action == null)
-            {
-                throw new ArgumentNullException(nameof(action));
-            }
+            Guard.Against.Null(routeContext, nameof(routeContext));
+            Guard.Against.Null(action, nameof(action));
 
             // Only POST requests should be verified
             if (!HttpMethods.IsPost(routeContext.HttpContext.Request.Method))
