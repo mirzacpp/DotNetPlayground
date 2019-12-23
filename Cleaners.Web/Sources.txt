@@ -63,6 +63,7 @@ https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
 #ENTITYFRAMEWORK
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
 https://www.codemag.com/Article/1911062/Entity-Framework-Core-3.0-A-Foundation-for-the-Future
+https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/
 #Querying with Include 
 https://github.com/aspnet/EntityFrameworkCore/issues/1833
 #IDesignTimeDbContextFactory 
@@ -103,3 +104,10 @@ https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-prin
 #DI
 https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/
 https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
+
+#GITHUB
+https://git-scm.com/book/id/v2/Git-Branching-Remote-Branches
+
+#Snippets
+https://marketplace.visualstudio.com/items?itemName=rahulsahay.Csharp-ASPNETCore&ssr=false#review-details
+https://marketplace.visualstudio.com/items?itemName=doggy8088.netcore-snippets&ssr=false#overview

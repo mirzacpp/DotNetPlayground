@@ -14,8 +14,8 @@ namespace Cleaners.Web.Extensions
         public static void AddModelErrors(this ModelStateDictionary modelState, IDictionary<string, string> errors)
         {
             Guard.Against.Null(modelState, nameof(modelState));
-            Guard.Against.Null(errors, nameof(errors));
-
+            Guard.Against.Null(errors, nameof(errors)); 
+            
             foreach (var error in errors)
             {
                 modelState.AddModelError(error.Key, error.Value);
