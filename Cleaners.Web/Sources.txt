@@ -92,6 +92,8 @@ https://andrewlock.net/exploring-rayguns-new-application-performance-monitoring-
 https://jonhilton.net/2016/08/31/how-to-easily-extend-your-app-using-mediatr-notifications/
 https://ardalis.com/using-mediatr-in-aspnet-core-apps
 https://dotnetcoretutorials.com/2019/04/30/the-mediator-pattern-in-net-core-part-1-whats-a-mediator/
+#System.Collections.Generic Namespace
+https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
@@ -114,3 +116,6 @@ https://marketplace.visualstudio.com/items?itemName=doggy8088.netcore-snippets&s
 
 #INTERESTING STUFF
 https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76
+
+#System.Collections.Generic Namespace
+https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1

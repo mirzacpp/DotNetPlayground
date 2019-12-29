@@ -8,9 +8,8 @@
     <meta translate="no" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@ViewBag.PageTitle</title>
+    <title>@ViewData.GetPageTitle()</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
     <environment include="Development">
         <link rel="stylesheet" href="~/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/select2.css" />
@@ -30,13 +29,13 @@
 </head>
 <body class="hold-transition skin-red sidebar-mini">
     <div class="wrapper">
-        <vc:header-menu></vc:header-menu>
-        <vc:navigation-menu></vc:navigation-menu>
+        <vc:header-menu />
+        <vc:navigation-menu />
         <div class="loading" style="display:none"></div>
         <div class="content-wrapper">
             <partial name="_Alerts" />
             <section class="content-header clearfix">
-                <h1 class="pull-left">@ViewBag.PageTitle</h1>
+                <h1 class="pull-left">@ViewData.GetPageTitle()</h1>
                 @*Use this section to define main buttons. Use section to avoid repeating HTML*@
                 <div class="pull-right">
                     @RenderSection("SectionButtons", required: false)
