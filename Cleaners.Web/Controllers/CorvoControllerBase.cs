@@ -6,7 +6,7 @@ namespace Cleaners.Web.Controllers
     /// <summary>
     /// Base controller
     /// </summary>
-    public class CorvoControllerBase : Controller
+    public abstract class CorvoControllerBase : Controller
     {
         #region Methods
 

@@ -21,7 +21,6 @@ namespace Cleaners.Web.Controllers
         [FormValueRequired("submit2")]
         public IActionResult Submit2(string value)
         {
-            1.ToString();
             return Json($"Action: {nameof(Submit2)}, with param {value}");
         }
 

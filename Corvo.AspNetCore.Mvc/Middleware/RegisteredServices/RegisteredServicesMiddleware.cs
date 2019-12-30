@@ -34,6 +34,7 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
                 // For additional styles use embedded styles ?
                 var builder = new StringBuilder();
                 builder.Append(GetCssStyles());
+                builder.Append(@"<div class=""registered-services"">");
                 builder.Append("<h2>Registered services</h2>");
 
                 if (_config.Services.Count > 0)
@@ -72,7 +73,14 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
 
         private string GetCssStyles()
         {
-            return @"<style>.red {color: red} .zui-table {
+            return @"<style>
+                    .registered-services {
+                        font-family: Arial;
+                    }
+                    .registered-services h4 {
+                        color: Arial;
+                    }
+                    .red {color: red} .zui-table {
                         border: solid 1px #DDEEEE;
                         border-collapse: collapse;
                         border-spacing: 0;

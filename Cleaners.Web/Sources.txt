@@ -59,6 +59,8 @@ https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-f
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
 #Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
+#Route data pristup
+https://weblog.west-wind.com/posts/2019/May/15/Accessing-RouteData-in-an-ASPNET-Core-Controller-Constructor
 
 #ENTITYFRAMEWORK
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
@@ -74,6 +76,8 @@ https://github.com/aspnet/EntityFrameworkCore/issues/9467
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 
 ####################### .NET
+#Assemblies
+https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
 # Numerics formating
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
 #Code analyzers
@@ -103,3 +107,13 @@ https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-prin
 #DI
 https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/
 https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
+
+#EVENT STORMING
+https://medium.com/@springdo/a-facilitators-recipe-for-event-storming-941dcb38db0d
+https://openpracticelibrary.com/practice/event-storming/
+
+#IIS EXPRESS
+https://blog.maartenballiauw.be/post/2019/02/26/asp-net-core-iis-express-empty-error-starting-application.html
+
+#GITHUB
+https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow

@@ -1,4 +1,5 @@
-﻿using Cleaners.Web.Constants;
+﻿using AspNetCore.RouteAnalyzer;
+using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Infrastructure.Routing;
@@ -97,10 +98,7 @@ namespace Cleaners.Web
                 };
             });
 
-            //services.Configure<RegisteredServicesConfig>(config =>
-            //{
-            //    config.Services = new List<ServiceDescriptor>(services);
-            //});
+            services.AddRouteAnalyzer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
