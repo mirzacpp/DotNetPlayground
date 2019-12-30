@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -62,7 +63,7 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
                     builder.Append("<p>No registered services found.</p>");
                 }
 
-                httpContext.Response.ContentType = "text/html";
+                httpContext.Response.ContentType = MediaTypeNames.Text.Html;
                 await httpContext.Response.WriteAsync(builder.ToString());
             }
             else

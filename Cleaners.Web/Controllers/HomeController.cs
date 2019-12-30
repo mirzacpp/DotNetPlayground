@@ -5,10 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cleaners.Web.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : CorvoControllerBase
     {
         [HttpGet]
         public IActionResult Index() => View();
+
+        [HttpGet]
+        public IActionResult Test()
+            => AjaxRedirectToActionResult(nameof(Submit));
 
         [HttpPost]
         public IActionResult Submit(string value)

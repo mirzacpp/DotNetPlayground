@@ -1,6 +1,6 @@
 ﻿namespace Cleaners.Web.Constants
 {
-    public class RouteNames
+    public static class RouteNames
     {
         public const string Default = "Default";
     }

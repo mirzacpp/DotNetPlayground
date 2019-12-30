@@ -163,7 +163,7 @@ namespace Cleaners.Web.Controllers
             if (!await _userManager.CheckPasswordAsync(user, model.CurrentPassword))
             {
                 ModelState.AddModelError(_localizer[ResourceKeys.InvalidCurrentPassword]);
-
+                
                 return View(model);
             }
 

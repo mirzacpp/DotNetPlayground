@@ -7,6 +7,9 @@ namespace Cleaners.Web.Extensions
     /// Extension methods for <see cref="System.TimeSpan"/>
     /// Check https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-timespan-format-strings for more info
     /// </summary>
+    /// <remarks>
+    /// Check Humanizer library at GitHub
+    /// </remarks>
     public static class TimeSpanExtensions
     {
         #region Fields
