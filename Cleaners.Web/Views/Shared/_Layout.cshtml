@@ -17,9 +17,14 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/fontawesome.css" />
         <link rel="stylesheet" href="~/css/skin-red.css" />
+        <script src="~/js/jquery.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/adminlte.js"></script>
+        <script src="~/js/jquery.unobtrusive-ajax.js"></script>
+        <script src="~/js/site.js"></script>
     </environment>
 
-    <environment names="Staging,Production">
+    <environment exclude="Development">
         <link rel="stylesheet" href="~/bundles/main.min.css" asp-append-version="true" />
     </environment>
 
@@ -31,7 +36,7 @@
     <div class="wrapper">
         <vc:header-menu />
         <vc:navigation-menu />
-        <div class="loading" style="display:none"></div>
+        <div class="loading" id="loader" style="display:none"></div>
         <div class="content-wrapper">
             <partial name="_Alerts" />
             <section class="content-header clearfix">
@@ -61,17 +66,6 @@
 
     @*Invoke mini profiler tag helper*@
     <mini-profiler />
-
-    <environment include="Development">
-        <script src="~/js/jquery.js"></script>
-        <script src="~/js/bootstrap.js"></script>
-        <script src="~/js/adminlte.js"></script>
-        <script src="~/js/ajax.js"></script>
-        <script src="~/js/site.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/bundles/main.min.js" asp-append-version="true"></script>
-    </environment>
 
     <script>
         // Refactor with tag helper and separate .js file

@@ -17,7 +17,8 @@
       "wwwroot/js/bootstrap.js",
       "wwwroot/js/adminlte.js",
       "wwwroot/js/site.js",
-      "wwwroot/js/ajax.js"
+      "wwwroot/js/jquery-ajax-unobtrusive.js"
+      //"wwwroot/js/ajax.js"
     ]
   }
 ]

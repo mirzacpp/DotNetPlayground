@@ -7,7 +7,7 @@
 
 
   <ItemGroup>
-  <PackageReference Include="Ardalis.GuardClauses" Version="1.3.1" />
+  <PackageReference Include="Ardalis.GuardClauses" Version="1.3.2" />
   <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
@@ -45,6 +45,7 @@
     <ProjectReference Include="..\Cleaners.Data\Cleaners.Data.csproj" />
     <ProjectReference Include="..\Cleaners.Services\Cleaners.Services.csproj" />
     <ProjectReference Include="..\Cleaners\Cleaners.csproj" />
+    <ProjectReference Include="..\Corvo.AspNetCore.Mvc.UI.TagHelpers\Corvo.AspNetCore.Mvc.UI.TagHelpers.csproj" />
     <ProjectReference Include="..\Corvo.AspNetCore.Mvc.UI\Corvo.AspNetCore.Mvc.UI.csproj" />
     <ProjectReference Include="..\Corvo.AspNetCore.Mvc\Corvo.AspNetCore.Mvc.csproj" />
   </ItemGroup>

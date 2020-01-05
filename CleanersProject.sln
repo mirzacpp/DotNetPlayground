@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvo.AspNetCore.Mvc", "Cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvo.AspNetCore.Mvc.UI", "Corvo.AspNetCore.Mvc.UI\Corvo.AspNetCore.Mvc.UI.csproj", "{6F7E0365-6C5F-4570-8004-C88391FE673D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleaners", "Cleaners\Cleaners.csproj", "{5126A227-BE2A-4D10-B7F4-CB590CCC64ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleaners", "Cleaners\Cleaners.csproj", "{5126A227-BE2A-4D10-B7F4-CB590CCC64ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvo.Tests", "Corvo.Tests\Corvo.Tests.csproj", "{48742204-5F3B-4625-BB22-6AB3F391653D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{5126A227-BE2A-4D10-B7F4-CB590CCC64ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5126A227-BE2A-4D10-B7F4-CB590CCC64ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5126A227-BE2A-4D10-B7F4-CB590CCC64ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48742204-5F3B-4625-BB22-6AB3F391653D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48742204-5F3B-4625-BB22-6AB3F391653D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48742204-5F3B-4625-BB22-6AB3F391653D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48742204-5F3B-4625-BB22-6AB3F391653D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
