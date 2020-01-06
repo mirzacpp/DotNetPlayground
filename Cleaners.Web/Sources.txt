@@ -98,6 +98,8 @@ https://ardalis.com/using-mediatr-in-aspnet-core-apps
 https://dotnetcoretutorials.com/2019/04/30/the-mediator-pattern-in-net-core-part-1-whats-a-mediator/
 #System.Collections.Generic Namespace
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
+#DateTime
+https://weblog.west-wind.com/posts/2015/feb/10/back-to-basics-utc-and-timezones-in-net-web-apps
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
