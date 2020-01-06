@@ -1,0 +1,18 @@
+﻿@inject IViewLocalizer Localizer
+@{
+    ViewData.SetPageTitle(Localizer.GetString("welcome.message", "Cao"));
+}
+<div class="row">
+    <div id="testBlock" class="col-md-12">              
+        <form asp-action="AjaxTestContent"
+              asp-ajax="true"
+              asp-ajax-mode="InsertAfter"
+              asp-ajax-loading="#loaders"              
+              asp-ajax-update="#insertion-target">
+            <button type="submit">More content</button>
+        </form>
+        <div id="insertion-target">
+            <p>Ok vlado</p>
+        </div>
+    </div>
+</div>

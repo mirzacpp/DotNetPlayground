@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ardalis.GuardClauses;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -84,6 +85,9 @@ namespace Cleaners.Web.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            Guard.Against.Null(context, nameof(context));
+            Guard.Against.Null(output, nameof(output));
+
             var div = new TagBuilder("div");
 
             var targetUri = GenerateUri();
