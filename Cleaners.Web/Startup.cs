@@ -5,6 +5,7 @@ using Cleaners.Web.Infrastructure.Routing;
 using Cleaners.Web.Infrastructure.Stuntman;
 using Cleaners.Web.Services;
 using Cleaners.Web.TagHelpers.Nav;
+using Corvo.AspNetCore.Mvc.Middleware.Claims;
 using Corvo.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Corvo.AspNetCore.Mvc.UI.Navigation;
@@ -129,6 +130,7 @@ namespace Cleaners.Web
             if (HostingEnvironment.IsDevelopment())
             {
                 app.UseStuntman();
+                app.UseClaimsDisplay();
             }
 
             app.ConfigureLocalization();

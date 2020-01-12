@@ -368,7 +368,7 @@ namespace Cleaners.Web.Controllers
             return View(model);
         }
 
-        [ServiceFilter(typeof(InternalPasswordResetFilter))]
+        [ServiceFilter(typeof(InternalPasswordResetFilterAttribute))]
         [HttpGet("{id}/reset-password", Name = UserRoutes.ResetPassword)]
         public async Task<IActionResult> ResetPassword(int id)
         {
@@ -382,7 +382,7 @@ namespace Cleaners.Web.Controllers
             return PartialView("_ResetPassword", model);
         }
 
-        [ServiceFilter(typeof(InternalPasswordResetFilter))]
+        [ServiceFilter(typeof(InternalPasswordResetFilterAttribute))]
         [HttpPost("{id}/reset-password")]
         public async Task<IActionResult> ResetPassword(UserResetPasswordModel model)
         {

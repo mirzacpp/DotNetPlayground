@@ -42,9 +42,9 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
                     builder.Append($@"<h4 class=""red"">There are {_config.Services.Count} registered services.</h4>");
                     builder.Append(@"<table class=""zui-table"">
                         <thead><tr>
-                            <th> Service type </th>
-                            <th> Lifetime </th>
-                            <th> Implementation type </ th>
+                            <th>Service type</th>
+                            <th>Lifetime</th>
+                            <th>Implementation type</th>
                         </tr></thead><tbody>");
 
                     foreach (var service in _config.Services)

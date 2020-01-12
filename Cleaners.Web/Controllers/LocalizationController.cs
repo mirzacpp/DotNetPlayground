@@ -21,7 +21,7 @@ namespace Cleaners.Web.Controllers
         public IActionResult ChangeLanguage(string culture)
         {
             Response.Cookies.Append(
-                $"{ CookieDefaults.Prefix}{ CookieDefaults.CultureCookie}",
+                CookieNames.Culture,
                 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
                 // Move this to constants
                 new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }

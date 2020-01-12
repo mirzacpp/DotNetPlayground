@@ -53,7 +53,7 @@ namespace Cleaners.Web.Extensions
 
             mvcBuilder.AddCookieTempDataProvider(options =>
             {
-                options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.TempDataCookie}";
+                options.Cookie.Name = CookieNames.TempData;
             });
 
             services.AddControllersWithViews();
@@ -137,7 +137,7 @@ namespace Cleaners.Web.Extensions
                 // Set cookie name for cookie provider
                 var cookieProvider = options.RequestCultureProviders.OfType<CookieRequestCultureProvider>().First();
 
-                cookieProvider.CookieName = $"{CookieDefaults.Prefix}{CookieDefaults.CultureCookie}";
+                cookieProvider.CookieName = CookieNames.Culture;
 
                 // Remove all culture providers so we can only use cookie localization
                 // Remove this code if query string and language header providers are also used
@@ -197,7 +197,7 @@ namespace Cleaners.Web.Extensions
         {
             // Register internal password change filter as singleton
             // Note that if we use IOptionsSnapshot instead of IOptions, we should register this as scoped
-            services.AddSingleton<InternalPasswordResetFilter>();
+            services.AddSingleton<InternalPasswordResetFilterAttribute>();
 
             services.AddIdentity<User, Role>()
             .AddEntityFrameworkStores<CorvoDbContext>()
@@ -211,9 +211,10 @@ namespace Cleaners.Web.Extensions
             // Configure cookie authentication
             services.ConfigureApplicationCookie(options =>
             {
-                options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.AuthenticationCookie}";
+                options.Cookie.Name = CookieNames.Authentication;
                 options.Cookie.HttpOnly = CookieAuthenticationDefaults.HttpOnly;
-                options.Cookie.Expiration = TimeSpan.FromDays(30);
+                // This will throw OptionsValidationException, use ExpireTimeSpan instead
+                //options.Cookie.Expiration = TimeSpan.FromDays(30);
                 options.ExpireTimeSpan = TimeSpan.FromDays(3);
                 options.AccessDeniedPath = CookieAuthenticationDefaults.AccessDeniedPath;
                 options.LoginPath = CookieAuthenticationDefaults.LoginPath;
@@ -230,7 +231,7 @@ namespace Cleaners.Web.Extensions
         {
             services.AddAntiforgery(options =>
             {
-                options.Cookie.Name = $"{CookieDefaults.Prefix}{CookieDefaults.AntiforgeryTokenCookie}";
+                options.Cookie.Name = CookieNames.AntiforgeryToken;
                 options.FormFieldName = "_f";
                 options.HeaderName = "X-CRSF-TOKEN";
             });
@@ -245,7 +246,7 @@ namespace Cleaners.Web.Extensions
             services.AddRouting(options =>
             {
                 options.AppendTrailingSlash = true;
-                options.LowercaseUrls = true;
+                options.LowercaseUrls = true;                
             });
         }
 
