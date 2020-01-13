@@ -97,20 +97,19 @@ namespace Cleaners.Web
                     Services = new List<ServiceDescriptor>(services)
                 };
             });
-
-            //services.Configure<RegisteredServicesConfig>(config =>
-            //{
-            //    config.Services = new List<ServiceDescriptor>(services);
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseWelcomePage("/welcome");
+
             if (HostingEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseShowRegisteredServices();
+                app.UseStuntman();
+                app.UseClaimsDisplay();
             }
             else
             {
@@ -122,20 +121,15 @@ namespace Cleaners.Web
             app.UseStaticFiles();
             app.UseHttpsRedirection();
 
+            // Enable endpoint routing
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // Register stuntman middleware in development environment
-            if (HostingEnvironment.IsDevelopment())
-            {
-                app.UseStuntman();
-                app.UseClaimsDisplay();
-            }
-
             app.ConfigureLocalization();
 
             // Since mini-profiler is lightweight we can leave it ON in all evironments
+            // In that case, make sure to authorize it.
             app.UseMiniProfiler();
 
             app.UseEndpoints(endpoints =>

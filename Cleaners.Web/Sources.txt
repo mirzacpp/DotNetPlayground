@@ -57,6 +57,7 @@ https://code-maze.com/migrations-and-seed-data-efcore/
 #IFileProviders
 https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
+https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at-Runtime-in-RazorPages
 #Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
 

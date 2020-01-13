@@ -40,7 +40,7 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
                 if (_config.Services.Count > 0)
                 {
                     builder.Append($@"<h4 class=""red"">There are {_config.Services.Count} registered services.</h4>");
-                    builder.Append(@"<table class=""zui-table"">
+                    builder.Append(@"<table class=""services-table"">
                         <thead><tr>
                             <th>Service type</th>
                             <th>Lifetime</th>
@@ -73,13 +73,13 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
 
         private string GetCssStyles()
         {
-            return @"<style>.red {color: red} .zui-table {
+            return @"<style>.red {color: red} .services-table {
                         border: solid 1px #DDEEEE;
                         border-collapse: collapse;
                         border-spacing: 0;
                         font: normal 13px Arial, sans-serif;
                     }
-                    .zui-table thead th {
+                    .services-table thead th {
                         background-color: #DDEFEF;
                         border: solid 1px #DDEEEE;
                         color: #336B6B;
@@ -87,7 +87,7 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
                         text-align: center;
                         text-shadow: 1px 1px 1px #fff;
                     }
-                    .zui-table tbody td {
+                    .services-table tbody td {
                         border: solid 1px #DDEEEE;
                         color: #333;
                         padding: 10px;
