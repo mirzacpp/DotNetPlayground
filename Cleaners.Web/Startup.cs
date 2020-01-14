@@ -4,14 +4,12 @@ using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Infrastructure.Routing;
 using Cleaners.Web.Infrastructure.Stuntman;
 using Cleaners.Web.Services;
-using Cleaners.Web.TagHelpers.Nav;
 using Corvo.AspNetCore.Mvc.Middleware.Claims;
 using Corvo.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Corvo.AspNetCore.Mvc.UI.Navigation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -86,7 +84,7 @@ namespace Cleaners.Web
             services.AddCorvoFileProvider();
 
             //services.AddScoped<ITagHelperComponent, MetaTagHelperComponent>();
-            services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
+            //services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
 
             services.ConfigureMvc();
 
@@ -102,8 +100,6 @@ namespace Cleaners.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            app.UseWelcomePage("/welcome");
-
             if (HostingEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
