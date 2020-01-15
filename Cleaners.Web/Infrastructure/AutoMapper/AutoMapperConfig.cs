@@ -10,6 +10,9 @@ namespace Cleaners.Web.Infrastructure.AutoMapper
     /// </summary>
     public class AutoMapperConfig : Profile
     {
+        /// <summary>
+        /// Create separate profile for all entities
+        /// </summary>
         public AutoMapperConfig()
         {
             #region User

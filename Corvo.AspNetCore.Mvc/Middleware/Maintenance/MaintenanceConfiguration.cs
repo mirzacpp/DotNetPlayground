@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mime;
 
 namespace Corvo.AspNetCore.Mvc.Middleware.Maintenance
 {
@@ -17,6 +18,8 @@ namespace Corvo.AspNetCore.Mvc.Middleware.Maintenance
         {
             _isEnabled = isEnabled;
             _response = response;
+            RetryAfterSecondsOffset = 3600;
+            ContentType = MediaTypeNames.Text.Html;
         }
 
         public bool IsEnabled => _isEnabled();
@@ -25,8 +28,8 @@ namespace Corvo.AspNetCore.Mvc.Middleware.Maintenance
         /// <summary>
         /// Retry-After header value
         /// </summary>
-        public int RetryAfterSecondsOffset { get; set; } = 3600;
+        public int RetryAfterSecondsOffset { get; set; }
 
-        public string ContentType { get; set; } = "text/html";
+        public string ContentType { get; set; }
     }
 }

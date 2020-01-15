@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvo.AspNetCore.Mvc.UI", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleaners", "Cleaners\Cleaners.csproj", "{5126A227-BE2A-4D10-B7F4-CB590CCC64ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvo.Tests", "Corvo.Tests\Corvo.Tests.csproj", "{48742204-5F3B-4625-BB22-6AB3F391653D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvo.Tests", "Corvo.Tests\Corvo.Tests.csproj", "{48742204-5F3B-4625-BB22-6AB3F391653D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvo.Consola", "Corvo.Consola\Corvo.Consola.csproj", "{DC32D88D-403E-4678-9D86-492374DEEA69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{48742204-5F3B-4625-BB22-6AB3F391653D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48742204-5F3B-4625-BB22-6AB3F391653D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48742204-5F3B-4625-BB22-6AB3F391653D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC32D88D-403E-4678-9D86-492374DEEA69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC32D88D-403E-4678-9D86-492374DEEA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC32D88D-403E-4678-9D86-492374DEEA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC32D88D-403E-4678-9D86-492374DEEA69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

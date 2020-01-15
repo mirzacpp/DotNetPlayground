@@ -5,7 +5,7 @@ using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Infrastructure.Routing;
 using Cleaners.Web.Infrastructure.Stuntman;
 using Cleaners.Web.Services;
-using Cleaners.Web.TagHelpers.Nav;
+using Corvo.AspNetCore.Mvc.Middleware.Claims;
 using Corvo.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Corvo.AspNetCore.Mvc.UI.Navigation;
@@ -88,7 +88,7 @@ namespace Cleaners.Web
             services.AddCorvoFileProvider();
 
             //services.AddScoped<ITagHelperComponent, MetaTagHelperComponent>();
-            services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
+            //services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
 
             services.ConfigureMvc();
 
@@ -110,6 +110,8 @@ namespace Cleaners.Web
             {
                 app.UseDeveloperExceptionPage();
                 app.UseShowRegisteredServices();
+                app.UseStuntman();
+                app.UseClaimsDisplay();
             }
             else
             {
@@ -121,19 +123,15 @@ namespace Cleaners.Web
             app.UseStaticFiles();
             app.UseHttpsRedirection();
 
+            // Enable endpoint routing
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // Register stuntman middleware in development environment
-            if (HostingEnvironment.IsDevelopment())
-            {
-                app.UseStuntman();
-            }
-
             app.ConfigureLocalization();
 
             // Since mini-profiler is lightweight we can leave it ON in all evironments
+            // In that case, make sure to authorize it.
             app.UseMiniProfiler();
 
             app.UseEndpoints(endpoints =>
