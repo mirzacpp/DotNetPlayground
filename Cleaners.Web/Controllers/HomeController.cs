@@ -8,7 +8,7 @@ namespace Cleaners.Web.Controllers
     public class HomeController : CorvoControllerBase
     {
         [HttpGet]
-        public IActionResult Index() => View();        
+        public IActionResult Index() => View();
 
         [HttpGet]
         public IActionResult Test()
@@ -30,10 +30,13 @@ namespace Cleaners.Web.Controllers
 
         public IActionResult About() => View();
 
-
         [HttpGet]
         public IActionResult AjaxTest() => View();
-        
+
         public IActionResult AjaxTestContent() => PartialView("_AjaxTestContent");
+
+        public IActionResult AjaxTestContent2() => Content(Url.Action(nameof(AjaxTest)));
+
+        //public IActionResult AjaxTestContent2() => Json(new { redirectUrl = Url.Action(nameof(AjaxTest)) });
     }
 }

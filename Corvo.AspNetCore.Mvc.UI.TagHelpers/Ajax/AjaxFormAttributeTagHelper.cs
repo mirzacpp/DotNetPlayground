@@ -1,6 +1,4 @@
-﻿//using Microsoft.AspNetCore.Mvc.TagHelpers;
-//using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Ardalis.GuardClauses;
+﻿using Ardalis.GuardClauses;
 using Corvo.AspNetCore.Mvc.UI.TagHelpers.Extensions;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -139,24 +137,26 @@ namespace Corvo.AspNetCore.Mvc.UI.TagHelpers.Ajax
 
                 if (!string.IsNullOrEmpty(UpdateElementId))
                 {
-                    output.Attributes.Add(
-                        "data-ajax-update",
-                        UpdateElementId.StartsWith("#") ? UpdateElementId : "#" + UpdateElementId);
-
+                    output.Attributes.Add("data-ajax-update", ProcessElementId(UpdateElementId));
                     // Append insertion mode only if update element id is present
                     output.Attributes.Add("data-ajax-mode", InsertionMode.ToInsertionModeUnobtrusive());
                 }
 
                 if (!string.IsNullOrEmpty(LoadingElementId))
                 {
-                    output.Attributes.Add(
-                        "data-ajax-loading",
-                        LoadingElementId.StartsWith("#") ? LoadingElementId : "#" + LoadingElementId);
-
+                    output.Attributes.Add("data-ajax-loading", ProcessElementId(LoadingElementId));
                     output.Attributes.AddIf(LoadingElementDuration > 0, "data-ajax-loading-duration", LoadingElementDuration);
                 }
             }
         }
+
+        /// <summary>
+        /// Checks if given value is valid jquery selector
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private string ProcessElementId(string value)
+            => value.StartsWith("#") ? value : "#" + value;
     }
 
     /// <summary>

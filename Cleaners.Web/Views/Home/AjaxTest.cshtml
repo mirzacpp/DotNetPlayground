@@ -3,11 +3,10 @@
     ViewData.SetPageTitle(Localizer.GetString("welcome.message", "Cao"));
 }
 <div class="row">
-    <div id="testBlock" class="col-md-12">              
-        <form asp-action="AjaxTestContent"
+    <div id="testBlock" class="col-md-12">
+        <form asp-action="AjaxTestContent2"
               asp-ajax="true"
-              asp-ajax-mode="InsertAfter"
-              asp-ajax-loading="#loaders"              
+              asp-ajax-confirm="@Localizer.GetString("welcome.message", "Cao")"
               asp-ajax-update="#insertion-target">
             <button type="submit">More content</button>
         </form>
