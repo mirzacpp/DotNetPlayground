@@ -24,6 +24,8 @@ https://martinfowler.com/
 https://gingter.org/
 https://www.jerriepelser.com/blog/
 https://rehansaeed.com/blog/
+https://haacked.com/
+
 #Span i memory
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
 
