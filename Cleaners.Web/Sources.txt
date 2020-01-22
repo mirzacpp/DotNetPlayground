@@ -76,6 +76,8 @@ https://github.com/aspnet/EntityFrameworkCore/issues/9467
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 
 ####################### .NET
+#Performanse
+https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 # Numerics formating
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
 #Code analyzers
