@@ -22,6 +22,9 @@ https://jonskeet.uk/
 https://kevinchalet.com/
 https://martinfowler.com/
 https://gingter.org/
+https://www.jerriepelser.com/blog/
+https://rehansaeed.com/blog/
+https://haacked.com/
 
 #Span i memory
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
@@ -39,6 +42,10 @@ https://andrewlock.net/exploring-the-new-project-file-program-and-the-generic-ho
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
 https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
+#Logging
+https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
+#Middleware
+https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 #App secrets
 https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.0&tabs=windows
 #302 vs 301
@@ -60,11 +67,21 @@ https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnet
 https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at-Runtime-in-RazorPages
 #Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
+#Route data pristup
+https://weblog.west-wind.com/posts/2019/May/15/Accessing-RouteData-in-an-ASPNET-Core-Controller-Constructor
+https://andrewlock.net/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/
+https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
+#Model binding
+https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
 
-#ENTITYFRAMEWORK
+###############ENTITYFRAMEWORK
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
 https://www.codemag.com/Article/1911062/Entity-Framework-Core-3.0-A-Foundation-for-the-Future
 https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/
+https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
+https://www.danylkoweb.com/Blog/aspnet-core-with-entity-framework-core-returning-multiple-resultsets-OL
+#Subqueries N+1 problem
+https://github.com/dotnet/efcore/issues/11186
 #Querying with Include 
 https://github.com/aspnet/EntityFrameworkCore/issues/1833
 #IDesignTimeDbContextFactory 
@@ -78,6 +95,8 @@ https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 ####################### .NET
 #Performanse
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
+#Assemblies
+https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
 # Numerics formating
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
 #Code analyzers
@@ -97,17 +116,32 @@ https://ardalis.com/using-mediatr-in-aspnet-core-apps
 https://dotnetcoretutorials.com/2019/04/30/the-mediator-pattern-in-net-core-part-1-whats-a-mediator/
 #System.Collections.Generic Namespace
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
+#DateTime
+https://weblog.west-wind.com/posts/2015/feb/10/back-to-basics-utc-and-timezones-in-net-web-apps
+#HTTP CLIENT
+https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
 
 #ASYNC/AWAIT
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
 https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
 https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html
-
+https://blog.stephencleary.com/2013/04/implicit-async-context-asynclocal.html
 #SOLID
 https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ 
 
 #DI
 https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/
+https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
+
+#EVENT STORMING
+https://medium.com/@springdo/a-facilitators-recipe-for-event-storming-941dcb38db0d
+https://openpracticelibrary.com/practice/event-storming/
+
+#IIS EXPRESS
+https://blog.maartenballiauw.be/post/2019/02/26/asp-net-core-iis-express-empty-error-starting-application.html
+
+#GITHUB
+https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
 https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
 
 #GITHUB
@@ -119,6 +153,10 @@ https://marketplace.visualstudio.com/items?itemName=doggy8088.netcore-snippets&s
 
 #INTERESTING STUFF
 https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76
+https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-somewhat-harmful
 
 #System.Collections.Generic Namespace
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
+
+#Benchmarking
+https://www.stevejgordon.co.uk/introduction-to-benchmarking-csharp-code-with-benchmark-dot-net

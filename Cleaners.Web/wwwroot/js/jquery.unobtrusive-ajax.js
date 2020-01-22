@@ -2,7 +2,7 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // @version <placeholder>
-// 
+//
 // Microsoft grants you the right to use these script files for the sole
 // purpose of either: (i) interacting through your browser with the Microsoft
 // website or online service, subject to the applicable licensing or use
@@ -44,31 +44,50 @@
         }
     }
 
+    function hasContentType(contentType) {
+        return contentType.indexOf(contentType) !== -1;
+    }
+
     function asyncOnSuccess(element, data, contentType) {
         var mode;
+        console.log(contentType);
 
         if (contentType.indexOf("application/x-javascript") !== -1) {  // jQuery already executes JavaScript for us
             return;
         }
-        mode = (element.getAttribute("data-ajax-mode") || "").toUpperCase();        
-        $(element.getAttribute("data-ajax-update")).each(function (i, update) {
-            var top;
+        // Check if return type is text/html and then proceed with content update
+        if (contentType.indexOf("text/html") !== -1) {
+            mode = (element.getAttribute("data-ajax-mode") || "").toUpperCase();
+            $(element.getAttribute("data-ajax-update")).each(function (i, update) {
+                var top;
 
-            switch (mode) {
-                case "BEFORE":
-                    $(update).prepend(data);
-                    break;
-                case "AFTER":
-                    $(update).append(data);
-                    break;
-                case "REPLACE-WITH":
-                    $(update).replaceWith(data);
-                    break;
-                default:
-                    $(update).html(data);
-                    break;
-            }
-        });
+                switch (mode) {
+                    case "BEFORE":
+                        $(update).prepend(data);
+                        break;
+                    case "AFTER":
+                        $(update).append(data);
+                        break;
+                    case "REPLACE-WITH":
+                        $(update).replaceWith(data);
+                        break;
+                    default:
+                        $(update).html(data);
+                        break;
+                }
+            });
+        }
+        // Check if response has redirect url
+        else if (contentType.indexOf("application/json") !== -1) {
+            // Use html/plan as content type if response contains redirect url only ?
+            window.location.href = data.redirectUrl;
+        }
+        // Check if form has defined data-ajax-form-resubmit attribute set to true and resubmit search form
+        //else if (hasContentType("application/json")) {
+        //    console.log("Resubmit here.");
+        //}
+
+        console.error("Invalid AJAX response data.");
     }
 
     function asyncRequest(element, options) {
@@ -121,7 +140,7 @@
         // add the input file that were not previously included in the serializeArray()
         // set processData and contentType to false
         var $element = $(element);
-        if ($element.is("form") && $element.attr("enctype") == "multipart/form-data") {
+        if ($element.is("form") && $element.attr("enctype") === "multipart/form-data") {
             var formdata = new FormData();
             $.each(options.data, function (i, v) {
                 formdata.append(v.name, v.value);

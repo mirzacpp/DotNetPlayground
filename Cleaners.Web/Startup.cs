@@ -1,4 +1,5 @@
-﻿using Cleaners.Web.Constants;
+﻿using AspNetCore.RouteAnalyzer;
+using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Files;
 using Cleaners.Web.Infrastructure.Routing;
@@ -10,11 +11,14 @@ using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Corvo.AspNetCore.Mvc.UI.Navigation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RimDev.Stuntman.Core;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Cleaners.Web
 {
@@ -95,6 +99,8 @@ namespace Cleaners.Web
                     Services = new List<ServiceDescriptor>(services)
                 };
             });
+
+            services.AddRouteAnalyzer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
