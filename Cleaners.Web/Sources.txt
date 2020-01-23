@@ -26,9 +26,15 @@ https://www.jerriepelser.com/blog/
 https://rehansaeed.com/blog/
 https://haacked.com/
 http://www.ziyad.info/
+https://adamsitnik.com/
+https://aakinshin.net/posts/
+http://mustoverride.com/
+https://www.meziantou.net/
 
 #Span i memory
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
+https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t
+https://www.meziantou.net/some-performance-tricks-with-dotnet-strings.htm
 
 #Best practices for Strings
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings#recommendations_for_string_usage
