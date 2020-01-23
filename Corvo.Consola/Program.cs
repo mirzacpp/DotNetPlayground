@@ -10,8 +10,6 @@ namespace Corvo.Consola
     {
         private static void Main(string[] args)
         {
-            ILGenerator
-
             var s1 = "Mirza";
             var s2 = "Mirz";
             var s3 = "Mir";

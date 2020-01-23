@@ -70,8 +70,6 @@ namespace Cleaners.Web.Controllers
                 ReturnUrl = returnUrl
             };
 
-            string.Create()
-
             return View(model);
         }
 
