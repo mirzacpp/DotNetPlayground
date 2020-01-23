@@ -25,6 +25,7 @@ https://gingter.org/
 https://www.jerriepelser.com/blog/
 https://rehansaeed.com/blog/
 https://haacked.com/
+http://www.ziyad.info/
 
 #Span i memory
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
@@ -48,6 +49,8 @@ https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 #App secrets
 https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.0&tabs=windows
+#Json
+https://codeburst.io/working-with-json-in-net-core-3-2fd1236126c1
 #302 vs 301
 http://www.dotnetbull.com/2013/08/301-permanent-vs-302-temporary-status-code-aspnet-csharp-Implementation.html
 #Compile modified views
@@ -73,6 +76,10 @@ https://andrewlock.net/converting-a-terminal-middleware-to-endpoint-routing-in-a
 https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
 #Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
+#PathBase
+https://stackoverflow.com/questions/58614864/whats-the-difference-between-httprequest-path-and-httprequest-pathbase-in-asp-n
+https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f67/src/Http/Http.Abstractions/src/Extensions/UsePathBaseMiddleware.cs
+
 
 ###############ENTITYFRAMEWORK
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
@@ -80,6 +87,7 @@ https://www.codemag.com/Article/1911062/Entity-Framework-Core-3.0-A-Foundation-f
 https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/
 https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
 https://www.danylkoweb.com/Blog/aspnet-core-with-entity-framework-core-returning-multiple-resultsets-OL
+https://visualstudiomagazine.com/articles/2019/09/12/ef-previews.aspx
 #Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 #Querying with Include 
