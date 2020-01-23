@@ -101,6 +101,8 @@ https://github.com/aspnet/EntityFrameworkCore/issues/9467
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 
 ####################### .NET
+#Performanse
+https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 #Assemblies
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
 # Numerics formating
