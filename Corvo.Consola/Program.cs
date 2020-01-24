@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection.Emit;
 
 namespace Corvo.Consola
 {
@@ -10,21 +9,33 @@ namespace Corvo.Consola
     {
         private static void Main(string[] args)
         {
-            var s1 = "Mirza";
-            var s2 = "Mirz";
-            var s3 = "Mir";
-            var s4 = "ir";
-            var s5 = "a";
+            var data = new NextLevelShit
+            {
+                FirstName = "Next",
+                LastName = "Level"
+            };
 
-            Console.WriteLine($"'{s2}' => '{s1}' requires {NextLevelShit.LevenshteinDistance(s2, s1)} chars edits.");
-            Console.WriteLine($"'{s3}' => '{s1}' requires {NextLevelShit.LevenshteinDistance(s3, s1)} chars edits.");
-            Console.WriteLine($"'{s4}' => '{s1}' requires {NextLevelShit.LevenshteinDistance(s4, s1)} chars edits.");
-            Console.WriteLine($"'{s5}' => '{s1}' requires {NextLevelShit.LevenshteinDistance(s5, s1)} chars edits.");
+            var len = data.FirstName.Length + 1 + data.LastName.Length + 1;
+
+            var optimizedString = string.Create(len, data, (chars, state) =>
+            {
+                var position = 0;
+                state.FirstName.AsSpan().CopyTo(chars);
+                position += state.FirstName.Length;
+                state.LastName.AsSpan().CopyTo(chars.Slice(position));
+                position += state.LastName.Length;
+            });
+
+            Console.WriteLine(optimizedString);
+            Console.WriteLine("Au revoir");
         }
     }
 
     internal class NextLevelShit
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
         public static int LevenshteinDistance(string s, string t)
         {
             var n = s.Length;

@@ -31,6 +31,7 @@ https://aakinshin.net/posts/
 http://mustoverride.com/
 https://www.meziantou.net/
 
+
 #Span i memory
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
 https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t
@@ -109,6 +110,8 @@ https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 ####################### .NET
 #Performanse
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
+https://www.youtube.com/watch?v=NVWQRbqcXJ4
+https://www.youtube.com/watch?v=nK54s84xRRs
 #Assemblies
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
 # Numerics formating
@@ -140,12 +143,18 @@ https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for
 https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
 https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html
 https://blog.stephencleary.com/2013/04/implicit-async-context-asynclocal.html
-#SOLID
+https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/
+https://blog.stephencleary.com/2013/11/there-is-no-thread.html
+
+#SOLID  
 https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ 
 
 #DI
 https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/
 https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
+#Atuo registration
+https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/
+#DI
 
 #EVENT STORMING
 https://medium.com/@springdo/a-facilitators-recipe-for-event-storming-941dcb38db0d
