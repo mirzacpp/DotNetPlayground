@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
 
 namespace Corvo.Consola
 {
@@ -9,71 +12,30 @@ namespace Corvo.Consola
     {
         private static void Main(string[] args)
         {
-            var data = new NextLevelShit
-            {
-                FirstName = "Next",
-                LastName = "Level"
-            };
+            string json = @"
+                    {
+                      'user': {
+                            'firstname': 'Mirza',
+                            'lastname': 'Cupina',
+                        }
+                    }";
 
-            var len = data.FirstName.Length + 1 + data.LastName.Length + 1;
+            JObject obj1 = JObject.Parse(json);
+            Console.WriteLine(obj1["user"]["firstname"]);
+            dynamic obj2 = obj1;
+            Console.WriteLine(obj2.user.firstname);
 
-            var optimizedString = string.Create(len, data, (chars, state) =>
-            {
-                var position = 0;
-                state.FirstName.AsSpan().CopyTo(chars);
-                position += state.FirstName.Length;
-                state.LastName.AsSpan().CopyTo(chars.Slice(position));
-                position += state.LastName.Length;
-            });
-
-            Console.WriteLine(optimizedString);
-            Console.WriteLine("Au revoir");
-        }
-    }
-
-    internal class NextLevelShit
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-
-        public static int LevenshteinDistance(string s, string t)
-        {
-            var n = s.Length;
-            var m = t.Length;
-            int[,] d = new int[n + 1, m + 1];
-
-            // if value of s is empty, we need m characters to get s out of t
-            if (n == 0)
-            {
-                return m;
-            }
-
-            // Vice versa
-            if (m == 0)
-            {
-                return n;
-            }
-
-            for (int i = 0; i <= n; i++)
-            {
-                d[i, 0] = i;
-            }
-
-            for (int j = 0; j <= m; j++)
-            {
-                d[0, j] = j;
-            }
-
-            for (int i = 1; i <= n; i++)
-            {
-                for (int j = 1; j <= m; j++)
-                {
-                    int cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
-                    d[i, j] = Math.Min(Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1), d[i - 1, j - 1] + cost);
-                }
-            }
-
-            return d[n, m];
+            dynamic expando = new ExpandoObject();
+            expando.SomeData = "Some data";
+            Action<string> action = input => Console.WriteLine("This is input: '{0}'", input);
+            expando.FakeMethod = action;
+            Console.WriteLine(expando.SomeData);
+            expando.FakeMethod("Cao");
+            IDictionary<string, object> dictionary = expando;
+            Console.WriteLine("Keys: {0}", string.Join(", ", dictionary.Keys));
+            dictionary["OtherData"] = "other";
+            Console.WriteLine(expando.OtherData);
+            Console.WriteLine("Keys: {0}", string.Join(", ", dictionary.Keys));
         }
     }
 }

@@ -45,8 +45,10 @@ https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strin
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
 
-Migrate 2.2 to 3.0
+Migrate 2.2 to 3.0 {
 https://andrewlock.net/exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/
+https://weblog.west-wind.com/posts/2019/Sep/24/Upgrading-my-AlbumViewer-Sample-to-NET-Core-30#gotcha-order-matters
+}
 
 ASP.NET CORE {
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
