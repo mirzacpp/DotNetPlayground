@@ -1,5 +1,5 @@
 ﻿// Usefull sources
-#Blogs:
+Blogs {
 https://blog.codingmilitia.com/
 https://www.programmingwithwolfgang.com/
 https://rimdev.io/
@@ -30,156 +30,191 @@ https://adamsitnik.com/
 https://aakinshin.net/posts/
 http://mustoverride.com/
 https://www.meziantou.net/
+https://espressocoder.com/
+}
 
-
-#Span i memory
+Span i memory {
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
 https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t
 https://www.meziantou.net/some-performance-tricks-with-dotnet-strings.htm
+}
 
-#Best practices for Strings
+Best practices for Strings
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings#recommendations_for_string_usage
 
-#Feature management
+Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
 
-#Migrate 2.2 to 3.0
+Migrate 2.2 to 3.0
 https://andrewlock.net/exploring-the-new-project-file-program-and-the-generic-host-in-asp-net-core-3/
 
-######################## ASP.NET CORE
+ASP.NET CORE {
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
 https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
-#Logging
+Logging
 https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
-#Middleware
+Middleware
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
-#App secrets
+App secrets
 https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.0&tabs=windows
-#Json
+Json
 https://codeburst.io/working-with-json-in-net-core-3-2fd1236126c1
-#302 vs 301
+302 vs 301
 http://www.dotnetbull.com/2013/08/301-permanent-vs-302-temporary-status-code-aspnet-csharp-Implementation.html
-#Compile modified views
+Compile modified views
 https://gunnarpeipman.com/aspnet-core-compile-modified-views/
-#Render view inside controller 
+Render view inside controller 
 https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-using-ASPNET-Core-that-can-be-used-in-the-c-controlle-7173969632
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
-#Slugify routes
+Slugify routes
 https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
-#Auth
+Auth
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
-#Migracije i seed 
+Migracije i seed 
 https://code-maze.com/migrations-and-seed-data-efcore/
-#IFileProviders
+IFileProviders {
 https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
 https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at-Runtime-in-RazorPages
-#Comma and point on form validation
+}
+Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
-#Route data pristup
+Route data pristup {
 https://weblog.west-wind.com/posts/2019/May/15/Accessing-RouteData-in-an-ASPNET-Core-Controller-Constructor
 https://andrewlock.net/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/
 https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
-#Model binding
+}
+Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
-#PathBase
+PathBase {
 https://stackoverflow.com/questions/58614864/whats-the-difference-between-httprequest-path-and-httprequest-pathbase-in-asp-n
 https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f67/src/Http/Http.Abstractions/src/Extensions/UsePathBaseMiddleware.cs
+}
+}
 
-
-###############ENTITYFRAMEWORK
+ENTITYFRAMEWORK
+{
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
 https://www.codemag.com/Article/1911062/Entity-Framework-Core-3.0-A-Foundation-for-the-Future
 https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/
 https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
 https://www.danylkoweb.com/Blog/aspnet-core-with-entity-framework-core-returning-multiple-resultsets-OL
 https://visualstudiomagazine.com/articles/2019/09/12/ef-previews.aspx
-#Subqueries N+1 problem
+Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
-#Querying with Include 
+Querying with Include 
 https://github.com/aspnet/EntityFrameworkCore/issues/1833
-#IDesignTimeDbContextFactory 
+IDesignTimeDbContextFactory {
 https://gunnarpeipman.com/ef-core-console-application/
 https://github.com/aspnet/EntityFrameworkCore/issues/9467
-#ENTITYFRAMEWORK
+}
+}
 
-#Secrets
+Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 
-####################### .NET
-#Performanse
+.NET
+{
+Performanse {
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
 https://www.youtube.com/watch?v=nK54s84xRRs
-#Assemblies
+}
+Assemblies {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
-# Numerics formating
+}
+Numerics formating {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
-#Code analyzers
+}
+Code analyzers {
 https://medium.com/@bharatdwarkani/top-10-code-quality-static-analysers-for-asp-net-core-1660ad7a8d61
-#Host Startup errors
+}
+Host Startup errors {
 https://github.com/aspnet/EntityFrameworkCore/issues/12331
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
-#Asyncs task on startup
+}
+Asyncs task on startup {
 https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-3/
-#Upload from base64
+}
+Upload from base64 {
 https://stackoverflow.com/questions/39394129/saving-a-base64-string-as-an-image-into-a-folder-on-server-using-c-sharp-and-web
-#Performance
+}
+Performance {
 https://andrewlock.net/exploring-rayguns-new-application-performance-monitoring-tool-for-net-core/
-#MediatR
+}
+MediatR {
 https://jonhilton.net/2016/08/31/how-to-easily-extend-your-app-using-mediatr-notifications/
 https://ardalis.com/using-mediatr-in-aspnet-core-apps
 https://dotnetcoretutorials.com/2019/04/30/the-mediator-pattern-in-net-core-part-1-whats-a-mediator/
-#System.Collections.Generic Namespace
+}
+System.Collections.Generic Namespace {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
-#DateTime
+}
+DateTime {
 https://weblog.west-wind.com/posts/2015/feb/10/back-to-basics-utc-and-timezones-in-net-web-apps
-#HTTP CLIENT
+}
+HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
+}
+LINQ {
+https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
+}
+}
 
-#ASYNC/AWAIT
+ASYNC/AWAIT {
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
 https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
 https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html
 https://blog.stephencleary.com/2013/04/implicit-async-context-asynclocal.html
 https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/
 https://blog.stephencleary.com/2013/11/there-is-no-thread.html
+}
 
-#SOLID  
+SOLID {
 https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ 
+}
 
-#DI
+DI {
 https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/
 https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
-#Atuo registration
+Auto registration
 https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/
-#DI
+}
 
-#EVENT STORMING
+EVENT STORMING {
 https://medium.com/@springdo/a-facilitators-recipe-for-event-storming-941dcb38db0d
 https://openpracticelibrary.com/practice/event-storming/
+}
 
-#IIS EXPRESS
+IIS EXPRESS {
 https://blog.maartenballiauw.be/post/2019/02/26/asp-net-core-iis-express-empty-error-starting-application.html
+}
 
-#GITHUB
+GITHUB {
 https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
 https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
-
-#GITHUB
 https://git-scm.com/book/id/v2/Git-Branching-Remote-Branches
+}
 
-#Snippets
+Snippets {
 https://marketplace.visualstudio.com/items?itemName=rahulsahay.Csharp-ASPNETCore&ssr=false#review-details
 https://marketplace.visualstudio.com/items?itemName=doggy8088.netcore-snippets&ssr=false#overview
+}
 
-#INTERESTING STUFF
+INTERESTING STUFF {
 https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-somewhat-harmful
+}
 
-#System.Collections.Generic Namespace
+System.Collections.Generic Namespace {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
+}
 
-#Benchmarking
+Benchmarking {
 https://www.stevejgordon.co.uk/introduction-to-benchmarking-csharp-code-with-benchmark-dot-net
+}
+
+Operatori {
+https://docs.microsoft.com/en-us/archive/blogs/ericlippert/type-inference-woes-part-one
+}
