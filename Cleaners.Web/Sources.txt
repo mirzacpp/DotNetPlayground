@@ -31,6 +31,7 @@ https://aakinshin.net/posts/
 http://mustoverride.com/
 https://www.meziantou.net/
 https://espressocoder.com/
+https://brockallen.com/
 }
 
 Span i memory {
@@ -56,8 +57,11 @@ https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 Logging
 https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
-Middleware
+Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
+https://andrewlock.net/understanding-your-middleware-pipeline-with-the-middleware-analysis-package/
+https://andrewlock.net/inserting-middleware-between-userouting-and-useendpoints-as-a-library-author-part-1/
+}
 App secrets
 https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.0&tabs=windows
 Json
@@ -103,6 +107,7 @@ https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-
 https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
 https://www.danylkoweb.com/Blog/aspnet-core-with-entity-framework-core-returning-multiple-resultsets-OL
 https://visualstudiomagazine.com/articles/2019/09/12/ef-previews.aspx
+https://github.com/dotnet/efcore/issues/18007
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 Querying with Include 
@@ -220,3 +225,6 @@ https://www.stevejgordon.co.uk/introduction-to-benchmarking-csharp-code-with-ben
 Operatori {
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/type-inference-woes-part-one
 }
+
+Pattern matching
+https://devblogs.microsoft.com/dotnet/do-more-with-patterns-in-c-8-0/
