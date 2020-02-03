@@ -118,6 +118,7 @@ https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 
 .NET
 {
+https://devblogs.microsoft.com/dotnet/author/stephen_toubhotmail-com/
 Performanse {
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
