@@ -93,6 +93,8 @@ https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
 }
 Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
+https://www.strathweb.com/2017/07/customizing-query-string-parameter-binding-in-asp-net-core-mvc/
+https://github.com/dotnet/aspnetcore/issues/11584
 PathBase {
 https://stackoverflow.com/questions/58614864/whats-the-difference-between-httprequest-path-and-httprequest-pathbase-in-asp-n
 https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f67/src/Http/Http.Abstractions/src/Extensions/UsePathBaseMiddleware.cs
@@ -123,10 +125,12 @@ https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 
 .NET
 {
+https://www.youtube.com/watch?v=xdSSH63IZZc
 Performanse {
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
 https://www.youtube.com/watch?v=nK54s84xRRs
+https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bombardier-87cc9c6b8d6f
 }
 Assemblies {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
@@ -176,6 +180,7 @@ https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html
 https://blog.stephencleary.com/2013/04/implicit-async-context-asynclocal.html
 https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/
 https://blog.stephencleary.com/2013/11/there-is-no-thread.html
+https://www.youtube.com/watch?v=J0mcYVxJEl0
 }
 
 SOLID {
@@ -210,6 +215,7 @@ https://marketplace.visualstudio.com/items?itemName=doggy8088.netcore-snippets&s
 }
 
 INTERESTING STUFF {
+https://www.youtube.com/watch?v=mLX1sYVf-Xg
 https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-somewhat-harmful
 }
