@@ -9,6 +9,7 @@ https://jeremyskinner.co.uk/
 https://blog.bitscry.com/
 https://www.fixedbuffer.com/
 https://www.thereformedprogrammer.net/
+https://www.mikesdotnetting.com/
 https://www.stevejgordon.co.uk/
 https://dotnetcoretutorials.com/
 https://docs.microsoft.com/en-us%5Carchive%5Cmsdn-magazine%5Cauthors%5CJulie_Lerman
@@ -52,9 +53,12 @@ https://weblog.west-wind.com/posts/2019/Sep/24/Upgrading-my-AlbumViewer-Sample-t
 }
 
 ASP.NET CORE {
+https://www.mikesdotnetting.com/article/332/rendering-a-partial-to-a-string-in-razor-pages
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
 https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
+Include static resources
+https://www.mikesdotnetting.com/article/330/including-static-resources-in-razor-class-libraries-in-asp-net-core
 Logging
 https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
 Middleware {
