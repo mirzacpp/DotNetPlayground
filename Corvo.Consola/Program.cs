@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Corvo.Consola
 {
@@ -10,36 +9,21 @@ namespace Corvo.Consola
     {
         private static void Main(string[] args)
         {
-            //string json = @"
-            //        {
-            //          'user': {
-            //                'firstname': 'Mirza',
-            //                'lastname': 'Cupina',
-            //            }
-            //        }";
+            #region Snippet
 
-            //JObject obj1 = JObject.Parse(json);
-            //Console.WriteLine(obj1["user"]["firstname"]);
-            //dynamic obj2 = obj1;
-            //Console.WriteLine(obj2.user.firstname);
+            typeof(DateTime).GetConstructor().Invoke(System.Reflection.BindingFlags)
 
-            //dynamic expando = new ExpandoObject();
-            //expando.SomeData = "Some data";
-            //Action<string> action = input => Console.WriteLine("This is input: '{0}'", input);
-            //expando.FakeMethod = action;
-            //Console.WriteLine(expando.SomeData);
-            //expando.FakeMethod("Cao");
-            //IDictionary<string, object> dictionary = expando;
-            //Console.WriteLine("Keys: {0}", string.Join(", ", dictionary.Keys));
-            //dictionary["OtherData"] = "other";
-            //Console.WriteLine(expando.OtherData);
-            //Console.WriteLine("Keys: {0}", string.Join(", ", dictionary.Keys));
+            var type = Type.GetType(@"System.DateTime,
+                            System.Private.CoreLib,
+                            Version=4.0.0.0,
+                            Culture=neutral,
+                            PublicKeyToken=7cec85d7bea7798e");
+            var date = (DateTime)Activator.CreateInstance(type);
+            date = DateTime.UtcNow;
 
-            var @string = "access.failed.count";
+            Console.WriteLine(date.ToShortDateString());
 
-            var newVals = @string.Split(".", StringSplitOptions.RemoveEmptyEntries)
-                .Select(c => c)
-                .ToList();
+            #endregion Snippet
         }
     }
 }

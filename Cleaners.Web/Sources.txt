@@ -18,6 +18,7 @@ https://weblogs.asp.net/dixin
 https://johnthiriet.com/
 https://blog.stephencleary.com/
 https://ardalis.com/blog
+https://dejanstojanovic.net
 https://jonskeet.uk/
 https://kevinchalet.com/
 https://martinfowler.com/
@@ -32,6 +33,7 @@ http://mustoverride.com/
 https://www.meziantou.net/
 https://espressocoder.com/
 https://brockallen.com/
+https://wakeupandcode.com
 }
 
 Span i memory {
@@ -97,6 +99,8 @@ PathBase {
 https://stackoverflow.com/questions/58614864/whats-the-difference-between-httprequest-path-and-httprequest-pathbase-in-asp-n
 https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f67/src/Http/Http.Abstractions/src/Extensions/UsePathBaseMiddleware.cs
 }
+Secrets
+https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
 
 ENTITYFRAMEWORK
@@ -117,9 +121,6 @@ https://gunnarpeipman.com/ef-core-console-application/
 https://github.com/aspnet/EntityFrameworkCore/issues/9467
 }
 }
-
-Secrets
-https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 
 .NET
 {
@@ -167,6 +168,9 @@ https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
 }
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
+}
+FILES {
+https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
 }
 }
 
