@@ -35,6 +35,7 @@ https://www.meziantou.net/
 https://espressocoder.com/
 https://brockallen.com/
 https://wakeupandcode.com
+https://blog.oneunicorn.com/
 }
 
 Span i memory {
@@ -70,6 +71,11 @@ Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 https://andrewlock.net/understanding-your-middleware-pipeline-with-the-middleware-analysis-package/
 https://andrewlock.net/inserting-middleware-between-userouting-and-useendpoints-as-a-library-author-part-1/
+}
+HTTPCLIENT {
+https://josefottosson.se/you-are-probably-still-using-httpclient-wrong-and-it-is-destabilizing-your-software/
+https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory
+https://www.stevejgordon.co.uk/passing-an-ilogger-to-polly-policies
 }
 App secrets
 https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.0&tabs=windows
@@ -122,6 +128,7 @@ https://www.danylkoweb.com/Blog/aspnet-core-with-entity-framework-core-returning
 https://visualstudiomagazine.com/articles/2019/09/12/ef-previews.aspx
 https://github.com/dotnet/efcore/issues/18007
 https://www.youtube.com/watch?v=LDRxo6wDIE0
+https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 Querying with Include 
@@ -163,6 +170,7 @@ https://stackoverflow.com/questions/39394129/saving-a-base64-string-as-an-image-
 }
 Performance {
 https://andrewlock.net/exploring-rayguns-new-application-performance-monitoring-tool-for-net-core/
+https://www.youtube.com/watch?v=fyuS18uSLLE&feature=youtu.be
 }
 MediatR {
 https://jonhilton.net/2016/08/31/how-to-easily-extend-your-app-using-mediatr-notifications/
