@@ -59,6 +59,9 @@ https://www.mikesdotnetting.com/article/332/rendering-a-partial-to-a-string-in-r
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
 https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
+Architecture {
+https://github.com/jasontaylordev/CleanArchitecture
+}
 Include static resources
 https://www.mikesdotnetting.com/article/330/including-static-resources-in-razor-class-libraries-in-asp-net-core
 Logging
@@ -118,6 +121,7 @@ https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a
 https://www.danylkoweb.com/Blog/aspnet-core-with-entity-framework-core-returning-multiple-resultsets-OL
 https://visualstudiomagazine.com/articles/2019/09/12/ef-previews.aspx
 https://github.com/dotnet/efcore/issues/18007
+https://www.youtube.com/watch?v=LDRxo6wDIE0
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 Querying with Include 
@@ -193,6 +197,7 @@ https://www.youtube.com/watch?v=J0mcYVxJEl0
 https://blog.stephencleary.com/2013/10/taskrun-etiquette-and-proper-usage.html
 https://devblogs.microsoft.com/pfxteam/await-and-ui-and-deadlocks-oh-my/
 https://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-829T
+https://www.youtube.com/watch?v=J0mcYVxJEl0&feature=youtu.be
 }
 
 SOLID {

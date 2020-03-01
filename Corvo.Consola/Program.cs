@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Corvo.Consola
+﻿namespace Corvo.Consola
 {
     /// <summary>
     /// Console project used for messing around
@@ -11,17 +9,17 @@ namespace Corvo.Consola
         {
             #region Snippet
 
-            typeof(DateTime).GetConstructor().Invoke(System.Reflection.BindingFlags)
+            //typeof(DateTime).GetConstructor().Invoke(System.Reflection.BindingFlags);
 
-            var type = Type.GetType(@"System.DateTime,
-                            System.Private.CoreLib,
-                            Version=4.0.0.0,
-                            Culture=neutral,
-                            PublicKeyToken=7cec85d7bea7798e");
-            var date = (DateTime)Activator.CreateInstance(type);
-            date = DateTime.UtcNow;
+            //var type = Type.GetType(@"System.DateTime,
+            //                System.Private.CoreLib,
+            //                Version=4.0.0.0,
+            //                Culture=neutral,
+            //                PublicKeyToken=7cec85d7bea7798e");
+            //var date = (DateTime)Activator.CreateInstance(type);
+            //date = DateTime.UtcNow;
 
-            Console.WriteLine(date.ToShortDateString());
+            //Console.WriteLine(date.ToShortDateString());
 
             #endregion Snippet
         }
