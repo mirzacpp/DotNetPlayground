@@ -1,4 +1,5 @@
 ﻿using Ardalis.GuardClauses;
+using Cleaners.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
 
@@ -7,6 +8,9 @@ namespace Cleaners.Web.Extensions
     /// <summary>
     /// Extends ModelStateDictionary methods
     /// </summary>
+    /// <remarks>
+    /// MOVE TO AspNetCore.Mvc project
+    /// </remarks>
     public static class ModelStateExtensions
     {
         #region Methods
@@ -14,8 +18,8 @@ namespace Cleaners.Web.Extensions
         public static void AddModelErrors(this ModelStateDictionary modelState, IDictionary<string, string> errors)
         {
             Guard.Against.Null(modelState, nameof(modelState));
-            Guard.Against.Null(errors, nameof(errors)); 
-            
+            Guard.Against.Null(errors, nameof(errors));
+
             foreach (var error in errors)
             {
                 modelState.AddModelError(error.Key, error.Value);
@@ -58,6 +62,22 @@ namespace Cleaners.Web.Extensions
             if (condition)
             {
                 modelState.AddModelError(string.Empty, error);
+            }
+        }
+
+        /// <summary>
+        /// Adds <see cref="Cleaners.Models.Result.Errors"/> to model state dictionary
+        /// </summary>
+        /// <param name="modelState"></param>
+        /// <param name="errors"></param>
+        public static void AddResultErrors(this ModelStateDictionary modelState, IEnumerable<ResultError> errors)
+        {
+            Guard.Against.Null(modelState, nameof(modelState));
+            Guard.Against.Null(errors, nameof(errors));
+
+            foreach (var error in errors)
+            {
+                modelState.AddModelError(error.Key, error.Message);
             }
         }
 

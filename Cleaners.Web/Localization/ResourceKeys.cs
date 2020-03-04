@@ -3,6 +3,9 @@
     /// <summary>
     /// Holds all resource keys available in resource files
     /// </summary>
+    /// <remarks>
+    /// USE NAMEOF INSTEAD OF MAGIC STRINGS
+    /// </remarks>
     public static class ResourceKeys
     {
         public const string Actions = "actions";

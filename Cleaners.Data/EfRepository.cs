@@ -62,7 +62,7 @@ namespace Cleaners.Data
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            (entity as ISoftDeletableEntity).IsDeleted = false;
+            (entity as ISoftDeletableEntity).IsSoftDeleted = false;
 
             Update(entity);
         }
@@ -74,7 +74,7 @@ namespace Cleaners.Data
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            (entity as ISoftDeletableEntity).IsDeleted = true;
+            (entity as ISoftDeletableEntity).IsSoftDeleted = true;
 
             Update(entity);
         }

@@ -1,4 +1,6 @@
-﻿using Corvo.AspNetCore.Mvc.Filters;
+﻿using Cleaners.Models;
+using Cleaners.Web.Extensions;
+using Corvo.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +14,19 @@ namespace Cleaners.Web.Controllers
 
         [HttpGet]
         public IActionResult Test()
-            => AjaxRedirectToActionResult(nameof(Submit));
+        {
+            var result = Result.Failed(new[]
+            {
+                new ResultError(string.Empty, "Model error"),
+                new ResultError("Property1", "Property1 error"),
+                new ResultError("Property1", "Property1 error 2"),
+                new ResultError("Property2", "Property2 error"),
+            });
+
+            ModelState.AddResultErrors(result.Errors);
+
+            return BadRequest(ModelState);
+        }
 
         [HttpPost]
         public IActionResult Submit(string value)

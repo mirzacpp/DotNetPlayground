@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 
 namespace Cleaners.Web.Extensions
 {

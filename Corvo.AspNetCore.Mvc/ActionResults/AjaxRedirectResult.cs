@@ -15,8 +15,7 @@ namespace Corvo.AspNetCore.Mvc.ActionResults
         public AjaxRedirectResult(string redirectUrl)
         {
             // Redirect to root page if null passed ...
-            // Implement fallback url because root page is not guaranteed
-            RedirectUrl = redirectUrl ?? "~/";
+            RedirectUrl = redirectUrl ?? "/";
         }
 
         /// <summary>

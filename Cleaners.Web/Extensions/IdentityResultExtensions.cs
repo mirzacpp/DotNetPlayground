@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Ardalis.GuardClauses;
+using Cleaners.Models;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,7 +20,9 @@ namespace Cleaners.Web.Extensions
         /// <returns></returns>
         public static IEnumerable<string> GetDescriptions(this IEnumerable<IdentityError> errors)
         {
-            return errors.Select(e => e.Description);
+            Guard.Against.Null(errors, nameof(errors));
+
+            return errors.Select(e => e.Description).ToList();
         }
 
         /// <summary>
@@ -28,7 +32,23 @@ namespace Cleaners.Web.Extensions
         /// <returns></returns>
         public static IEnumerable<string> GetCodes(this IEnumerable<IdentityError> errors)
         {
-            return errors.Select(e => e.Code);
+            Guard.Against.Null(errors, nameof(errors));
+
+            return errors.Select(e => e.Code).ToList();
+        }
+
+        /// <summary>
+        /// Converts <see cref="IdentityResult"/> to <see cref="Result"/>
+        /// </summary>
+        /// <param name="identityResult"></param>
+        /// <returns></returns>
+        public static Result ToApplicationResult(this IdentityResult identityResult)
+        {
+            Guard.Against.Null(identityResult, nameof(identityResult));
+
+            return identityResult.Succeeded ?
+                Result.Success :
+                Result.Failed(identityResult.Errors.Select(e => new ResultError(string.Empty, e.Description)).ToArray());
         }
 
         #endregion Methods

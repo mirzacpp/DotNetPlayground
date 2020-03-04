@@ -22,7 +22,7 @@ namespace Cleaners.Web.Services
                 throw new ArgumentNullException(nameof(data));
             }
 
-            var writer = new StringWriter();
+            using var writer = new StringWriter();
 
             // Iterate over collection properties
             foreach (var member in data)

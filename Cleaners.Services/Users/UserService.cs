@@ -200,7 +200,7 @@ namespace Cleaners.Services.Users
             }
 
             // Since we don' use IRepository.SoftDelete, we will do it manually
-            user.IsDeleted = true;
+            user.IsSoftDeleted = true;
 
             return await _userManager.UpdateAsync(user);
         }
@@ -213,7 +213,7 @@ namespace Cleaners.Services.Users
             }
 
             // Since we don' use IRepository.Restore, we will do it manually
-            user.IsDeleted = false;
+            user.IsSoftDeleted = false;
 
             return await _userManager.UpdateAsync(user);
         }

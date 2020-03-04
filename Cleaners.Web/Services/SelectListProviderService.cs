@@ -19,19 +19,6 @@ namespace Cleaners.Web.Services
             _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
         }
 
-        public IEnumerable<SelectListItem> GetForEnum<TEnum>() where TEnum : struct, IConvertible
-        {
-            return Enum.GetValues(typeof(TEnum))
-                .Cast<TEnum>()
-                .Select(e => new SelectListItem
-                {
-                    //TODO: Create special format for enumeration resource keys?
-                    Text = _localizer[e.ToString()],
-                    Value = ((int)(object)e).ToString()
-                })
-                .ToList();
-        }
-
         public IEnumerable<SelectListItem> GetRolesWithNames()
         {
             return _roleService.GetAll()
@@ -45,14 +32,13 @@ namespace Cleaners.Web.Services
 
         public async Task<IEnumerable<SelectListItem>> GetRolesWithNamesAsync()
         {
-            var roles = await _roleService.GetAllAsync();
-
-            return roles.Select(r => new SelectListItem
-            {
-                Text = r.Name,
-                Value = r.Name.ToString()
-            })
-            .ToList();
+            return (await _roleService.GetAllAsync())
+                .Select(r => new SelectListItem
+                {
+                    Text = r.Name,
+                    Value = r.Name.ToString()
+                })
+                .ToList();
         }
     }
 }
