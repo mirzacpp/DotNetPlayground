@@ -109,6 +109,10 @@ PathBase {
 https://stackoverflow.com/questions/58614864/whats-the-difference-between-httprequest-path-and-httprequest-pathbase-in-asp-n
 https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f67/src/Http/Http.Abstractions/src/Extensions/UsePathBaseMiddleware.cs
 }
+Error handling {
+https://weblog.west-wind.com/posts/2016/oct/16/error-handling-and-exceptionfilter-dependency-injection-for-aspnet-core-apis
+https://michaelscodingspot.com/debugging-exceptions/
+}
 }
 
 ENTITYFRAMEWORK
@@ -249,3 +253,9 @@ https://docs.microsoft.com/en-us/archive/blogs/ericlippert/type-inference-woes-p
 
 Pattern matching
 https://devblogs.microsoft.com/dotnet/do-more-with-patterns-in-c-8-0/
+
+TODO {
+- Napravi genericki Result objekat koji ce se vracati iz servisa. Ukoliko bude errora, mapiraj errore iz rezultata u modelstate.
+...
+https://github.com/dotnet/aspnetcore/blob/bfec2c14be1e65f7dd361a43950d4c848ad0cd35/src/Identity/Extensions.Core/src/IdentityResult.cs
+}

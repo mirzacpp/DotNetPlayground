@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="~/bundles/main.min.css" asp-append-version="true" />
     </environment>
 
-    @RenderSection("styles", required: false)
+    @RenderSection("Styles", required: false)
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -87,7 +87,7 @@
             $(this).removeData('bs.modal');
         });
     </script>
-    @RenderSection("scripts", required: false)
+    @RenderSection("Scripts", required: false)
     @Html.Raw(StuntmanOptions.UserPicker(User))
 </body>
 </html>
