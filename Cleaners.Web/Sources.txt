@@ -62,6 +62,7 @@ https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 Architecture {
 https://github.com/jasontaylordev/CleanArchitecture
+https://jasontaylor.dev/clean-architecture-getting-started/
 }
 Include static resources
 https://www.mikesdotnetting.com/article/330/including-static-resources-in-razor-class-libraries-in-asp-net-core
