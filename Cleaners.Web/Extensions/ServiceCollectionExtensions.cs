@@ -41,12 +41,12 @@ namespace Cleaners.Web.Extensions
         /// <param name="services"></param>
         public static void ConfigureMvc(this IServiceCollection services)
         {
-            var mvcBuilder = services.AddMvc(options =>
+            var mvcBuilder = services.AddControllersWithViews(options =>
             {
                 // Enable automatic validation of antiforgerytoken
                 // This way we don't have to always include ValidateAntiForgeryToken attribute
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
+                //options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
             });
 
             mvcBuilder.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
@@ -55,9 +55,7 @@ namespace Cleaners.Web.Extensions
             mvcBuilder.AddCookieTempDataProvider(options =>
             {
                 options.Cookie.Name = CookieNames.TempData;
-            });
-
-            services.AddControllersWithViews();
+            });            
         }
 
         /// <summary>

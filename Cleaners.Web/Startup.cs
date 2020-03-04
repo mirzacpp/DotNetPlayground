@@ -1,24 +1,17 @@
-﻿using AspNetCore.RouteAnalyzer;
-using Cleaners.Web.Constants;
-using Cleaners.Web.Extensions;
-using Cleaners.Web.Infrastructure.Files;
+﻿using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.Routing;
 using Cleaners.Web.Infrastructure.Stuntman;
-using Cleaners.Web.Services;
 using Corvo.AspNetCore.Mvc.Middleware.Claims;
 using Corvo.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Corvo.AspNetCore.Mvc.UI.Navigation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RimDev.Stuntman.Core;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Cleaners.Web
 {
@@ -47,7 +40,7 @@ namespace Cleaners.Web
 
             services.ConfigureRazorViewEngine();
 
-            services.ConfigureLocalization();
+            //services.ConfigureLocalization();
 
             services.ConfigureAutoMapper();
 
@@ -56,10 +49,6 @@ namespace Cleaners.Web
             services.RegisterApplicationServices();
 
             services.ConfigureAntiforgery();
-
-            services.AddScoped<IFoo, FooA>();
-            services.AddScoped<IFoo, FooB>();
-            services.AddScoped<IFooResolver, FooResolver>();
 
             // Configures identity for authentication and authorization
             services.ConfigureIdentity(Configuration);
@@ -81,11 +70,9 @@ namespace Cleaners.Web
                 return menuManager;
             });
 
-            services.AddScoped<ICsvFileService, CsvFileService>();
-
             // Register file provider options from appsettings
-            services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
-            services.AddCorvoFileProvider();
+            //services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
+            //services.AddCorvoFileProvider();
 
             //services.AddScoped<ITagHelperComponent, MetaTagHelperComponent>();
             //services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
@@ -100,13 +87,13 @@ namespace Cleaners.Web
                 };
             });
 
-            services.AddRouteAnalyzer();
+            //services.AddRouteAnalyzer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment host)
         {
-            if (HostingEnvironment.IsDevelopment())
+            if (host.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseShowRegisteredServices();
