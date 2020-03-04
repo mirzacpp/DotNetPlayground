@@ -268,7 +268,7 @@ namespace Cleaners.Web.Controllers
         private bool ValidateLoginInput(User user)
         {
             // Required because Identity doesn't check IsActive and IsDeleted values
-            if (user == null || user.IsDeleted || !user.IsActive)
+            if (user == null || user.IsSoftDeleted || !user.IsActive)
             {
                 ModelState.AddModelError(_localizer[ResourceKeys.InvalidLoginData]);
 

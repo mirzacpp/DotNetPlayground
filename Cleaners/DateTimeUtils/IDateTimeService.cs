@@ -7,6 +7,8 @@ namespace Cleaners.DateTimeUtils
     /// </summary>
     public interface IDateTimeService
     {
-        DateTime UtcNow { get; }
+        DateTime DateNow { get; }
+
+        DateTime DateUtcNow { get; }
     }
 }

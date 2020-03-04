@@ -5,6 +5,6 @@
     /// </summary>
     public interface ISoftDeletableEntity
     {
-        bool IsDeleted { get; set; }
+        bool IsSoftDeleted { get; set; }
     }
 }

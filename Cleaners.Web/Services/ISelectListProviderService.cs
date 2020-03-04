@@ -10,7 +10,5 @@ namespace Cleaners.Web.Services
         IEnumerable<SelectListItem> GetRolesWithNames();
 
         Task<IEnumerable<SelectListItem>> GetRolesWithNamesAsync();
-
-        IEnumerable<SelectListItem> GetForEnum<TEnum>() where TEnum : struct, IConvertible;
     }
 }

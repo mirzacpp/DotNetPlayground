@@ -70,7 +70,7 @@ namespace Cleaners.Web.Extensions
         /// </summary>
         /// <param name="modelState"></param>
         /// <param name="errors"></param>
-        public static void AddResults(this ModelStateDictionary modelState, IEnumerable<ResultError> errors)
+        public static void AddResultErrors(this ModelStateDictionary modelState, IEnumerable<ResultError> errors)
         {
             Guard.Against.Null(modelState, nameof(modelState));
             Guard.Against.Null(errors, nameof(errors));
