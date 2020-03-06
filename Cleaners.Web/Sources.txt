@@ -19,6 +19,7 @@ https://weblogs.asp.net/dixin
 https://johnthiriet.com/
 https://blog.stephencleary.com/
 https://ardalis.com/blog
+https://dejanstojanovic.net
 https://jonskeet.uk/
 https://kevinchalet.com/
 https://martinfowler.com/
@@ -33,6 +34,7 @@ http://mustoverride.com/
 https://www.meziantou.net/
 https://espressocoder.com/
 https://brockallen.com/
+https://wakeupandcode.com
 https://blog.oneunicorn.com/
 }
 
@@ -63,6 +65,10 @@ https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 Validation {
 https://docs.fluentvalidation.net/en/latest/localization.html
+}
+Architecture {
+https://github.com/jasontaylordev/CleanArchitecture
+https://jasontaylor.dev/clean-architecture-getting-started/
 }
 Include static resources
 https://www.mikesdotnetting.com/article/330/including-static-resources-in-razor-class-libraries-in-asp-net-core
@@ -118,6 +124,8 @@ https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f
 Error handling {
 https://weblog.west-wind.com/posts/2016/oct/16/error-handling-and-exceptionfilter-dependency-injection-for-aspnet-core-apis
 https://michaelscodingspot.com/debugging-exceptions/
+Secrets
+https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
 }
 
@@ -130,6 +138,7 @@ https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a
 https://www.danylkoweb.com/Blog/aspnet-core-with-entity-framework-core-returning-multiple-resultsets-OL
 https://visualstudiomagazine.com/articles/2019/09/12/ef-previews.aspx
 https://github.com/dotnet/efcore/issues/18007
+https://www.youtube.com/watch?v=LDRxo6wDIE0
 https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
@@ -141,11 +150,9 @@ https://github.com/aspnet/EntityFrameworkCore/issues/9467
 }
 }
 
-Secrets
-https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
-
 .NET
 {
+https://devblogs.microsoft.com/dotnet/author/stephen_toubhotmail-com/
 https://www.youtube.com/watch?v=xdSSH63IZZc
 Performanse {
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
@@ -193,6 +200,9 @@ https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
 }
+FILES {
+https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
+}
 }
 
 ASYNC/AWAIT {
@@ -206,6 +216,7 @@ https://www.youtube.com/watch?v=J0mcYVxJEl0
 https://blog.stephencleary.com/2013/10/taskrun-etiquette-and-proper-usage.html
 https://devblogs.microsoft.com/pfxteam/await-and-ui-and-deadlocks-oh-my/
 https://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-829T
+https://www.youtube.com/watch?v=J0mcYVxJEl0&feature=youtu.be
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2014/october/async-programming-introduction-to-async-await-on-asp-net
 https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth
 }

@@ -3,6 +3,7 @@ using Cleaners.Core.Constants;
 using Cleaners.Core.Domain;
 using Cleaners.Core.Interfaces;
 using Cleaners.Data;
+using Cleaners.Services.Identity;
 using Cleaners.Services.Roles;
 using Cleaners.Services.Users;
 using Cleaners.Web.Constants;
@@ -198,12 +199,13 @@ namespace Cleaners.Web.Extensions
             // Register internal password change filter as singleton
             // Note that if we use IOptionsSnapshot instead of IOptions, we should register this as scoped
             services.AddSingleton<InternalPasswordResetFilterAttribute>();
+            services.AddScoped<IIdentityManagement, IdentityManagement>();
 
             services.AddIdentity<User, Role>()
-            .AddEntityFrameworkStores<CorvoDbContext>()
-            // Register localized error messages
-            .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
-            .AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<CorvoDbContext>()
+                // Register localized error messages
+                .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
+                .AddDefaultTokenProviders();
 
             // Configure IdentityOptions from appsettings.json
             services.Configure<IdentityOptions>(configuration);
@@ -246,7 +248,7 @@ namespace Cleaners.Web.Extensions
             services.AddRouting(options =>
             {
                 options.AppendTrailingSlash = true;
-                options.LowercaseUrls = true;                
+                options.LowercaseUrls = true;
             });
         }
 

@@ -86,7 +86,7 @@ namespace Cleaners.Services.Users
         public async Task<User> GetByIdAsync(int id)
         {
             // There is no UserManager<TUser, TKey> so we will have to convert id value to string.
-            // This is ok because ids will be converted to string anyway
+            // This is ok because ids will be converted to string anyway         
             return await _userManager.FindByIdAsync(id.ToString());
         }
 

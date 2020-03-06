@@ -125,8 +125,8 @@ namespace Corvo.AspNetCore.Mvc.UI.TagHelpers.Ajax
             // Ignore all attributes if data-ajax is set to false
             if (Enabled)
             {
-                // Convert to string manually so we guarantee "true/false" values instead of "True/False".
-                output.Attributes.Add("data-ajax", true.ToString().ToLowerInvariant());
+                // Use hardcoded value to avoid string operations and culture problems("true/false" values instead of "True/False" etc.)
+                output.Attributes.Add("data-ajax", "true");
                 output.Attributes.AddIf(!string.IsNullOrEmpty(ConfirmMessage), "data-ajax-confirm", ConfirmMessage);
                 output.Attributes.AddIf(!string.IsNullOrEmpty(FormMethod), "data-ajax-method", FormMethod);
                 output.Attributes.AddIf(!string.IsNullOrEmpty(OnSuccessMethod), "data-ajax-success", OnSuccessMethod);
@@ -186,6 +186,7 @@ namespace Corvo.AspNetCore.Mvc.UI.TagHelpers.Ajax
                 InsertionMode.Replace => "replace",
                 InsertionMode.InsertBefore => "before",
                 InsertionMode.InsertAfter => "after",
+                // Default value will result with jquerys .html method
                 _ => ((int)value).ToString(CultureInfo.InvariantCulture),
             };
         }

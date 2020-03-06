@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Cleaners.Core.Domain;
+using Cleaners.Services.Identity;
 using Cleaners.Services.Users;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
@@ -30,8 +31,8 @@ namespace Cleaners.Web.Controllers
         private readonly IUserService _userService;
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
-        private readonly IStringLocalizer<AccountController> _localizer;
-        private readonly IdentityConfig _identityConfig;
+        private readonly IIdentityManagement _identityManagement;
+        private readonly IStringLocalizer<AccountController> _localizer;            
         private readonly IAlertManager _alertManager;
 
         #endregion Fields
@@ -44,16 +45,16 @@ namespace Cleaners.Web.Controllers
             SignInManager<User> signInManager,
             IMapper mapper,
             IStringLocalizer<AccountController> localizer,
-            IdentityConfig identityConfig,
-            IAlertManager alertManager)
+            IAlertManager alertManager,
+            IIdentityManagement identityManagement)
         {
             _userManager = userManager;
             _userService = userService;
             _signInManager = signInManager;
             _mapper = mapper;
             _localizer = localizer;
-            _identityConfig = identityConfig;
             _alertManager = alertManager;
+            _identityManagement = identityManagement;
         }
 
         #endregion Constructor
@@ -82,6 +83,7 @@ namespace Cleaners.Web.Controllers
                 return View(model);
             }
 
+            // Move to Identity wrapper
             var user = await _userManager.FindByNameAsync(model.Username);
 
             if (!ValidateLoginInput(user))
@@ -89,8 +91,12 @@ namespace Cleaners.Web.Controllers
                 return View(model);
             }
 
-            var result = await _signInManager
-                .PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: _identityConfig.DefaultOptions.LockoutEnabled);
+            // Move to Identity wrapper
+            var result = await _signInManager.PasswordSignInAsync(
+                user,
+                model.Password,
+                model.RememberMe,
+                lockoutOnFailure: _identityManagement.Options.Lockout.AllowedForNewUsers);
 
             if (result.Succeeded)
             {
@@ -231,9 +237,8 @@ namespace Cleaners.Web.Controllers
             else
             {
                 // Use default lockout time if not specified
-                model.LockoutEndUtc = model.LockoutEndUtc != null ?
-                    model.LockoutEndUtc :
-                    DateTime.UtcNow.Add(_identityConfig.LockoutOptions.DefaultLockoutTimeSpan);
+                model.LockoutEndUtc ??=
+                    DateTime.UtcNow.Add(_identityManagement.Options.Lockout.DefaultLockoutTimeSpan);
 
                 lockoutResult = await _userService.LockAccount(user, model.LockoutEndUtc.Value);
 
