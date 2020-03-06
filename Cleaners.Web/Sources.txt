@@ -207,6 +207,7 @@ https://blog.stephencleary.com/2013/10/taskrun-etiquette-and-proper-usage.html
 https://devblogs.microsoft.com/pfxteam/await-and-ui-and-deadlocks-oh-my/
 https://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-829T
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2014/october/async-programming-introduction-to-async-await-on-asp-net
+https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth
 }
 
 SOLID {
