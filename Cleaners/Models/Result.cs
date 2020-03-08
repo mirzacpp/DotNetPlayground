@@ -13,8 +13,6 @@ namespace Cleaners.Models
 
         public bool Succeeded { get; private set; }
         public IEnumerable<ResultError> Errors => _errors;
-
-        // Indicates that current operation has successful result
         public static Result Success => _succeeded;
 
         public static Result Failed(params ResultError[] errors)
@@ -28,7 +26,6 @@ namespace Cleaners.Models
             return result;
         }
 
-        /// Returns formatted version for result
         public override string ToString()
         {
             return Succeeded ?
