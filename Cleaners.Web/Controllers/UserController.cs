@@ -121,7 +121,7 @@ namespace Cleaners.Web.Controllers
 
                     return RedirectToRoute(UserRoutes.Index);
                 }
-                
+
                 ModelState.AddModelErrors(addToRolesResult.Errors.GetDescriptions());
             }
 
@@ -149,6 +149,11 @@ namespace Cleaners.Web.Controllers
             return View(model: model);
         }
 
+        /// <summary>
+        /// Move logic to services
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("{id}/update")]
         public async Task<IActionResult> Update(UserUpdateModel model)
         {

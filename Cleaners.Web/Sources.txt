@@ -59,6 +59,7 @@ ASP.NET CORE {
 Samples {
 https://github.com/aspnet/Entropy
 }
+https://andrewlock.net/using-cancellationtokens-in-asp-net-core-mvc-controllers/
 https://www.mikesdotnetting.com/article/332/rendering-a-partial-to-a-string-in-razor-pages
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
 https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
@@ -219,6 +220,7 @@ https://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-829T
 https://www.youtube.com/watch?v=J0mcYVxJEl0&feature=youtu.be
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2014/october/async-programming-introduction-to-async-await-on-asp-net
 https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth
+https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming
 }
 
 SOLID {
