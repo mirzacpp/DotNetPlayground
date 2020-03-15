@@ -79,7 +79,7 @@ namespace Cleaners.Web
 
             services.ConfigureMvc();
 
-            services.AddSingleton<RegisteredServicesConfig>(config =>
+            services.AddSingleton(config =>
             {
                 return new RegisteredServicesConfig
                 {

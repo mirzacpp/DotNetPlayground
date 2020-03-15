@@ -28,7 +28,7 @@ namespace Cleaners.Web
             try
             {
                 Log.Information("Starting host.");
-                CreateHostBuilder(args).Build().Run();
+                CreateWebHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
             {
