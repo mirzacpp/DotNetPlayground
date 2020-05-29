@@ -1,10 +1,9 @@
 ﻿namespace Cleaners.DependencyInjection.Interfaces
 {
     /// <summary>
-    /// Marker for scoped dependencies
+    /// Marks implementation as scoped dependency
     /// </summary>
     public interface IScopedDependency
     {
-
     }
 }

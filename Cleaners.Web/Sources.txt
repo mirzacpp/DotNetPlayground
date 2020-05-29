@@ -1,15 +1,20 @@
 ﻿// Usefull sources
 Blogs {
+https://techiesimon.com/
 https://blog.codingmilitia.com/
 https://www.programmingwithwolfgang.com/
 https://rimdev.io/
+https://benjamincollins.com/
 https://dusted.codes/
 https://dot-net.awesome-programming.com/
 https://jeremyskinner.co.uk/
 https://blog.bitscry.com/
+https://exceptionnotfound.net/
+http://blog.monstuff.com/
 https://www.fixedbuffer.com/
 https://www.thereformedprogrammer.net/
 https://www.mikesdotnetting.com/
+https://codeblog.jonskeet.uk/
 https://www.stevejgordon.co.uk/
 https://dotnetcoretutorials.com/
 https://docs.microsoft.com/en-us%5Carchive%5Cmsdn-magazine%5Cauthors%5CJulie_Lerman
@@ -36,6 +41,8 @@ https://espressocoder.com/
 https://brockallen.com/
 https://wakeupandcode.com
 https://blog.oneunicorn.com/
+https://blogs.cuttingedge.it/steven/
+https://benfoster.io/
 https://www.davepaquette.com/
 }
 
@@ -159,8 +166,10 @@ https://github.com/aspnet/EntityFrameworkCore/issues/9467
 
 .NET
 {
+https://github.com/dotnet/coreclr/tree/master/Documentation/botr
 https://devblogs.microsoft.com/dotnet/author/stephen_toubhotmail-com/
 https://www.youtube.com/watch?v=xdSSH63IZZc
+https://devblogs.microsoft.com/dotnet/introducing-net-standard/
 Performanse {
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
@@ -237,11 +246,17 @@ https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancel
 
 SOLID {
 https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ 
+HTTPS://APP.PLURALSIGHT.COM/LIBRARY/COURSES/ENCAPSULATION-SOLID/TABLE-OF-CONTENTS
+https://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/
 }
 
 DI {
+https://blog.ploeh.dk/
+https://blogs.cuttingedge.it/
 https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/
 https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
+https://blog.ploeh.dk/2014/05/19/conforming-container/
+https://blog.ploeh.dk/2014/05/19/di-friendly-library/
 Auto registration
 https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/
 }

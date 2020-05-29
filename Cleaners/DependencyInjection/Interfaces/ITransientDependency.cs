@@ -1,7 +1,7 @@
 ﻿namespace Cleaners.DependencyInjection.Interfaces
 {
     /// <summary>
-    /// Marker for transient dependencies
+    /// Marks implementation as transient dependency
     /// </summary>
     public interface ITransientDependency
     {

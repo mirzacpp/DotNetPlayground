@@ -26,12 +26,11 @@ namespace Cleaners.Models
             return result;
         }
 
+        public static Result Failed(params string[] errors)
+            => Failed(errors.Select(e => new ResultError(e)).ToArray());
+
         public override string ToString()
-        {
-            return Succeeded ?
-                "Succeeded" :
-                $"Failed, {Errors.Select(e => e.Message).ToList()}";
-        }
+            => Succeeded ? "Succeeded" : $"Failed, { Errors.Select(e => e.Message).ToList() }";
     }
 
     /// <summary>
@@ -43,6 +42,11 @@ namespace Cleaners.Models
         {
             Key = key;
             Message = message;
+        }
+
+        public ResultError(string message)
+            : this(string.Empty, message)
+        {
         }
 
         /// <summary>

@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using System;
 
-namespace Corvo.AspNetCore.Mvc.Extensions
+/// <summary>
+/// This is a common namespace used for <see cref="IApplicationBuilder"/> extension methods
+/// </summary>
+namespace Microsoft.AspNetCore.Builder
 {
     /// <summary>
     /// Extensions methods for <see cref="IApplicationBuilder"/>
@@ -16,9 +19,7 @@ namespace Corvo.AspNetCore.Mvc.Extensions
         /// <param name="condition"></param>
         /// <returns></returns>
         public static IApplicationBuilder When(this IApplicationBuilder appBuilder, bool condition, Func<IApplicationBuilder> compose)
-        {
-            return condition ? compose() : appBuilder;
-        }
+            => condition ? compose() : appBuilder;
 
         /// <summary>
         /// Executes given operation if condition is statisfied

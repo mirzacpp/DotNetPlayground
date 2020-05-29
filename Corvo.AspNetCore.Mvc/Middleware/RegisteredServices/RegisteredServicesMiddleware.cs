@@ -44,16 +44,16 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
                     builder.Append(@"<table class=""services-table"">
                         <thead><tr>
                             <th>Service type</th>
-                            <th>Lifetime</th>
                             <th>Implementation type</th>
+                            <th>Lifetime</th>
                         </tr></thead><tbody>");
 
                     foreach (var service in _config.Services)
                     {
                         builder.Append("<tr>");
                         builder.Append($"<td>{service.ServiceType.FullName}</td>");
-                        builder.Append($"<td>{service.Lifetime}</td>");
                         builder.Append($"<td>{service.ImplementationType?.FullName}</td>");
+                        builder.Append($"<td>{service.Lifetime}</td>");
                         builder.Append("</tr>");
                     }
                     builder.Append("</tbody></table>");

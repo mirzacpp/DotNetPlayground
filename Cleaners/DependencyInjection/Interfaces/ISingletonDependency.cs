@@ -1,7 +1,7 @@
 ﻿namespace Cleaners.DependencyInjection.Interfaces
 {
     /// <summary>
-    /// Marker for singleton dependencies
+    /// Marks implementation as singleton dependency
     /// </summary>
     public interface ISingletonDependency
     {

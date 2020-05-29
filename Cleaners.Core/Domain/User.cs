@@ -11,7 +11,7 @@ namespace Cleaners.Core.Domain
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsActive { get; set; }
-        public bool IsSoftDeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime CreationDateUtc { get; set; }
         public DateTime? LastUpdateDateUtc { get; set; }
 

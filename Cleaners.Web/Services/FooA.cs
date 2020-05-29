@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Cleaners.DependencyInjection.Interfaces;
+using System;
 
 namespace Cleaners.Web.Services
 {
-    public class FooA : IFoo
+    public class FooA : IFoo, IScopedDependency
     {
         public string Name => nameof(FooA);
 

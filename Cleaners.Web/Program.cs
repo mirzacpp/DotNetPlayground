@@ -11,27 +11,42 @@ namespace Cleaners.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static int Main(string[] args)
         {
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            var configuration = CreateConfigurationBuilder(environment).Build();
 
-            // Configure logger from appsettings.json file
+            // Create local configuration for logger configuration
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
+                .Build();
+
+            // Create and configure logger
             Log.Logger = new LoggerConfiguration()
                .ReadFrom.Configuration(configuration)
                .CreateLogger();
 
-            var host = CreateWebHostBuilder(args).Build();
+            try
+            {
+                Log.Information("Starting host.");
+                CreateWebHostBuilder(args).Build().Run();
 
-            host.Run();
+                // Return code 0 on app shutdown
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly.");
+                // Return code 1 on failed run
+                return 1;
+            }
+            finally
+            {
+                // Always dispose logger
+                Log.CloseAndFlush();
+            }
         }
-
-        public static IConfigurationBuilder CreateConfigurationBuilder(string environment) =>
-            new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.db.json", optional: true, reloadOnChange: true)
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true);
 
         /// <summary>
         /// TODO: Refactor to use generic <see cref="Host"/> builder
@@ -49,5 +64,22 @@ namespace Cleaners.Web
             // Register serilog as logging provider
             .UseSerilog()
             .UseStartup<Startup>();
+
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(loggingBuilder =>
+                {
+                    // Clear all default logging providers
+                    loggingBuilder.ClearProviders();
+                })
+                .ConfigureWebHost(webBuilder =>
+                {
+                    webBuilder.ConfigureKestrel(options => options.AddServerHeader = false);
+                    webBuilder.CaptureStartupErrors(true);
+                    webBuilder.UseStartup<Startup>();
+                })
+                .UseSerilog();
+        }
     }
 }

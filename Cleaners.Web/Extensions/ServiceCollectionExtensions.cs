@@ -12,14 +12,12 @@ using Cleaners.Web.Infrastructure.AppSettings;
 using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Infrastructure.AutoMapper;
 using Cleaners.Web.Infrastructure.Localization;
-using Cleaners.Web.Infrastructure.Routing;
 using Cleaners.Web.Localization;
 using Cleaners.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -41,12 +39,11 @@ namespace Cleaners.Web.Extensions
         /// <param name="services"></param>
         public static void ConfigureMvc(this IServiceCollection services)
         {
-            var mvcBuilder = services.AddMvc(options =>
+            var mvcBuilder = services.AddControllersWithViews(options =>
             {
                 // Enable automatic validation of antiforgerytoken
                 // This way we don't have to always include ValidateAntiForgeryToken attribute
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
             });
 
             mvcBuilder.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
@@ -56,8 +53,6 @@ namespace Cleaners.Web.Extensions
             {
                 options.Cookie.Name = CookieNames.TempData;
             });
-
-            services.AddControllersWithViews();
         }
 
         /// <summary>
@@ -91,6 +86,8 @@ namespace Cleaners.Web.Extensions
             services.Configure<AppInfoConfig>(configuration.GetSection(AppSettingsSectionNames.AppInfo));
             // Register IdentityOptions so it can be used in application
             services.Configure<IdentityConfig>(configuration.GetSection(AppSettingsSectionNames.Identity));
+
+            configuration.GetValue<bool>("");
 
             // Allows config to be injected directly as instance without IOptionsSnapshot<>
             services.AddScoped(provider => provider.GetRequiredService<IOptionsSnapshot<AppInfoConfig>>().Value);
@@ -174,8 +171,6 @@ namespace Cleaners.Web.Extensions
 
             services.AddScoped<DbContext, CorvoDbContext>();
             services.AddScoped<IRepository, EfRepository>();
-
-            //services.AddScoped<DatabaseInitializr>();
         }
 
         /// <summary>
