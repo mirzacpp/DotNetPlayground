@@ -11,16 +11,18 @@ namespace Cleaners.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static int Main(string[] args)
         {
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            // Create local configuration for logger configuration
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
-                .Build();            
+                .Build();
 
-            // Configure logger from appsettings.json file
+            // Create and configure logger
             Log.Logger = new LoggerConfiguration()
                .ReadFrom.Configuration(configuration)
                .CreateLogger();
@@ -29,20 +31,21 @@ namespace Cleaners.Web
             {
                 Log.Information("Starting host.");
                 CreateWebHostBuilder(args).Build().Run();
+
+                // Return code 0 on app shutdown
+                return 0;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "Host terminated unexpectedly.");
+                // Return code 1 on failed run
+                return 1;
             }
             finally
             {
-                // Dispose logger
+                // Always dispose logger
                 Log.CloseAndFlush();
             }
-
-            //var host = CreateWebHostBuilder(args).Build();
-
-            //host.Run();
         }
 
         /// <summary>
@@ -73,13 +76,8 @@ namespace Cleaners.Web
                 .ConfigureWebHost(webBuilder =>
                 {
                     webBuilder.ConfigureKestrel(options => options.AddServerHeader = false);
-                    //webBuilder.CaptureStartupErrors(true);
+                    webBuilder.CaptureStartupErrors(true);
                     webBuilder.UseStartup<Startup>();
-                })
-                .UseDefaultServiceProvider((context, options) =>
-                {
-                    options.ValidateScopes = false;
-                    options.ValidateOnBuild = false;                    
                 })
                 .UseSerilog();
         }

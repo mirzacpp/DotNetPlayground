@@ -32,7 +32,7 @@ namespace Cleaners.Data
                     FirstName = "Admin",
                     LastName = "Admin",
                     IsActive = true,
-                    IsSoftDeleted = false,
+                    IsDeleted = false,
                     Email = "mirza@test.ba",
                     UserName = "mirza@test.ba",
                     CreationDateUtc = DateTime.UtcNow,

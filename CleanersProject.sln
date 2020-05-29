@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleaners", "Cleaners\Cleane
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvo.Tests", "Corvo.Tests\Corvo.Tests.csproj", "{48742204-5F3B-4625-BB22-6AB3F391653D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvo.Consola", "Corvo.Consola\Corvo.Consola.csproj", "{DC32D88D-403E-4678-9D86-492374DEEA69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvo.Consola", "Corvo.Consola\Corvo.Consola.csproj", "{DC32D88D-403E-4678-9D86-492374DEEA69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplicity.Api", "Simplicity.Api\Simplicity.Api.csproj", "{134F5756-68C2-4097-8FB0-D48235AE3720}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{DC32D88D-403E-4678-9D86-492374DEEA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC32D88D-403E-4678-9D86-492374DEEA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC32D88D-403E-4678-9D86-492374DEEA69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{134F5756-68C2-4097-8FB0-D48235AE3720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134F5756-68C2-4097-8FB0-D48235AE3720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134F5756-68C2-4097-8FB0-D48235AE3720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134F5756-68C2-4097-8FB0-D48235AE3720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

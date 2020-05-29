@@ -1,17 +1,22 @@
-﻿using Cleaners.Web.Extensions;
-using Cleaners.Web.Infrastructure.Routing;
+﻿using Cleaners.DependencyInjection.Interfaces;
+using Cleaners.Web.Extensions;
+using Cleaners.Web.Infrastructure.AppSettings;
 using Cleaners.Web.Infrastructure.Stuntman;
+using Cleaners.Web.Services;
 using Corvo.AspNetCore.Mvc.Middleware.Claims;
 using Corvo.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
 using Corvo.AspNetCore.Mvc.UI.Navigation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using RimDev.Stuntman.Core;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Cleaners.Web
 {
@@ -32,13 +37,6 @@ namespace Cleaners.Web
             services.AddHttpContextAccessor();
 
             services.ConfigureAppSettings(Configuration);
-
-            services.AddRouting(conf =>
-            {
-                conf.ConstraintMap["slugify"] = typeof(SlugifyParameterTransformer);
-            });
-
-            services.ConfigureRazorViewEngine();
 
             //services.ConfigureLocalization();
 
@@ -72,22 +70,18 @@ namespace Cleaners.Web
 
             // Register file provider options from appsettings
             //services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
-            //services.AddCorvoFileProvider();
+            //services.AddCorvoFileProvider();            
 
-            //services.AddScoped<ITagHelperComponent, MetaTagHelperComponent>();
-            //services.AddScoped<ITagHelperComponent, NavTagHelperComponent>();
-
-            services.ConfigureMvc();
+            services.ConfigureMvc();                      
 
             services.AddSingleton(config =>
             {
                 return new RegisteredServicesConfig
                 {
-                    Services = new List<ServiceDescriptor>(services)
+                    // Reverse to display latest services at the top
+                    Services = new List<ServiceDescriptor>(services.Reverse())
                 };
             });
-
-            //services.AddRouteAnalyzer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,6 +100,16 @@ namespace Cleaners.Web
                 app.UseHsts();
             }
 
+            app.Map("/app-info", conf =>
+            {
+                conf.Run(async handler =>
+                {
+                    var appInfo = handler.RequestServices.GetRequiredService<IOptions<AppInfoConfig>>().Value;
+
+                    await handler.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(appInfo));
+                });
+            });
+
             // Serve files from wwwroot directory
             app.UseStaticFiles();
             app.UseHttpsRedirection();
@@ -115,7 +119,7 @@ namespace Cleaners.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.ConfigureLocalization();
+            //app.ConfigureLocalization();
 
             // Since mini-profiler is lightweight we can leave it ON in all evironments
             // In that case, make sure to authorize it.
