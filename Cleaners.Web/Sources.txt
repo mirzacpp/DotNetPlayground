@@ -36,6 +36,7 @@ https://espressocoder.com/
 https://brockallen.com/
 https://wakeupandcode.com
 https://blog.oneunicorn.com/
+https://www.davepaquette.com/
 }
 
 Span i memory {
@@ -67,6 +68,9 @@ https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 Validation {
 https://docs.fluentvalidation.net/en/latest/localization.html
 }
+Urls {
+https://edi.wang/post/2018/11/25/netcore-webutility-urlencode-httputility-urlencode
+}
 Architecture {
 https://github.com/jasontaylordev/CleanArchitecture
 https://jasontaylor.dev/clean-architecture-getting-started/
@@ -94,12 +98,14 @@ http://www.dotnetbull.com/2013/08/301-permanent-vs-302-temporary-status-code-asp
 Compile modified views
 https://gunnarpeipman.com/aspnet-core-compile-modified-views/
 Render view inside controller 
+https://github.com/aspnet/Entropy/tree/master/samples/Mvc.RenderViewToString
 https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-using-ASPNET-Core-that-can-be-used-in-the-c-controlle-7173969632
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 Slugify routes
 https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
 Auth
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
+https://www.youtube.com/watch?v=EJeZ3YNnqz8
 Migracije i seed 
 https://code-maze.com/migrations-and-seed-data-efcore/
 IFileProviders {
@@ -203,6 +209,10 @@ https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
 }
 FILES {
 https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
+http://thingsihateaboutmicrosoft.blogspot.com/2009/08/pathcombine-is-essentially-useless.html
+}
+BUNDLING: {
+https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/
 }
 }
 
@@ -221,6 +231,8 @@ https://www.youtube.com/watch?v=J0mcYVxJEl0&feature=youtu.be
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2014/october/async-programming-introduction-to-async-await-on-asp-net
 https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming
+
+https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/
 }
 
 SOLID {
@@ -270,6 +282,10 @@ https://www.stevejgordon.co.uk/introduction-to-benchmarking-csharp-code-with-ben
 
 Operatori {
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/type-inference-woes-part-one
+}
+
+Fake data {
+https://dev.to/praneetnadkar/generating-a-fake-data-in-net-core-api-3kba
 }
 
 Pattern matching
