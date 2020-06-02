@@ -1,4 +1,12 @@
 ﻿// Usefull sources
+
+Repos {
+https://github.com/EdiWang/Moonglade
+https://github.com/ardalis/CleanArchitecture
+https://github.com/jasontaylordev/CleanArchitecture
+https://github.com/jasontaylordev/NorthwindTraders
+}
+
 Blogs {
 https://techiesimon.com/
 https://blog.codingmilitia.com/
@@ -175,6 +183,9 @@ https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
 https://www.youtube.com/watch?v=nK54s84xRRs
 https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bombardier-87cc9c6b8d6f
+}
+DateTime {
+https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/
 }
 Assemblies {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders

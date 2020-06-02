@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvo.Tests", "Corvo.Tests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvo.Consola", "Corvo.Consola\Corvo.Consola.csproj", "{DC32D88D-403E-4678-9D86-492374DEEA69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplicity.Api", "Simplicity.Api\Simplicity.Api.csproj", "{134F5756-68C2-4097-8FB0-D48235AE3720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.Api", "Simplicity.Api\Simplicity.Api.csproj", "{134F5756-68C2-4097-8FB0-D48235AE3720}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{1B33C103-FABA-4F21-A241-633B80121BF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
