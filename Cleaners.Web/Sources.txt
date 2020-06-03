@@ -94,6 +94,7 @@ Include static resources
 https://www.mikesdotnetting.com/article/330/including-static-resources-in-razor-class-libraries-in-asp-net-core
 Logging
 https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
+https://benfoster.io/blog/serilog-best-practices/
 Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 https://andrewlock.net/understanding-your-middleware-pipeline-with-the-middleware-analysis-package/
@@ -130,10 +131,12 @@ https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at
 }
 Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
-Route data pristup {
+Rutiranje {
 https://weblog.west-wind.com/posts/2019/May/15/Accessing-RouteData-in-an-ASPNET-Core-Controller-Constructor
 https://andrewlock.net/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/
 https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
+https://aregcode.com/blog/2019/dotnetcore-understanding-aspnet-endpoint-routing/
+https://benfoster.io/blog/aspnetcore-3-1-current-route-endpoint-name/
 }
 Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
