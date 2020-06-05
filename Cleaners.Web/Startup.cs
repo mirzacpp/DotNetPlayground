@@ -38,7 +38,7 @@ namespace Cleaners.Web
 
             services.ConfigureAppSettings(Configuration);
 
-            //services.ConfigureLocalization();
+            services.ConfigureLocalization();
 
             services.ConfigureAutoMapper();
 
@@ -70,9 +70,9 @@ namespace Cleaners.Web
 
             // Register file provider options from appsettings
             //services.Configure<CorvoFileProviderOptions>(Configuration.GetSection(AppSettingsSectionNames.CorvoFileProviderOptions));
-            //services.AddCorvoFileProvider();            
+            //services.AddCorvoFileProvider();
 
-            services.ConfigureMvc();                      
+            services.ConfigureMvc();
 
             services.AddSingleton(config =>
             {
@@ -119,7 +119,7 @@ namespace Cleaners.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //app.ConfigureLocalization();
+            app.ConfigureLocalization();
 
             // Since mini-profiler is lightweight we can leave it ON in all evironments
             // In that case, make sure to authorize it.

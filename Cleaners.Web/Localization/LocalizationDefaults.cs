@@ -18,7 +18,7 @@ namespace Cleaners.Web.Localization
             return new[]
             {
                 new Language("en-US", "English", true, false, "en.png"),
-                new Language("bs", "Bosnian", false, false, "bs.png")              
+                new Language("bs", "Bosnian", false, false, "bs.png")
             };
         }
 
