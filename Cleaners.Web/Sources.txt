@@ -86,6 +86,7 @@ https://docs.fluentvalidation.net/en/latest/localization.html
 }
 Urls {
 https://edi.wang/post/2018/11/25/netcore-webutility-urlencode-httputility-urlencode
+https://www.talkingdotnet.com/build-query-string-asp-net-core/
 }
 Architecture {
 https://github.com/jasontaylordev/CleanArchitecture
@@ -138,6 +139,7 @@ https://andrewlock.net/converting-a-terminal-middleware-to-endpoint-routing-in-a
 https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
 https://aregcode.com/blog/2019/dotnetcore-understanding-aspnet-endpoint-routing/
 https://benfoster.io/blog/aspnetcore-3-1-current-route-endpoint-name/
+https://edi.wang/post/2020/4/29/my-aspnet-core-route-debugger-middleware
 }
 Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
