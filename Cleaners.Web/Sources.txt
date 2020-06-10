@@ -119,8 +119,7 @@ Render view inside controller
 https://github.com/aspnet/Entropy/tree/master/samples/Mvc.RenderViewToString
 https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-using-ASPNET-Core-that-can-be-used-in-the-c-controlle-7173969632
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
-Slugify routes
-https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
+
 Auth
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
 https://www.youtube.com/watch?v=EJeZ3YNnqz8
@@ -140,6 +139,8 @@ https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
 https://aregcode.com/blog/2019/dotnetcore-understanding-aspnet-endpoint-routing/
 https://benfoster.io/blog/aspnetcore-3-1-current-route-endpoint-name/
 https://edi.wang/post/2020/4/29/my-aspnet-core-route-debugger-middleware
+https://benjii.me/2017/04/parse-modify-query-strings-asp-net-core/
+https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
 }
 Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html

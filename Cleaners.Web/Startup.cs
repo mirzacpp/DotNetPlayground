@@ -1,8 +1,6 @@
-﻿using Cleaners.DependencyInjection.Interfaces;
-using Cleaners.Web.Extensions;
+﻿using Cleaners.Web.Extensions;
 using Cleaners.Web.Infrastructure.AppSettings;
 using Cleaners.Web.Infrastructure.Stuntman;
-using Cleaners.Web.Services;
 using Corvo.AspNetCore.Mvc.Middleware.Claims;
 using Corvo.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Corvo.AspNetCore.Mvc.UI.Alerts;
