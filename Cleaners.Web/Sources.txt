@@ -10,6 +10,7 @@ https://github.com/aspnetrun/run-aspnetcore
 
 Blogs {
 https://techiesimon.com/
+https://enterprisecraftsmanship.com/
 https://blog.codingmilitia.com/
 https://www.programmingwithwolfgang.com/
 https://rimdev.io/
