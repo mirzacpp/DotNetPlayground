@@ -195,6 +195,9 @@ https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bo
 Assemblies {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
 }
+RAND {
+https://khalidabuhakmeh.com/creating-random-numbers-with-dotnet-core
+}
 Numerics formating {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
 }
@@ -321,6 +324,7 @@ https://gunnarpeipman.com/aspnet-paging/
 https://dev.to/praneetnadkar/generating-a-fake-data-in-net-core-api-3kba
 https://enterprisecraftsmanship.com/posts/specification-pattern-c-implementation/
 https://gunnarpeipman.com/ef-core-query-specification/
+https://www.simplethread.com/Infinite-Lists-With-C-Yield/
 }
 
 Pattern matching
