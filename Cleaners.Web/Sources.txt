@@ -77,6 +77,7 @@ ASP.NET CORE {
 Samples {
 https://github.com/aspnet/Entropy
 }
+https://andrewlock.net/controller-activation-and-dependency-injection-in-asp-net-core-mvc/
 https://andrewlock.net/using-cancellationtokens-in-asp-net-core-mvc-controllers/
 https://www.mikesdotnetting.com/article/332/rendering-a-partial-to-a-string-in-razor-pages
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#whats-a-host
@@ -84,6 +85,9 @@ https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 Validation {
 https://docs.fluentvalidation.net/en/latest/localization.html
+}
+Headers {
+https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-headers-asp-net-core/
 }
 Urls {
 https://edi.wang/post/2018/11/25/netcore-webutility-urlencode-httputility-urlencode
@@ -157,6 +161,7 @@ https://michaelscodingspot.com/debugging-exceptions/
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
+https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
 }
 
 ENTITYFRAMEWORK
