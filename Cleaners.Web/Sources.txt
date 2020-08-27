@@ -10,6 +10,8 @@ https://github.com/aspnetrun/run-aspnetcore
 
 Blogs {
 https://techiesimon.com/
+https://www.nimaara.com/
+https://cezarypiatek.github.io/
 https://enterprisecraftsmanship.com/
 https://blog.codingmilitia.com/
 https://www.programmingwithwolfgang.com/
@@ -47,6 +49,7 @@ https://adamsitnik.com/
 https://aakinshin.net/posts/
 http://mustoverride.com/
 https://www.meziantou.net/
+https://jimmybogard.com/
 https://espressocoder.com/
 https://brockallen.com/
 https://wakeupandcode.com
@@ -85,6 +88,7 @@ https://dusted.codes/advanced-tips-and-tricks-for-aspnet-core-applications
 https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 Validation {
 https://docs.fluentvalidation.net/en/latest/localization.html
+https://dejanstojanovic.net/aspnet/2020/april/validate-configurations-with-fluentvalidation-in-aspnet-core/
 }
 Headers {
 https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-headers-asp-net-core/
@@ -124,10 +128,15 @@ Render view inside controller
 https://github.com/aspnet/Entropy/tree/master/samples/Mvc.RenderViewToString
 https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-using-ASPNET-Core-that-can-be-used-in-the-c-controlle-7173969632
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
-
+https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEntityFrameworkDbGeographySpatialTypes.aspx
 Auth
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
 https://www.youtube.com/watch?v=EJeZ3YNnqz8
+https://github.com/dotnet/aspnetcore/tree/master/src/Security/samples
+https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-with-refresh-tokens
+https://www.scottbrady91.com/ASPNET-Identity/Implementing-Mediums-Passwordless-Authentication-using-ASPNET-Core-Identity
+https://andrewlock.net/implementing-custom-token-providers-for-passwordless-authentication-in-asp-net-core-identity/
+https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in-asp-net-core/
 Migracije i seed 
 https://code-maze.com/migrations-and-seed-data-efcore/
 IFileProviders {
@@ -176,6 +185,8 @@ https://visualstudiomagazine.com/articles/2019/09/12/ef-previews.aspx
 https://github.com/dotnet/efcore/issues/18007
 https://www.youtube.com/watch?v=LDRxo6wDIE0
 https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
+https://jimmybogard.com/automapper-linq-support-deep-dive/ (SEE: https://jimmybogard.com/automapper-usage-guidelines/)
+https://benjii.me/2018/01/expression-projection-magic-entity-framework-core/
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 Querying with Include 
@@ -241,6 +252,8 @@ https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
 }
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
+https://github.com/morelinq/MoreLINQ
+https://codeblog.jonskeet.uk/2011/01/01/reimplementing-linq-to-objects-part-21-groupby/
 }
 FILES {
 https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
