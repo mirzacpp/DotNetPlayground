@@ -262,6 +262,9 @@ http://thingsihateaboutmicrosoft.blogspot.com/2009/08/pathcombine-is-essentially
 BUNDLING: {
 https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/
 }
+OPTIONS {
+https://andrewlock.net/delaying-strongly-typed-options-configuration-using-postconfigure-in-asp-net-core/
+}
 }
 
 ASYNC/AWAIT {
@@ -324,6 +327,7 @@ INTERESTING STUFF {
 https://www.youtube.com/watch?v=mLX1sYVf-Xg
 https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-somewhat-harmful
+https://devblogs.microsoft.com/dotnet/embracing-nullable-reference-types/
 }
 
 System.Collections.Generic Namespace {
@@ -336,6 +340,10 @@ https://www.stevejgordon.co.uk/introduction-to-benchmarking-csharp-code-with-ben
 
 Operatori {
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/type-inference-woes-part-one
+}
+
+VISUAL STUDIO {
+Template: https://www.programmingwithwolfgang.com/create-a-net-core-visual-studio-template/
 }
 
 DATA {
