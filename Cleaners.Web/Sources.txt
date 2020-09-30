@@ -6,6 +6,7 @@ https://github.com/ardalis/CleanArchitecture
 https://github.com/jasontaylordev/CleanArchitecture
 https://github.com/jasontaylordev/NorthwindTraders
 https://github.com/aspnetrun/run-aspnetcore
+https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
@@ -63,6 +64,7 @@ Span i memory {
 https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types-Span-T-and-Memory-T
 https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t
 https://www.meziantou.net/some-performance-tricks-with-dotnet-strings.htm
+https://adamsitnik.com/Span/
 }
 
 Best practices for Strings
@@ -122,13 +124,13 @@ Json
 https://codeburst.io/working-with-json-in-net-core-3-2fd1236126c1
 302 vs 301
 http://www.dotnetbull.com/2013/08/301-permanent-vs-302-temporary-status-code-aspnet-csharp-Implementation.html
-Compile modified views
+VIEWS 
 https://gunnarpeipman.com/aspnet-core-compile-modified-views/
-Render view inside controller 
 https://github.com/aspnet/Entropy/tree/master/samples/Mvc.RenderViewToString
 https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-using-ASPNET-Core-that-can-be-used-in-the-c-controlle-7173969632
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEntityFrameworkDbGeographySpatialTypes.aspx
+https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
 Auth
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
 https://www.youtube.com/watch?v=EJeZ3YNnqz8
@@ -171,7 +173,11 @@ https://michaelscodingspot.com/debugging-exceptions/
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
-https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
+WebDAV {
+https://docs.microsoft.com/en-us/iis/install/installing-publishing-technologies/installing-and-configuring-webdav-on-iis
+https://stackoverflow.com/questions/12440277/how-do-i-enable-http-put-and-delete-for-asp-net-mvc-in-iis
+https://www.cloudwards.net/what-is-webdav/
+}
 }
 
 ENTITYFRAMEWORK
@@ -254,10 +260,14 @@ LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
 https://github.com/morelinq/MoreLINQ
 https://codeblog.jonskeet.uk/2011/01/01/reimplementing-linq-to-objects-part-21-groupby/
+https://github.com/scottksmith95/LINQKit
+https://www.meziantou.net/don-t-use-method-with-side-effect-in-linq.htm
+http://www.scip.be/index.php?Page=ArticlesNET23
 }
 FILES {
 https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
 http://thingsihateaboutmicrosoft.blogspot.com/2009/08/pathcombine-is-essentially-useless.html
+https://volosoft.com/blog/File-Upload-Download-with-BLOB-Storage-in-ASP.NET-Core-and-ABP
 }
 BUNDLING: {
 https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/
@@ -265,6 +275,11 @@ https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scrip
 OPTIONS {
 https://andrewlock.net/delaying-strongly-typed-options-configuration-using-postconfigure-in-asp-net-core/
 }
+DATA PROTECTION {
+https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1#persistkeystofilesystem
+https://www.tabsoverspaces.com/233774-using-data-protection-in-entity-framework-core-with-value-converters
+}
+
 }
 
 ASYNC/AWAIT {
@@ -328,6 +343,7 @@ https://www.youtube.com/watch?v=mLX1sYVf-Xg
 https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-somewhat-harmful
 https://devblogs.microsoft.com/dotnet/embracing-nullable-reference-types/
+https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-between-class-and-struct?redirectedfrom=MSDN
 }
 
 System.Collections.Generic Namespace {
@@ -361,4 +377,10 @@ TODO {
 - Napravi genericki Result objekat koji ce se vracati iz servisa. Ukoliko bude errora, mapiraj errore iz rezultata u modelstate.
 ...
 https://github.com/dotnet/aspnetcore/blob/bfec2c14be1e65f7dd361a43950d4c848ad0cd35/src/Identity/Extensions.Core/src/IdentityResult.cs
+}
+
+EF CORE {
+JSON COLUMNS: https://github.com/dotnet/efcore/issues/4021,
+https://www.codeproject.com/Articles/1166099/Entity-Framework-Storing-complex-properties-as-JSO
+https://khalidabuhakmeh.com/add-custom-database-functions-for-entity-framework-core
 }
