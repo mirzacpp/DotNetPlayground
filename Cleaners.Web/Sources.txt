@@ -368,8 +368,10 @@ https://dev.to/praneetnadkar/generating-a-fake-data-in-net-core-api-3kba
 https://enterprisecraftsmanship.com/posts/specification-pattern-c-implementation/
 https://gunnarpeipman.com/ef-core-query-specification/
 https://www.simplethread.com/Infinite-Lists-With-C-Yield/
-}
+Paging projection: https://github.com/AutoMapper/AutoMapper/issues/1083
 
+}
+slack
 Pattern matching
 https://devblogs.microsoft.com/dotnet/do-more-with-patterns-in-c-8-0/
 
