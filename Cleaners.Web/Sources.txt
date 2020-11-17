@@ -10,6 +10,7 @@ https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
+https://www.dotnet-tv.com/
 https://techiesimon.com/
 https://www.nimaara.com/
 https://cezarypiatek.github.io/
@@ -80,6 +81,9 @@ https://weblog.west-wind.com/posts/2019/Sep/24/Upgrading-my-AlbumViewer-Sample-t
 
 ASP.NET CORE {
 Samples {
+HOSTING {
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1
+}
 https://github.com/aspnet/Entropy
 }
 https://andrewlock.net/controller-activation-and-dependency-injection-in-asp-net-core-mvc/
@@ -193,6 +197,7 @@ https://www.youtube.com/watch?v=LDRxo6wDIE0
 https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
 https://jimmybogard.com/automapper-linq-support-deep-dive/ (SEE: https://jimmybogard.com/automapper-usage-guidelines/)
 https://benjii.me/2018/01/expression-projection-magic-entity-framework-core/
+https://docs.microsoft.com/en-us/ef/core/modeling/backing-field?tabs=data-annotations
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 Querying with Include 
@@ -263,11 +268,13 @@ https://codeblog.jonskeet.uk/2011/01/01/reimplementing-linq-to-objects-part-21-g
 https://github.com/scottksmith95/LINQKit
 https://www.meziantou.net/don-t-use-method-with-side-effect-in-linq.htm
 http://www.scip.be/index.php?Page=ArticlesNET23
+https://alicebobandmallory.com/articles/2012/10/18/merge-collections-without-duplicates-in-c
 }
 FILES {
 https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
 http://thingsihateaboutmicrosoft.blogspot.com/2009/08/pathcombine-is-essentially-useless.html
 https://volosoft.com/blog/File-Upload-Download-with-BLOB-Storage-in-ASP.NET-Core-and-ABP
+https://jonskeet.uk/csharp/readbinary.html
 }
 BUNDLING: {
 https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/
@@ -297,7 +304,7 @@ https://www.youtube.com/watch?v=J0mcYVxJEl0&feature=youtu.be
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2014/october/async-programming-introduction-to-async-await-on-asp-net
 https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming
-
+https://markheath.net/post/async-antipatterns
 https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/
 }
 
@@ -385,4 +392,11 @@ EF CORE {
 JSON COLUMNS: https://github.com/dotnet/efcore/issues/4021,
 https://www.codeproject.com/Articles/1166099/Entity-Framework-Storing-complex-properties-as-JSO
 https://khalidabuhakmeh.com/add-custom-database-functions-for-entity-framework-core
+https://www.meziantou.net/using-hierarchyid-with-entity-framework-core.htm
+OWNED ENTITIES: https://github.com/dotnet/efcore/issues/18299
+SEQUENCE: https://www.talkingdotnet.com/use-sql-server-sequence-in-entity-framework-core-primary-key/ (https://www.sqlservertutorial.net/sql-server-basics/sql-server-sequence/)
+}
+
+GIT {
+https://docs.microsoft.com/en-us/visualstudio/ide/git-with-visual-studio?view=vs-2019
 }
