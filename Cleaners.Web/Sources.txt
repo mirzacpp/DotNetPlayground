@@ -1,19 +1,25 @@
 ﻿// Usefull sources
 
 Repos {
+https://github.com/skimedic/presentations/tree/master/DOTNETCORE
 https://github.com/EdiWang/Moonglade
 https://github.com/ardalis/CleanArchitecture
 https://github.com/jasontaylordev/CleanArchitecture
 https://github.com/jasontaylordev/NorthwindTraders
 https://github.com/aspnetrun/run-aspnetcore
+https://aspnetboilerplate.com/Pages/Documents/Introduction
+
+https://github.com/abpframework/abp-samples
 }
 
 Blogs {
 https://techiesimon.com/
 https://enterprisecraftsmanship.com/
+https://blog.marcgravell.com/
 https://blog.codingmilitia.com/
 https://www.programmingwithwolfgang.com/
 https://rimdev.io/
+https://rob.conery.io/
 https://benjamincollins.com/
 https://dusted.codes/
 https://dot-net.awesome-programming.com/
@@ -54,6 +60,7 @@ https://blog.oneunicorn.com/
 https://blogs.cuttingedge.it/steven/
 https://benfoster.io/
 https://www.davepaquette.com/
+https://community.abp.io/
 }
 
 Span i memory {
@@ -102,6 +109,7 @@ https://www.mikesdotnetting.com/article/330/including-static-resources-in-razor-
 Logging
 https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
 https://benfoster.io/blog/serilog-best-practices/
+https://gunnarpeipman.com/aspnet-core-notepad-logger/
 Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 https://andrewlock.net/understanding-your-middleware-pipeline-with-the-middleware-analysis-package/
@@ -124,10 +132,15 @@ Render view inside controller
 https://github.com/aspnet/Entropy/tree/master/samples/Mvc.RenderViewToString
 https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-using-ASPNET-Core-that-can-be-used-in-the-c-controlle-7173969632
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
-
-Auth
+CONTENT RENDERING {
+https://github.com/ridercz/Altairis.RazorPages.EditorTemplates
+https://www.codeproject.com/Articles/1079909/ASP-NET-MVC-Partial-Views-with-Partial-Models
+}
+AUTH
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
 https://www.youtube.com/watch?v=EJeZ3YNnqz8
+https://github.com/JonPSmith/PermissionAccessControl2
+Global authorize policy: https://rimdev.io/defaulting-aspnet-core-31-to-require-authentication-for-a-safer-developer-experience/
 Migracije i seed 
 https://code-maze.com/migrations-and-seed-data-efcore/
 IFileProviders {
@@ -167,6 +180,7 @@ https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
 
 ENTITYFRAMEWORK
 {
+https://www.youtube.com/watch?v=xx5_pVsLP44
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
 https://www.codemag.com/Article/1911062/Entity-Framework-Core-3.0-A-Foundation-for-the-Future
 https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/
@@ -176,6 +190,7 @@ https://visualstudiomagazine.com/articles/2019/09/12/ef-previews.aspx
 https://github.com/dotnet/efcore/issues/18007
 https://www.youtube.com/watch?v=LDRxo6wDIE0
 https://www.thereformedprogrammer.net/entity-framework-core-performance-tuning-a-worked-example/
+Drop PK:https://github.com/dotnet/efcore/issues/2100
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 Querying with Include 
@@ -266,14 +281,20 @@ https://www.youtube.com/watch?v=J0mcYVxJEl0&feature=youtu.be
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2014/october/async-programming-introduction-to-async-await-on-asp-net
 https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming
-
+https://medium.com/@deep_blue_day/long-story-short-async-await-best-practices-in-net-1f39d7d84050
+https://www.youtube.com/watch?v=bda13k0vfc0&list=PLokQFRpAsul4fn_CSEwXw33VNbG1DBKgM&index=23&ab_channel=NDCConferences
 https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/
+https://medium.com/@deep_blue_day/long-story-short-async-await-best-practices-in-net-1f39d7d84050
 }
 
 SOLID {
 https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ 
 HTTPS://APP.PLURALSIGHT.COM/LIBRARY/COURSES/ENCAPSULATION-SOLID/TABLE-OF-CONTENTS
 https://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/
+}
+
+PATTERNS {
+https://adamstorr.azurewebsites.net/blog/strategy-pattern-with-enum-constraints
 }
 
 DI {
