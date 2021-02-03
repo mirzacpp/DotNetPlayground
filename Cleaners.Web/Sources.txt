@@ -21,6 +21,9 @@ https://markheath.net/
 https://hendrikbulens.com/
 https://devblogs.microsoft.com/dotnet/author/maoni/
 https://devblogs.microsoft.com/pfxteam/author/toub/
+https://blog.martincostello.com/
+https://khalidabuhakmeh.com/
+https://medium.com/@joni2nja
 https://www.dotnet-tv.com/
 https://techiesimon.com/
 https://www.nimaara.com/
@@ -238,6 +241,7 @@ https://github.com/aspnet/EntityFrameworkCore/issues/1833
 IDesignTimeDbContextFactory {
 https://gunnarpeipman.com/ef-core-console-application/
 https://github.com/aspnet/EntityFrameworkCore/issues/9467
+EF 5.0: https://www.codemag.com/Article/2010042/EF-Core-5-Building-on-the-Foundation
 }
 }
 
@@ -256,14 +260,18 @@ https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bo
 Assemblies {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
 }
-RAND {
+RANDOM {
 https://khalidabuhakmeh.com/creating-random-numbers-with-dotnet-core
+https://www.youtube.com/watch?v=tCYxc-2-3fY&ab_channel=Questpond
 }
 Numerics formating {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
 }
 Code analyzers {
 https://medium.com/@bharatdwarkani/top-10-code-quality-static-analysers-for-asp-net-core-1660ad7a8d61
+}
+Cache {
+https://blog.novanet.no/asp-net-core-memory-cache-is-get-or-create-thread-safe/
 }
 Host Startup errors {
 https://github.com/aspnet/EntityFrameworkCore/issues/12331
