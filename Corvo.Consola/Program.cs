@@ -1,6 +1,8 @@
 ﻿using Cleaners.DependencyInjection.Interfaces;
 using System;
-using System.Globalization;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Corvo.Consola
@@ -32,24 +34,67 @@ namespace Corvo.Consola
         public string Name => nameof(FooB);
     }
 
+    public static class TaskExtensions
+    {
+        public static async Task TimeoutAfter(this Task task, int millis)
+        {
+            if (task == await Task.WhenAny(task, Task.Delay(millis)))
+            {
+                await task;
+            }
+            else throw new TimeoutException();
+        }
+    }
+
     /// <summary>
     /// Console project used for messing around
     /// </summary>
     internal class Program
     {
-        private async static Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
-            var cultureInfo = new CultureInfo("hr");
-            string priceDot = "10.50";
-            string priceComma = "10,50";
+            var stopwatch = Stopwatch.StartNew();
 
-            decimal.TryParse(priceDot, NumberStyles.Any, CultureInfo.InvariantCulture, out var resultDot);
-            decimal.TryParse(priceComma.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out var resultComma);
-            var ok = decimal.Parse(priceComma.Replace(",", "."), CultureInfo.InvariantCulture);
+            Action<string, TimeSpan> printTime = (name, time) => Console.WriteLine($"{name} completed after {time}");
 
-            Console.WriteLine("Dot: " + resultDot);
-            Console.WriteLine("Comma: " + resultComma);
-            Console.WriteLine("Comma: " + ok);
+            var friesTask = Task.Delay(3000).TimeoutAfter(4000)
+                .ContinueWith(task => printTime("Fries", stopwatch.Elapsed));
+            var drinkTask = Task.Delay(1000).TimeoutAfter(4000)
+                .ContinueWith(task => printTime("Drink", stopwatch.Elapsed));
+            var burgerTask = Task.Delay(5000).TimeoutAfter(4000)
+                .ContinueWith(task => printTime("Burger", stopwatch.Elapsed));
+
+            var tasks = new List<Task> { friesTask, drinkTask, burgerTask };
+
+            while (tasks.Count > 0)
+            {
+                var task = await Task.WhenAny(tasks);
+                tasks.Remove(task);
+
+                Console.WriteLine($"{tasks.Count} left");
+            }
+
+            printTime("Order", stopwatch.Elapsed);
+
+            stopwatch.Stop();
+
+            //var cultureInfo = new CultureInfo("hr");
+            //string priceDot = "10.50";
+            //string priceComma = "10,50";
+
+            //decimal.TryParse(priceDot, NumberStyles.Any, CultureInfo.InvariantCulture, out var resultDot);
+            //decimal.TryParse(priceComma.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out var resultComma);
+            //var ok = decimal.Parse(priceComma.Replace(",", "."), CultureInfo.InvariantCulture);
+
+            //Console.WriteLine("Dot: " + resultDot);
+            //Console.WriteLine("Comma: " + resultComma);
+            //Console.WriteLine("Comma: " + ok);
+
+            var tokenSource = new CancellationTokenSource();
+            CancellationToken token = tokenSource.Token;
+
+            tokenSource.Cancel();
+            Task.Run(() => Console.WriteLine("Hello from task"), token);
         }
 
         //private async static Task Main(string[] args)

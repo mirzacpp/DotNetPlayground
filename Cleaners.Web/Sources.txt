@@ -1,6 +1,9 @@
 ﻿// Usefull sources
+https://www.youtube.com/watch?v=uS0hRJqamfU&ab_channel=IAmTimCorey
 
 Repos {
+https://codejack.com/
+https://kristian.hellang.com/
 https://github.com/skimedic/presentations/tree/master/DOTNETCORE
 https://github.com/EdiWang/Moonglade
 https://github.com/ardalis/CleanArchitecture
@@ -14,6 +17,10 @@ https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
+https://markheath.net/
+https://hendrikbulens.com/
+https://devblogs.microsoft.com/dotnet/author/maoni/
+https://devblogs.microsoft.com/pfxteam/author/toub/
 https://www.dotnet-tv.com/
 https://techiesimon.com/
 https://www.nimaara.com/
@@ -66,6 +73,7 @@ https://blogs.cuttingedge.it/steven/
 https://benfoster.io/
 https://www.davepaquette.com/
 https://community.abp.io/
+https://davidpine.net/
 }
 
 Span i memory {
@@ -148,7 +156,9 @@ CONTENT RENDERING {
 https://github.com/ridercz/Altairis.RazorPages.EditorTemplates
 https://www.codeproject.com/Articles/1079909/ASP-NET-MVC-Partial-Views-with-Partial-Models
 }
-AUTH
+AUTH {
+https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in-asp-net-core/
+https://www.jerriepelser.com/blog/using-roles-with-the-jwt-middleware/
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
 https://www.youtube.com/watch?v=EJeZ3YNnqz8
 https://github.com/dotnet/aspnetcore/tree/master/src/Security/samples
@@ -156,8 +166,11 @@ https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-wi
 https://www.scottbrady91.com/ASPNET-Identity/Implementing-Mediums-Passwordless-Authentication-using-ASPNET-Core-Identity
 https://andrewlock.net/implementing-custom-token-providers-for-passwordless-authentication-in-asp-net-core-identity/
 https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in-asp-net-core/
+https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-complete-guide
 https://github.com/JonPSmith/PermissionAccessControl2
+https://odetocode.com/blogs/scott/archive/2019/01/02/experimenting-with-asp-net-core-authentication-schemes.aspx
 Global authorize policy: https://rimdev.io/defaulting-aspnet-core-31-to-require-authentication-for-a-safer-developer-experience/
+}
 Migracije i seed 
 https://code-maze.com/migrations-and-seed-data-efcore/
 IFileProviders {
@@ -196,6 +209,9 @@ WebDAV {
 https://docs.microsoft.com/en-us/iis/install/installing-publishing-technologies/installing-and-configuring-webdav-on-iis
 https://stackoverflow.com/questions/12440277/how-do-i-enable-http-put-and-delete-for-asp-net-mvc-in-iis
 https://www.cloudwards.net/what-is-webdav/
+}
+CONTROLLERS {
+https://andrewlock.net/post-redirect-get-using-tempdata-in-asp-net-core/
 }
 }
 
@@ -274,12 +290,15 @@ https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netc
 DateTime {
 https://weblog.west-wind.com/posts/2015/feb/10/back-to-basics-utc-and-timezones-in-net-web-apps
 https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/
+https://www.hackcraft.net/web/datetime/#uri
+
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
 }
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
+https://app.pluralsight.com/library/courses/linq-more-effective/description
 https://github.com/morelinq/MoreLINQ
 https://codeblog.jonskeet.uk/2011/01/01/reimplementing-linq-to-objects-part-21-groupby/
 https://github.com/scottksmith95/LINQKit
@@ -307,6 +326,8 @@ https://www.tabsoverspaces.com/233774-using-data-protection-in-entity-framework-
 }
 
 ASYNC/AWAIT {
+https://devblogs.microsoft.com/dotnet/configureawait-faq/
+https://devblogs.microsoft.com/pfxteam/crafting-a-task-timeoutafter-method/
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
 https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
 https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html
@@ -326,6 +347,12 @@ https://medium.com/@deep_blue_day/long-story-short-async-await-best-practices-in
 https://www.youtube.com/watch?v=bda13k0vfc0&list=PLokQFRpAsul4fn_CSEwXw33VNbG1DBKgM&index=23&ab_channel=NDCConferences
 https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/
 https://medium.com/@deep_blue_day/long-story-short-async-await-best-practices-in-net-1f39d7d84050
+https://markheath.net/post/constraining-concurrent-threads-csharp
+https://app.pluralsight.com/library/courses/getting-started-with-asynchronous-programming-dotnet/table-of-contents
+https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-5-asyncsemaphore/
+https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/february/msdn-magazine-parallel-computing-it-s-all-about-the-synchronizationcontext
+https://gigi.nullneuron.net/gigilabs/common-mistakes-in-asynchronous-programming-with-net/
+https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
 }
 
 SOLID {
@@ -336,6 +363,7 @@ https://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Orient
 
 PATTERNS {
 https://adamstorr.azurewebsites.net/blog/strategy-pattern-with-enum-constraints
+https://gigi.nullneuron.net/gigilabs/the-adapter-design-pattern-for-dtos-in-c/
 }
 
 DI {
@@ -370,6 +398,7 @@ https://marketplace.visualstudio.com/items?itemName=doggy8088.netcore-snippets&s
 }
 
 INTERESTING STUFF {
+https://docs.microsoft.com/en-gb/archive/blogs/ericlippert/foreach-vs-foreach
 https://www.youtube.com/watch?v=mLX1sYVf-Xg
 https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-somewhat-harmful
@@ -394,15 +423,14 @@ Template: https://www.programmingwithwolfgang.com/create-a-net-core-visual-studi
 }
 
 DATA {
+https://jasonwatmore.com/post/2018/10/17/c-pure-pagination-logic-in-c-aspnet
 https://gunnarpeipman.com/aspnet-paging/
 https://dev.to/praneetnadkar/generating-a-fake-data-in-net-core-api-3kba
 https://enterprisecraftsmanship.com/posts/specification-pattern-c-implementation/
 https://gunnarpeipman.com/ef-core-query-specification/
 https://www.simplethread.com/Infinite-Lists-With-C-Yield/
 Paging projection: https://github.com/AutoMapper/AutoMapper/issues/1083
-
 }
-slack
 Pattern matching
 https://devblogs.microsoft.com/dotnet/do-more-with-patterns-in-c-8-0/
 
@@ -418,9 +446,20 @@ https://www.codeproject.com/Articles/1166099/Entity-Framework-Storing-complex-pr
 https://khalidabuhakmeh.com/add-custom-database-functions-for-entity-framework-core
 https://www.meziantou.net/using-hierarchyid-with-entity-framework-core.htm
 OWNED ENTITIES: https://github.com/dotnet/efcore/issues/18299
-SEQUENCE: https://www.talkingdotnet.com/use-sql-server-sequence-in-entity-framework-core-primary-key/ (https://www.sqlservertutorial.net/sql-server-basics/sql-server-sequence/)
+SEQUENCE: { 
+https://www.talkingdotnet.com/use-sql-server-sequence-in-entity-framework-core-primary-key/
+https://www.sqlservertutorial.net/sql-server-basics/sql-server-sequence/
+https://www.mssqltips.com/sqlservertip/3202/prevent-multiple-users-from-running-the-same-sql-server-stored-procedure-at-the-same-time/
+https://stackoverflow.com/questions/60644544/getting-next-value-for-for-a-sql-server-sequence-using-ef-core-3-1-impossibl
+}
 }
 
 GIT {
 https://docs.microsoft.com/en-us/visualstudio/ide/git-with-visual-studio?view=vs-2019
+}
+
+JMETER: https://jmeter.apache.org/
+
+JS/JQUERY {
+https://modernweb.com/5-things-stop-jquery/
 }
