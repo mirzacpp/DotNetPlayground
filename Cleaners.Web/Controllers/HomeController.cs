@@ -1,6 +1,7 @@
 ﻿using Cleaners.Models;
 using Cleaners.Web.Extensions;
 using Corvo.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ namespace Cleaners.Web.Controllers
                 new ResultError("Property1", "Property1 error"),
                 new ResultError("Property1", "Property1 error 2"),
                 new ResultError("Property2", "Property2 error"),
-            });
+            });            
 
             ModelState.AddResultErrors(result.Errors);
 
