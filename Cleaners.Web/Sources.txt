@@ -10,6 +10,11 @@ https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
+https://michael-mckenna.com/
+https://mattwarren.org/
+https://codewithmukesh.com/blog/
+https://betweentwobrackets.dev/posts/
+https://blog.stevensanderson.com/
 https://blog.martincostello.com/
 https://khalidabuhakmeh.com/
 https://medium.com/@joni2nja
@@ -88,6 +93,13 @@ HOSTING {
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1
 }
 https://github.com/aspnet/Entropy
+ObjectPool {
+https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0
+https://developpaper.com/detailed-explanation-of-object-pools-various-usages-in-net-core/
+}
+}
+Api Versioning {
+https://gingter.org/2018/06/18/asp-net-core-api-versioning/
 }
 https://andrewlock.net/controller-activation-and-dependency-injection-in-asp-net-core-mvc/
 https://andrewlock.net/using-cancellationtokens-in-asp-net-core-mvc-controllers/
@@ -98,6 +110,8 @@ https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 Validation {
 https://docs.fluentvalidation.net/en/latest/localization.html
 https://dejanstojanovic.net/aspnet/2020/april/validate-configurations-with-fluentvalidation-in-aspnet-core/
+https://enterprisecraftsmanship.com/posts/always-valid-domain-model/
+https://enterprisecraftsmanship.com/posts/advanced-error-handling-techniques/
 }
 Headers {
 https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-headers-asp-net-core/
@@ -174,9 +188,10 @@ PathBase {
 https://stackoverflow.com/questions/58614864/whats-the-difference-between-httprequest-path-and-httprequest-pathbase-in-asp-n
 https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f67/src/Http/Http.Abstractions/src/Extensions/UsePathBaseMiddleware.cs
 }
-Error handling {
+ERROR HANDLING {
 https://weblog.west-wind.com/posts/2016/oct/16/error-handling-and-exceptionfilter-dependency-injection-for-aspnet-core-apis
 https://michaelscodingspot.com/debugging-exceptions/
+https://twitter.com/bradwilson/status/1353588311940427776
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
@@ -223,6 +238,7 @@ https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
 https://www.youtube.com/watch?v=nK54s84xRRs
 https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bombardier-87cc9c6b8d6f
+https://mattwarren.org/2017/12/15/How-does-.NET-JIT-a-method-and-Tiered-Compilation/
 }
 Assemblies {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
@@ -239,6 +255,7 @@ https://medium.com/@bharatdwarkani/top-10-code-quality-static-analysers-for-asp-
 }
 Cache {
 https://blog.novanet.no/asp-net-core-memory-cache-is-get-or-create-thread-safe/
+https://www.hanselman.com/blog/eyes-wide-open-correct-caching-is-always-hard
 }
 Host Startup errors {
 https://github.com/aspnet/EntityFrameworkCore/issues/12331
@@ -265,6 +282,7 @@ https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netc
 DateTime {
 https://weblog.west-wind.com/posts/2015/feb/10/back-to-basics-utc-and-timezones-in-net-web-apps
 https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/
+https://www.nimaara.com/high-resolution-clock-in-net/
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
@@ -289,6 +307,7 @@ https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scrip
 }
 OPTIONS {
 https://andrewlock.net/delaying-strongly-typed-options-configuration-using-postconfigure-in-asp-net-core/
+https://ofpinewood.com/blog/creating-a-custom-configurationprovider-for-a-entity-framework-core-source
 }
 DATA PROTECTION {
 https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1#persistkeystofilesystem
@@ -314,6 +333,11 @@ https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming
 https://markheath.net/post/async-antipatterns
 https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/
+https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/october/asynchronous-programming-async-performance-understanding-the-costs-of-async-and-await
+}
+
+GARBAGE COLLECTION {
+https://www.nimaara.com/per-object-garbage-collection-notification-in-net/
 }
 
 SOLID {
@@ -403,6 +427,10 @@ https://khalidabuhakmeh.com/add-custom-database-functions-for-entity-framework-c
 https://www.meziantou.net/using-hierarchyid-with-entity-framework-core.htm
 OWNED ENTITIES: https://github.com/dotnet/efcore/issues/18299
 SEQUENCE: https://www.talkingdotnet.com/use-sql-server-sequence-in-entity-framework-core-primary-key/ (https://www.sqlservertutorial.net/sql-server-basics/sql-server-sequence/)
+https://www.thereformedprogrammer.net/ef-core-in-depth-what-happens-when-ef-core-reads-from-the-database/
+MIGRATIONS {
+https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-part-3-feedback/
+}
 }
 
 GIT {
