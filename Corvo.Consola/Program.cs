@@ -1,51 +1,10 @@
-﻿using Cleaners.DependencyInjection.Interfaces;
+﻿using Corvo.Consola.DI;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Corvo.Consola
 {
-    public interface IConfigurationTest
-    {
-        string KeyA { get; }
-        string KeyB { get; }
-    }
-
-    public class ConfigurationTest : IConfigurationTest
-    {
-        public string KeyA { get; set; }
-        public string KeyB { get; set; }
-    }
-
-    public interface IFoo
-    {
-        string Name { get; }
-    }
-
-    public class FooA : IFoo, IScopedDependency
-    {
-        public string Name => nameof(FooA);
-    }
-
-    public class FooB : IFoo, IScopedDependency
-    {
-        public string Name => nameof(FooB);
-    }
-
-    public static class TaskExtensions
-    {
-        public static async Task TimeoutAfter(this Task task, int millis)
-        {
-            if (task == await Task.WhenAny(task, Task.Delay(millis)))
-            {
-                await task;
-            }
-            else throw new TimeoutException();
-        }
-    }
-
     /// <summary>
     /// Console project used for messing around
     /// </summary>
@@ -53,48 +12,41 @@ namespace Corvo.Consola
     {
         private static async Task Main(string[] args)
         {
-            var stopwatch = Stopwatch.StartNew();
+            InvokeDISample();
 
-            Action<string, TimeSpan> printTime = (name, time) => Console.WriteLine($"{name} completed after {time}");
+            var test = typeof(IRepo2<,>);//.MakeGenericType(typeof(int), typeof(Country));
+            //var test2 = typeof(IRepo2<int, Country>);
 
-            var friesTask = Task.Delay(3000).TimeoutAfter(4000)
-                .ContinueWith(task => printTime("Fries", stopwatch.Elapsed));
-            var drinkTask = Task.Delay(1000).TimeoutAfter(4000)
-                .ContinueWith(task => printTime("Drink", stopwatch.Elapsed));
-            var burgerTask = Task.Delay(5000).TimeoutAfter(4000)
-                .ContinueWith(task => printTime("Burger", stopwatch.Elapsed));
+            //var array = new[] { typeof(IRepo2<,>), typeof(IRepo<>), typeof(IRepo<City>), typeof(City) };
 
-            var tasks = new List<Task> { friesTask, drinkTask, burgerTask };
+            //foreach (var item in array)
+            //{
+            //Console.WriteLine(item.IsGenericTypeDefinition);
+            //}
+            Console.WriteLine("Test:" + test.GetGenericTypeDefinition());
+            //Console.WriteLine("Test2:" + test2);
+        }
 
-            while (tasks.Count > 0)
+        private static void InvokeReflectionSample()
+        {
+        }
+
+        private static void InvokeDISample()
+        {
+            var services = new ServiceCollection();
+
+            services.AddSingletonDependencies(typeof(Program).Assembly);
+
+            services.AddSingleton(typeof(IRepo<>), typeof(Repo<>));
+
+            foreach (var item in services)
             {
-                var task = await Task.WhenAny(tasks);
-                tasks.Remove(task);
-
-                Console.WriteLine($"{tasks.Count} left");
+                Console.WriteLine($"{item.ImplementationType} - {item.ServiceType}");
             }
 
-            printTime("Order", stopwatch.Elapsed);
+            var sp = services.BuildServiceProvider(true);
 
-            stopwatch.Stop();
-
-            //var cultureInfo = new CultureInfo("hr");
-            //string priceDot = "10.50";
-            //string priceComma = "10,50";
-
-            //decimal.TryParse(priceDot, NumberStyles.Any, CultureInfo.InvariantCulture, out var resultDot);
-            //decimal.TryParse(priceComma.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out var resultComma);
-            //var ok = decimal.Parse(priceComma.Replace(",", "."), CultureInfo.InvariantCulture);
-
-            //Console.WriteLine("Dot: " + resultDot);
-            //Console.WriteLine("Comma: " + resultComma);
-            //Console.WriteLine("Comma: " + ok);
-
-            var tokenSource = new CancellationTokenSource();
-            CancellationToken token = tokenSource.Token;
-
-            tokenSource.Cancel();
-            Task.Run(() => Console.WriteLine("Hello from task"), token);
+            //var instance = sp.GetRequiredService<IRepo<City>>();
         }
 
         //private async static Task Main(string[] args)
