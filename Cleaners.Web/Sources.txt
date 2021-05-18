@@ -323,7 +323,7 @@ https://weblog.west-wind.com/posts/2015/feb/10/back-to-basics-utc-and-timezones-
 https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/
 https://www.nimaara.com/high-resolution-clock-in-net/
 https://www.hackcraft.net/web/datetime/#uri
-
+https://zachholman.com/talk/utc-is-enough-for-everyone-right
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
@@ -404,13 +404,14 @@ https://adamstorr.azurewebsites.net/blog/strategy-pattern-with-enum-constraints
 https://gigi.nullneuron.net/gigilabs/the-adapter-design-pattern-for-dtos-in-c/
 }
 
-DI {
+Dependency Injection {
 https://blog.ploeh.dk/
 https://blogs.cuttingedge.it/
 https://blog.ploeh.dk/2011/05/24/DesignSmellTemporalCoupling/
 https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tips-tricks-c6e9c67f9d96
 https://blog.ploeh.dk/2014/05/19/conforming-container/
 https://blog.ploeh.dk/2014/05/19/di-friendly-library/
+https://jimmybogard.com/constrained-open-generics-support-merged-in-net-core-di-container/
 Auto registration
 https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/
 }
