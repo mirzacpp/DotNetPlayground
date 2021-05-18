@@ -131,6 +131,9 @@ https://enterprisecraftsmanship.com/posts/advanced-error-handling-techniques/
 Headers {
 https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-headers-asp-net-core/
 }
+LOCALIZATION {
+https://hendrikbulens.com/2018/12/08/injecting-resource-files-as-plain-javascript-objects-in-asp-net-core/
+}
 Urls {
 https://edi.wang/post/2018/11/25/netcore-webutility-urlencode-httputility-urlencode
 https://www.talkingdotnet.com/build-query-string-asp-net-core/
@@ -154,6 +157,7 @@ HTTPCLIENT {
 https://josefottosson.se/you-are-probably-still-using-httpclient-wrong-and-it-is-destabilizing-your-software/
 https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory
 https://www.stevejgordon.co.uk/passing-an-ilogger-to-polly-policies
+https://anthonygiretti.com/2020/10/03/net-5-exploring-system-net-http-json-namespace/
 }
 App secrets
 https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.0&tabs=windows
@@ -197,7 +201,7 @@ https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at
 }
 Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
-Rutiranje {
+ROUTING {
 https://weblog.west-wind.com/posts/2019/May/15/Accessing-RouteData-in-an-ASPNET-Core-Controller-Constructor
 https://andrewlock.net/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/
 https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
@@ -207,6 +211,7 @@ https://edi.wang/post/2020/4/29/my-aspnet-core-route-debugger-middleware
 https://benjii.me/2017/04/parse-modify-query-strings-asp-net-core/
 https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
 https://github.com/dotnet/aspnetcore/issues/14192
+https://www.strathweb.com/2019/08/dynamic-controller-routing-in-asp-net-core-3-0/
 }
 Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
@@ -220,6 +225,7 @@ ERROR HANDLING {
 https://weblog.west-wind.com/posts/2016/oct/16/error-handling-and-exceptionfilter-dependency-injection-for-aspnet-core-apis
 https://michaelscodingspot.com/debugging-exceptions/
 https://twitter.com/bradwilson/status/1353588311940427776
+https://mikevallotton.wordpress.com/2009/07/08/net-exceptions-all-of-them/
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
