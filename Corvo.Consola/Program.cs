@@ -12,19 +12,18 @@ namespace Corvo.Consola
     {
         private static async Task Main(string[] args)
         {
-            InvokeDISample();
-
             var test = typeof(IRepo2<,>);//.MakeGenericType(typeof(int), typeof(Country));
-            //var test2 = typeof(IRepo2<int, Country>);
+            var test2 = typeof(IRepo2<int, Country>);
 
-            //var array = new[] { typeof(IRepo2<,>), typeof(IRepo<>), typeof(IRepo<City>), typeof(City) };
+            var array = new[] { typeof(IRepo2<,>), typeof(IRepo<>), typeof(IRepo<City>), typeof(City) };
 
-            //foreach (var item in array)
-            //{
-            //Console.WriteLine(item.IsGenericTypeDefinition);
-            //}
+            foreach (var item in array)
+            {
+                Console.WriteLine(item.IsGenericTypeDefinition);
+            }
+
             Console.WriteLine("Test:" + test.GetGenericTypeDefinition());
-            //Console.WriteLine("Test2:" + test2);
+            Console.WriteLine("Test2:" + test2);
         }
 
         private static void InvokeReflectionSample()

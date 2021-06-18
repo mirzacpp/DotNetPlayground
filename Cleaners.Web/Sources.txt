@@ -19,6 +19,8 @@ https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
+https://josef.codes/
+https://blog.zhaytam.com/
 https://www.youtube.com/channel/UCIMRGVXufHT69s1uaHHYJIA
 https://markheath.net/
 https://hendrikbulens.com/
@@ -85,6 +87,7 @@ https://benfoster.io/
 https://www.davepaquette.com/
 https://community.abp.io/
 https://davidpine.net/
+http://dontcodetired.com/blog
 }
 
 Span i memory {
@@ -94,9 +97,9 @@ https://www.meziantou.net/some-performance-tricks-with-dotnet-strings.htm
 https://adamsitnik.com/Span/
 }
 
-Best practices for Strings
+TEXT {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings#recommendations_for_string_usage
-
+}
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
 
@@ -177,6 +180,7 @@ https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-usi
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEntityFrameworkDbGeographySpatialTypes.aspx
 https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
+Email: https://scottsauber.com/2018/07/07/walkthrough-creating-an-html-email-template-with-razor-and-razor-class-libraries-and-rendering-it-from-a-net-standard-class-library/
 Auth
 CONTENT RENDERING {
 https://github.com/ridercz/Altairis.RazorPages.EditorTemplates
@@ -188,15 +192,20 @@ https://www.jerriepelser.com/blog/using-roles-with-the-jwt-middleware/
 https://www.thereformedprogrammer.net/a-better-way-to-handle-authorization-in-asp-net-core/
 https://www.youtube.com/watch?v=EJeZ3YNnqz8
 https://github.com/dotnet/aspnetcore/tree/master/src/Security/samples
-https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-with-refresh-tokens
 https://www.scottbrady91.com/ASPNET-Identity/Implementing-Mediums-Passwordless-Authentication-using-ASPNET-Core-Identity
 https://andrewlock.net/implementing-custom-token-providers-for-passwordless-authentication-in-asp-net-core-identity/
 https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in-asp-net-core/
-https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-complete-guide
 https://github.com/JonPSmith/PermissionAccessControl2
 https://odetocode.com/blogs/scott/archive/2019/01/02/experimenting-with-asp-net-core-authentication-schemes.aspx
+https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-5.0
 Global authorize policy: https://rimdev.io/defaulting-aspnet-core-31-to-require-authentication-for-a-safer-developer-experience/
 https://devblogs.microsoft.com/aspnet/asp-net-core-6-and-authentication-servers/
+https://josef.codes/asp-net-core-protect-your-api-with-api-keys/
+JWT {
+https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-complete-guide
+https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-with-refresh-tokens
+https://devblogs.microsoft.com/aspnet/jwt-validation-and-authorization-in-asp-net-core/
+}
 }
 Migracije i seed 
 https://code-maze.com/migrations-and-seed-data-efcore/
@@ -468,6 +477,7 @@ https://medium.com/csharp-architects/whats-faster-in-c-a-struct-or-a-class-99e47
 https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-somewhat-harmful
 https://devblogs.microsoft.com/dotnet/embracing-nullable-reference-types/
 https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-between-class-and-struct?redirectedfrom=MSDN
+https://dotnetcoretutorials.com/2021/04/03/i-wish-i-knew-about-debugger-launch-earlier/
 }
 
 System.Collections.Generic Namespace {
