@@ -11,12 +11,15 @@ https://github.com/jasontaylordev/CleanArchitecture
 https://github.com/jasontaylordev/NorthwindTraders
 https://github.com/aspnetrun/run-aspnetcore
 https://aspnetboilerplate.com/Pages/Documents/Introduction
-
+ASP NET CORE SAMPLES: 
+https://github.com/dodyg/practical-aspnetcore/issues
+https://github.com/aspnet/Entropy
 https://github.com/abpframework/abp-samples
 https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
+https://www.youtube.com/channel/UCIMRGVXufHT69s1uaHHYJIA
 https://markheath.net/
 https://hendrikbulens.com/
 https://devblogs.microsoft.com/dotnet/author/maoni/
@@ -107,7 +110,6 @@ Samples {
 HOSTING {
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1
 }
-https://github.com/aspnet/Entropy
 ObjectPool {
 https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0
 https://developpaper.com/detailed-explanation-of-object-pools-various-usages-in-net-core/
@@ -115,6 +117,9 @@ https://developpaper.com/detailed-explanation-of-object-pools-various-usages-in-
 }
 Api Versioning {
 https://gingter.org/2018/06/18/asp-net-core-api-versioning/
+}
+REQUEST {
+https://medium.com/@rm.dev/re-reading-asp-net-core-request-bodies-with-enablebuffering-987d8668bf85
 }
 https://andrewlock.net/controller-activation-and-dependency-injection-in-asp-net-core-mvc/
 https://andrewlock.net/using-cancellationtokens-in-asp-net-core-mvc-controllers/
@@ -191,6 +196,7 @@ https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-compl
 https://github.com/JonPSmith/PermissionAccessControl2
 https://odetocode.com/blogs/scott/archive/2019/01/02/experimenting-with-asp-net-core-authentication-schemes.aspx
 Global authorize policy: https://rimdev.io/defaulting-aspnet-core-31-to-require-authentication-for-a-safer-developer-experience/
+https://devblogs.microsoft.com/aspnet/asp-net-core-6-and-authentication-servers/
 }
 Migracije i seed 
 https://code-maze.com/migrations-and-seed-data-efcore/
@@ -226,6 +232,7 @@ https://weblog.west-wind.com/posts/2016/oct/16/error-handling-and-exceptionfilte
 https://michaelscodingspot.com/debugging-exceptions/
 https://twitter.com/bradwilson/status/1353588311940427776
 https://mikevallotton.wordpress.com/2009/07/08/net-exceptions-all-of-them/
+https://andrewlock.net/handling-web-api-exceptions-with-problemdetails-middleware/
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
@@ -266,7 +273,7 @@ EF 5.0: https://www.codemag.com/Article/2010042/EF-Core-5-Building-on-the-Founda
 }
 }
 
-.NET
+.NET CORE
 {
 https://github.com/dotnet/coreclr/tree/master/Documentation/botr
 https://devblogs.microsoft.com/dotnet/author/stephen_toubhotmail-com/
@@ -278,6 +285,17 @@ https://www.youtube.com/watch?v=NVWQRbqcXJ4
 https://www.youtube.com/watch?v=nK54s84xRRs
 https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bombardier-87cc9c6b8d6f
 https://mattwarren.org/2017/12/15/How-does-.NET-JIT-a-method-and-Tiered-Compilation/
+https://michaelscodingspot.com/avoid-gc-pressure/
+https://www.tabsoverspaces.com/233833-best-way-to-create-an-empty-collection-array-and-list-in-csharp-net
+MEMORY {
+https://www.stevejgordon.co.uk/analysing-the-large-object-heap-in-jetbrains-dotmemory
+https://adamsitnik.com/Array-Pool/
+https://www.philosophicalgeek.com/2015/02/06/announcing-microsoft-io-recycablememorystream/
+https://csharp.christiannagel.com/2017/05/31/arraypool/#comments
+}
+}
+RUNTIME {
+https://docs.microsoft.com/en-us/dotnet/core/dependency-loading/understanding-assemblyloadcontext
 }
 Assemblies {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
@@ -285,6 +303,7 @@ https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-sep
 RANDOM {
 https://khalidabuhakmeh.com/creating-random-numbers-with-dotnet-core
 https://www.youtube.com/watch?v=tCYxc-2-3fY&ab_channel=Questpond
+https://devblogs.microsoft.com/pfxteam/getting-random-numbers-in-a-thread-safe-way/
 }
 Numerics formating {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
@@ -327,6 +346,7 @@ https://zachholman.com/talk/utc-is-enough-for-everyone-right
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
+https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core
 }
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
@@ -337,6 +357,9 @@ https://github.com/scottksmith95/LINQKit
 https://www.meziantou.net/don-t-use-method-with-side-effect-in-linq.htm
 http://www.scip.be/index.php?Page=ArticlesNET23
 https://alicebobandmallory.com/articles/2012/10/18/merge-collections-without-duplicates-in-c
+https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/introduction-to-plinq
+COOL: https://github.com/dotnet/aspnetcore/blob/6427d9cc718f8093c506b62b6fd12544411b477f/src/Http/Http.Features/src/IHeaderDictionary.Keyed.cs
+http://nessos.github.io/LinqOptimizer/
 }
 FILES {
 https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
@@ -402,6 +425,7 @@ https://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Orient
 PATTERNS {
 https://adamstorr.azurewebsites.net/blog/strategy-pattern-with-enum-constraints
 https://gigi.nullneuron.net/gigilabs/the-adapter-design-pattern-for-dtos-in-c/
+https://volosoft.com/blog/Prefer-Singleton-Pattern-over-Static-Class
 }
 
 Dependency Injection {
@@ -423,6 +447,7 @@ https://openpracticelibrary.com/practice/event-storming/
 
 IIS EXPRESS {
 https://blog.maartenballiauw.be/post/2019/02/26/asp-net-core-iis-express-empty-error-starting-application.html
+https://www.youtube.com/watch?v=96KHOaIe19w
 }
 
 GITHUB {
@@ -506,4 +531,8 @@ JMETER: https://jmeter.apache.org/
 
 JS/JQUERY {
 https://modernweb.com/5-things-stop-jquery/
+}
+
+EXTENSIONS {
+	NGROK: https://marketplace.visualstudio.com/items?itemName=DavidProthero.NgrokExtensions
 }
