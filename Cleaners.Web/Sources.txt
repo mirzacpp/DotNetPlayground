@@ -19,6 +19,8 @@ https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
+https://weblogs.asp.net/dixin
+https://www.claudiobernasconi.ch/
 https://www.youtube.com/c/Elfocrash
 https://www.aspnetmonsters.com/
 https://josef.codes/
@@ -119,6 +121,7 @@ https://msbuildlog.com/
 DATA TYPES {
 https://www.youtube.com/watch?v=uFHtFOmH2OI
 https://blog.paranoidcoding.com/2019/04/08/string-vs-String-is-not-about-style.html
+Enum perf: https://www.youtube.com/watch?v=BoE5Y6Xkm6w
 }
 }
 
@@ -225,6 +228,7 @@ JWT {
 https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-complete-guide
 https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-with-refresh-tokens
 https://devblogs.microsoft.com/aspnet/jwt-validation-and-authorization-in-asp-net-core/
+https://www.youtube.com/watch?v=AU0TIOZhGqs
 }
 }
 Migracije i seed 
@@ -276,6 +280,10 @@ https://andrewlock.net/post-redirect-get-using-tempdata-in-asp-net-core/
 FILTERS {
 https://www.andybutland.dev/2020/06/dependency-injection-in-aspnet-core-attributes.html
 }
+TESTS {
+https://www.youtube.com/watch?v=r-Jte8Y8zag
+https://github.com/tmenier/Flurl
+}
 }
 
 ENTITYFRAMEWORK
@@ -294,6 +302,7 @@ https://jimmybogard.com/automapper-linq-support-deep-dive/ (SEE: https://jimmybo
 https://benjii.me/2018/01/expression-projection-magic-entity-framework-core/
 https://docs.microsoft.com/en-us/ef/core/modeling/backing-field?tabs=data-annotations
 Drop PK:https://github.com/dotnet/efcore/issues/2100
+https://weblogs.asp.net/dixin/entity-framework-core-and-linq-to-entities-4-query-methods-7
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 Querying with Include 
@@ -567,6 +576,10 @@ https://www.sqlservertutorial.net/sql-server-basics/sql-server-sequence/
 https://www.mssqltips.com/sqlservertip/3202/prevent-multiple-users-from-running-the-same-sql-server-stored-procedure-at-the-same-time/
 https://stackoverflow.com/questions/60644544/getting-next-value-for-for-a-sql-server-sequence-using-ef-core-3-1-impossibl
 }
+}
+
+SECURING CODE {
+https://www.youtube.com/watch?v=4JyCS4t-_sQ
 }
 
 GIT {
