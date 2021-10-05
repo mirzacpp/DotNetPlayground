@@ -11,11 +11,19 @@ namespace Corvo.Consola.DI
         }
     }
 
-    public class Repo2 : IRepo<Country>, ISingletonDependency
+    public class Repo2 : IRepo<Country>, IScopeDependency
     {
         public void Introduce()
         {
             Console.WriteLine($"Repo for type {typeof(Country).FullName}");
         }
-    }
+    }    
+
+    public class Repo3<T> : ITransientDependency where T : class
+    {
+        public string WhoAmI()
+        {
+            return typeof(T).ToString();
+        }
+    }  
 }

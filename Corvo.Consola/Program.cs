@@ -1,6 +1,7 @@
 ﻿using Corvo.Consola.DI;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Corvo.Consola
@@ -10,20 +11,11 @@ namespace Corvo.Consola
     /// </summary>
     internal class Program
     {
-        private static async Task Main(string[] args)
+        private static void Main(string[] args)
         {
-            var test = typeof(IRepo2<,>);//.MakeGenericType(typeof(int), typeof(Country));
-            var test2 = typeof(IRepo2<int, Country>);
+            InvokeDISample();
 
-            var array = new[] { typeof(IRepo2<,>), typeof(IRepo<>), typeof(IRepo<City>), typeof(City) };
-
-            foreach (var item in array)
-            {
-                Console.WriteLine(item.IsGenericTypeDefinition);
-            }
-
-            Console.WriteLine("Test:" + test.GetGenericTypeDefinition());
-            Console.WriteLine("Test2:" + test2);
+            Console.ReadKey();
         }
 
         private static void InvokeReflectionSample()
@@ -32,20 +24,39 @@ namespace Corvo.Consola
 
         private static void InvokeDISample()
         {
+            //var types = new[] { typeof(IRepo<City>), typeof(IRepo<>), typeof(IRepo2<,>) };
+
+            //foreach (var type in types)
+            //{
+            //    Console.WriteLine(type);
+            //    Console.WriteLine(type.GetGenericTypeDefinition());
+            //    Console.WriteLine("IsGenericType: " + type.IsGenericType);
+            //    Console.WriteLine("IsGenericTypeDefinition: " + type.IsGenericTypeDefinition);
+            //    Console.WriteLine("ContainsGenericParameters: " + type.ContainsGenericParameters);
+            //    Console.WriteLine("IsGenericTypeParameter: " + type.IsGenericTypeParameter);
+            //    Console.WriteLine("IsConstructedGenericType: " + type.IsConstructedGenericType);
+            //    Console.WriteLine(Environment.NewLine);
+            //}
+
             var services = new ServiceCollection();
 
-            services.AddSingletonDependencies(typeof(Program).Assembly);
-
-            services.AddSingleton(typeof(IRepo<>), typeof(Repo<>));
+            services
+                .AddSingletonDependencies(assemblyMarkerTypes: typeof(Program))
+                .AddScopedDependencies(assembliesToScan: typeof(Program).Assembly)
+                .AddTransientDependencies(assembliesToScan: typeof(Program).Assembly);            
 
             foreach (var item in services)
             {
-                Console.WriteLine($"{item.ImplementationType} - {item.ServiceType}");
+                Console.WriteLine($"{item.ImplementationType} - {item.ServiceType} - {item.Lifetime}");
             }
 
             var sp = services.BuildServiceProvider(true);
 
-            //var instance = sp.GetRequiredService<IRepo<City>>();
+            var instance = sp.GetRequiredService<IRepo<City>>();
+            var instance2 = sp.GetRequiredService<Repo3<City>>();
+
+            instance.Introduce();
+            Console.WriteLine(instance2.WhoAmI());            
         }
 
         //private async static Task Main(string[] args)

@@ -104,7 +104,7 @@ namespace Cleaners.Web
                 {
                     var appInfo = handler.RequestServices.GetRequiredService<IOptions<AppInfoConfig>>().Value;
 
-                    await handler.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(appInfo));
+                    await handler.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(appInfo)).ConfigureAwait(false);
                 });
             });
 

@@ -1,6 +1,8 @@
 ﻿// Usefull sources
 https://www.youtube.com/watch?v=uS0hRJqamfU&ab_channel=IAmTimCorey
 
+Live IL transform: https://sharplab.io/
+
 Repos {
 https://codejack.com/
 https://kristian.hellang.com/
@@ -17,6 +19,9 @@ https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
+https://blog.sapiensworks.com/
+https://www.edgesidesolutions.com/blog/
+https://codinghelmet.com/articles
 https://josef.codes/
 https://blog.zhaytam.com/
 https://markheath.net/
@@ -80,6 +85,7 @@ https://www.davepaquette.com/
 https://community.abp.io/
 https://davidpine.net/
 http://dontcodetired.com/blog
+https://devblogs.microsoft.com/premier-developer/author/seteplia/
 }
 
 Span i memory {
@@ -89,8 +95,14 @@ https://www.meziantou.net/some-performance-tricks-with-dotnet-strings.htm
 https://adamsitnik.com/Span/
 }
 
+Dispose {
+https://codinghelmet.com/articles/from-dispose-pattern-to-auto-disposable-objects-in-net
+}
+
 TEXT {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings#recommendations_for_string_usage
+https://csharpindepth.com/Articles/Unicode
+https://csharpindepth.com/Articles/Strings
 }
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -214,6 +226,8 @@ https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f
 Error handling {
 https://weblog.west-wind.com/posts/2016/oct/16/error-handling-and-exceptionfilter-dependency-injection-for-aspnet-core-apis
 https://michaelscodingspot.com/debugging-exceptions/
+https://blog.stephencleary.com/2020/06/a-new-pattern-for-exception-logging.html
+https://nblumhardt.com/2016/11/ilogger-beginscope/#comment-3012254418
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
@@ -251,11 +265,16 @@ IDesignTimeDbContextFactory {
 https://gunnarpeipman.com/ef-core-console-application/
 https://github.com/aspnet/EntityFrameworkCore/issues/9467
 EF 5.0: https://www.codemag.com/Article/2010042/EF-Core-5-Building-on-the-Foundation
+REPO PATTERN: {
+https://www.edgesidesolutions.com/repository-pattern-dead-with-entity-framework/
+https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-entity-framework-core/
+}
 }
 }
 
 .NET
 {
+https://mattwarren.org/2018/10/02/A-History-of-.NET-Runtimes/
 https://github.com/dotnet/coreclr/tree/master/Documentation/botr
 https://devblogs.microsoft.com/dotnet/author/stephen_toubhotmail-com/
 https://www.youtube.com/watch?v=xdSSH63IZZc
@@ -370,6 +389,7 @@ https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-pa
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/february/msdn-magazine-parallel-computing-it-s-all-about-the-synchronizationcontext
 https://gigi.nullneuron.net/gigilabs/common-mistakes-in-asynchronous-programming-with-net/
 https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
+https://www.meziantou.net/links-async-await-csharp.htm
 }
 
 SOLID {

@@ -1,4 +1,5 @@
 ﻿using Cleaners.Core.DependencyInjection.Cleaners;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -6,16 +7,89 @@ using System.Reflection;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Extension methods <see cref="IServiceCollection"/>
+    /// Extension methods for <see cref="IServiceCollection"/>
     /// </summary>
     public static class ServiceCollectionExtensions
     {
+        #region Fields
+
         private static readonly Assembly[] _emptyAssemblyArray = new Assembly[0];
 
+        #endregion Fields
+
         /// <summary>
-        /// Registers all classes marked with <see cref="ISingletonDependency"/> interface
+        /// Registers all classes marked with <see cref="ISingletonDependency"/> interface defined within <paramref name="assembliesToScan"/>
         /// </summary>
         public static IServiceCollection AddSingletonDependencies(this IServiceCollection services, params Assembly[] assembliesToScan)
+        {
+            RegisterDependencies(services, typeof(ISingletonDependency), ServiceLifetime.Singleton, assembliesToScan);
+
+            return services;
+        }
+
+        /// <summary>
+        /// Registers all classes marked with <see cref="ISingletonDependency"/> interface from the assemblies that contain the specified types
+        /// </summary>
+        public static IServiceCollection AddSingletonDependencies(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
+            AddSingletonDependencies(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
+
+        /// <summary>
+        /// Registers all classes marked with <see cref="IScopeDependency"/> interface defined within <paramref name="assembliesToScan"/>
+        /// </summary>
+        public static IServiceCollection AddScopedDependencies(this IServiceCollection services, params Assembly[] assembliesToScan)
+        {
+            RegisterDependencies(services, typeof(IScopeDependency), ServiceLifetime.Scoped, assembliesToScan);
+
+            return services;
+        }
+
+        /// <summary>
+        /// Registers all classes marked with <see cref="IScopeDependency"/> interface from the assemblies that contain the specified types
+        /// </summary>
+        public static IServiceCollection AddScopedDependencies(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
+            AddScopedDependencies(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
+
+        /// <summary>
+        /// Registers all classes marked with <see cref="ITransientDependency"/> interface defined within <paramref name="assembliesToScan"/>
+        /// </summary>
+        public static IServiceCollection AddTransientDependencies(this IServiceCollection services, params Assembly[] assembliesToScan)
+        {
+            RegisterDependencies(services, typeof(ITransientDependency), ServiceLifetime.Transient, assembliesToScan);
+
+            return services;
+        }
+
+        /// <summary>
+        /// Registers all classes marked with <see cref="ITransientDependency"/> interface from the assemblies that contain the specified types
+        /// </summary>
+        public static IServiceCollection AddTransientDependencies(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
+            AddTransientDependencies(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
+
+        /// <summary>
+        /// Registers classes for all lifetime types defined within <paramref name="assembliesToScan"/>
+        /// </summary>
+        public static IServiceCollection AddAllDependencies(this IServiceCollection services, params Assembly[] assembliesToScan)
+        {
+            AddSingletonDependencies(services, assembliesToScan);
+            AddScopedDependencies(services, assembliesToScan);
+            AddTransientDependencies(services, assembliesToScan);
+
+            return services;
+        }
+
+        /// <summary>
+        /// Registers classes for all lifetime types from the assemblies that contain the specified types
+        /// </summary>
+        public static IServiceCollection AddAllDependencies(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
+            AddAllDependencies(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
+
+        /// <summary>
+        /// Register dependencies of <paramref name="registrationType"/> type with <paramref name="serviceLifetime"/> lifetime in <paramref name="assembliesToScan"/>
+        /// </summary>
+        private static void RegisterDependencies(IServiceCollection services,
+            Type registrationType,
+            ServiceLifetime serviceLifetime,
+            Assembly[] assembliesToScan)
         {
             if (services == null)
             {
@@ -24,68 +98,39 @@ namespace Microsoft.Extensions.DependencyInjection
 
             assembliesToScan = assembliesToScan?.ToArray() ?? _emptyAssemblyArray;
 
-            if (assembliesToScan?.Length > 0)
+            if (assembliesToScan.Length > 0)
             {
-                var registrationType = typeof(ISingletonDependency);
-
-                // Get all ISingletonDependency implementations
-                var typesToRegister = assembliesToScan
+                // Get all registrationType implementations
+                var implementations = assembliesToScan
                     .SelectMany(a => a.GetTypes())
                     .Where(t => t.IsClass && registrationType.IsAssignableFrom(t))
                     .ToList();
 
-                foreach (var type in typesToRegister)
+                foreach (var implementation in implementations)
                 {
-                    Console.WriteLine($"Class: {type}");
-
-                    //var trusi = type.IsGenericTypeDefinition;
-
-                    //Type service = type.IsGenericType
-                    //&& type.IsGenericTypeDefinition
-                    //&& type.ContainsGenericParameters
-                    //? type.GetGenericTypeDefinition()
-                    //: type;
-
-                    // Get all interface types for this implementation except registration type
-                    var implementations = type.GetInterfaces()
+                    // Get all interfaces for this implementation except registration type
+                    var contracts = implementation.GetInterfaces()
                         .Where(t => t != registrationType)
                         .ToList();
 
-                    // Handle case for unbound generics
-                    if (type.IsGenericTypeDefinition)
+                    // Register as constructed type or as type definition/template
+                    var typeToRegister = implementation.GetGenericTypeDefinitionOrDefault();
+
+                    if (contracts.Any())
                     {
-                        foreach (var implementation in implementations)
+                        foreach (var contract in contracts)
                         {
-                            services.Add(new ServiceDescriptor(
-                                implementation.GetGenericTypeDefinition(), type.GetGenericTypeDefinition(), ServiceLifetime.Singleton));
+                            services.TryAdd(new ServiceDescriptor(
+                                contract.GetGenericTypeDefinitionOrDefault(), typeToRegister, serviceLifetime));
                         }
                     }
+                    // Otherwise, register type as itself
                     else
                     {
-                        foreach (var implementation in implementations)
-                        {
-                            if (type.IsGenericTypeDefinition)
-                            {
-                                services.Add(new ServiceDescriptor(
-                                    implementation.GetGenericTypeDefinition(),
-                                    type.GetGenericTypeDefinition(),
-                                    ServiceLifetime.Singleton));
-                            }
-                            else
-                            {
-                                services.Add(new ServiceDescriptor(implementation, type, ServiceLifetime.Singleton));
-                            }
-                        }
+                        services.TryAdd(new ServiceDescriptor(typeToRegister, typeToRegister, serviceLifetime));
                     }
-
-                    //if (!services.IsAdded(type))
-                    //{
-                    //    services.Add(new ServiceDescriptor(type, ))
-                    //}
                 }
             }
-
-            return services;
         }
     }
 }
