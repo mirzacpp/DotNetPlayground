@@ -1,8 +1,6 @@
 ﻿using Corvo.Consola.DI;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace Corvo.Consola
 {
@@ -14,36 +12,16 @@ namespace Corvo.Consola
         private static void Main(string[] args)
         {
             InvokeDISample();
-
-            Console.ReadKey();
-        }
-
-        private static void InvokeReflectionSample()
-        {
         }
 
         private static void InvokeDISample()
         {
-            //var types = new[] { typeof(IRepo<City>), typeof(IRepo<>), typeof(IRepo2<,>) };
-
-            //foreach (var type in types)
-            //{
-            //    Console.WriteLine(type);
-            //    Console.WriteLine(type.GetGenericTypeDefinition());
-            //    Console.WriteLine("IsGenericType: " + type.IsGenericType);
-            //    Console.WriteLine("IsGenericTypeDefinition: " + type.IsGenericTypeDefinition);
-            //    Console.WriteLine("ContainsGenericParameters: " + type.ContainsGenericParameters);
-            //    Console.WriteLine("IsGenericTypeParameter: " + type.IsGenericTypeParameter);
-            //    Console.WriteLine("IsConstructedGenericType: " + type.IsConstructedGenericType);
-            //    Console.WriteLine(Environment.NewLine);
-            //}
-
             var services = new ServiceCollection();
 
             services
                 .AddSingletonDependencies(assemblyMarkerTypes: typeof(Program))
                 .AddScopedDependencies(assembliesToScan: typeof(Program).Assembly)
-                .AddTransientDependencies(assembliesToScan: typeof(Program).Assembly);            
+                .AddTransientDependencies(assembliesToScan: typeof(Program).Assembly);
 
             foreach (var item in services)
             {
@@ -56,7 +34,7 @@ namespace Corvo.Consola
             var instance2 = sp.GetRequiredService<Repo3<City>>();
 
             instance.Introduce();
-            Console.WriteLine(instance2.WhoAmI());            
+            Console.WriteLine(instance2.WhoAmI());
         }
 
         //private async static Task Main(string[] args)
