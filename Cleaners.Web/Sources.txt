@@ -13,7 +13,9 @@ https://github.com/jasontaylordev/CleanArchitecture
 https://github.com/jasontaylordev/NorthwindTraders
 https://github.com/aspnetrun/run-aspnetcore
 https://aspnetboilerplate.com/Pages/Documents/Introduction
-
+ASP NET CORE SAMPLES: 
+https://github.com/dodyg/practical-aspnetcore/issues
+https://github.com/aspnet/Entropy
 https://github.com/abpframework/abp-samples
 https://github.com/OrchardCMS/OrchardCore
 }
@@ -22,12 +24,22 @@ Blogs {
 https://blog.sapiensworks.com/
 https://www.edgesidesolutions.com/blog/
 https://codinghelmet.com/articles
+https://weblogs.asp.net/dixin
+https://www.claudiobernasconi.ch/
+https://www.youtube.com/c/Elfocrash
+https://www.aspnetmonsters.com/
 https://josef.codes/
 https://blog.zhaytam.com/
+https://www.youtube.com/channel/UCIMRGVXufHT69s1uaHHYJIA
 https://markheath.net/
 https://hendrikbulens.com/
 https://devblogs.microsoft.com/dotnet/author/maoni/
 https://devblogs.microsoft.com/pfxteam/author/toub/
+https://michael-mckenna.com/
+https://mattwarren.org/
+https://codewithmukesh.com/blog/
+https://betweentwobrackets.dev/posts/
+https://blog.stevensanderson.com/
 https://blog.martincostello.com/
 https://khalidabuhakmeh.com/
 https://medium.com/@joni2nja
@@ -85,6 +97,8 @@ https://www.davepaquette.com/
 https://community.abp.io/
 https://davidpine.net/
 http://dontcodetired.com/blog
+https://dunnhq.com/
+https://blog.paranoidcoding.com
 https://devblogs.microsoft.com/premier-developer/author/seteplia/
 }
 
@@ -101,6 +115,7 @@ https://codinghelmet.com/articles/from-dispose-pattern-to-auto-disposable-object
 
 TEXT {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings#recommendations_for_string_usage
+https://github.com/scriban/scriban
 https://csharpindepth.com/Articles/Unicode
 https://csharpindepth.com/Articles/Strings
 }
@@ -112,12 +127,32 @@ https://andrewlock.net/exploring-the-new-project-file-program-and-the-generic-ho
 https://weblog.west-wind.com/posts/2019/Sep/24/Upgrading-my-AlbumViewer-Sample-to-NET-Core-30#gotcha-order-matters
 }
 
+.NET {
+https://dunnhq.com/posts/2021/anatomy-of-a-dotnet-app/
+https://msbuildlog.com/
+DATA TYPES {
+https://www.youtube.com/watch?v=uFHtFOmH2OI
+https://blog.paranoidcoding.com/2019/04/08/string-vs-String-is-not-about-style.html
+Enum perf: https://www.youtube.com/watch?v=BoE5Y6Xkm6w
+}
+}
+
 ASP.NET CORE {
 Samples {
 HOSTING {
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1
+https://edi.wang/post/2021/2/3/aspnet-core-50-throughput-test-in-kestrel-iis-nginx-and-caddy
 }
-https://github.com/aspnet/Entropy
+ObjectPool {
+https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0
+https://developpaper.com/detailed-explanation-of-object-pools-various-usages-in-net-core/
+}
+}
+Api Versioning {
+https://gingter.org/2018/06/18/asp-net-core-api-versioning/
+}
+REQUEST {
+https://medium.com/@rm.dev/re-reading-asp-net-core-request-bodies-with-enablebuffering-987d8668bf85
 }
 https://andrewlock.net/controller-activation-and-dependency-injection-in-asp-net-core-mvc/
 https://andrewlock.net/using-cancellationtokens-in-asp-net-core-mvc-controllers/
@@ -128,9 +163,14 @@ https://wakeupandcode.com/generic-host-builder-in-asp-net-core/
 Validation {
 https://docs.fluentvalidation.net/en/latest/localization.html
 https://dejanstojanovic.net/aspnet/2020/april/validate-configurations-with-fluentvalidation-in-aspnet-core/
+https://enterprisecraftsmanship.com/posts/always-valid-domain-model/
+https://enterprisecraftsmanship.com/posts/advanced-error-handling-techniques/
 }
 Headers {
 https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-headers-asp-net-core/
+}
+LOCALIZATION {
+https://hendrikbulens.com/2018/12/08/injecting-resource-files-as-plain-javascript-objects-in-asp-net-core/
 }
 Urls {
 https://edi.wang/post/2018/11/25/netcore-webutility-urlencode-httputility-urlencode
@@ -153,8 +193,13 @@ https://andrewlock.net/inserting-middleware-between-userouting-and-useendpoints-
 }
 HTTPCLIENT {
 https://josefottosson.se/you-are-probably-still-using-httpclient-wrong-and-it-is-destabilizing-your-software/
+https://josef.codes/httpclient-error-handling-a-test-driven-approach/
+https://josef.codes/tidy-up-your-httpclient-usage/
 https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory
 https://www.stevejgordon.co.uk/passing-an-ilogger-to-polly-policies
+https://anthonygiretti.com/2020/10/03/net-5-exploring-system-net-http-json-namespace/
+http://byterot.blogspot.com/2016/07/singleton-httpclient-dns.html
+https://www.stevejgordon.co.uk/demystifying-httpclient-internals-sendasync-flow-for-httprequestmessage
 }
 App secrets
 https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.0&tabs=windows
@@ -187,12 +232,15 @@ https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in
 https://github.com/JonPSmith/PermissionAccessControl2
 https://odetocode.com/blogs/scott/archive/2019/01/02/experimenting-with-asp-net-core-authentication-schemes.aspx
 https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-5.0
+https://tech.trailmax.info/2017/07/user-impersonation-in-asp-net-core/
 Global authorize policy: https://rimdev.io/defaulting-aspnet-core-31-to-require-authentication-for-a-safer-developer-experience/
+https://devblogs.microsoft.com/aspnet/asp-net-core-6-and-authentication-servers/
 https://josef.codes/asp-net-core-protect-your-api-with-api-keys/
 JWT {
 https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-complete-guide
 https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-with-refresh-tokens
 https://devblogs.microsoft.com/aspnet/jwt-validation-and-authorization-in-asp-net-core/
+https://www.youtube.com/watch?v=AU0TIOZhGqs
 }
 }
 Migracije i seed 
@@ -204,7 +252,7 @@ https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at
 }
 Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
-Rutiranje {
+ROUTING {
 https://weblog.west-wind.com/posts/2019/May/15/Accessing-RouteData-in-an-ASPNET-Core-Controller-Constructor
 https://andrewlock.net/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/
 https://codeopinion.com/generating-links-with-urlhelper-outside-of-asp-net-core/
@@ -214,6 +262,7 @@ https://edi.wang/post/2020/4/29/my-aspnet-core-route-debugger-middleware
 https://benjii.me/2017/04/parse-modify-query-strings-asp-net-core/
 https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx
 https://github.com/dotnet/aspnetcore/issues/14192
+https://www.strathweb.com/2019/08/dynamic-controller-routing-in-asp-net-core-3-0/
 }
 Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
@@ -223,11 +272,14 @@ PathBase {
 https://stackoverflow.com/questions/58614864/whats-the-difference-between-httprequest-path-and-httprequest-pathbase-in-asp-n
 https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f67/src/Http/Http.Abstractions/src/Extensions/UsePathBaseMiddleware.cs
 }
-Error handling {
+ERROR HANDLING {
 https://weblog.west-wind.com/posts/2016/oct/16/error-handling-and-exceptionfilter-dependency-injection-for-aspnet-core-apis
 https://michaelscodingspot.com/debugging-exceptions/
 https://blog.stephencleary.com/2020/06/a-new-pattern-for-exception-logging.html
 https://nblumhardt.com/2016/11/ilogger-beginscope/#comment-3012254418
+https://twitter.com/bradwilson/status/1353588311940427776
+https://mikevallotton.wordpress.com/2009/07/08/net-exceptions-all-of-them/
+https://andrewlock.net/handling-web-api-exceptions-with-problemdetails-middleware/
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
@@ -238,6 +290,13 @@ https://www.cloudwards.net/what-is-webdav/
 }
 CONTROLLERS {
 https://andrewlock.net/post-redirect-get-using-tempdata-in-asp-net-core/
+}
+FILTERS {
+https://www.andybutland.dev/2020/06/dependency-injection-in-aspnet-core-attributes.html
+}
+TESTS {
+https://www.youtube.com/watch?v=r-Jte8Y8zag
+https://github.com/tmenier/Flurl
 }
 }
 
@@ -257,6 +316,7 @@ https://jimmybogard.com/automapper-linq-support-deep-dive/ (SEE: https://jimmybo
 https://benjii.me/2018/01/expression-projection-magic-entity-framework-core/
 https://docs.microsoft.com/en-us/ef/core/modeling/backing-field?tabs=data-annotations
 Drop PK:https://github.com/dotnet/efcore/issues/2100
+https://weblogs.asp.net/dixin/entity-framework-core-and-linq-to-entities-4-query-methods-7
 Subqueries N+1 problem
 https://github.com/dotnet/efcore/issues/11186
 Querying with Include 
@@ -272,7 +332,7 @@ https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-enti
 }
 }
 
-.NET
+.NET CORE
 {
 https://mattwarren.org/2018/10/02/A-History-of-.NET-Runtimes/
 https://github.com/dotnet/coreclr/tree/master/Documentation/botr
@@ -284,6 +344,21 @@ https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
 https://www.youtube.com/watch?v=nK54s84xRRs
 https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bombardier-87cc9c6b8d6f
+https://mattwarren.org/2017/12/15/How-does-.NET-JIT-a-method-and-Tiered-Compilation/
+https://michaelscodingspot.com/avoid-gc-pressure/
+https://www.tabsoverspaces.com/233833-best-way-to-create-an-empty-collection-array-and-list-in-csharp-net
+Profiling {
+https://devblogs.microsoft.com/visualstudio/analyze-cpu-memory-while-debugging/
+}
+MEMORY {
+https://www.stevejgordon.co.uk/analysing-the-large-object-heap-in-jetbrains-dotmemory
+https://adamsitnik.com/Array-Pool/
+https://www.philosophicalgeek.com/2015/02/06/announcing-microsoft-io-recycablememorystream/
+https://csharp.christiannagel.com/2017/05/31/arraypool/#comments
+}
+}
+RUNTIME {
+https://docs.microsoft.com/en-us/dotnet/core/dependency-loading/understanding-assemblyloadcontext
 }
 Assemblies {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
@@ -291,6 +366,7 @@ https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-sep
 RANDOM {
 https://khalidabuhakmeh.com/creating-random-numbers-with-dotnet-core
 https://www.youtube.com/watch?v=tCYxc-2-3fY&ab_channel=Questpond
+https://devblogs.microsoft.com/pfxteam/getting-random-numbers-in-a-thread-safe-way/
 }
 Numerics formating {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
@@ -300,6 +376,7 @@ https://medium.com/@bharatdwarkani/top-10-code-quality-static-analysers-for-asp-
 }
 Cache {
 https://blog.novanet.no/asp-net-core-memory-cache-is-get-or-create-thread-safe/
+https://www.hanselman.com/blog/eyes-wide-open-correct-caching-is-always-hard
 }
 Host Startup errors {
 https://github.com/aspnet/EntityFrameworkCore/issues/12331
@@ -326,11 +403,13 @@ https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netc
 DateTime {
 https://weblog.west-wind.com/posts/2015/feb/10/back-to-basics-utc-and-timezones-in-net-web-apps
 https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/
+https://www.nimaara.com/high-resolution-clock-in-net/
 https://www.hackcraft.net/web/datetime/#uri
 https://zachholman.com/talk/utc-is-enough-for-everyone-right
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
+https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core
 }
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
@@ -341,18 +420,23 @@ https://github.com/scottksmith95/LINQKit
 https://www.meziantou.net/don-t-use-method-with-side-effect-in-linq.htm
 http://www.scip.be/index.php?Page=ArticlesNET23
 https://alicebobandmallory.com/articles/2012/10/18/merge-collections-without-duplicates-in-c
+https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/introduction-to-plinq
+COOL: https://github.com/dotnet/aspnetcore/blob/6427d9cc718f8093c506b62b6fd12544411b477f/src/Http/Http.Features/src/IHeaderDictionary.Keyed.cs
+http://nessos.github.io/LinqOptimizer/
 }
 FILES {
 https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
 http://thingsihateaboutmicrosoft.blogspot.com/2009/08/pathcombine-is-essentially-useless.html
 https://volosoft.com/blog/File-Upload-Download-with-BLOB-Storage-in-ASP.NET-Core-and-ABP
 https://jonskeet.uk/csharp/readbinary.html
+https://josef.codes/sorting-really-large-files-with-c-sharp/
 }
 BUNDLING: {
 https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/
 }
 OPTIONS {
 https://andrewlock.net/delaying-strongly-typed-options-configuration-using-postconfigure-in-asp-net-core/
+https://ofpinewood.com/blog/creating-a-custom-configurationprovider-for-a-entity-framework-core-source
 }
 DATA PROTECTION {
 https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1#persistkeystofilesystem
@@ -362,6 +446,10 @@ https://www.tabsoverspaces.com/233774-using-data-protection-in-entity-framework-
 }
 
 ASYNC/AWAIT {
+[
+https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md,
+https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AspNetCoreGuidance.md
+]
 https://devblogs.microsoft.com/dotnet/configureawait-faq/
 https://devblogs.microsoft.com/pfxteam/crafting-a-task-timeoutafter-method/
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
@@ -382,6 +470,7 @@ https://markheath.net/post/async-antipatterns
 https://medium.com/@deep_blue_day/long-story-short-async-await-best-practices-in-net-1f39d7d84050
 https://www.youtube.com/watch?v=bda13k0vfc0&list=PLokQFRpAsul4fn_CSEwXw33VNbG1DBKgM&index=23&ab_channel=NDCConferences
 https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/
+https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/october/asynchronous-programming-async-performance-understanding-the-costs-of-async-and-await
 https://medium.com/@deep_blue_day/long-story-short-async-await-best-practices-in-net-1f39d7d84050
 https://markheath.net/post/constraining-concurrent-threads-csharp
 https://app.pluralsight.com/library/courses/getting-started-with-asynchronous-programming-dotnet/table-of-contents
@@ -391,16 +480,26 @@ https://gigi.nullneuron.net/gigilabs/common-mistakes-in-asynchronous-programming
 https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
 https://www.meziantou.net/links-async-await-csharp.htm
 }
+THREADING {
+http://www.albahari.com/threading/part5.aspx#_SpinLock_and_SpinWait
+}
+
+GARBAGE COLLECTION {
+https://www.nimaara.com/per-object-garbage-collection-notification-in-net/
+https://devblogs.microsoft.com/dotnet/large-object-heap/
+}
 
 SOLID {
 https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ 
 HTTPS://APP.PLURALSIGHT.COM/LIBRARY/COURSES/ENCAPSULATION-SOLID/TABLE-OF-CONTENTS
 https://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/
+https://dunnhq.com/posts/2021/solid-relevance/
 }
 
 PATTERNS {
 https://adamstorr.azurewebsites.net/blog/strategy-pattern-with-enum-constraints
 https://gigi.nullneuron.net/gigilabs/the-adapter-design-pattern-for-dtos-in-c/
+https://volosoft.com/blog/Prefer-Singleton-Pattern-over-Static-Class
 }
 
 Dependency Injection {
@@ -422,6 +521,7 @@ https://openpracticelibrary.com/practice/event-storming/
 
 IIS EXPRESS {
 https://blog.maartenballiauw.be/post/2019/02/26/asp-net-core-iis-express-empty-error-starting-application.html
+https://www.youtube.com/watch?v=96KHOaIe19w
 }
 
 GITHUB {
@@ -485,12 +585,21 @@ https://www.codeproject.com/Articles/1166099/Entity-Framework-Storing-complex-pr
 https://khalidabuhakmeh.com/add-custom-database-functions-for-entity-framework-core
 https://www.meziantou.net/using-hierarchyid-with-entity-framework-core.htm
 OWNED ENTITIES: https://github.com/dotnet/efcore/issues/18299
+SEQUENCE: https://www.talkingdotnet.com/use-sql-server-sequence-in-entity-framework-core-primary-key/ (https://www.sqlservertutorial.net/sql-server-basics/sql-server-sequence/)
+https://www.thereformedprogrammer.net/ef-core-in-depth-what-happens-when-ef-core-reads-from-the-database/
+MIGRATIONS {
+https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-part-3-feedback/
+}
 SEQUENCE: { 
 https://www.talkingdotnet.com/use-sql-server-sequence-in-entity-framework-core-primary-key/
 https://www.sqlservertutorial.net/sql-server-basics/sql-server-sequence/
 https://www.mssqltips.com/sqlservertip/3202/prevent-multiple-users-from-running-the-same-sql-server-stored-procedure-at-the-same-time/
 https://stackoverflow.com/questions/60644544/getting-next-value-for-for-a-sql-server-sequence-using-ef-core-3-1-impossibl
 }
+}
+
+SECURING CODE {
+https://www.youtube.com/watch?v=4JyCS4t-_sQ
 }
 
 GIT {
@@ -501,4 +610,8 @@ JMETER: https://jmeter.apache.org/
 
 JS/JQUERY {
 https://modernweb.com/5-things-stop-jquery/
+}
+
+EXTENSIONS {
+	NGROK: https://marketplace.visualstudio.com/items?itemName=DavidProthero.NgrokExtensions
 }
