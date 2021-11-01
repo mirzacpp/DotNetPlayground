@@ -214,11 +214,17 @@ https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-usi
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEntityFrameworkDbGeographySpatialTypes.aspx
 https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
-Email: https://scottsauber.com/2018/07/07/walkthrough-creating-an-html-email-template-with-razor-and-razor-class-libraries-and-rendering-it-from-a-net-standard-class-library/
+Email: {
+https://scottsauber.com/2018/07/07/walkthrough-creating-an-html-email-template-with-razor-and-razor-class-libraries-and-rendering-it-from-a-net-standard-class-library/
+https://ethereal.email/
+https://codewithmukesh.com/blog/send-emails-with-aspnet-core/
+https://scottsauber.com/2018/07/07/walkthrough-creating-an-html-email-template-with-razor-and-razor-class-libraries-and-rendering-it-from-a-net-standard-class-library/
+}
 Auth
 CONTENT RENDERING {
 https://github.com/ridercz/Altairis.RazorPages.EditorTemplates
 https://www.codeproject.com/Articles/1079909/ASP-NET-MVC-Partial-Views-with-Partial-Models
+https://github.com/soundaranbu/RazorTemplating
 }
 AUTH {
 https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in-asp-net-core/
