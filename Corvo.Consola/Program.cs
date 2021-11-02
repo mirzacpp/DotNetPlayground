@@ -4,6 +4,8 @@ using System;
 
 namespace Corvo.Consola
 {
+
+
     /// <summary>
     /// Console project used for messing around
     /// </summary>
@@ -12,7 +14,7 @@ namespace Corvo.Consola
         private static void Main(string[] args)
         {
             InvokeDISample();
-        }
+        }                
 
         private static void InvokeDISample()
         {

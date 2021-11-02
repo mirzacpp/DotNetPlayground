@@ -128,6 +128,11 @@ https://weblog.west-wind.com/posts/2019/Sep/24/Upgrading-my-AlbumViewer-Sample-t
 }
 
 .NET {
+Info {
+https://www.youtube.com/watch?v=t3zj0c244UE&ab_channel=kudvenkat
+https://dusted.codes/dotnet-basics
+}
+
 https://dunnhq.com/posts/2021/anatomy-of-a-dotnet-app/
 https://msbuildlog.com/
 DATA TYPES {
@@ -429,6 +434,7 @@ https://alicebobandmallory.com/articles/2012/10/18/merge-collections-without-dup
 https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/introduction-to-plinq
 COOL: https://github.com/dotnet/aspnetcore/blob/6427d9cc718f8093c506b62b6fd12544411b477f/src/Http/Http.Features/src/IHeaderDictionary.Keyed.cs
 http://nessos.github.io/LinqOptimizer/
+https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/ranges-indexes
 }
 FILES {
 https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
