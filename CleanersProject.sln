@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.Api", "Simplicit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{1B33C103-FABA-4F21-A241-633B80121BF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weakling.WebUI", "Weakling.WebUI\Weakling.WebUI.csproj", "{A7562078-C1C2-4E40-863A-D55ACCD28568}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,9 +79,16 @@ Global
 		{134F5756-68C2-4097-8FB0-D48235AE3720}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{134F5756-68C2-4097-8FB0-D48235AE3720}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{134F5756-68C2-4097-8FB0-D48235AE3720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7562078-C1C2-4E40-863A-D55ACCD28568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7562078-C1C2-4E40-863A-D55ACCD28568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7562078-C1C2-4E40-863A-D55ACCD28568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7562078-C1C2-4E40-863A-D55ACCD28568}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7562078-C1C2-4E40-863A-D55ACCD28568} = {1B33C103-FABA-4F21-A241-633B80121BF5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F20F244-5BF0-459F-AA50-F3C32A6903E5}
