@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Weakling.WebUI.Models;
 
-namespace Weakling.WebUI.Controllers
+namespace Weakling.WebUI.Features.Home
 {
     public class HomeController : Controller
     {
