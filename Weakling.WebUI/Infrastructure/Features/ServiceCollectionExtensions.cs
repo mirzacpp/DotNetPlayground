@@ -11,10 +11,14 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IMvcBuilder AddFeatureFolders(this IMvcBuilder services, FeatureFolderOptions options)
         {
             if (services == null)
+            {
                 throw new ArgumentNullException(nameof(services));
+            }
 
             if (options == null)
+            {
                 throw new ArgumentException(nameof(options));
+            }
 
             var expander = new FeatureViewLocationExpander(options);
 

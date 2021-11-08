@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.Api", "Simplicit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{1B33C103-FABA-4F21-A241-633B80121BF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weakling.WebUI", "Weakling.WebUI\Weakling.WebUI.csproj", "{A7562078-C1C2-4E40-863A-D55ACCD28568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weakling.WebUI", "Weakling.WebUI\Weakling.WebUI.csproj", "{A7562078-C1C2-4E40-863A-D55ACCD28568}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4AC7BD5D-7938-4940-BB59-BCCE4AFA5BAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{A7590D3F-4739-4FD7-A685-A71E01846AD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
