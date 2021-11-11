@@ -187,10 +187,12 @@ https://jasontaylor.dev/clean-architecture-getting-started/
 }
 Include static resources
 https://www.mikesdotnetting.com/article/330/including-static-resources-in-razor-class-libraries-in-asp-net-core
-Logging
+Logging {
 https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
 https://benfoster.io/blog/serilog-best-practices/
 https://gunnarpeipman.com/aspnet-core-notepad-logger/
+https://blog.stephencleary.com/2020/06/a-new-pattern-for-exception-logging.html
+}
 Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 https://andrewlock.net/understanding-your-middleware-pipeline-with-the-middleware-analysis-package/

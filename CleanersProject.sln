@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29411.108
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleaners.Web", "Cleaners.Web\Cleaners.Web.csproj", "{5E994385-11F1-4BFE-9A8C-61962C314063}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4AC7BD5D-7938-4940-BB59-BCCE4AFA5BAA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{A7590D3F-4739-4FD7-A685-A71E01846AD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.Commons", "Studens.Commons\Studens.Commons.csproj", "{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,12 +89,17 @@ Global
 		{A7562078-C1C2-4E40-863A-D55ACCD28568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7562078-C1C2-4E40-863A-D55ACCD28568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7562078-C1C2-4E40-863A-D55ACCD28568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A7562078-C1C2-4E40-863A-D55ACCD28568} = {1B33C103-FABA-4F21-A241-633B80121BF5}
+		{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8} = {4AC7BD5D-7938-4940-BB59-BCCE4AFA5BAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F20F244-5BF0-459F-AA50-F3C32A6903E5}
