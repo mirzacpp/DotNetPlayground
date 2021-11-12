@@ -25,8 +25,9 @@ namespace Weakling.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddControllersWithViews()
-                .AddFeatureFolders();
+                .AddControllersWithViews()       
+                .AddFeatureFolders()
+                .AddAreaFeatureFolders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

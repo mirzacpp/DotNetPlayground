@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using System;
 
+/// <summary>
+/// Credits to <see cref="https://github.com/OdeToCode/AddFeatureFolders"/>
+/// </summary>
 namespace Weakling.WebUI.Infrastructure.Features
 {
     /// <summary>

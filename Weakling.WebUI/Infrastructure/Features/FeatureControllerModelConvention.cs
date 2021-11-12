@@ -3,6 +3,9 @@ using System;
 using System.IO;
 using System.Linq;
 
+/// <summary>
+/// Credits to <see cref="https://github.com/OdeToCode/AddFeatureFolders"/>
+/// </summary>
 namespace Weakling.WebUI.Infrastructure.Features
 {
     public class FeatureControllerModelConvention : IControllerModelConvention

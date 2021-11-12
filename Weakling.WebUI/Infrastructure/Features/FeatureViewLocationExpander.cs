@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Credits to <see cref="https://github.com/OdeToCode/AddFeatureFolders"/>
+/// </summary>
 namespace Weakling.WebUI.Infrastructure.Features
 {
     public class FeatureViewLocationExpander : IViewLocationExpander

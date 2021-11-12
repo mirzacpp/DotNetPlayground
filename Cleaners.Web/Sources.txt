@@ -557,8 +557,9 @@ https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-betw
 https://dotnetcoretutorials.com/2021/04/03/i-wish-i-knew-about-debugger-launch-earlier/
 }
 
-System.Collections.Generic Namespace {
+KOLEKCIJE {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
+https://code-maze.com/csharp-async-enumerable-yield/
 }
 
 Benchmarking {
