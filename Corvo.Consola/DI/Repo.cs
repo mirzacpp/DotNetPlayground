@@ -17,7 +17,7 @@ namespace Corvo.Consola.DI
         {
             Console.WriteLine($"Repo for type {typeof(Country).FullName}");
         }
-    }    
+    }
 
     public class Repo3<T> : ITransientDependency where T : class
     {
@@ -25,5 +25,5 @@ namespace Corvo.Consola.DI
         {
             return typeof(T).ToString();
         }
-    }  
+    }
 }

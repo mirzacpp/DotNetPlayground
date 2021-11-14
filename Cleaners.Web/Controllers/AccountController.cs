@@ -4,7 +4,6 @@ using Cleaners.Services.Identity;
 using Cleaners.Services.Users;
 using Cleaners.Web.Constants;
 using Cleaners.Web.Extensions;
-using Cleaners.Web.Infrastructure.Authentication;
 using Cleaners.Web.Localization;
 using Cleaners.Web.Models.Account;
 using Cleaners.Web.Models.Users;
@@ -32,7 +31,7 @@ namespace Cleaners.Web.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
         private readonly IIdentityManagement _identityManagement;
-        private readonly IStringLocalizer<AccountController> _localizer;            
+        private readonly IStringLocalizer<AccountController> _localizer;
         private readonly IAlertManager _alertManager;
 
         #endregion Fields
@@ -70,7 +69,7 @@ namespace Cleaners.Web.Controllers
             {
                 ReturnUrl = returnUrl
             };
-            
+
             return View(model);
         }
 

@@ -118,6 +118,7 @@ https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strin
 https://github.com/scriban/scriban
 https://csharpindepth.com/Articles/Unicode
 https://csharpindepth.com/Articles/Strings
+https://www.stevejgordon.co.uk/how-does-the-stringbuilder-work-in-dotnet-part-1-why-do-we-need-a-stringbuilder-and-when-should-we-use-one
 }
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -419,6 +420,7 @@ https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/
 https://www.nimaara.com/high-resolution-clock-in-net/
 https://www.hackcraft.net/web/datetime/#uri
 https://zachholman.com/talk/utc-is-enough-for-everyone-right
+https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/#time-zone-conversion-apis
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/

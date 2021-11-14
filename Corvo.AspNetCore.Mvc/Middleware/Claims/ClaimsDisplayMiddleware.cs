@@ -39,7 +39,7 @@ namespace Corvo.AspNetCore.Mvc.Middleware.Claims
                     {
                         builder.Append("<tr>");
                         builder.Append($"<td>{claim.Type}</td>");
-                        builder.Append($"<td>{claim.Value}</td>");                        
+                        builder.Append($"<td>{claim.Value}</td>");
                         builder.Append("</tr>");
                     }
                     builder.Append("</tbody></table>");

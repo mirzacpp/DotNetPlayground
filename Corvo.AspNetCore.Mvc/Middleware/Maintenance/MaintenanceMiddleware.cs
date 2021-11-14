@@ -36,15 +36,14 @@ namespace Corvo.AspNetCore.Mvc.Middleware.Maintenance
 
             if (_maintenanceConfiguration.IsEnabled)
             {
-                // https://yoast.com/http-503-site-maintenance-seo/
-                httpContext.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
+                // https://yoast.com/http-503-site-maintenance-seo/               
+                httpContext.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
                 httpContext.Response.Headers.Add("Retry-After", _maintenanceConfiguration.RetryAfterSecondsOffset.ToString());
                 httpContext.Response.ContentType = _maintenanceConfiguration.ContentType;
 
                 await httpContext.Response.WriteAsync(Encoding.UTF8.GetString(_maintenanceConfiguration.Response), Encoding.UTF8);
             }
-
-            // Proceed to next middleware
+            
             await _next(httpContext);
         }
     }

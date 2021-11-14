@@ -1,5 +1,4 @@
-﻿using Cleaners.Core.Interfaces;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace Cleaners.Core.Domain
 {

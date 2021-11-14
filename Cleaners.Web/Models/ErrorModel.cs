@@ -1,5 +1,3 @@
-using System;
-
 namespace Cleaners.Web.Models
 {
     public class ErrorModel

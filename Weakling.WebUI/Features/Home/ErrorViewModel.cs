@@ -1,5 +1,3 @@
-using System;
-
 namespace Weakling.WebUI.Features.Home
 {
     public class ErrorViewModel
