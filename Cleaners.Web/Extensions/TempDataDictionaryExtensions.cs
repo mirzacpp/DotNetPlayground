@@ -32,6 +32,6 @@ namespace Cleaners.Web.Extensions
             tempData.TryGetValue(key, out object value);
 
             return value == null ? null : JsonConvert.DeserializeObject<T>((string)value);
-        }       
+        }
     }
 }

@@ -9,6 +9,6 @@ namespace Cleaners.DateTimeUtils
     {
         DateTime DateNow { get; }
 
-        DateTime DateUtcNow { get; }        
+        DateTime DateUtcNow { get; }
     }
 }

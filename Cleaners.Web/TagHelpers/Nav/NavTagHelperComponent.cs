@@ -20,7 +20,7 @@ namespace Cleaners.Web.TagHelpers.Nav
             if (string.Equals(context.TagName, "nav", StringComparison.OrdinalIgnoreCase) && output.Attributes.ContainsName(ThemifyAttribute))
             {
                 // Append theme class                
-                output.AddClass("bg-blue-600", HtmlEncoder.Default);                
+                output.AddClass("bg-blue-600", HtmlEncoder.Default);
             }
         }
     }

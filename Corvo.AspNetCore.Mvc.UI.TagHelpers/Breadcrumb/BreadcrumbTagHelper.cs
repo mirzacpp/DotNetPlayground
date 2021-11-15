@@ -15,7 +15,7 @@ namespace Corvo.AspNetCore.Mvc.UI.TagHelpers.Breadcrumb
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            
+
         }
     }
 }

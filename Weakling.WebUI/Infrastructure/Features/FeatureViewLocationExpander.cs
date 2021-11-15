@@ -20,7 +20,7 @@ namespace Weakling.WebUI.Infrastructure.Features
         /// <summary>
         /// See https://stackoverflow.com/questions/36802661/what-is-iviewlocationexpander-populatevalues-for-in-asp-net-core-mvc for more info.
         /// </summary>        
-        public void PopulateValues(ViewLocationExpanderContext context) => 
+        public void PopulateValues(ViewLocationExpanderContext context) =>
             context.Values["action_displayname"] = context.ActionContext.ActionDescriptor.DisplayName;
 
         public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)

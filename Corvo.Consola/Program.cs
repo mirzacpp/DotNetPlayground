@@ -14,7 +14,7 @@ namespace Corvo.Consola
         private static void Main(string[] args)
         {
             InvokeDISample();
-        }                
+        }
 
         private static void InvokeDISample()
         {
