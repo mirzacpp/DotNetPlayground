@@ -32,11 +32,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4AC7BD5D-7938-4940-BB59-BCCE4AFA5BAA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{A7590D3F-4739-4FD7-A685-A71E01846AD7}"
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weakling.WebUI", "Weakling.WebUI\Weakling.WebUI.csproj", "{A7562078-C1C2-4E40-863A-D55ACCD28568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeaklingTest.WebUI", "WeaklingTest.WebUI\WeaklingTest.WebUI.csproj", "{5A734D93-3414-4F1B-91F2-18ADBA837C47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeaklingTest.WebUI", "WeaklingTest.WebUI\WeaklingTest.WebUI.csproj", "{5A734D93-3414-4F1B-91F2-18ADBA837C47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.Commons", "Studens.Commons\Studens.Commons.csproj", "{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.Commons", "Studens.Commons\Studens.Commons.csproj", "{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
