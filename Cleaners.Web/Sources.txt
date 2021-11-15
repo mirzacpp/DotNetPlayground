@@ -576,6 +576,7 @@ https://docs.microsoft.com/en-us/archive/blogs/ericlippert/type-inference-woes-p
 
 VISUAL STUDIO {
 Template: https://www.programmingwithwolfgang.com/create-a-net-core-visual-studio-template/
+https://github.com/dotnet/aspnetcore/tree/v5.0.0/src/ProjectTemplates
 }
 
 DATA {

@@ -34,15 +34,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{A7590D3F-4739-4FD7-A685-A71E01846AD7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeaklingTest.WebUI", "WeaklingTest.WebUI\WeaklingTest.WebUI.csproj", "{5A734D93-3414-4F1B-91F2-18ADBA837C47}"
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.Commons", "Studens.Commons\Studens.Commons.csproj", "{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.Commons", "Studens.Commons\Studens.Commons.csproj", "{EC0D7CEE-08F9-4DD8-9610-FD15E021E4E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.AspNetCore.Mvc", "Studens.AspNetCore.Mvc\Studens.AspNetCore.Mvc.csproj", "{93C522C2-3E30-48E2-A2DF-F9330C122EF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.AspNetCore.Mvc", "Studens.AspNetCore.Mvc\Studens.AspNetCore.Mvc.csproj", "{93C522C2-3E30-48E2-A2DF-F9330C122EF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.BlazorNet6.WebUI", "Studens.BlazorNet6.WebUI\Studens.BlazorNet6.WebUI.csproj", "{65F45178-AC45-46B3-B03A-A972E6AF7D26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.BlazorNet6.WebUI", "Studens.BlazorNet6.WebUI\Studens.BlazorNet6.WebUI.csproj", "{65F45178-AC45-46B3-B03A-A972E6AF7D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.MvcNet6.WebUI", "Studens.MvcNet6.WebUI\Studens.MvcNet6.WebUI.csproj", "{8A884147-64B1-4DEF-B3C6-910F0851FE38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.MvcNet6.WebUI", "Studens.MvcNet6.WebUI\Studens.MvcNet6.WebUI.csproj", "{8A884147-64B1-4DEF-B3C6-910F0851FE38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

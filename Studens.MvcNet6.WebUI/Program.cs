@@ -1,9 +1,8 @@
-using System.Security.Claims;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingletonDependencies(typeof(Program));
 
 var app = builder.Build();
 

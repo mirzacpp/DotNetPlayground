@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Studens.AspNetCore.Mvc\Studens.AspNetCore.Mvc.csproj" />
+    <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
   </ItemGroup>
 
 </Project>

@@ -13,7 +13,7 @@ namespace Weakling.WebUI.Areas.Admin.Features.Home
     {
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {        
             return Content("Index");
         }

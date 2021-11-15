@@ -84,6 +84,10 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// Register dependencies of <paramref name="registrationType"/> type with <paramref name="serviceLifetime"/> lifetime in <paramref name="assembliesToScan"/>
     /// </summary>
+    /// <remarks>
+    /// TODO: Registration is not working when there is a open generic constraint ?
+    /// This is ok, interfaces without constraints should go at the begining
+    /// </remarks>
     private static void RegisterDependencies(IServiceCollection services,
         Type registrationType,
         ServiceLifetime serviceLifetime,
@@ -98,7 +102,7 @@ public static class ServiceCollectionExtensions
 
         if (assembliesToScan.Length > 0)
         {
-            // Get all registrationType implementations
+            // Get all registrationType implementations           
             var implementations = assembliesToScan
                 .SelectMany(a => a.GetTypes())
                 .Where(t => t.IsClass && registrationType.IsAssignableFrom(t))
