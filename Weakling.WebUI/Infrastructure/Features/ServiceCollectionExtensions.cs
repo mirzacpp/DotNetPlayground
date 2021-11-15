@@ -17,6 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 throw new ArgumentNullException(nameof(builder));
             }
+            }
 
             if (options is null)
             {

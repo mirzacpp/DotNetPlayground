@@ -1,6 +1,6 @@
 using System;
 
-namespace Weakling.WebUI.Models
+namespace Weakling.WebUI.Features.Home
 {
     public class ErrorViewModel
     {

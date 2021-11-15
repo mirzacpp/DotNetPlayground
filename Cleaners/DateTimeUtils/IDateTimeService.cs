@@ -3,12 +3,12 @@
 namespace Cleaners.DateTimeUtils
 {
     /// <summary>
-    /// Date and time abstractions
+    /// Date/Time provider
     /// </summary>
     public interface IDateTimeService
     {
         DateTime DateNow { get; }
 
-        DateTime DateUtcNow { get; }
+        DateTime DateUtcNow { get; }        
     }
 }
