@@ -12,6 +12,7 @@ public static class ServiceCollectionExtensions
     #region Fields
 
     private static readonly Assembly[] _emptyAssemblyArray = Array.Empty<Assembly>();
+    private static readonly Func<Type, bool> testReg = (type) => type.IsClass;
 
     #endregion Fields
 
@@ -91,7 +92,8 @@ public static class ServiceCollectionExtensions
     private static void RegisterDependencies(IServiceCollection services,
         Type registrationType,
         ServiceLifetime serviceLifetime,
-        Assembly[] assembliesToScan)
+        Assembly[] assembliesToScan,
+        Func<Type, bool>? registrationStrategyCondition = null)
     {
         if (services == null)
         {
