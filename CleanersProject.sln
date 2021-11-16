@@ -26,6 +26,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.Api", "Simplicity.Api\Simplicity.Api.csproj", "{134F5756-68C2-4097-8FB0-D48235AE3720}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{1B33C103-FABA-4F21-A241-633B80121BF5}"
+	ProjectSection(SolutionItems) = preProject
+		Cleaners.Web\Sources.txt = Cleaners.Web\Sources.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weakling.WebUI", "Weakling.WebUI\Weakling.WebUI.csproj", "{A7562078-C1C2-4E40-863A-D55ACCD28568}"
 EndProject
