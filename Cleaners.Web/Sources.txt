@@ -100,6 +100,7 @@ http://dontcodetired.com/blog
 https://dunnhq.com/
 https://blog.paranoidcoding.com
 https://devblogs.microsoft.com/premier-developer/author/seteplia/
+ https://www.youtube.com/channel/UCw6BnEkURLprFGx_il2OyUw (#)
 }
 
 Span i memory {
@@ -316,6 +317,7 @@ https://github.com/tmenier/Flurl
 
 ENTITYFRAMEWORK
 {
+https://www.youtube.com/channel/UCvtT19MZW8dq5Wwfu6B0oxw (#)
 https://www.youtube.com/watch?v=xx5_pVsLP44
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/july/data-points-ef-core-2-1-query-types
 https://www.codemag.com/Article/1911062/Entity-Framework-Core-3.0-A-Foundation-for-the-Future
@@ -344,6 +346,11 @@ https://www.edgesidesolutions.com/repository-pattern-dead-with-entity-framework/
 https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-entity-framework-core/
 }
 }
+}
+
+NUGET {
+https://haacked.com/archive/2020/11/24/naming-nuget/
+https://docs.microsoft.com/en-us/nuget/nuget-org/publish-a-package
 }
 
 .NET CORE
