@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Ardalis.GuardClauses;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Studens.Commons.DependencyInjection;
 using System.Reflection;
 
@@ -7,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Extension methods for <see cref="IServiceCollection"/>
 /// </summary>
-public static class ServiceCollectionExtensions
+public static partial class ServiceCollectionExtensions
 {
     #region Fields
 
@@ -178,20 +179,13 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// Register dependencies of <paramref name="registrationType"/> type with <paramref name="serviceLifetime"/> lifetime in <paramref name="assembliesToScan"/>
     /// </summary>
-    /// <remarks>
-    /// TODO: Registration is not working when there is a open generic constraint ?
-    /// This is ok, interfaces without constraints should go at the begining
-    /// </remarks>
     private static void RegisterDependencies(IServiceCollection services,
         Type registrationType,
         ServiceLifetime serviceLifetime,
         Assembly[] assembliesToScan,
         Func<Type, Type, bool> registrationStrategy)
     {
-        if (services == null)
-        {
-            throw new ArgumentNullException(nameof(services));
-        }
+        Guard.Against.Null(services, nameof(services)); 
 
         assembliesToScan = assembliesToScan?.ToArray() ?? _emptyAssemblyArray;
 
@@ -200,8 +194,7 @@ public static class ServiceCollectionExtensions
             // Get all registrationType implementations
             var implementations = assembliesToScan
                 .SelectMany(a => a.GetTypes())
-                .Where(t => registrationStrategy(t, registrationType))
-                //.Where(t => t.IsClass && registrationType.IsAssignableFrom(t))
+                .Where(t => registrationStrategy(t, registrationType))                
                 .ToList();
 
             foreach (var implementation in implementations)
