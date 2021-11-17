@@ -16,7 +16,7 @@
     /// <typeparam name="T">Data type</typeparam>
     public abstract class Result<T> : Result
     {
-        private T _data;
+        private T _data = default!;        
 
         protected Result(T data) => Data = data;
 
