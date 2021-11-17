@@ -443,6 +443,7 @@ https://www.meziantou.net/don-t-use-method-with-side-effect-in-linq.htm
 http://www.scip.be/index.php?Page=ArticlesNET23
 https://alicebobandmallory.com/articles/2012/10/18/merge-collections-without-duplicates-in-c
 https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/introduction-to-plinq
+Dynamic https://github.com/alirezanet/Gridify/
 COOL: https://github.com/dotnet/aspnetcore/blob/6427d9cc718f8093c506b62b6fd12544411b477f/src/Http/Http.Features/src/IHeaderDictionary.Keyed.cs
 http://nessos.github.io/LinqOptimizer/
 https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/ranges-indexes
@@ -566,6 +567,7 @@ https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-som
 https://devblogs.microsoft.com/dotnet/embracing-nullable-reference-types/
 https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-between-class-and-struct?redirectedfrom=MSDN
 https://dotnetcoretutorials.com/2021/04/03/i-wish-i-knew-about-debugger-launch-earlier/
+Immutable: https://www.youtube.com/watch?v=O89-zG84QK4&ab_channel=DotNext (#)
 }
 
 KOLEKCIJE {
@@ -598,11 +600,6 @@ Paging projection: https://github.com/AutoMapper/AutoMapper/issues/1083
 Pattern matching
 https://devblogs.microsoft.com/dotnet/do-more-with-patterns-in-c-8-0/
 
-TODO {
-- Napravi genericki Result objekat koji ce se vracati iz servisa. Ukoliko bude errora, mapiraj errore iz rezultata u modelstate.
-...
-https://github.com/dotnet/aspnetcore/blob/bfec2c14be1e65f7dd361a43950d4c848ad0cd35/src/Identity/Extensions.Core/src/IdentityResult.cs
-}
 
 EF CORE {
 JSON COLUMNS: https://github.com/dotnet/efcore/issues/4021,
