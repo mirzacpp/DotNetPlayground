@@ -412,6 +412,7 @@ https://stackoverflow.com/questions/39394129/saving-a-base64-string-as-an-image-
 Performance {
 https://andrewlock.net/exploring-rayguns-new-application-performance-monitoring-tool-for-net-core/
 https://www.youtube.com/watch?v=fyuS18uSLLE&feature=youtu.be
+https://docs.microsoft.com/en-us/dotnet/csharp/write-safe-efficient-code
 }
 MediatR {
 https://jonhilton.net/2016/08/31/how-to-easily-extend-your-app-using-mediatr-notifications/
@@ -465,6 +466,12 @@ https://ofpinewood.com/blog/creating-a-custom-configurationprovider-for-a-entity
 DATA PROTECTION {
 https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1#persistkeystofilesystem
 https://www.tabsoverspaces.com/233774-using-data-protection-in-entity-framework-core-with-value-converters
+}
+DEL & EVENTS {
+https://docs.microsoft.com/en-us/dotnet/csharp/delegates-overview
+https://blog.stephencleary.com/2009/06/threadsafe-events.html
+https://csharpindepth.com/Articles/Events (! na thread safety)
+https://codeblog.jonskeet.uk/2015/01/30/clean-event-handlers-invocation-with-c-6/
 }
 
 }

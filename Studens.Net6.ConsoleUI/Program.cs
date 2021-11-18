@@ -1,20 +1,22 @@
-﻿
-using Studens.Net6.ConsoleUI;
+﻿using Studens.Net6.ConsoleUI.Events;
 
-var record1 = new RecordModel
+var filesFound = 0;
+EventHandler<FileFouldArgs> onFileFound = (sender, e) =>
 {
-    FirstName = "Mirza",
-    LastName = "Cupina"
+    if (e.FileName.EndsWith(".json"))
+    {
+        e.CancelRequested = true;
+    }    
 };
 
-var record2 = new RecordModel
-{
-    FirstName = "Mirza",
-    LastName = "Cupina"
-};
+var fileExplorer = new FileExplorer();
+fileExplorer.FileFound += onFileFound;
+fileExplorer.Search();
+fileExplorer.FileFound -= onFileFound;
 
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine(record1 == record2);
+Console.WriteLine("Files found " + filesFound);
+
+Console.WriteLine();
 
 
 

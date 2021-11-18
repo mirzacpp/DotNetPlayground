@@ -83,7 +83,7 @@
         }
 
         public ErrorResult(string message, IReadOnlyCollection<Error> errors) 
-            : base(default)
+            : base(default!)
         {
             Message = message;
             Success = false;
