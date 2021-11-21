@@ -1,22 +1,39 @@
 ﻿using Studens.Net6.ConsoleUI.Events;
 
-var filesFound = 0;
-EventHandler<FileFouldArgs> onFileFound = (sender, e) =>
+using var watcher = new FileSystemWatcher(@"C:\ITO");
+
+watcher.NotifyFilter = NotifyFilters.Attributes
+                                | NotifyFilters.CreationTime
+                                | NotifyFilters.DirectoryName
+                                | NotifyFilters.FileName
+                                | NotifyFilters.LastAccess
+                                | NotifyFilters.LastWrite
+                                | NotifyFilters.Security
+                                | NotifyFilters.Size;
+
+watcher.Changed += OnChanged;
+//watcher.Created += OnCreated;
+watcher.Deleted += OnDeleted;
+//watcher.Renamed += OnRenamed;
+//watcher.Error += OnError;
+
+watcher.Filter = "*.txt";
+watcher.IncludeSubdirectories = true;
+watcher.EnableRaisingEvents = true;
+
+
+void OnChanged(object sender, FileSystemEventArgs e)
 {
-    if (e.FileName.EndsWith(".json"))
-    {
-        e.CancelRequested = true;
-    }    
-};
+    Console.WriteLine($"Change detected for {e.FullPath}");
+}
 
-var fileExplorer = new FileExplorer();
-fileExplorer.FileFound += onFileFound;
-fileExplorer.Search();
-fileExplorer.FileFound -= onFileFound;
+void OnDeleted(object sender, FileSystemEventArgs e)
+{
+    Console.WriteLine($"Delete detected for {e.FullPath}");
+}
 
-Console.WriteLine("Files found " + filesFound);
+Console.ReadLine();
 
-Console.WriteLine();
 
 
 
