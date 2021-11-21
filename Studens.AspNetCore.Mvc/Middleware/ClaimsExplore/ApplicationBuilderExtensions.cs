@@ -15,7 +15,7 @@ public static class ApplicationBuilderExtensions
     /// <remarks>
     /// Make sure this method is invoked after app.UseAuthentication() in order for middleware to work properly.    
     /// </remarks>
-    public static void UseClaimsDisplay(this IApplicationBuilder app, string pathMatch)
+    public static IApplicationBuilder UseClaimsDisplay(this IApplicationBuilder app, string pathMatch)
     {
         if (app is null)
         {
@@ -23,6 +23,8 @@ public static class ApplicationBuilderExtensions
         }
 
         app.Map(pathMatch, conf => conf.UseMiddleware<ClaimsDisplayMiddleware>());
+
+        return app;
     }
 
     /// <summary>
@@ -32,6 +34,6 @@ public static class ApplicationBuilderExtensions
     /// <remarks>
     /// Make sure this method is invoked after app.UseAuthentication() in order for middleware to work properly.    
     /// </remarks>
-    public static void UseClaimsDisplay(this IApplicationBuilder app)
+    public static IApplicationBuilder UseClaimsDisplay(this IApplicationBuilder app)
         => UseClaimsDisplay(app, pathMatch: "/claims-display");
 }

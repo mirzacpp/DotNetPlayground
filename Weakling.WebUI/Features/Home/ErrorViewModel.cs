@@ -1,9 +1,8 @@
-namespace Weakling.WebUI.Features.Home
-{
-    public class ErrorViewModel
-    {
-        public string RequestId { get; set; }
+namespace Weakling.WebUI.Features.Home;
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-    }
+public class ErrorViewModel
+{
+    public string? RequestId { get; set; }
+
+    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }
