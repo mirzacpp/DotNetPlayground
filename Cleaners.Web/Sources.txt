@@ -121,6 +121,7 @@ https://github.com/scriban/scriban
 https://csharpindepth.com/Articles/Unicode
 https://csharpindepth.com/Articles/Strings
 https://www.stevejgordon.co.uk/how-does-the-stringbuilder-work-in-dotnet-part-1-why-do-we-need-a-stringbuilder-and-when-should-we-use-one
+https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/ (.NET6)
 }
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -197,6 +198,11 @@ https://www.stevejgordon.co.uk/high-performance-logging-in-net-core
 https://benfoster.io/blog/serilog-best-practices/
 https://gunnarpeipman.com/aspnet-core-notepad-logger/
 https://blog.stephencleary.com/2020/06/a-new-pattern-for-exception-logging.html
+https://docs.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator
+https://andrewlock.net/exploring-dotnet-6-part-8-improving-logging-performance-with-source-generators/
+Startup logging {
+https://nblumhardt.com/2020/10/bootstrap-logger/
+}
 }
 Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
@@ -364,6 +370,9 @@ https://github.com/dotnet/coreclr/tree/master/Documentation/botr
 https://devblogs.microsoft.com/dotnet/author/stephen_toubhotmail-com/
 https://www.youtube.com/watch?v=xdSSH63IZZc
 https://devblogs.microsoft.com/dotnet/introducing-net-standard/
+SOURCE GENERATION {
+https://devblogs.microsoft.com/dotnet/introducing-c-source-generators/
+}
 Performanse {
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
