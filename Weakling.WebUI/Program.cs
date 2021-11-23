@@ -43,7 +43,7 @@ public class Program
            Host.CreateDefaultBuilder(args)
                 .ConfigureLogging((context, options) =>
                 {
-                    //options.ClearProviders();
+                    options.ClearProviders();
                 })
                .UseDefaultServiceProvider((context, options) =>
                {
@@ -52,9 +52,20 @@ public class Program
                    options.ValidateScopes = isDevelopment;
                    options.ValidateOnBuild = isDevelopment;
                })
+               .UseSerilog((context, services, configuration) =>
+               {
+                   configuration
+                   .ReadFrom.Configuration(context.Configuration)
+                   .ReadFrom.Services(services)
+                   .Enrich.WithProperty("Application", context.HostingEnvironment.ApplicationName)
+                   .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
+                   // TODO: Write to console in debug, otherwise use log to file or seq
+                   .WriteTo.Console(restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug);
+               })
                .ConfigureWebHostDefaults(webBuilder =>
                {
                    webBuilder.UseStartup<Startup>();
+                   webBuilder.UseKestrel(options => options.AddServerHeader = false);
                })
                .UseConsoleLifetime();
 
