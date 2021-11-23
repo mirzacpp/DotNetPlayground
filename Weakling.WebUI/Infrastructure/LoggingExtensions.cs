@@ -1,9 +1,9 @@
 ﻿namespace Weakling.WebUI;
 
-/ <summary>
-/ Extension methods for <see cref = "ILogger" />
-/ For more info on LoggerMessage check the docs https://docs.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator.
-/ </summary>
+/// <summary>
+/// Extension methods for <see cref = "ILogger" />
+/// For more info on LoggerMessage check the docs https://docs.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator.
+/// </summary>
 internal static partial class LoggingExtensions
 {
     [LoggerMessage(
