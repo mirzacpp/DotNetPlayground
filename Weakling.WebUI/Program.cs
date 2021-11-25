@@ -58,7 +58,7 @@ public class Program
                    .ReadFrom.Configuration(context.Configuration)
                    .ReadFrom.Services(services)
                    .Enrich.WithProperty("Application", context.HostingEnvironment.ApplicationName)
-                   .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
+                   .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)                   
                    // TODO: Write to console in debug, otherwise use log to file or seq
                    .WriteTo.Console(restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug);
                })
