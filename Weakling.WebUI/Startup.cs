@@ -1,4 +1,6 @@
-﻿namespace Weakling.WebUI;
+﻿using Serilog;
+
+namespace Weakling.WebUI;
 
 public class Startup
 {
@@ -12,7 +14,7 @@ public class Startup
     }
 
     public virtual void ConfigureServices(IServiceCollection services)
-    {       
+    {
         services
             .AddControllersWithViews()
             .AddFeatureFolders()
@@ -21,24 +23,33 @@ public class Startup
     }
 
     public virtual void Configure(IApplicationBuilder app)
-    {       
+    {
         app
-           .UseIf(_webHostEnvironment.IsDevelopment(), app.UseDeveloperExceptionPage) 
+           .UseIf(_webHostEnvironment.IsDevelopment(), app.UseDeveloperExceptionPage)
            // TODO: Conditional builder with params
-           //.UseIf(!_webHostEnvironment.IsDevelopment(), app.UseExceptionHandler("/Home/Error")) 
-           .UseIf(!_webHostEnvironment.IsDevelopment(), app.UseHsts) 
+           //.UseIf(!_webHostEnvironment.IsDevelopment(), app.UseExceptionHandler("/Home/Error"))
+           .UseIf(!_webHostEnvironment.IsDevelopment(), app.UseHsts)
            .UseHttpsRedirection()
            .UseStaticFiles()
            .UseRouting()
-           .UseIf(_webHostEnvironment.IsDevelopment(), app.UseMiniProfiler) 
+           .UseIf(_webHostEnvironment.IsDevelopment(), app.UseMiniProfiler)
            .UseAuthentication()
            .UseIf(_webHostEnvironment.IsDevelopment(), app.UseClaimsDisplay)
            .UseAuthorization()
+           .UseSerilogRequestLogging()
            .UseEndpoints(endpoints =>
            {
                endpoints.MapControllerRoute(
                    name: "default",
                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+               endpoints.MapGet("testovka", async (context) =>
+               {
+                   var logFact = context.RequestServices.GetRequiredService<ILoggerFactory>();
+                   var logger = logFact.CreateLogger("testovka test endpoint");
+                   logger.LogInformation("Test info log");
+                   await context.Response.WriteAsync("Logger test");
+               });
            });
     }
 }

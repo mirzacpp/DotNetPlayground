@@ -1,5 +1,8 @@
 using Serilog;
+using Serilog.Events;
+using Serilog.Exceptions;
 using Serilog.Extensions.Hosting;
+using Serilog.Formatting.Compact;
 
 namespace Weakling.WebUI;
 
@@ -55,12 +58,22 @@ public class Program
                .UseSerilog((context, services, configuration) =>
                {
                    configuration
-                   .ReadFrom.Configuration(context.Configuration)
-                   .ReadFrom.Services(services)
+                   //.ReadFrom.Configuration(context.Configuration)
+                   //.ReadFrom.Services(services)                   
+                   .MinimumLevel.Debug()
+                   .MinimumLevel.Override("Microsoft", LogEventLevel.Warning) // Move to appsettings 
+                   .MinimumLevel.Override("System", LogEventLevel.Information) // Move to appsettings
+                   .Enrich.FromLogContext() // Move to appsettings
+                   .Enrich.WithMachineName() // Move to appsettings
+                   .Enrich.WithThreadId() // Move to appsettings
+                   .Enrich.WithExceptionDetails()
                    .Enrich.WithProperty("Application", context.HostingEnvironment.ApplicationName)
-                   .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)                   
+                   .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)                           
+                   //.Enrich.WithProperty("Version", AssemblyInformation.Current.Version)                   
                    // TODO: Write to console in debug, otherwise use log to file or seq
-                   .WriteTo.Console(restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug);
+                   // TODO: Make sure to use correct formatters, otherwise default one will not display enriched data
+                   .WriteTo.Notepad()
+                   .WriteTo.Console();
                })
                .ConfigureWebHostDefaults(webBuilder =>
                {

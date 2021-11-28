@@ -201,8 +201,10 @@ https://gunnarpeipman.com/aspnet-core-notepad-logger/
 https://blog.stephencleary.com/2020/06/a-new-pattern-for-exception-logging.html
 https://docs.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator
 https://andrewlock.net/exploring-dotnet-6-part-8-improving-logging-performance-with-source-generators/
-Startup logging {
+SERILOG {
 https://nblumhardt.com/2020/10/bootstrap-logger/
+https://app.pluralsight.com/library/courses/serilog-enrichers-getting-info-into-log-entries/table-of-contents
+https://github.com/serilog-contrib/serilog-sinks-notepad
 }
 }
 Middleware {
