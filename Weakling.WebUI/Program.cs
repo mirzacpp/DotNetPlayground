@@ -1,5 +1,8 @@
 using Serilog;
+using Serilog.Events;
+using Serilog.Exceptions;
 using Serilog.Extensions.Hosting;
+using Serilog.Formatting.Compact;
 
 namespace Weakling.WebUI;
 
@@ -41,6 +44,10 @@ public class Program
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
            Host.CreateDefaultBuilder(args)
+                .ConfigureLogging((context, options) =>
+                {
+                    options.ClearProviders();
+                })
                .UseDefaultServiceProvider((context, options) =>
                {
                    var isDevelopment = context.HostingEnvironment.IsDevelopment();
@@ -48,10 +55,32 @@ public class Program
                    options.ValidateScopes = isDevelopment;
                    options.ValidateOnBuild = isDevelopment;
                })
+               .UseSerilog((context, services, configuration) =>
+               {
+                   configuration
+                   //.ReadFrom.Configuration(context.Configuration)
+                   //.ReadFrom.Services(services)                   
+                   .MinimumLevel.Debug()
+                   .MinimumLevel.Override("Microsoft", LogEventLevel.Warning) // Move to appsettings 
+                   .MinimumLevel.Override("System", LogEventLevel.Information) // Move to appsettings
+                   .Enrich.FromLogContext() // Move to appsettings
+                   .Enrich.WithMachineName() // Move to appsettings
+                   .Enrich.WithThreadId() // Move to appsettings
+                   .Enrich.WithExceptionDetails()
+                   .Enrich.WithProperty("Application", context.HostingEnvironment.ApplicationName)
+                   .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)                           
+                   //.Enrich.WithProperty("Version", AssemblyInformation.Current.Version)                   
+                   // TODO: Write to console in debug, otherwise use log to file or seq
+                   // TODO: Make sure to use correct formatters, otherwise default one will not display enriched data
+                   .WriteTo.Notepad()
+                   .WriteTo.Console();
+               })
                .ConfigureWebHostDefaults(webBuilder =>
                {
                    webBuilder.UseStartup<Startup>();
-               });
+                   webBuilder.UseKestrel(options => options.AddServerHeader = false);
+               })
+               .UseConsoleLifetime();
 
     #region Logging utils
 
