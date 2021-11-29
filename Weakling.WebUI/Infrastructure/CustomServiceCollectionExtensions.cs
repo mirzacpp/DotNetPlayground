@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Extensions.DependencyInjection;
+﻿using StackExchange.Profiling;
+
+namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
 /// Extension methods for app startup
@@ -14,7 +16,9 @@ public static class CustomServiceCollectionExtensions
         services.AddMiniProfiler(options =>
         {
             options.RouteBasePath = "/profiler";
-            options.PopupRenderPosition = StackExchange.Profiling.RenderPosition.BottomLeft;
+            options.PopupRenderPosition = RenderPosition.BottomLeft;
+            options.ColorScheme = ColorScheme.Dark;
+
 
             options.IgnoredPaths.Add("/lib");
             options.IgnoredPaths.Add("/css");

@@ -55,22 +55,39 @@ public static class HostExtensions
         // Check if host is null
         if (host == null)
         {
-            var foregroundColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{AssemblyInformation.Current.Product} terminated unexpectedly.");
-            Console.WriteLine(exception.ToString());
-            Console.ForegroundColor = foregroundColor;
+            LogToConsole(exception);    
         }
         else
         {
-            var hostEnvironment = host.Services.GetRequiredService<IHostEnvironment>();
-            var logger = host.Services.GetRequiredService<ILogger<Program>>();
+            // We have to wrap inside try/catch because some of the services could be disposed
+            try
+            {
+                var hostEnvironment = host.Services.GetRequiredService<IHostEnvironment>();
+                var logger = host.Services.GetRequiredService<ILogger<Program>>();
 
-            logger.ApplicationTerminatedUnexpectedly(exception,
-                hostEnvironment.ApplicationName,
-                hostEnvironment.EnvironmentName,
-                RuntimeInformation.FrameworkDescription,
-                RuntimeInformation.OSDescription);
+                logger.ApplicationTerminatedUnexpectedly(exception,
+                    hostEnvironment.ApplicationName,
+                    hostEnvironment.EnvironmentName,
+                    RuntimeInformation.FrameworkDescription,
+                    RuntimeInformation.OSDescription);
+            }
+            catch (Exception ex)
+            {
+                LogToConsole(ex);
+            }
         }
+    }
+
+    /// <summary>
+    /// Log to console fallback
+    /// </summary>
+    /// <param name="exception"></param>
+    private static void LogToConsole(Exception exception)
+    {
+        var foregroundColor = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"{AssemblyInformation.Current.Product} terminated unexpectedly.");
+        Console.WriteLine(exception.ToString());
+        Console.ForegroundColor = foregroundColor;
     }
 }
