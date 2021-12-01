@@ -373,6 +373,9 @@ https://github.com/dotnet/coreclr/tree/master/Documentation/botr
 https://devblogs.microsoft.com/dotnet/author/stephen_toubhotmail-com/
 https://www.youtube.com/watch?v=xdSSH63IZZc
 https://devblogs.microsoft.com/dotnet/introducing-net-standard/
+DEBUGGING {
+https://docs.microsoft.com/en-us/visualstudio/debugger/debugger-tips-and-tricks?view=vs-2019
+}
 SOURCE GENERATION {
 https://devblogs.microsoft.com/dotnet/introducing-c-source-generators/
 }

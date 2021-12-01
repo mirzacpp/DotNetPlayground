@@ -2,6 +2,7 @@
 using Cleaners.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Cleaners.Web.Extensions
 {
@@ -14,6 +15,16 @@ namespace Cleaners.Web.Extensions
     public static class ModelStateExtensions
     {
         #region Methods
+
+        /// <summary>
+        /// Returns all model state errors as collection
+        /// </summary>
+        public static IEnumerable<string> GetFlattenedErrors(this ModelStateDictionary modelState)
+        {
+            Guard.Against.Null(modelState, nameof(modelState));
+
+            return modelState.Values.SelectMany(s => s.Errors).Select(s => s.ErrorMessage);
+        }
 
         public static void AddModelErrors(this ModelStateDictionary modelState, IDictionary<string, string> errors)
         {
