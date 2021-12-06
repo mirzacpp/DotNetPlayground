@@ -4,7 +4,7 @@
     /// Extension methods for Microsoft configuration 
     /// Credits to <see cref="https://josef.codes/jos-configuration-convenient-methods-for-configuration-in-dotnet-core/"/>
     /// </summary>
-    public static class ConfigurationExtensions
+    public static partial class ConfigurationExtensions
     {
         /// <summary>
         /// Extracts the required value with the specified key and converts it to type T.
@@ -24,7 +24,6 @@
             return value;
         }
 
-
         /// <summary>
         /// Extracts the required values with the specified key and converts it to type T.
         /// </summary>
@@ -43,7 +42,6 @@
 
             return values;
         }
-
 
         /// <summary>
         /// Attempts to bind the given object instance to configuration values by matching

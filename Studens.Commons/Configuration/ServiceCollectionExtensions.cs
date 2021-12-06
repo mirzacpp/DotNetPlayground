@@ -1,12 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace Microsoft.Extensions.DependencyInjection
+﻿namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
     /// Extension methods for <see cref="IServiceCollection"/>
     /// Credits to <see cref="https://josef.codes/jos-configuration-convenient-methods-for-configuration-in-dotnet-core/"/>
     /// </summary>
-    public static class ConfigurationServiceCollectionExtensions
+    public static partial class ConfigurationServiceCollectionExtensions
     {
         /// <summary>
         /// Registers <typeparamref name="T"/> options as an POCO object.

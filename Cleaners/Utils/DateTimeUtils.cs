@@ -70,12 +70,14 @@ namespace Cleaners.Utils
         }
 
         /// <summary>
-        /// Returns all day names in week
+        /// Returns all days of the week
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<DayOfWeek> GetDaysOfWeek()
+        public static IEnumerable<DayOfWeek> GetDaysOfWeek(bool startFromMonday = false)
         {
-            return EnumUtils.GetEnumValues<DayOfWeek>();
+            var daysOfWeek = EnumUtils.GetEnumValues<DayOfWeek>();            
+
+            return daysOfWeek;
         }
 
         /// <summary>
@@ -85,7 +87,7 @@ namespace Cleaners.Utils
         public static IEnumerable<Month> GetMonthsOfYear()
         {
             return EnumUtils.GetEnumValues<Month>();
-        }
+        }        
 
         #region Month of year enum
 

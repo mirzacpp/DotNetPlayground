@@ -19,7 +19,7 @@ public class Startup
             .AddControllersWithViews()
             .AddFeatureFolders()
             .Services
-            .AddCustomMiniProfiler();
+            .AddIf(!_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
     }
 
     public virtual void Configure(IApplicationBuilder app)

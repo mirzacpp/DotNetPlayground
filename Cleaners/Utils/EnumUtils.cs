@@ -9,6 +9,7 @@ namespace Cleaners.Utils
     /// </summary>
     public static class EnumUtils
     {
+        [Obsolete("Switch to internal Enum method.")]
         /// <summary>
         /// Shorther way to retrieve collection of Enum names
         /// </summary>
@@ -17,6 +18,7 @@ namespace Cleaners.Utils
         public static IEnumerable<string> GetEnumNames<T>() where T : Enum
             => Enum.GetNames(typeof(T));
 
+        [Obsolete("Switch to internal Enum method.")]
         /// <summary>
         /// Shorther way to retrieve collection of Enum values
         /// </summary>
