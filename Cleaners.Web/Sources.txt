@@ -387,7 +387,7 @@ https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bo
 https://mattwarren.org/2017/12/15/How-does-.NET-JIT-a-method-and-Tiered-Compilation/
 https://michaelscodingspot.com/avoid-gc-pressure/
 https://www.tabsoverspaces.com/233833-best-way-to-create-an-empty-collection-array-and-list-in-csharp-net
-Profiling {
+PROFILING {
 https://devblogs.microsoft.com/visualstudio/analyze-cpu-memory-while-debugging/
 }
 MEMORY {
@@ -400,8 +400,9 @@ https://csharp.christiannagel.com/2017/05/31/arraypool/#comments
 RUNTIME {
 https://docs.microsoft.com/en-us/dotnet/core/dependency-loading/understanding-assemblyloadcontext
 }
-Assemblies {
+ASSEMBLIES {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
+https://github.com/natemcmaster/DotNetCorePlugins
 }
 RANDOM {
 https://khalidabuhakmeh.com/creating-random-numbers-with-dotnet-core
