@@ -5,6 +5,22 @@
 /// </summary>
 public static partial class DateTimeUtils
 {
+    #region Fields
+
+    /// <summary>
+    /// Holds prepared list of day of weeks
+    /// </summary>
+    private static readonly DayOfWeek[] _dayOfWeeks = Enum.GetValues<DayOfWeek>();
+
+    /// <summary>
+    /// Holds prepared list of months
+    /// </summary>
+    private static readonly Month[] _months = Enum.GetValues<Month>();
+
+    #endregion Fields
+
+    #region Methods
+
     /// <summary>
     /// Returns all dates between <paramref name="startDate"/> and <paramref name="endDate"/>
     /// exluding start and end dates
@@ -69,28 +85,28 @@ public static partial class DateTimeUtils
     /// <summary>
     /// Returns all days of the week
     /// </summary>
-    /// <returns></returns>
     public static IEnumerable<DayOfWeek> GetDaysOfWeek(bool startFromMonday = false)
     {
         Func<DayOfWeek, bool> predicate = startFromMonday ?
             (day) => day != DayOfWeek.Sunday :
             (day) => true;
 
-        var daysOfWeek = Enum.GetValues<DayOfWeek>()
+        var daysOfWeek = _dayOfWeeks
             .Where(predicate)
             .ToList();
 
         if (startFromMonday)
         {
             daysOfWeek.Add(DayOfWeek.Sunday);
-        }        
+        }
 
         return daysOfWeek;
     }
 
+    #endregion Methods
+
     /// <summary>
     /// Returns all month names in year
     /// </summary>
-    /// <returns></returns>
-    public static IEnumerable<Month> GetMonthsOfYear() => Enum.GetValues<Month>().ToList();
+    public static IEnumerable<Month> GetMonthsOfYear() => _months;
 }

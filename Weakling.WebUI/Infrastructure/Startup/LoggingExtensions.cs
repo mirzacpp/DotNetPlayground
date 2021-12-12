@@ -26,7 +26,7 @@ internal static partial class LoggingExtensions
            string environment,
            string runtime,
            string operatingSystem);
-
+    
     [LoggerMessage(
            EventId = 5002,
            Level = LogLevel.Critical,

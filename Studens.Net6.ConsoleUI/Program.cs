@@ -1,16 +1,11 @@
 ﻿using Studens.Commons.Utils;
 
 
-PriorityQueue<string, int> queue = new PriorityQueue<string, int>();
-queue.Enqueue("Item A", 0);
-queue.Enqueue("Item B", 60);
-queue.Enqueue("Item C", 2);
-queue.Enqueue("Item D", 1);
+var months = DateTimeUtils.GetMonthsOfYear();
+var months2 = DateTimeUtils.GetMonthsOfYear();
+Console.WriteLine(String.Join(",", months));
+Console.WriteLine(String.Join(",", months2));
 
-while (queue.TryDequeue(out string item, out int priority))
-{
-    Console.WriteLine($"Popped Item: {item}. Priority was: {priority}");
-}
 
 //using var watcher = new FileSystemWatcher(@"C:\ITO");
 

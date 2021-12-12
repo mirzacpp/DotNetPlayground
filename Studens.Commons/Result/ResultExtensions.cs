@@ -5,32 +5,34 @@
     /// </summary>
     public static class ResultExtensions
     {
-        public static IEnumerable<string> GetPreparedErrorMessages(this ErrorResult result)
+        public static IEnumerable<string> GetErrorMessages(this ErrorResult result) =>
+            ExtractErrorMessages(result.Message, result.Errors);
+
+        public static IEnumerable<string> GetErrorMessages<T>(this ErrorResult<T> result) =>
+            ExtractErrorMessages(result.Message, result.Errors);
+
+        private static IEnumerable<string> ExtractErrorMessages(string reason, IEnumerable<Error> errors)
         {
-            var errors = result.Errors.Select(s => s.Details).ToList();
-            errors.Add(result.Message);
+            var list = new List<string>
+            {
+                reason
+            };
 
-            return errors;
-        }
+            list.AddRange(errors.Select(s => s.Details));
 
-        public static IEnumerable<string> GetPreparedErrorMessages<T>(this ErrorResult<T> result)
-        {
-            var errors = result.Errors.Select(s => s.Details).ToList();
-            errors.Add(result.Message);
-
-            return errors;
+            return list;
         }
 
         public static string GetFlattenedErrorMessages(this ErrorResult result)
         {
-            var errors = GetPreparedErrorMessages(result);
+            var errors = GetErrorMessages(result);
 
             return string.Join(Delimiters.Comma, errors);
         }
 
         public static string GetFlattenedErrorMessages<T>(this ErrorResult<T> result)
         {
-            var errors = GetPreparedErrorMessages(result);
+            var errors = GetErrorMessages(result);
 
             return string.Join(Delimiters.Comma, errors);
         }
