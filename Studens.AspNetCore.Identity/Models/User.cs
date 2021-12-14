@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Studens.AspNetCore.Identity.Models
+namespace Studens.AspNetCore.Identity.Models;
+
+/// <summary>
+/// Represents User entity
+/// </summary>
+public class User : IdentityUser
 {
-    /// <summary>
-    /// Represents User entity
-    /// </summary>
-    public class User : IdentityUser
-    {
-    }
 }
