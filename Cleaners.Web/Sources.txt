@@ -154,6 +154,7 @@ HOSTING {
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1
 https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d#migration-to-aspnet-core-in-net-6
 https://edi.wang/post/2021/2/3/aspnet-core-50-throughput-test-in-kestrel-iis-nginx-and-caddy
+https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
 }
 ObjectPool {
 https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0

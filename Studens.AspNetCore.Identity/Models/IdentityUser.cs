@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Studens.Domain.Entities;
 
 namespace Studens.AspNetCore.Identity.Models;
 
 /// <summary>
 /// Represents User entity
 /// </summary>
-public class User : IdentityUser
+public class IdentityUser : Entity<string>
 {
 }

@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Stores\" />
+    <ProjectReference Include="..\Studens.Domain\Studens.Domain.csproj" />
   </ItemGroup>
 
 </Project>
