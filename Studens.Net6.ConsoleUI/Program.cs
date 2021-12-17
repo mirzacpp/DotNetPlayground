@@ -1,4 +1,16 @@
 ﻿using Studens.Commons.Utils;
+using Studens.Net6.ConsoleUI;
+
+var test = new RecordModel
+{
+    FirstName = "Mirza",
+    LastName = "Cupina"
+};
+
+var (f, l) = test;
+
+Console.WriteLine(f + " " + l);
+
 
 //using var watcher = new FileSystemWatcher(@"C:\ITO");
 

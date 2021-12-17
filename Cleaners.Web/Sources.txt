@@ -121,6 +121,7 @@ https://github.com/scriban/scriban
 https://csharpindepth.com/Articles/Unicode
 https://csharpindepth.com/Articles/Strings
 https://www.stevejgordon.co.uk/how-does-the-stringbuilder-work-in-dotnet-part-1-why-do-we-need-a-stringbuilder-and-when-should-we-use-one
+https://andrewlock.net/aligning-strings-within-string-format-and-interpolated-strings/
 https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/ (.NET6)
 }
 Feature management
@@ -495,7 +496,6 @@ https://blog.stephencleary.com/2009/06/threadsafe-events.html
 https://csharpindepth.com/Articles/Events (! na thread safety)
 https://codeblog.jonskeet.uk/2015/01/30/clean-event-handlers-invocation-with-c-6/
 }
-
 }
 
 ASYNC/AWAIT {
