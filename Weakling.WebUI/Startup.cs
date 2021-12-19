@@ -19,12 +19,14 @@ public class Startup
             .AddControllersWithViews()
             .AddFeatureFolders()
             .Services
-            .AddIf(!_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
+            .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
     }
 
     public virtual void Configure(IApplicationBuilder app)
     {
         app
+           // This should be conditional. For more info see https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
+           //.UseHostFiltering() 
            .UseIf(_webHostEnvironment.IsDevelopment(), app.UseDeveloperExceptionPage)
            // TODO: Conditional builder with params
            //.UseIf(!_webHostEnvironment.IsDevelopment(), app.UseExceptionHandler("/Home/Error"))

@@ -103,10 +103,11 @@ public static partial class DateTimeUtils
         return daysOfWeek;
     }
 
-    #endregion Methods
 
     /// <summary>
     /// Returns all month names in year
     /// </summary>
     public static IEnumerable<Month> GetMonthsOfYear() => _months;
+
+    #endregion Methods
 }

@@ -1,26 +1,16 @@
-﻿int x = 4;
-int y = 2;
-string mural = "CJCJ";
-var sum = 0;
+﻿using Studens.Commons.Utils;
+using Studens.Net6.ConsoleUI;
 
-for (int i = 0; i < mural.Length; i++)
+var test = new RecordModel
 {
-    for (int j = i + 1; j < mural.Length; j++)
-    {
-        if (mural[j] != '?')
-        {
-            if (mural[i] == 'C' && mural[j] == 'J')
-                sum += x;
-            else if (mural[i] == 'J' && mural[j] == 'C')
-                sum += y;
-            i = j;
-        }
-    }
-}
+    FirstName = "Mirza",
+    LastName = "Cupina"
+};
 
-Console.WriteLine(sum);
+var (f, l) = test;
 
-//Console.WriteLine(String.Join(",", solution));
+Console.WriteLine(f + " " + l);
+
 
 //using var watcher = new FileSystemWatcher(@"C:\ITO");
 
@@ -43,6 +33,7 @@ Console.WriteLine(sum);
 //watcher.IncludeSubdirectories = true;
 //watcher.EnableRaisingEvents = true;
 
+
 //void OnChanged(object sender, FileSystemEventArgs e)
 //{
 //    Console.WriteLine($"Change detected for {e.FullPath}");
@@ -54,3 +45,7 @@ Console.WriteLine(sum);
 //}
 
 Console.ReadLine();
+
+
+
+

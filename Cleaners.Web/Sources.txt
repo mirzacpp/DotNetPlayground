@@ -121,6 +121,7 @@ https://github.com/scriban/scriban
 https://csharpindepth.com/Articles/Unicode
 https://csharpindepth.com/Articles/Strings
 https://www.stevejgordon.co.uk/how-does-the-stringbuilder-work-in-dotnet-part-1-why-do-we-need-a-stringbuilder-and-when-should-we-use-one
+https://andrewlock.net/aligning-strings-within-string-format-and-interpolated-strings/
 https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/ (.NET6)
 }
 Feature management
@@ -154,6 +155,7 @@ HOSTING {
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1
 https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d#migration-to-aspnet-core-in-net-6
 https://edi.wang/post/2021/2/3/aspnet-core-50-throughput-test-in-kestrel-iis-nginx-and-caddy
+https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
 }
 ObjectPool {
 https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0
@@ -494,7 +496,6 @@ https://blog.stephencleary.com/2009/06/threadsafe-events.html
 https://csharpindepth.com/Articles/Events (! na thread safety)
 https://codeblog.jonskeet.uk/2015/01/30/clean-event-handlers-invocation-with-c-6/
 }
-
 }
 
 ASYNC/AWAIT {
