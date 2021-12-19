@@ -1,11 +1,26 @@
-﻿using Studens.Commons.Utils;
+﻿int x = 4;
+int y = 2;
+string mural = "CJCJ";
+var sum = 0;
 
+for (int i = 0; i < mural.Length; i++)
+{
+    for (int j = i + 1; j < mural.Length; j++)
+    {
+        if (mural[j] != '?')
+        {
+            if (mural[i] == 'C' && mural[j] == 'J')
+                sum += x;
+            else if (mural[i] == 'J' && mural[j] == 'C')
+                sum += y;
+            i = j;
+        }
+    }
+}
 
-var months = DateTimeUtils.GetMonthsOfYear();
-var months2 = DateTimeUtils.GetMonthsOfYear();
-Console.WriteLine(String.Join(",", months));
-Console.WriteLine(String.Join(",", months2));
+Console.WriteLine(sum);
 
+//Console.WriteLine(String.Join(",", solution));
 
 //using var watcher = new FileSystemWatcher(@"C:\ITO");
 
@@ -28,7 +43,6 @@ Console.WriteLine(String.Join(",", months2));
 //watcher.IncludeSubdirectories = true;
 //watcher.EnableRaisingEvents = true;
 
-
 //void OnChanged(object sender, FileSystemEventArgs e)
 //{
 //    Console.WriteLine($"Change detected for {e.FullPath}");
@@ -40,7 +54,3 @@ Console.WriteLine(String.Join(",", months2));
 //}
 
 Console.ReadLine();
-
-
-
-
