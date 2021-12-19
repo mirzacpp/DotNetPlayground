@@ -12,7 +12,7 @@
         /// <typeparam name="T">Type to register</typeparam>
         /// <exception cref="InvalidOperationException">
         /// Section with the given key was not found.
-        /// </exception>         
+        /// </exception>
         public static IServiceCollection AddPocoOptions<T>(this IServiceCollection services,
             string key,
             IConfiguration configuration) where T : class, new()

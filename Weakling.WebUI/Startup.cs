@@ -1,4 +1,7 @@
 ﻿using Serilog;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Weakling.WebUI.Configuration;
 
 namespace Weakling.WebUI;
 
@@ -17,8 +20,9 @@ public class Startup
     {
         services
             .AddControllersWithViews()
-            .AddFeatureFolders()
+            .AddFeatureFolders()            
             .Services
+            .AddPocoOptions<AppConfig>(nameof(AppConfig), _configuration)            
             .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
     }
 
@@ -47,10 +51,9 @@ public class Startup
 
                endpoints.MapGet("testovka", async (context) =>
                {
-                   var logFact = context.RequestServices.GetRequiredService<ILoggerFactory>();
-                   var logger = logFact.CreateLogger("testovka test endpoint");
-                   logger.LogInformation("Test info log");
-                   await context.Response.WriteAsync("Logger test");
+                   var logFact = context.RequestServices.GetRequiredService<AppConfig>();                   
+                   var value  = JsonSerializer.Serialize(logFact);
+                   await context.Response.WriteAsync(value);
                });
            });
     }
