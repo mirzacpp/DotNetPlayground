@@ -4,7 +4,7 @@ using System.Linq;
 namespace Cleaners.Extensions
 {
     /// <summary>
-    /// Extension methods for <see cref="System.Collections.Generic.IEnumerable{T}"/>
+    /// Extension methods for <see cref="IEnumerable{T}"/>
     /// </summary>
     public static class EnumerableExtensions
     {

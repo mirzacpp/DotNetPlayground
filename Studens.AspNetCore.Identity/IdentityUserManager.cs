@@ -14,9 +14,20 @@ public partial class IdentityUserManager<TUser> : UserManager<TUser> where TUser
 {
     private readonly CancellationToken _cancellationToken;
 
+    /// <summary>
+    /// Gets or sets the persistence store the manager operates over.
+    /// </summary>
+    /// <value>The persistence store the manager operates over.</value>
+    protected IIdentityUserStore<TUser> IdentityUserStore { get; }
+
+    /// <summary>
+    /// The cancellation token associated with the current HttpContext.RequestAborted or CancellationToken.None if unavailable.
+    /// </summary>
+    protected override CancellationToken CancellationToken => _cancellationToken;
+
     #region Ctor
 
-    public IdentityUserManager(IUserStore<TUser> store,
+    public IdentityUserManager(IIdentityUserStore<TUser> store,
      IOptions<IdentityOptions> optionsAccessor,
      IPasswordHasher<TUser> passwordHasher,
      IEnumerable<IUserValidator<TUser>> userValidators,
@@ -34,14 +45,19 @@ public partial class IdentityUserManager<TUser> : UserManager<TUser> where TUser
          services,
          logger)
     {
+        IdentityUserStore = store;
+
         _cancellationToken = services
             ?.GetService<IHttpContextAccessor>()?.HttpContext?.RequestAborted ?? CancellationToken.None;
     }
 
     #endregion Ctor
 
-    /// <summary>
-    /// The cancellation token associated with the current HttpContext.RequestAborted or CancellationToken.None if unavailable.
-    /// </summary>
-    protected override CancellationToken CancellationToken => _cancellationToken;
+    public virtual Task<IEnumerable<TUser>> GetAllAsync(string? userName = null,
+        string? email = null)
+    {
+        ThrowIfDisposed();
+
+        return IdentityUserStore.GetAllAsync(userName, email, CancellationToken);
+    }
 }

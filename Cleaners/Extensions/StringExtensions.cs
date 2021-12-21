@@ -92,8 +92,6 @@ namespace Cleaners.Extensions
             }
 
             return Enum.TryParse(value, ignoreCase, out T _);
-        }
-
-        //public static void Add(this List<string> list, int value, )
+        }        
     }
 }

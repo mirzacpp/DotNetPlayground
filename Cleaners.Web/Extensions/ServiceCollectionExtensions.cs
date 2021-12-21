@@ -135,7 +135,7 @@ namespace Cleaners.Web.Extensions
                 // Set cookie name for cookie provider
                 var cookieProvider = options.RequestCultureProviders.OfType<CookieRequestCultureProvider>().First();
 
-                cookieProvider.CookieName = CookieNames.Culture;
+                cookieProvider.CookieName = CookieNames.Culture;                
 
                 // Remove all culture providers so we can only use cookie localization
                 // Remove this code if query string and language header providers are also used

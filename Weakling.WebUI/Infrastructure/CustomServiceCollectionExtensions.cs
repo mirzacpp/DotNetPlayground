@@ -1,4 +1,6 @@
-﻿using StackExchange.Profiling;
+﻿using Microsoft.AspNetCore.Identity;
+using StackExchange.Profiling;
+using Studens.AspNetCore.Identity;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -10,7 +12,7 @@ public static class CustomServiceCollectionExtensions
     /// <summary>
     /// Configures services for MiniProfiler.
     /// For more info see <see cref="https://miniprofiler.com/dotnet/AspDotNetCore"/>
-    /// </summary>            
+    /// </summary>
     public static IServiceCollection AddCustomMiniProfiler(this IServiceCollection services)
     {
         services.AddMiniProfiler(options =>
@@ -24,6 +26,15 @@ public static class CustomServiceCollectionExtensions
             options.IgnoredPaths.Add("/css");
             options.IgnoredPaths.Add("/js");
         });
+
+        return services;
+    }
+
+    public static IServiceCollection AddCustomIdentity(this IServiceCollection services)
+    {
+        services.AddIdentity<IdentityUser, IdentityRole>()
+             .AddUserStore<IIdentityUserStore<IdentityUser>>()
+             .AddUserManager<IdentityUserManager<IdentityUser>>();
 
         return services;
     }

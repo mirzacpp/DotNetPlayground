@@ -1,6 +1,5 @@
 ﻿using Ardalis.GuardClauses;
 using Studens.AspNetCore.Mvc.FeaturesOrganization;
-using System;
 
 /// <summary>
 /// Credits to <see cref="https://github.com/OdeToCode/AddFeatureFolders"/>
@@ -12,7 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <summary>
         /// Use feature folders with custom options
         /// </summary>
-        public static IMvcBuilder AddFeatureFolders(this IMvcBuilder builder, FeatureFolderOptions options)
+        public static FeaturesBuilder AddFeatureFolders(this IMvcBuilder builder, FeatureFolderOptions options)
         {
             Guard.Against.Null(builder, nameof(builder));
             Guard.Against.Null(options, nameof(options));
@@ -30,21 +29,19 @@ namespace Microsoft.Extensions.DependencyInjection
                     o.ViewLocationExpanders.Add(expander);
                 });
 
-            return builder;
+            return new FeaturesBuilder(builder);
         }
 
         /// <summary>
         /// Use areas with feature folders and custom options
         /// </summary>
-        /// <remarks>
-        /// <see cref="AddFeatureFolders(IMvcBuilder)"/> must be invoked before this method.
-        /// </remarks>
-        public static IMvcBuilder AddAreaFeatureFolders(this IMvcBuilder builder, AreaFeatureFolderOptions options)
+        /// <returns>Returns captured IMvcBuilder instance.</returns>
+        public static IMvcBuilder AddAreaFeatureFolders(this FeaturesBuilder featureMvcBuilder, AreaFeatureFolderOptions options)
         {
-            Guard.Against.Null(builder, nameof(builder));
+            Guard.Against.Null(featureMvcBuilder, nameof(featureMvcBuilder));
             Guard.Against.Null(options, nameof(options));
 
-            builder.AddRazorOptions(o =>
+            featureMvcBuilder.MvcBuilder.AddRazorOptions(o =>
             {
                 o.AreaViewLocationFormats.Clear();
                 o.AreaViewLocationFormats.Add(options.DefaultAreaViewLocation);
@@ -54,25 +51,23 @@ namespace Microsoft.Extensions.DependencyInjection
                 o.AreaViewLocationFormats.Add(options.FeatureFolderName + @"\Shared\{0}.cshtml");
             });
 
-            return builder;
+            // Note that featureMvcBuilder can be returned in future if there are more extension methods
+            return featureMvcBuilder.MvcBuilder;
         }
 
         /// <summary>
         /// Use feature folders with the default options. Controllers and view will be located
         /// under a folder named Features. Shared views are located in Features\Shared.
         /// </summary>
-        public static IMvcBuilder AddFeatureFolders(this IMvcBuilder builder) =>
+        public static FeaturesBuilder AddFeatureFolders(this IMvcBuilder builder) =>
             builder.AddFeatureFolders(new FeatureFolderOptions());
 
         /// <summary>
         /// Use areas with feature folders with the default options. Controllers and views will
         /// be located under a folder named Areas with an area specific folder. Shared views are
-        /// located in Areas\Shared and then in Features\Shared 
+        /// located in Areas\Shared and then in Features\Shared
         /// </summary>
-        /// <remarks>
-        /// <see cref="AddFeatureFolders(IMvcBuilder)"/> must be invoked before this method.
-        /// </remarks>
-        public static IMvcBuilder AddAreaFeatureFolders(this IMvcBuilder builder) =>
-            AddAreaFeatureFolders(builder, new AreaFeatureFolderOptions());
+        public static IMvcBuilder AddAreaFeatureFolders(this FeaturesBuilder featureMvcBuilder) =>
+            AddAreaFeatureFolders(featureMvcBuilder, new AreaFeatureFolderOptions());
     }
 }

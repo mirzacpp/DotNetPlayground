@@ -17,7 +17,8 @@ public class Startup
     {
         services
             .AddControllersWithViews()
-            .AddFeatureFolders()
+            .AddFeatureFolders()            
+            .AddAreaFeatureFolders()
             .Services
             .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
     }
