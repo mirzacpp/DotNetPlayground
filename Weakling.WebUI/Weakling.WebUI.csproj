@@ -4,9 +4,20 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <AssemblyVersion>1.0.0</AssemblyVersion>
+	  <FileVersion>1.0.0</FileVersion>
+	  <Version>1.0.0</Version>
   </PropertyGroup>
 
-  <ItemGroup>
+	<PropertyGroup Label="Package">
+		<Authors>PROJECT-AUTHOR-XML</Authors>
+		<Company>PROJECT-AUTHOR-XML</Company>
+		<Product>PROJECT-TITLE-XML</Product>
+		<Description>PROJECT-DESCRIPTION-XML</Description>
+		<Copyright>Copyright © PROJECT-AUTHOR-XML. All rights Reserved</Copyright>
+	</PropertyGroup>
+
+	<ItemGroup>
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
     <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />

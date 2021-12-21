@@ -382,6 +382,9 @@ https://docs.microsoft.com/en-us/visualstudio/debugger/debugger-tips-and-tricks?
 SOURCE GENERATION {
 https://devblogs.microsoft.com/dotnet/introducing-c-source-generators/
 }
+VERSIONING {
+https://edi.wang/post/2018/9/27/get-app-version-net-core
+}
 Performanse {
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
@@ -607,6 +610,10 @@ https://code-maze.com/csharp-async-enumerable-yield/
 
 Benchmarking {
 https://www.stevejgordon.co.uk/introduction-to-benchmarking-csharp-code-with-benchmark-dot-net
+}
+
+DATA-TYPES {
+https://medium.com/@semuserable/c-journey-into-struct-equality-comparison-deep-dive-9693f74562f1
 }
 
 Operatori {
