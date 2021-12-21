@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Studens.AspNetCore.Identity;
 using Studens.MvcNet6.WebUI.Models;
 using System.Diagnostics;
 
@@ -6,16 +8,19 @@ namespace Studens.MvcNet6.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IdentityUserManager<IdentityUser> _userManager;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IdentityUserManager<IdentityUser> userManager)
         {
             _logger = logger;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var users = await _userManager.GetAllAsync();
+            return Ok(users);
         }
 
         public IActionResult Privacy()

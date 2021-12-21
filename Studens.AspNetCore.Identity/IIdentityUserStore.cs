@@ -2,10 +2,7 @@
 
 namespace Studens.AspNetCore.Identity;
 
-/// <summary>
-/// Extends default <see cref="IUserStore{TUser}"/>
-/// </summary>
-/// <typeparam name="TUser">Identity user type</typeparam>
+/// <inheritdoc/>
 public interface IIdentityUserStore<TUser> : IUserStore<TUser> where TUser : class
 {
     Task<IEnumerable<TUser>> GetAllAsync(

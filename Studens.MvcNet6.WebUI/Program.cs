@@ -23,10 +23,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 }, ServiceLifetime.Scoped);
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders()
+    .AddIdentityEntityFrameworkStores<ApplicationDbContext>() // This should be    
     .AddUserManager<IdentityUserManager<IdentityUser>>();
 
-builder.Services.AddScoped<IIdentityUserStore<IdentityUser>, IdentityUserStore<IdentityUser>>();
+//builder.Services.AddScoped<IIdentityUserStore<IdentityUser>, IdentityUserStore<IdentityUser>>();
 
 var app = builder.Build();
 
