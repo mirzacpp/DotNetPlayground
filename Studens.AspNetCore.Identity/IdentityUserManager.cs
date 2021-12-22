@@ -6,10 +6,8 @@ using Microsoft.Extensions.Options;
 
 namespace Studens.AspNetCore.Identity;
 
-/// <summary>
-/// Extends existing <see cref="UserManager{TUser}"/> with additional methods.
-/// </summary>
-/// <typeparam name="TUser">The type encapsulating a user.</typeparam>
+/// <inheritdoc/>
+/// TODO: Maybe resolve <see cref="CancellationToken"/> from external service so we do not depend on <see cref="IHttpContextAccessor"/>
 public partial class IdentityUserManager<TUser> : UserManager<TUser> where TUser : class
 {
     private readonly CancellationToken _cancellationToken;
@@ -53,11 +51,49 @@ public partial class IdentityUserManager<TUser> : UserManager<TUser> where TUser
 
     #endregion Ctor
 
-    public virtual Task<IEnumerable<TUser>> GetAllAsync(string? userName = null,
+    #region Methods
+
+    public virtual Task<IList<TUser>> GetAsync(int? skip = null,
+        int? take = null,
+        string? userName = null,
         string? email = null)
     {
         ThrowIfDisposed();
 
-        return IdentityUserStore.GetAllAsync(userName, email, CancellationToken);
+        return IdentityUserStore.GetAsync(skip, take, NormalizeName(userName), NormalizeEmail(email), CancellationToken);
     }
+
+    public virtual async Task<IdentityResult> AddToRoleByIdAsync(TUser user, string roleId)
+    {
+        ThrowIfDisposed();
+        if (user is null)
+        {
+            throw new ArgumentNullException(nameof(user));
+        }
+        var userRoleStore = GetUserRoleStore();
+        if (await userRoleStore.IsInRoleByIdAsync(user, roleId, CancellationToken))
+        {
+            return UserAlreadyInRoleError(roleId);
+        }
+        await userRoleStore.AddToRoleAsync(user, roleId, CancellationToken);
+        return await UpdateUserAsync(user);
+    }
+
+    #endregion Methods
+
+    private IIdentityUserRoleStore<TUser> GetUserRoleStore()
+    {
+        var cast = Store as IIdentityUserRoleStore<TUser>;
+        if (cast == null)
+        {
+            throw new NotSupportedException("Store Not IUserRoleStore");
+        }
+        return cast;
+    }
+
+    private IdentityResult UserAlreadyInRoleError(string roleId)
+    {
+        //Logger.LogWarning(LoggerEventIds.UserAlreadyInRole, "User is already in role with id {roleId}.", role);
+        return IdentityResult.Failed(ErrorDescriber.UserAlreadyInRole(roleId));
+    }    
 }

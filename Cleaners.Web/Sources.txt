@@ -164,6 +164,8 @@ https://developpaper.com/detailed-explanation-of-object-pools-various-usages-in-
 }
 Api Versioning {
 https://gingter.org/2018/06/18/asp-net-core-api-versioning/
+https://dev.to/moe23/asp-net-core-5-api-versioning-3jnp
+https://github.com/dotnet/aspnet-api-versioning
 }
 REQUEST {
 https://medium.com/@rm.dev/re-reading-asp-net-core-request-bodies-with-enablebuffering-987d8668bf85

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Studens.AspNetCore.Identity;
-using Studens.AspNetCore.Identity.EntityFrameworkCore;
 using Studens.MvcNet6.WebUI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,10 +23,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()
-    .AddIdentityEntityFrameworkStores<ApplicationDbContext>() // This should be    
-    .AddUserManager<IdentityUserManager<IdentityUser>>();
-
-//builder.Services.AddScoped<IIdentityUserStore<IdentityUser>, IdentityUserStore<IdentityUser>>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddStudensEntityFrameworkStores<ApplicationDbContext>()        
+    .AddStudensRoleManager()
+    .AddStudensUserManager();
 
 var app = builder.Build();
 

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Studens.Commons.Extensions;
 
 namespace Studens.AspNetCore.Identity.EntityFrameworkCore
 {
@@ -70,7 +69,8 @@ namespace Studens.AspNetCore.Identity.EntityFrameworkCore
     /// <inheritdoc/>
     public class IdentityUserStore<TUser, TRole, TContext, TKey, TUserClaim, TUserRole, TUserLogin, TUserToken, TRoleClaim> :
         UserStore<TUser, TRole, TContext, TKey, TUserClaim, TUserRole, TUserLogin, TUserToken, TRoleClaim>,
-        IIdentityUserStore<TUser>
+        IIdentityUserStore<TUser>,
+        IIdentityUserRoleStore<TUser>
         where TUser : IdentityUser<TKey>
         where TRole : IdentityRole<TKey>
         where TContext : DbContext
@@ -87,18 +87,85 @@ namespace Studens.AspNetCore.Identity.EntityFrameworkCore
         {
         }
 
-        public virtual async Task<IEnumerable<TUser>> GetAllAsync(string? userName = null,
-        string? email = null,
-        CancellationToken cancellationToken = default)
+        private DbSet<TUser> UsersSet => Context.Set<TUser>();
+        private DbSet<TRole> Roles => Context.Set<TRole>();
+        private DbSet<TUserClaim> UserClaims => Context.Set<TUserClaim>();
+        private DbSet<TUserRole> UserRoles => Context.Set<TUserRole>();
+        private DbSet<TUserLogin> UserLogins => Context.Set<TUserLogin>();
+        private DbSet<TUserToken> UserTokens => Context.Set<TUserToken>();
+
+        public virtual async Task<IList<TUser>> GetAsync(
+            int? skip = null,
+            int? take = null,
+            string? normalizedUserName = null,
+            string? normalizedEmail = null,
+            CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
             ThrowIfDisposed();
 
-            var query = Users
-                .WhereIf(userName.IsNotNullOrEmpty(), p => p.UserName.Contains(userName))
-                .WhereIf(email.IsNotNullOrEmpty(), p => p.UserName.Contains(userName));
+            var query = Users;
+
+            if (!string.IsNullOrEmpty(normalizedUserName))
+            {
+                query = query.Where(p => p.NormalizedUserName.Contains(normalizedUserName));
+            }
+
+            if (!string.IsNullOrEmpty(normalizedEmail))
+            {
+                query = query.Where(p => p.NormalizedEmail.Contains(normalizedEmail));
+            }
+
+            if (skip.HasValue && skip > 0)
+            {
+                query = query.Skip(skip.Value);
+            }
+
+            if (take.HasValue && take > 0)
+            {
+                query = query.Take(take.Value);
+            }
 
             return await query.ToListAsync(cancellationToken);
+        }
+
+        public virtual async Task<bool> IsInRoleByIdAsync(TUser user, string roleId, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            ThrowIfDisposed();
+
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            if (string.IsNullOrWhiteSpace(roleId))
+            {
+                throw new ArgumentException("Value cannot be null or empty", nameof(roleId));
+            }
+
+            var role = await FindRoleByIdAsync(roleId, cancellationToken);
+
+            if (role != null)
+            {
+                var userRole = await FindUserRoleAsync(user.Id, role.Id, cancellationToken);
+                return userRole != null;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Return a role with the role identifier if it exists.
+        /// </summary>
+        /// <param name="normalizedRoleName">The role identifier.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
+        /// <returns>The role if it exists.</returns>
+        protected virtual Task<TRole?> FindRoleByIdAsync(string roleId, CancellationToken cancellationToken)
+        {
+            var id = ConvertIdFromString(roleId);
+
+            return Roles.SingleOrDefaultAsync(r => r.Id.Equals(id), cancellationToken);
         }
     }
 }
