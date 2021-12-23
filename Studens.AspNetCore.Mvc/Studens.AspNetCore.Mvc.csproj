@@ -14,5 +14,8 @@
 	<ItemGroup>
 	  <Folder Include="ErrorHandling\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
+	</ItemGroup>
 
 </Project>

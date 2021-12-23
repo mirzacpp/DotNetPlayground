@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
-
-namespace Studens.AspNetCore.Identity
+﻿namespace Studens.AspNetCore.Identity
 {
     /// <inheritdoc />
     /// TODO: Maybe resolve <see cref="CancellationToken"/> from external service so we do not depend on <see cref="IHttpContextAccessor"/>
@@ -36,11 +32,16 @@ namespace Studens.AspNetCore.Identity
 
         #region Methods
 
-        public virtual Task<IList<TRole>> GetAllAsync(string? roleName = null, bool asNoTracking = false, string? email = null)
+        public virtual Task<IList<TRole>> GetAsync(
+            int? skip = null,
+            int? take = null,
+            string? roleName = null,
+            bool asNoTracking = false,
+            string? email = null)
         {
             ThrowIfDisposed();
 
-            return IdentityRoleStore.GetAsync(NormalizeKey(roleName), asNoTracking, CancellationToken);
+            return IdentityRoleStore.GetAsync(skip, take, NormalizeKey(roleName), asNoTracking, CancellationToken);
         }
 
         #endregion Methods

@@ -73,7 +73,10 @@ public class IdentityRoleStore<TRole, TContext, TKey, TUserRole, TRoleClaim> :
     {
     }
 
-    public virtual async Task<IList<TRole>> GetAsync(string? normalizedRoleName = null,
+    public virtual async Task<IList<TRole>> GetAsync(
+        int? skip = null,
+        int? take = null,
+        string? normalizedRoleName = null,
         bool asNoTracking = false,
         CancellationToken cancellationToken = default)
     {
@@ -85,6 +88,16 @@ public class IdentityRoleStore<TRole, TContext, TKey, TUserRole, TRoleClaim> :
         if (!string.IsNullOrEmpty(normalizedRoleName))
         {
             query = query.Where(p => p.NormalizedName.Contains(normalizedRoleName));
+        }
+
+        if (skip.HasValue && skip > 0)
+        {
+            query = query.Skip(skip.Value);
+        }
+
+        if (take.HasValue && take > 0)
+        {
+            query = query.Take(take.Value);
         }
 
         return await query.ToListAsync(cancellationToken);

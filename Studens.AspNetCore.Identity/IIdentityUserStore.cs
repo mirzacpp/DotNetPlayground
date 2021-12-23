@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Studens.AspNetCore.Identity;
+﻿namespace Studens.AspNetCore.Identity;
 
 /// <inheritdoc/>
 public interface IIdentityUserStore<TUser> : IUserStore<TUser> where TUser : class

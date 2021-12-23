@@ -156,6 +156,60 @@ namespace Studens.AspNetCore.Identity.EntityFrameworkCore
         }
 
         /// <summary>
+        /// Adds the given <paramref name="roleId"/> to the specified <paramref name="user"/>.
+        /// </summary>
+        /// <param name="user">The user to add the role to.</param>
+        /// <param name="normalizedRoleName">The role identifier to add.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
+        /// <returns>The <see cref="Task"/> that represents the asynchronous operation.</returns>
+        public virtual async Task AddToRoleByIdAsync(TUser user, string roleId, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            ThrowIfDisposed();
+
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            if (string.IsNullOrWhiteSpace(roleId))
+            {
+                throw new ArgumentException("Value cannot be null or empty", nameof(roleId));
+            }
+
+            var roleEntity = await FindRoleByIdAsync(roleId, cancellationToken);
+            if (roleEntity == null)
+            {
+                throw new InvalidOperationException($"Role with identifier {roleId} could not be found.");
+            }
+
+            UserRoles.Add(CreateUserRole(user, roleEntity));
+        }
+
+        public virtual async Task RemoveFromRoleByIdAsync(TUser user, string roleId, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            ThrowIfDisposed();
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+            if (string.IsNullOrWhiteSpace(roleId))
+            {
+                throw new ArgumentException("Value cannot be null or empty", nameof(roleId));
+            }
+            var roleEntity = await FindRoleByIdAsync(roleId, cancellationToken);
+            if (roleEntity != null)
+            {
+                var userRole = await FindUserRoleAsync(user.Id, roleEntity.Id, cancellationToken);
+                if (userRole != null)
+                {
+                    UserRoles.Remove(userRole);
+                }
+            }
+        }
+
+        /// <summary>
         /// Return a role with the role identifier if it exists.
         /// </summary>
         /// <param name="normalizedRoleName">The role identifier.</param>

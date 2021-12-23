@@ -1,5 +1,6 @@
 ﻿// Usefull sources
 https://www.youtube.com/watch?v=uS0hRJqamfU&ab_channel=IAmTimCorey
+https://www.oreilly.com/library/view/framework-design-guidelines/9780135896457/
 
 Live IL transform: https://sharplab.io/
 
@@ -22,6 +23,8 @@ https://github.com/OrchardCMS/OrchardCore
 }
 
 Blogs {
+https://www.ryadel.com/en/author/ryan/
+http://blog.freakcode.com/
 https://blog.sapiensworks.com/
 https://www.edgesidesolutions.com/blog/
 https://codinghelmet.com/articles
@@ -121,6 +124,7 @@ https://github.com/scriban/scriban
 https://csharpindepth.com/Articles/Unicode
 https://csharpindepth.com/Articles/Strings
 https://www.stevejgordon.co.uk/how-does-the-stringbuilder-work-in-dotnet-part-1-why-do-we-need-a-stringbuilder-and-when-should-we-use-one
+https://www.stevejgordon.co.uk/creating-strings-with-no-allocation-overhead-using-string-create-csharp
 https://andrewlock.net/aligning-strings-within-string-format-and-interpolated-strings/
 https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/ (.NET6)
 }
@@ -416,6 +420,7 @@ RANDOM {
 https://khalidabuhakmeh.com/creating-random-numbers-with-dotnet-core
 https://www.youtube.com/watch?v=tCYxc-2-3fY&ab_channel=Questpond
 https://devblogs.microsoft.com/pfxteam/getting-random-numbers-in-a-thread-safe-way/
+https://gist.github.com/niik/1017834
 }
 Numerics formating {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
@@ -501,6 +506,7 @@ https://docs.microsoft.com/en-us/dotnet/csharp/delegates-overview
 https://blog.stephencleary.com/2009/06/threadsafe-events.html
 https://csharpindepth.com/Articles/Events (! na thread safety)
 https://codeblog.jonskeet.uk/2015/01/30/clean-event-handlers-invocation-with-c-6/
+https://blog.jetbrains.com/dotnet/2014/07/24/unusual-ways-of-boosting-up-app-performance-lambdas-and-linqs/
 }
 }
 

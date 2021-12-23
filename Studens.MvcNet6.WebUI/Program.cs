@@ -26,7 +26,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddStudensEntityFrameworkStores<ApplicationDbContext>()        
     .AddStudensRoleManager()
-    .AddStudensUserManager();
+    .AddStudensUserManager()
+    .AddStudensPasswordManager();
 
 var app = builder.Build();
 

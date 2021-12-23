@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Studens.AspNetCore.Identity;
+using Studens.AspNetCore.Identity.PasswordGenerator;
 using Studens.MvcNet6.WebUI.Models;
 using System.Diagnostics;
 
@@ -10,25 +11,31 @@ namespace Studens.MvcNet6.WebUI.Controllers
     {
         private readonly IdentityUserManager<IdentityUser> _userManager;
         private readonly IdentityRoleManager<IdentityRole> _roleManager;
+        private readonly IdentityPasswordManager _identityPasswordManager;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, IdentityUserManager<IdentityUser> userManager, IdentityRoleManager<IdentityRole> roleManager)
+        public HomeController(ILogger<HomeController> logger,
+            IdentityUserManager<IdentityUser> userManager, 
+            IdentityRoleManager<IdentityRole> roleManager, 
+            IdentityPasswordManager identityPasswordManager)
         {
             _logger = logger;
             _userManager = userManager;
             _roleManager = roleManager;
+            _identityPasswordManager = identityPasswordManager;
         }
 
         public async Task<IActionResult> Index()
         {
-            var users = await _userManager.GetAsync(skip: 0, take: 30);
-            var roles = await _roleManager.GetAllAsync();
-            return Ok(roles);
+            var password = _identityPasswordManager.GenerateRandomPassword();
+            var passwordStr = _identityPasswordManager.GetPasswordStrength("aaa");            
+
+            return Ok($"Password {password} with str {passwordStr}");
         }
 
         public IActionResult Privacy()
         {
-            _userManager.Addto()
+            //_userManager.Addto()
 
             return View();
         }

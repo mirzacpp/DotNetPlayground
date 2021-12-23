@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Studens.AspNetCore.Identity;
+﻿namespace Studens.AspNetCore.Identity;
 
 /// <summary>
 /// Helper functions for configuring identity services.
@@ -34,6 +31,17 @@ public static class StudensIdentityBuilderExtensions
 
         builder.Services.AddScoped(customType, services => services.GetRequiredService(roleManagerType));
         builder.Services.AddScoped(roleManagerType, customType);
+
+        return builder;
+    }
+
+    /// <summary>
+    /// Adds a <see cref="IdentityPasswordManager"/>
+    /// </summary>
+    /// <returns>The current <see cref="IdentityBuilder"/> instance.</returns>
+    public static IdentityBuilder AddStudensPasswordManager(this IdentityBuilder builder)
+    {
+        builder.Services.AddScoped<IdentityPasswordManager>();
 
         return builder;
     }

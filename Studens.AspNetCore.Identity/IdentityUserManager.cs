@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-
-namespace Studens.AspNetCore.Identity;
+﻿namespace Studens.AspNetCore.Identity;
 
 /// <inheritdoc/>
 /// TODO: Maybe resolve <see cref="CancellationToken"/> from external service so we do not depend on <see cref="IHttpContextAccessor"/>
 public partial class IdentityUserManager<TUser> : UserManager<TUser> where TUser : class
 {
+    #region Fields
+
     private readonly CancellationToken _cancellationToken;
 
     /// <summary>
@@ -22,6 +18,8 @@ public partial class IdentityUserManager<TUser> : UserManager<TUser> where TUser
     /// The cancellation token associated with the current HttpContext.RequestAborted or CancellationToken.None if unavailable.
     /// </summary>
     protected override CancellationToken CancellationToken => _cancellationToken;
+
+    #endregion Fields
 
     #region Ctor
 
@@ -75,25 +73,100 @@ public partial class IdentityUserManager<TUser> : UserManager<TUser> where TUser
         {
             return UserAlreadyInRoleError(roleId);
         }
-        await userRoleStore.AddToRoleAsync(user, roleId, CancellationToken);
+        await userRoleStore.AddToRoleByIdAsync(user, roleId, CancellationToken);
+        return await UpdateUserAsync(user);
+    }
+
+    public virtual async Task<IdentityResult> AddToRolesByIdAsync(TUser user, IEnumerable<string> roleIds)
+    {
+        ThrowIfDisposed();
+        if (user is null)
+        {
+            throw new ArgumentNullException(nameof(user));
+        }
+        if (roleIds is null)
+        {
+            throw new ArgumentNullException(nameof(roleIds));
+        }
+
+        var userRoleStore = GetUserRoleStore();
+
+        foreach (var roleId in roleIds.Distinct())
+        {
+            if (await userRoleStore.IsInRoleByIdAsync(user, roleId, CancellationToken))
+            {
+                return UserAlreadyInRoleError(roleId);
+            }
+            await userRoleStore.AddToRoleByIdAsync(user, roleId, CancellationToken);
+        }
+        return await UpdateUserAsync(user);
+    }
+
+    public virtual async Task<IdentityResult> RemoveFromRoleByIdAsync(TUser user, string roleId)
+    {
+        ThrowIfDisposed();
+        var userRoleStore = GetUserRoleStore();
+        if (user == null)
+        {
+            throw new ArgumentNullException(nameof(user));
+        }
+
+        if (!await userRoleStore.IsInRoleByIdAsync(user, roleId, CancellationToken))
+        {
+            return UserNotInRoleError(roleId);
+        }
+        await userRoleStore.RemoveFromRoleByIdAsync(user, roleId, CancellationToken);
+        return await UpdateUserAsync(user);
+    }
+
+    public virtual async Task<IdentityResult> RemoveFromRolesByIdAsync(TUser user, IEnumerable<string> roleIds)
+    {
+        ThrowIfDisposed();
+        var userRoleStore = GetUserRoleStore();
+        if (user == null)
+        {
+            throw new ArgumentNullException(nameof(user));
+        }
+        if (roleIds == null)
+        {
+            throw new ArgumentNullException(nameof(roleIds));
+        }
+
+        foreach (var roleId in roleIds.Distinct())
+        {
+            if (!await userRoleStore.IsInRoleByIdAsync(user, roleId, CancellationToken))
+            {
+                return UserNotInRoleError(roleId);
+            }
+            await userRoleStore.RemoveFromRoleByIdAsync(user, roleId, CancellationToken);
+        }
         return await UpdateUserAsync(user);
     }
 
     #endregion Methods
 
+    #region Utils
+
     private IIdentityUserRoleStore<TUser> GetUserRoleStore()
     {
-        var cast = Store as IIdentityUserRoleStore<TUser>;
-        if (cast == null)
+        if (Store is not IIdentityUserRoleStore<TUser> cast)
         {
-            throw new NotSupportedException("Store Not IUserRoleStore");
+            throw new NotSupportedException("Store not IIdentityUserRoleStore.");
         }
         return cast;
     }
 
     private IdentityResult UserAlreadyInRoleError(string roleId)
     {
-        //Logger.LogWarning(LoggerEventIds.UserAlreadyInRole, "User is already in role with id {roleId}.", role);
+        Logger.LogWarning(LoggerEventIds.UserAlreadyInRole, "User is already in role with id {roleId}.", roleId);
         return IdentityResult.Failed(ErrorDescriber.UserAlreadyInRole(roleId));
-    }    
+    }
+
+    private IdentityResult UserNotInRoleError(string roleId)
+    {
+        Logger.LogWarning(LoggerEventIds.UserNotInRole, "User not in role with id {roleId}.", roleId);
+        return IdentityResult.Failed(ErrorDescriber.UserNotInRole(roleId));
+    }
+
+    #endregion Utils
 }
