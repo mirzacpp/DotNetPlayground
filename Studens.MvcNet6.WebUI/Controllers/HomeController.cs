@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Studens.AspNetCore.Identity;
-using Studens.AspNetCore.Identity.PasswordGenerator;
+using Studens.AspNetCore.Mvc.Extensions;
 using Studens.MvcNet6.WebUI.Models;
 using System.Diagnostics;
 
@@ -15,8 +15,8 @@ namespace Studens.MvcNet6.WebUI.Controllers
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger,
-            IdentityUserManager<IdentityUser> userManager, 
-            IdentityRoleManager<IdentityRole> roleManager, 
+            IdentityUserManager<IdentityUser> userManager,
+            IdentityRoleManager<IdentityRole> roleManager,
             IdentityPasswordManager identityPasswordManager)
         {
             _logger = logger;
@@ -28,9 +28,10 @@ namespace Studens.MvcNet6.WebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var password = _identityPasswordManager.GenerateRandomPassword();
-            var passwordStr = _identityPasswordManager.GetPasswordStrength("aaa");            
+            var passwordStr = _identityPasswordManager.GetPasswordStrength(password);
+            var ajax = HttpContext.Request.IsAjaxRequest();
 
-            return Ok($"Password {password} with str {passwordStr}");
+            return Ok(ajax.ToString());
         }
 
         public IActionResult Privacy()

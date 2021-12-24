@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
+using Microsoft.Net.Http.Headers;
 
 namespace Studens.AspNetCore.Mvc.Extensions;
 
@@ -7,6 +9,9 @@ namespace Studens.AspNetCore.Mvc.Extensions;
 /// </summary>
 public static class HttpRequestExtensions
 {
+    public const string AjaxRequestHeader = "X-Requested-With";
+    public const string AjaxRequestHeaderValue = "XMLHttpRequest";
+
     /// <summary>
     /// Determines if current request method is GET
     /// </summary>
@@ -31,4 +36,15 @@ public static class HttpRequestExtensions
     /// Determines if current request method is PATCH
     /// </summary>
     public static bool IsPatch(this HttpRequest request) => HttpMethods.IsPatch(request.Method);
+
+    /// <summary>
+    /// Returns referer header for current request
+    /// </summary>
+    public static string? GetRefererHeader(this HttpRequest request) => request.Headers[HeaderNames.Referer].FirstOrDefault();
+
+    /// <summary>
+    /// Determines if current request is an ajax request
+    /// </summary>    
+    public static bool IsAjaxRequest(this HttpRequest request) =>
+        request.Headers.TryGetValue(AjaxRequestHeader, out StringValues value) && value == AjaxRequestHeaderValue;
 }

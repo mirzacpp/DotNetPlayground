@@ -55,20 +55,13 @@ public class CryptoRandom : Random
     {
         var bytes = CreateRandomKey(length);
 
-        switch (format)
+        return format switch
         {
-            case OutputFormat.Base64Url:
-                return Base64Url.Encode(bytes);
-
-            case OutputFormat.Base64:
-                return Convert.ToBase64String(bytes);
-
-            case OutputFormat.Hex:
-                return BitConverter.ToString(bytes).Replace("-", "");
-
-            default:
-                throw new ArgumentException("Invalid output format", nameof(format));
-        }
+            OutputFormat.Base64Url => Base64Url.Encode(bytes),
+            OutputFormat.Base64 => Convert.ToBase64String(bytes),
+            OutputFormat.Hex => BitConverter.ToString(bytes).Replace("-", ""),
+            _ => throw new ArgumentException("Invalid output format", nameof(format)),
+        };
     }
 
     /// <summary>
