@@ -27,11 +27,9 @@ namespace Studens.MvcNet6.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var password = _identityPasswordManager.GenerateRandomPassword();
-            var passwordStr = _identityPasswordManager.GetPasswordStrength(password);
-            var ajax = HttpContext.Request.IsAjaxRequest();
+            var rez = HttpContext.Request.IsAjax();
 
-            return Ok(ajax.ToString());
+            return Ok(rez.ToString());
         }
 
         public IActionResult Privacy()

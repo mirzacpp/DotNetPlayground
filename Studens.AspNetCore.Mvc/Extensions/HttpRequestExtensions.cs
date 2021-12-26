@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
 using Microsoft.Net.Http.Headers;
 
 namespace Studens.AspNetCore.Mvc.Extensions;
@@ -40,11 +39,12 @@ public static class HttpRequestExtensions
     /// <summary>
     /// Returns referer header for current request
     /// </summary>
-    public static string? GetRefererHeader(this HttpRequest request) => request.Headers[HeaderNames.Referer].FirstOrDefault();
+    public static string? GetRefererHeader(this HttpRequest request) =>
+        request.Headers[HeaderNames.Referer].FirstOrDefault();
 
     /// <summary>
-    /// Determines if current request is an ajax request
-    /// </summary>    
-    public static bool IsAjaxRequest(this HttpRequest request) =>
-        request.Headers.TryGetValue(AjaxRequestHeader, out StringValues value) && value == AjaxRequestHeaderValue;
+    /// Determines if current request is an AJAX request    
+    /// </summary>
+    public static bool IsAjax(this HttpRequest request) =>
+        request.Headers[AjaxRequestHeader] == AjaxRequestHeaderValue;
 }
