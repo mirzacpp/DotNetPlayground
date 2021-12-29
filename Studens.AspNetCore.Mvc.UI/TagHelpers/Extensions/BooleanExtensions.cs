@@ -1,12 +1,12 @@
 ﻿namespace System;
 
-public static class BooleanExtensions
+internal static class BooleanExtensions
 {
     /// <summary>
     /// Returns bool as lowercased string.
     /// </summary>
-    /// <param name="value"></param>
-    /// <returns></returns>
+    /// <param name="value">Booelan value</param>
+    /// <returns>Boolean as string</returns>
     public static string ToStringLowercase(this bool value)
         => value ? "true" : "false";
 }

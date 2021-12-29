@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -21,8 +20,14 @@
   <ItemGroup>
     <ProjectReference Include="..\Studens.AspNetCore.Identity.EntityFrameworkCore\Studens.AspNetCore.Identity.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Studens.AspNetCore.Identity\Studens.AspNetCore.Identity.csproj" />
+    <ProjectReference Include="..\Studens.AspNetCore.Mvc.UI\Studens.AspNetCore.Mvc.UI.csproj" />
     <ProjectReference Include="..\Studens.AspNetCore.Mvc\Studens.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
+    <ProjectReference Include="..\Studens.Extensions.FileProviders\Studens.Extensions.FileProviders.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Auth\Views\Shared\" />
   </ItemGroup>
 
 </Project>

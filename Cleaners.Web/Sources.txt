@@ -15,11 +15,13 @@ https://github.com/jasontaylordev/NorthwindTraders
 https://github.com/aspnetrun/run-aspnetcore
 https://aspnetboilerplate.com/Pages/Documents/Introduction
 https://github.com/Dotnet-Boxed/ (# Template)
+https://github.com/louthy/language-ext
 ASP NET CORE SAMPLES: 
 https://github.com/dodyg/practical-aspnetcore/issues
 https://github.com/aspnet/Entropy
 https://github.com/abpframework/abp-samples
 https://github.com/OrchardCMS/OrchardCore
+https://github.com/DamianEdwards/MinimalApiPlayground
 }
 
 Blogs {
@@ -127,6 +129,7 @@ https://www.stevejgordon.co.uk/how-does-the-stringbuilder-work-in-dotnet-part-1-
 https://www.stevejgordon.co.uk/creating-strings-with-no-allocation-overhead-using-string-create-csharp
 https://andrewlock.net/aligning-strings-within-string-format-and-interpolated-strings/
 https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/ (.NET6)
+https://mattwarren.org/2019/04/25/ASCII-Art-in-.NET-Code/
 }
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -140,10 +143,9 @@ https://weblog.west-wind.com/posts/2019/Sep/24/Upgrading-my-AlbumViewer-Sample-t
 Info {
 https://www.youtube.com/watch?v=t3zj0c244UE&ab_channel=kudvenkat
 https://dusted.codes/dotnet-basics
-}
-
 https://dunnhq.com/posts/2021/anatomy-of-a-dotnet-app/
 https://msbuildlog.com/
+}
 DATA TYPES {
 https://www.youtube.com/watch?v=uFHtFOmH2OI
 https://blog.paranoidcoding.com/2019/04/08/string-vs-String-is-not-about-style.html
@@ -156,7 +158,7 @@ Enum perf: https://www.youtube.com/watch?v=BoE5Y6Xkm6w
 ASP.NET CORE {
 Samples {
 HOSTING {
-https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-6.0
 https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d#migration-to-aspnet-core-in-net-6
 https://edi.wang/post/2021/2/3/aspnet-core-50-throughput-test-in-kestrel-iis-nginx-and-caddy
 https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
@@ -165,6 +167,8 @@ ObjectPool {
 https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0
 https://developpaper.com/detailed-explanation-of-object-pools-various-usages-in-net-core/
 }
+RAZOR {
+https://devblogs.microsoft.com/visualstudio/introducing-the-new-razor-editor-in-visual-studio-2022/
 }
 Api Versioning {
 https://gingter.org/2018/06/18/asp-net-core-api-versioning/
@@ -507,6 +511,7 @@ https://blog.stephencleary.com/2009/06/threadsafe-events.html
 https://csharpindepth.com/Articles/Events (! na thread safety)
 https://codeblog.jonskeet.uk/2015/01/30/clean-event-handlers-invocation-with-c-6/
 https://blog.jetbrains.com/dotnet/2014/07/24/unusual-ways-of-boosting-up-app-performance-lambdas-and-linqs/
+https://www.simplethread.com/c-closures-explained/
 }
 }
 
@@ -565,6 +570,7 @@ PATTERNS {
 https://adamstorr.azurewebsites.net/blog/strategy-pattern-with-enum-constraints
 https://gigi.nullneuron.net/gigilabs/the-adapter-design-pattern-for-dtos-in-c/
 https://volosoft.com/blog/Prefer-Singleton-Pattern-over-Static-Class
+https://dunnhq.com/posts/2021/primitive-obsession/
 }
 
 Dependency Injection {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Studens.AspNetCore.Identity;
-using Studens.AspNetCore.Mvc.Extensions;
+using Studens.AspNetCore.Mvc.Filters;
 using Studens.MvcNet6.WebUI.Models;
 using System.Diagnostics;
 
@@ -25,17 +25,24 @@ namespace Studens.MvcNet6.WebUI.Controllers
             _identityPasswordManager = identityPasswordManager;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var rez = HttpContext.Request.IsAjax();
-
-            return Ok(rez.ToString());
+            return View();
         }
 
+        [HttpPost]
+        [FormValueRequired(false, "miki", "miki2")]
+        public async Task<IActionResult> IndexPost()
+        {
+            var form = Request.Form.Keys.ToList();
+
+            return Ok(form);
+        }
+
+        [EnvironmentRequired("Development")]
         public IActionResult Privacy()
         {
-            //_userManager.Addto()
-
             return View();
         }
 

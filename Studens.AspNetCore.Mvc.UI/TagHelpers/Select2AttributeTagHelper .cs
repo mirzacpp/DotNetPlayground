@@ -136,11 +136,6 @@ public class Select2AttributeTagHelper : SelectTagHelper
 
     private void SetLocalizationAttributes(TagHelperOutput output)
     {
-        if (output is null)
-        {
-            throw new ArgumentNullException(nameof(output));
-        }
-
         if (LocalizationEnableAuto)
         {
             var currentCulture = _httpContextAccessor.HttpContext.Features.Get<IRequestCultureFeature>();
@@ -155,11 +150,6 @@ public class Select2AttributeTagHelper : SelectTagHelper
 
     private void SetAjaxAttributes(TagHelperOutput output)
     {
-        if (output is null)
-        {
-            throw new ArgumentNullException(nameof(output));
-        }
-
         if (!string.IsNullOrEmpty(AjaxUrl))
         {
             output.Attributes.Add(Select2AjaxDataAttributeName, AjaxUrl);

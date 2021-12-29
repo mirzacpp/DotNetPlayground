@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 
 namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
@@ -8,18 +9,23 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
     {
         public RegisteredServicesConfig()
         {
-            Path = "/registered-services";
+            DefaultPath = new PathString("/registered-services");
             Services = new List<ServiceDescriptor>();
         }
 
         /// <summary>
         /// Path on which middleware will response
         /// </summary>
-        public string Path { get; set; }
+        public PathString DefaultPath { get; set; }
 
         /// <summary>
-        /// List of all entries inside <see cref="Microsoft.Extensions.DependencyInjection.IServiceCollection"/>
+        /// List of all entries inside <see cref="IServiceCollection"/>
         /// </summary>
-        public List<ServiceDescriptor> Services { get; set; }
+        public IList<ServiceDescriptor> Services { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Test { get; set; }
     }
 }

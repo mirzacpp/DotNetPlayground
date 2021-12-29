@@ -1,6 +1,4 @@
-﻿using Studens.Domain.Domain;
-
-namespace Studens.Domain.Entities;
+﻿namespace Studens.Domain.Entities;
 
 /// <inheritdoc cref="IEntity{TKey}"/>
 public abstract class Entity<TKey> : IEntity<TKey>
@@ -18,4 +16,9 @@ public abstract class Entity<TKey> : IEntity<TKey>
 
     /// <inheritdoc/>
     public override string ToString() => $"[Entity: {GetType().Name}] Id = {Id}";
+}
+
+/// <inheritdoc/>
+public abstract class Entity : Entity<int>
+{
 }

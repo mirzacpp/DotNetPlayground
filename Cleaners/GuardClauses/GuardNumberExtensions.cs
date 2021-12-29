@@ -15,7 +15,7 @@ namespace Ardalis.GuardClauses
     /// </summary>
     /// <remarks>
     /// </remarks>
-    public static class GuardNumberExtensions
+    public static class GuardExtensions
     {
         public static void NegativeNumber(this IGuardClause guardClause, int value, string parameterName)
              => NegativeNumber<int>(guardClause, value, parameterName);

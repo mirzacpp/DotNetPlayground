@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TagHelpers\GoogleMaps\" />
+    <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
   </ItemGroup>
 
 </Project>

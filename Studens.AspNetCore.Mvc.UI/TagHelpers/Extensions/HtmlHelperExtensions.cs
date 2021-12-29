@@ -8,7 +8,7 @@ namespace Microsoft.AspNetCore.Mvc.ViewFeatures;
 /// Extension methods for <see cref="IHtmlHelper"/>
 /// Source <see cref="https://github.com/DamianEdwards/TagHelperPack"/>
 /// </summary>
-public static class HtmlHelperExtensions
+internal static class HtmlHelperExtensions
 {
     private static Func<HtmlHelper, ModelExplorer, string, string> _getDisplayNameThunk;
 

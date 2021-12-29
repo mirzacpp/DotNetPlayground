@@ -23,6 +23,7 @@ public class Startup
             .AddFeatureFolders()            
             .AddAreaFeatureFolders()
             .Services
+            //.AddDatabaseDeveloperPageExceptionFilter() Use when db is configured
             .AddPocoOptions<AppConfig>(nameof(AppConfig), _configuration)            
             .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
     }

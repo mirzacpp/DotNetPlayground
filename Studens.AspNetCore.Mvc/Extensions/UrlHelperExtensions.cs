@@ -1,4 +1,6 @@
-﻿namespace Microsoft.AspNetCore.Mvc;
+﻿using Studens.AspNetCore.Mvc.Extensions;
+
+namespace Microsoft.AspNetCore.Mvc;
 
 /// <summary>
 /// Extension methods for <see cref="IUrlHelper"/>
@@ -11,14 +13,14 @@ public static class UrlHelperExtensions
     public static string GetRefererOrFallback(this IUrlHelper urlHelper, string route)
         => GetRefererOrFallback(urlHelper, route, null);
 
-    public static string GetRefererOrFallback(this IUrlHelper urlHelper, string route, object values)
+    public static string GetRefererOrFallback(this IUrlHelper urlHelper, string? route, object? values)
     {
         if (urlHelper == null)
         {
             throw new ArgumentNullException(nameof(urlHelper));
         }
 
-        var referer = urlHelper.ActionContext.HttpContext.Request.Headers["Referer"].FirstOrDefault();
+        var referer = urlHelper.ActionContext.HttpContext.Request.GetRefererHeader();
 
         if (!string.IsNullOrEmpty(referer))
         {

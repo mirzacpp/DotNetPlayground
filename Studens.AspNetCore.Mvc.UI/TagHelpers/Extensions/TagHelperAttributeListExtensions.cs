@@ -25,4 +25,28 @@ public static class TagHelperAttributeListExtensions
             attributes.Add(attribute);
         }
     }
+
+    /// <summary>
+    /// Appends given <paramref name="className"/> to <paramref name="attributes"/>
+    /// </summary>
+    public static void AddClass(this TagHelperAttributeList attributes, string className)
+    {
+        if (string.IsNullOrWhiteSpace(className))
+        {
+            return;
+        }
+
+        var classes = attributes["class"];
+
+        if (classes is null)
+        {
+            attributes.Add("class", className);
+        }
+        else
+        {
+            var existingClasses = classes.Value.ToString().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            existingClasses.AddIfNotContains(className);
+            attributes.SetAttribute("class", string.Join(" ", existingClasses));
+        }
+    }
 }

@@ -29,7 +29,7 @@ namespace Corvo.AspNetCore.Mvc.Middleware.RegisteredServices
 
         public async Task Invoke(HttpContext httpContext)
         {
-            if (httpContext.Request.Path == _config.Path)
+            if (httpContext.Request.Path == _config.DefaultPath)
             {
                 // Simple HTML markup generation using StringBuilder class
                 // For additional styles use embedded styles ?

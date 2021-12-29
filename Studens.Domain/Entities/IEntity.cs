@@ -1,4 +1,4 @@
-﻿namespace Studens.Domain.Domain
+﻿namespace Studens.Domain.Entities
 {
     /// <summary>
     /// Defines an entity with a single primary key with Id property
