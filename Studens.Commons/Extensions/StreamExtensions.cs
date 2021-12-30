@@ -13,6 +13,12 @@ public static class StreamExtensions
         return memoryStream.ToArray();
     }
 
+    /// <summary>
+    /// Interesting: https://stackoverflow.com/a/45462089
+    /// </summary>
+    /// <param name="stream"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public static async Task<byte[]> GetAllBytesAsync(this Stream stream, CancellationToken cancellationToken = default)
     {
         using var memoryStream = new MemoryStream();

@@ -118,6 +118,7 @@ https://adamsitnik.com/Span/
 
 Dispose {
 https://codinghelmet.com/articles/from-dispose-pattern-to-auto-disposable-objects-in-net
+http://reedcopsey.com/2009/03/30/idisposable-part-2-subclass-from-an-idisposable-class/
 }
 
 TEXT {
@@ -162,6 +163,7 @@ https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspn
 https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d#migration-to-aspnet-core-in-net-6
 https://edi.wang/post/2021/2/3/aspnet-core-50-throughput-test-in-kestrel-iis-nginx-and-caddy
 https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
+https://marketplace.visualstudio.com/items?itemName=vs-publisher-1448185.ConveyorbyKeyoti&ssr=false#review-details
 }
 ObjectPool {
 https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0
@@ -280,6 +282,7 @@ https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-compl
 https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-with-refresh-tokens
 https://devblogs.microsoft.com/aspnet/jwt-validation-and-authorization-in-asp-net-core/
 https://www.youtube.com/watch?v=AU0TIOZhGqs
+https://github.com/VahidN/ASPNETCore2JwtAuthentication
 }
 }
 Migracije i seed 
@@ -669,6 +672,10 @@ https://www.sqlservertutorial.net/sql-server-basics/sql-server-sequence/
 https://www.mssqltips.com/sqlservertip/3202/prevent-multiple-users-from-running-the-same-sql-server-stored-procedure-at-the-same-time/
 https://stackoverflow.com/questions/60644544/getting-next-value-for-for-a-sql-server-sequence-using-ef-core-3-1-impossibl
 }
+https://github.com/VahidN/EFCoreSecondLevelCacheInterceptor
+}
+LINQ2DB {
+https://linq2db.github.io/
 }
 
 SECURING CODE {

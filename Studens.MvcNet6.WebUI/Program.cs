@@ -5,7 +5,9 @@ using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
 using Studens.Commons.Extensions;
 using Studens.Extensions.FileProviders;
+using Studens.Extensions.FileProviders.FileSystem;
 using Studens.MvcNet6.WebUI.Data;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +36,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 }, ServiceLifetime.Scoped);
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.Configure<PhysicalFileManagerOptions>(options => options.Path = "D://");
+builder.Services.Configure<PhysicalFileManagerOptions>(options => options.Path = "C://ITO");
 builder.Services.AddSingleton<IFileManager, PhysicalFileManager>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
@@ -77,12 +79,14 @@ app.MapControllerRoute(
 app.MapGet("/files", async (context) =>
 {
     var fileManager = context.RequestServices.GetService<IFileManager>();
-    var fileName = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
+    var fileName = Path.Combine(Directory.GetCurrentDirectory(), "test.txt");
     using var fs = File.OpenRead(fileName);
     var bytes = fs.GetAllBytes();
 
-    var result = await fileManager.SaveAsync(new PersistFileInfo("vlado/vlado2", bytes, "appsettings.json"));
-    await context.Response.WriteAsync(result);
+    var result = await fileManager.SaveAsync(new PersistFileInfo("vlado/vlado2", bytes, "test.txt"));
+    var converted = JsonSerializer.Serialize(result);
+
+    await context.Response.WriteAsync(converted);
 });
 
 app.Run();
