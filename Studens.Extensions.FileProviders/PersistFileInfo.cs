@@ -14,6 +14,8 @@ namespace Studens.Extensions.FileProviders
 
         public string Subpath { get; }
 
+        public bool OverwriteExisting { get; }
+
         public bool Exists => true;
 
         public long Length => _content.Length;
@@ -26,12 +28,13 @@ namespace Studens.Extensions.FileProviders
 
         public bool IsDirectory => false;
 
-        public PersistFileInfo(string subpath, byte[] content, string name)
+        public PersistFileInfo(string subpath, byte[] content, string name, bool overwriteExisting = false)
         {
-            Subpath = subpath;
             _content = content;
+            Subpath = subpath;
             Name = name;
-            LastModified = DateTimeOffset.Now;  
+            OverwriteExisting = overwriteExisting;
+            LastModified = DateTimeOffset.Now;
         }
 
         public Stream CreateReadStream() =>

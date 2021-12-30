@@ -96,17 +96,7 @@ namespace Cleaners.Web
             {
                 app.UseStatusCodePagesWithReExecute("/error/{0}");
                 app.UseHsts();
-            }
-
-            app.Map("/app-info", conf =>
-            {
-                conf.Run(async handler =>
-                {
-                    var appInfo = handler.RequestServices.GetRequiredService<IOptions<AppInfoConfig>>().Value;
-
-                    await handler.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(appInfo)).ConfigureAwait(false);
-                });
-            });
+            }         
 
             // Serve files from wwwroot directory
             app.UseStaticFiles();

@@ -38,6 +38,19 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         }
 
         EnsureDirectoryExists(fullPath);
+        var relativeFileName = Path.Combine(fileInfo.Subpath, fileInfo.Name);
+
+        // Return existing if overwrite not requested
+        // Should we add info to indicate that create did not occured?
+        if (!fileInfo.OverwriteExisting)
+        {
+            var existingFileInfo = GetFileInfo(relativeFileName);
+
+            if (existingFileInfo is not null)
+            {
+                return existingFileInfo;
+            }
+        }
 
         var fullFileName = Path.Combine(fullPath, fileInfo.Name);
 
@@ -45,7 +58,27 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         var bytes = await stream.GetAllBytesAsync(cancellationToken);
         await File.WriteAllBytesAsync(fullFileName, bytes, cancellationToken);
 
-        return GetFileInfo(Path.Combine(fileInfo.Subpath, fileInfo.Name));
+        return GetFileInfo(relativeFileName);
+    }
+
+    public Task DeleteAsync(string filePath)
+    {
+        // Avoid throwing ? yes, File.Delete does not throw if file not found
+        if (string.IsNullOrEmpty(filePath))
+        {
+            throw new ArgumentException($"'{nameof(filePath)}' cannot be null or empty.", nameof(filePath));
+        }
+
+        var fullFileName = GetFullPath(filePath);
+
+        if (string.IsNullOrEmpty(fullFileName))
+        {
+            throw new ArgumentException($"'{nameof(filePath)}' cannot be null or empty.", nameof(filePath));
+        }
+        
+        File.Delete(fullFileName);
+
+        return Task.CompletedTask;
     }
 
     #endregion Methods

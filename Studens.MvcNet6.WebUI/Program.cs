@@ -79,14 +79,23 @@ app.MapControllerRoute(
 app.MapGet("/files", async (context) =>
 {
     var fileManager = context.RequestServices.GetService<IFileManager>();
-    var fileName = Path.Combine(Directory.GetCurrentDirectory(), "test.txt");
+    var fileName = Path.Combine(Directory.GetCurrentDirectory(), "upload.txt");
     using var fs = File.OpenRead(fileName);
     var bytes = fs.GetAllBytes();
 
-    var result = await fileManager.SaveAsync(new PersistFileInfo("vlado/vlado2", bytes, "test.txt"));
+    var result = await fileManager.SaveAsync(new PersistFileInfo("vlado/vlado2", bytes, "test.txt", false));
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);
+});
+
+app.MapGet("/files-delete", async (context) =>
+{
+    var fileManager = context.RequestServices.GetService<IFileManager>();   
+
+    await fileManager.DeleteAsync("/vlado/vlado2/test.txt");    
+
+    await context.Response.WriteAsync("Ok vlado");
 });
 
 app.Run();

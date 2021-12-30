@@ -8,6 +8,11 @@ namespace Studens.Extensions.FileProviders.Amazon
     /// </summary>
     public class AmazonFileManager : IFileManager
     {
+        public Task DeleteAsync(string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDirectoryContents GetDirectoryContents(string subpath)
         {
             throw new NotImplementedException();
