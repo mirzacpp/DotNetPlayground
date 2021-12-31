@@ -30,7 +30,14 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
     {
         Guard.Against.Null(fileInfo, nameof(fileInfo));
 
-        var fullPath = GetFullPath(fileInfo.Path);
+        var path = fileInfo.Path;
+        // Trim trail
+        if (path.StartsWith('/'))
+        {
+            path = path.TrimStart('/');
+        }
+
+        var fullPath = GetFullPath(path);
 
         if (string.IsNullOrEmpty(fullPath))
         {
@@ -38,7 +45,7 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         }
 
         EnsureDirectoryExists(fullPath);
-        var relativeFileName = Path.Combine(fileInfo.Path, fileInfo.Name);
+        var relativeFileName = Path.Combine(path, fileInfo.Name);
         IFileInfo existingFileInfo = GetFileInfo(relativeFileName);
 
         if (!fileInfo.OverwriteExisting && existingFileInfo.Exists && !existingFileInfo.IsDirectory)

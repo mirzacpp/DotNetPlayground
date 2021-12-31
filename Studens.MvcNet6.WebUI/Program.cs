@@ -83,7 +83,7 @@ app.MapGet("/files", async (context) =>
     using var fs = File.OpenRead(fileName);
     var bytes = fs.GetAllBytes();
 
-    var result = await fileManager.SaveAsync(new PersistFileInfo(bytes, "tests.txt", "vlado/vlado2", false));
+    var result = await fileManager.SaveAsync(new PersistFileInfo(bytes, "tests.txt", "/vlado/vlado2", false));
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);
