@@ -16,15 +16,9 @@
     /// <typeparam name="T">Data type</typeparam>
     public abstract class Result<T> : Result
     {
-        private T _data = default!;        
-
         protected Result(T data) => Data = data;
 
-        public T Data
-        {
-            get => Success ? _data : throw new Exception($"You can't access .{nameof(Data)} when .{nameof(Success)} is false");
-            set => _data = value;
-        }
+        public T Data { get; set; } = default!;
     }
 
     /// <summary>
@@ -82,7 +76,7 @@
         {
         }
 
-        public ErrorResult(string message, IReadOnlyCollection<Error> errors) 
+        public ErrorResult(string message, IReadOnlyCollection<Error> errors)
             : base(default!)
         {
             Message = message;
@@ -116,4 +110,3 @@
         IReadOnlyCollection<Error> Errors { get; }
     }
 }
-

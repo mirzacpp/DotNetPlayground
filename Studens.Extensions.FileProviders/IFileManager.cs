@@ -13,8 +13,8 @@ namespace Studens.Extensions.FileProviders
         /// <param name="fileInfo"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<IFileInfo> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default);
+        Task<FileResult> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default);
 
-        Task DeleteAsync(string filePath);
+        Task<FileResult> DeleteAsync(string filePath);
     }
 }

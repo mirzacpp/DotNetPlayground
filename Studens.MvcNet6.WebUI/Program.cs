@@ -83,7 +83,7 @@ app.MapGet("/files", async (context) =>
     using var fs = File.OpenRead(fileName);
     var bytes = fs.GetAllBytes();
 
-    var result = await fileManager.SaveAsync(new PersistFileInfo("vlado/vlado2", bytes, "test.txt", false));
+    var result = await fileManager.SaveAsync(new PersistFileInfo(bytes, "tests.txt", "vlado/vlado2", false));
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);
@@ -91,11 +91,12 @@ app.MapGet("/files", async (context) =>
 
 app.MapGet("/files-delete", async (context) =>
 {
-    var fileManager = context.RequestServices.GetService<IFileManager>();   
+    var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    await fileManager.DeleteAsync("/vlado/vlado2/test.txt");    
+    var result = await fileManager.DeleteAsync("vlado/vlado2/test.txt");
+    var converted = JsonSerializer.Serialize(result);
 
-    await context.Response.WriteAsync("Ok vlado");
+    await context.Response.WriteAsync(converted);
 });
 
 app.Run();

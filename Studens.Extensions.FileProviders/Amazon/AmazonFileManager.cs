@@ -8,7 +8,7 @@ namespace Studens.Extensions.FileProviders.Amazon
     /// </summary>
     public class AmazonFileManager : IFileManager
     {
-        public Task DeleteAsync(string filePath)
+        public Task<FileResult> DeleteAsync(string filePath)
         {
             throw new NotImplementedException();
         }
@@ -23,7 +23,7 @@ namespace Studens.Extensions.FileProviders.Amazon
             throw new NotImplementedException();
         }
 
-        public Task<IFileInfo> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
+        public Task<FileResult> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }

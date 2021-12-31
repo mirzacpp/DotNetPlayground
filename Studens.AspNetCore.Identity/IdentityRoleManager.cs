@@ -36,8 +36,7 @@
             int? skip = null,
             int? take = null,
             string? roleName = null,
-            bool asNoTracking = false,
-            string? email = null)
+            bool asNoTracking = false)
         {
             ThrowIfDisposed();
 

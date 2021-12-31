@@ -29,7 +29,9 @@ namespace Studens.MvcNet6.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View();
+            var users = await _roleManager.GetAsync(0, 100, "Ad");
+
+            return Json(users);
         }
 
         [HttpPost]

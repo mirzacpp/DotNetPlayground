@@ -26,11 +26,11 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
 
     #region Methods
 
-    public async Task<IFileInfo> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
+    public async Task<FileResult> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
     {
         Guard.Against.Null(fileInfo, nameof(fileInfo));
 
-        var fullPath = GetFullPath(fileInfo.Subpath);
+        var fullPath = GetFullPath(fileInfo.Path);
 
         if (string.IsNullOrEmpty(fullPath))
         {
@@ -38,18 +38,12 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         }
 
         EnsureDirectoryExists(fullPath);
-        var relativeFileName = Path.Combine(fileInfo.Subpath, fileInfo.Name);
+        var relativeFileName = Path.Combine(fileInfo.Path, fileInfo.Name);
+        IFileInfo existingFileInfo = GetFileInfo(relativeFileName);
 
-        // Return existing if overwrite not requested
-        // Should we add info to indicate that create did not occured?
-        if (!fileInfo.OverwriteExisting)
+        if (!fileInfo.OverwriteExisting && existingFileInfo.Exists && !existingFileInfo.IsDirectory)
         {
-            var existingFileInfo = GetFileInfo(relativeFileName);
-
-            if (existingFileInfo is not null)
-            {
-                return existingFileInfo;
-            }
+            return FileResult.FileUnmodifiedResult(existingFileInfo);
         }
 
         var fullFileName = Path.Combine(fullPath, fileInfo.Name);
@@ -58,10 +52,18 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         var bytes = await stream.GetAllBytesAsync(cancellationToken);
         await File.WriteAllBytesAsync(fullFileName, bytes, cancellationToken);
 
-        return GetFileInfo(relativeFileName);
+        return existingFileInfo.Exists && !existingFileInfo.IsDirectory ?
+            FileResult.FileModifiedResult(GetFileInfo(fullFileName)) :
+            FileResult.FileCreatedResult(GetFileInfo(fullFileName));
     }
 
-    public Task DeleteAsync(string filePath)
+    /// <summary>
+    /// TODO: Trim starting trail char ?
+    /// </summary>
+    /// <param name="filePath"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    public Task<FileResult> DeleteAsync(string filePath)
     {
         // Avoid throwing ? yes, File.Delete does not throw if file not found
         if (string.IsNullOrEmpty(filePath))
@@ -75,10 +77,10 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         {
             throw new ArgumentException($"'{nameof(filePath)}' cannot be null or empty.", nameof(filePath));
         }
-        
+
         File.Delete(fullFileName);
 
-        return Task.CompletedTask;
+        return Task.FromResult(FileResult.FileDeleteResult());
     }
 
     #endregion Methods

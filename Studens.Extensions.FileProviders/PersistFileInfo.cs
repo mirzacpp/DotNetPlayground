@@ -7,12 +7,35 @@ namespace Studens.Extensions.FileProviders
     /// </summary>
     public class PersistFileInfo : IFileInfo
     {
+        #region Ctor
+
+        public PersistFileInfo(byte[] content, string name)
+        {
+            _content = content;
+            Name = name;
+            LastModified = DateTimeOffset.Now;
+        }
+
+        public PersistFileInfo(byte[] content, string name, string path)
+            : this(content, name)
+        {
+            Path = path;
+        }
+
+        public PersistFileInfo(byte[] content, string name, string path, bool overwriteExisting)
+            : this(content, name, path)
+        {
+            OverwriteExisting = overwriteExisting;
+        }
+
+        #endregion Ctor
+
         /// <summary>
         /// Stores content for current file.
         /// </summary>
         private readonly byte[] _content;
 
-        public string Subpath { get; }
+        public string Path { get; } = string.Empty; 
 
         public bool OverwriteExisting { get; }
 
@@ -27,15 +50,6 @@ namespace Studens.Extensions.FileProviders
         public DateTimeOffset LastModified { get; }
 
         public bool IsDirectory => false;
-
-        public PersistFileInfo(string subpath, byte[] content, string name, bool overwriteExisting = false)
-        {
-            _content = content;
-            Subpath = subpath;
-            Name = name;
-            OverwriteExisting = overwriteExisting;
-            LastModified = DateTimeOffset.Now;
-        }
 
         public Stream CreateReadStream() =>
             new MemoryStream(_content, writable: false);
