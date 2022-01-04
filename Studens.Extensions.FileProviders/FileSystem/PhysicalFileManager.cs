@@ -11,15 +11,19 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
     #region Fields
 
     private readonly ILogger<PhysicalFileManager> _logger;
+    private readonly FileProviderErrorDescriber _errorDescriber;
 
     #endregion Fields
 
     #region Ctor
 
-    public PhysicalFileManager(IOptions<PhysicalFileManagerOptions> optionsAccessor, ILogger<PhysicalFileManager> logger)
+    public PhysicalFileManager(IOptions<PhysicalFileManagerOptions> optionsAccessor,
+        ILogger<PhysicalFileManager> logger,
+        FileProviderErrorDescriber? errorDescriber)
         : base(optionsAccessor.Value.Path)
     {
         _logger = logger;
+        _errorDescriber = errorDescriber ?? new FileProviderErrorDescriber();
     }
 
     #endregion Ctor
@@ -31,17 +35,13 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         Guard.Against.Null(fileInfo, nameof(fileInfo));
 
         var path = fileInfo.Path;
-        // Trim trail
-        if (path.StartsWith('/'))
-        {
-            path = path.TrimStart('/');
-        }
 
         var fullPath = GetFullPath(path);
 
         if (string.IsNullOrEmpty(fullPath))
         {
-            throw new InvalidOperationException("Directory could not be found.");
+            return new FileResult(FileOperationStatus.Error);
+            //throw new InvalidOperationException("Directory could not be found.");
         }
 
         EnsureDirectoryExists(fullPath);
@@ -60,8 +60,8 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         await File.WriteAllBytesAsync(fullFileName, bytes, cancellationToken);
 
         return existingFileInfo.Exists && !existingFileInfo.IsDirectory ?
-            FileResult.FileModifiedResult(GetFileInfo(fullFileName)) :
-            FileResult.FileCreatedResult(GetFileInfo(fullFileName));
+            FileResult.FileModifiedResult(GetFileInfo(relativeFileName)) :
+            FileResult.FileCreatedResult(GetFileInfo(relativeFileName));
     }
 
     /// <summary>

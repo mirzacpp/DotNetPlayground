@@ -35,7 +35,10 @@ namespace Studens.Extensions.FileProviders
         /// </summary>
         private readonly byte[] _content;
 
-        public string Path { get; } = string.Empty; 
+        /// <summary>
+        /// Represents file path
+        /// </summary>
+        public string Path { get; } = string.Empty;
 
         public bool OverwriteExisting { get; }
 

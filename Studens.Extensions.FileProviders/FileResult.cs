@@ -38,6 +38,11 @@ public class FileResult : Result
     /// Returns file unmodified operation result
     /// </summary>
     public static FileResult FileUnmodifiedResult(IFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);
+
+    //public static FileResult FileErrorResult(string error)
+    //{
+    //    var result =  new FileResult()
+    //}
 }
 
 /// <summary>
@@ -63,5 +68,10 @@ public enum FileOperationStatus
     /// <summary>
     /// File modified(File updated)
     /// </summary>
-    Modified
+    Modified,
+
+    /// <summary>
+    /// Operation resulted with error
+    /// </summary>
+    Error
 }
