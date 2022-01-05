@@ -20,10 +20,4 @@ public class RegisteredServicesOptions
     /// List of all entries inside <see cref="IServiceCollection"/>
     /// </summary>
     public IList<ServiceDescriptor> Services { get; set; }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public string Test { get; set; }
 }

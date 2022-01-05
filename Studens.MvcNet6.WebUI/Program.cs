@@ -37,8 +37,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.Configure<PhysicalFileManagerOptions>(options => options.Path = "C://ITO");
-builder.Services.AddScoped<IFileManager, PhysicalFileManager>();
-builder.Services.AddScoped<FileProviderErrorDescriber>();
+builder.Services.AddSingleton<IFileManager, PhysicalFileManager>();
+builder.Services.AddSingleton<FileProviderErrorDescriber>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()

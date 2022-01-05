@@ -40,8 +40,7 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
 
         if (string.IsNullOrEmpty(fullPath))
         {
-            return new FileResult(FileOperationStatus.Error);
-            //throw new InvalidOperationException("Directory could not be found.");
+            return new FileResult(_errorDescriber.InvalidPath());            
         }
 
         EnsureDirectoryExists(fullPath);

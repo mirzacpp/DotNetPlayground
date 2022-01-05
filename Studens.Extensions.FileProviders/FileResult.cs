@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.FileProviders;
-using Studens.Commons.Result;
 
 namespace Studens.Extensions.FileProviders;
 
 /// <summary>
 /// Represents an file result
 /// </summary>
-public class FileResult : Result
+public class FileResult
 {
     public FileResult(FileOperationStatus operationStatus, IFileInfo? fileInfo = null)
     {
@@ -15,9 +14,29 @@ public class FileResult : Result
         Success = true;
     }
 
-    public IFileInfo? File { get; set; }
+    public FileResult(FileProviderError error, Exception? exception = null)
+    {
+        Error = error;
+        Exception = exception;
+        Success = false;
+        OperationStatus = FileOperationStatus.Error;
+    }
 
-    public FileOperationStatus OperationStatus { get; set; }
+    public bool Success { get; }
+
+    public IFileInfo? File { get; }
+
+    public FileOperationStatus OperationStatus { get; }
+
+    /// <summary>
+    /// Error that occured in file operation
+    /// </summary>
+    public FileProviderError? Error { get; }
+
+    /// <summary>
+    /// Exception that occured in file operation
+    /// </summary>
+    public Exception? Exception { get; }
 
     /// <summary>
     /// Returns file deleted operation result
@@ -37,12 +56,7 @@ public class FileResult : Result
     /// <summary>
     /// Returns file unmodified operation result
     /// </summary>
-    public static FileResult FileUnmodifiedResult(IFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);
-
-    //public static FileResult FileErrorResult(string error)
-    //{
-    //    var result =  new FileResult()
-    //}
+    public static FileResult FileUnmodifiedResult(IFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);    
 }
 
 /// <summary>
