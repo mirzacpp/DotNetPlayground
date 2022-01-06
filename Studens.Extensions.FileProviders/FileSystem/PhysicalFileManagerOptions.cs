@@ -2,6 +2,9 @@
 {
     public class PhysicalFileManagerOptions
     {
-        public string Path { get; set; }
+        /// <summary>
+        /// The root directory. This should be an absolute path.
+        /// </summary>
+        public string RootPath { get; set; }
     }
 }

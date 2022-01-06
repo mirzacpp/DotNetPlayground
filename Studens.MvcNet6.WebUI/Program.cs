@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Options;
 using Studens.AspNetCore.Identity;
 using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
 using Studens.Commons.Extensions;
 using Studens.Extensions.FileProviders;
-using Studens.Extensions.FileProviders.FileSystem;
 using Studens.MvcNet6.WebUI.Data;
 using System.Text.Json;
 
@@ -36,9 +37,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 }, ServiceLifetime.Scoped);
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.Configure<PhysicalFileManagerOptions>(options => options.Path = "C://ITO");
-builder.Services.AddSingleton<IFileManager, PhysicalFileManager>();
-builder.Services.AddSingleton<FileProviderErrorDescriber>();
+builder.Services.AddPhysicalFileManager("C://ITO");
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()
@@ -62,7 +61,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UsePhysicalFileManagerBrowser("/file-browser");
 app.UseRouting();
 app.UseAuthentication();
 app.UseClaimsDisplay();
@@ -94,10 +93,27 @@ app.MapGet("/files-delete", async (context) =>
 {
     var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    var result = await fileManager.DeleteAsync("vlado/vlado2/test.txt");
+    var result = await fileManager.DeleteAsync("/vlado/vlado2/test.txt");
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);
+});
+
+app.MapGet("/files-enum", async (context) =>
+{
+    var fileManager = context.RequestServices.GetService<IFileManager>();
+
+    var result = await fileManager.EnumerateFilesAsync("vlado/vlado2", "*.txt");
+    var converted = JsonSerializer.Serialize(result);
+
+    await context.Response.WriteAsync(converted);
+});
+
+app.MapGet("/files-test", async (context) =>
+{
+    var fileManager = context.RequestServices.GetService<IWebHostEnvironment>();
+
+    await context.Response.WriteAsync(fileManager.WebRootPath);
 });
 
 app.Run();

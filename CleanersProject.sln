@@ -60,6 +60,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.Extensions.FileProv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileProviders", "FileProviders", "{6510DAF4-34C1-4F28-A709-7D547105BAC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.Extensions.FileProviders.Amazon", "Studens.Extensions.FileProviders.Amazon\Studens.Extensions.FileProviders.Amazon.csproj", "{719BCCDD-8994-4CA7-B2ED-C516D966520E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -150,6 +152,10 @@ Global
 		{5B7F1D13-CBF4-43F4-94F9-064A342E62C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B7F1D13-CBF4-43F4-94F9-064A342E62C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B7F1D13-CBF4-43F4-94F9-064A342E62C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{719BCCDD-8994-4CA7-B2ED-C516D966520E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{719BCCDD-8994-4CA7-B2ED-C516D966520E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{719BCCDD-8994-4CA7-B2ED-C516D966520E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{719BCCDD-8994-4CA7-B2ED-C516D966520E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -181,6 +187,7 @@ Global
 		{D24B0434-426C-400A-AF50-E5912E451345} = {4AC7BD5D-7938-4940-BB59-BCCE4AFA5BAA}
 		{5B7F1D13-CBF4-43F4-94F9-064A342E62C5} = {6510DAF4-34C1-4F28-A709-7D547105BAC3}
 		{6510DAF4-34C1-4F28-A709-7D547105BAC3} = {4AC7BD5D-7938-4940-BB59-BCCE4AFA5BAA}
+		{719BCCDD-8994-4CA7-B2ED-C516D966520E} = {6510DAF4-34C1-4F28-A709-7D547105BAC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F20F244-5BF0-459F-AA50-F3C32A6903E5}

@@ -1,6 +1,5 @@
 ﻿using Ardalis.GuardClauses;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Studens.Commons.Extensions;
 
@@ -10,20 +9,20 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
 {
     #region Fields
 
-    private readonly ILogger<PhysicalFileManager> _logger;
     private readonly FileProviderErrorDescriber _errorDescriber;
+    private readonly FileIOExecutor _fileIOExecutor;
 
     #endregion Fields
 
     #region Ctor
 
     public PhysicalFileManager(IOptions<PhysicalFileManagerOptions> optionsAccessor,
-        ILogger<PhysicalFileManager> logger,
-        FileProviderErrorDescriber? errorDescriber)
-        : base(optionsAccessor.Value.Path)
+        FileProviderErrorDescriber errorDescriber,
+        FileIOExecutor fileIOExecutor)
+        : base(optionsAccessor.Value.RootPath)
     {
-        _logger = logger;
         _errorDescriber = errorDescriber ?? new FileProviderErrorDescriber();
+        _fileIOExecutor = fileIOExecutor;
     }
 
     #endregion Ctor
@@ -40,7 +39,7 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
 
         if (string.IsNullOrEmpty(fullPath))
         {
-            return new FileResult(_errorDescriber.InvalidPath());            
+            return new FileResult(_errorDescriber.InvalidPath());
         }
 
         EnsureDirectoryExists(fullPath);
@@ -56,43 +55,61 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
 
         using var stream = fileInfo.CreateReadStream();
         var bytes = await stream.GetAllBytesAsync(cancellationToken);
-        await File.WriteAllBytesAsync(fullFileName, bytes, cancellationToken);
 
-        return existingFileInfo.Exists && !existingFileInfo.IsDirectory ?
-            FileResult.FileModifiedResult(GetFileInfo(relativeFileName)) :
-            FileResult.FileCreatedResult(GetFileInfo(relativeFileName));
+        Func<FileResult> successResult = existingFileInfo.Exists && !existingFileInfo.IsDirectory ?
+            () => FileResult.FileModifiedResult(GetFileInfo(relativeFileName)) :
+            () => FileResult.FileCreatedResult(GetFileInfo(relativeFileName));
+
+        return await _fileIOExecutor.TryExecuteAsync(
+            ioAction: () => File.WriteAllBytesAsync(fullFileName, bytes, cancellationToken),
+            successResult);
     }
 
     /// <summary>
-    /// TODO: Trim starting trail char ?
+    /// Deletes file at given path.
     /// </summary>
-    /// <param name="filePath"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
+    /// <param name="filePath">File path</param>
+    /// <returns>Operation result</returns>
     public Task<FileResult> DeleteAsync(string filePath)
     {
-        // Avoid throwing ? yes, File.Delete does not throw if file not found
-        if (string.IsNullOrEmpty(filePath))
-        {
-            throw new ArgumentException($"'{nameof(filePath)}' cannot be null or empty.", nameof(filePath));
-        }
-
         var fullFileName = GetFullPath(filePath);
 
         if (string.IsNullOrEmpty(fullFileName))
         {
-            throw new ArgumentException($"'{nameof(filePath)}' cannot be null or empty.", nameof(filePath));
+            return Task.FromResult(FileResult.FileNotFoundResult(filePath));
         }
 
-        File.Delete(fullFileName);
+        return Task.FromResult(_fileIOExecutor.TryExecute(
+            ioAction: () => File.Delete(fullFileName),
+            successResult: () => FileResult.FileDeleteResult()));
+    }
 
-        return Task.FromResult(FileResult.FileDeleteResult());
+    /// <summary>
+    /// Enumerates files in directory at given path.
+    /// </summary>
+    /// <param name="path">Directory path</param>
+    /// <param name="searchPattern">Search pattern</param>
+    /// <param name="topDirectoryOnly">Indicates if only top directory should be enumerated</param>
+    /// <returns>Files</returns>
+    public Task<IEnumerable<string>> EnumerateFilesAsync(string path, string searchPattern, bool topDirectoryOnly = true)
+    {
+        // Return FileOptions ?
+        var fullPath = GetFullPath(path);
+
+        return Task.FromResult(Directory.EnumerateFiles(
+            fullPath,
+            searchPattern,
+            topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories));
     }
 
     #endregion Methods
 
     #region Utils
 
+    /// <summary>
+    /// TODO: Update return type to FileResult and use executor?
+    /// </summary>
+    /// <param name="path">Directory path</param>
     private void EnsureDirectoryExists(string path)
     {
         if (!Directory.Exists(path))

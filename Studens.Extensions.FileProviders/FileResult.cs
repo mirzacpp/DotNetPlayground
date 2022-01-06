@@ -11,7 +11,7 @@ public class FileResult
     {
         OperationStatus = operationStatus;
         File = fileInfo;
-        Success = true;
+        Success = operationStatus != FileOperationStatus.Error && operationStatus != FileOperationStatus.NotFound;
     }
 
     public FileResult(FileProviderError error, Exception? exception = null)
@@ -56,7 +56,13 @@ public class FileResult
     /// <summary>
     /// Returns file unmodified operation result
     /// </summary>
-    public static FileResult FileUnmodifiedResult(IFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);    
+    public static FileResult FileUnmodifiedResult(IFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);
+
+    /// <summary>
+    /// Returns file not found result
+    /// </summary>
+    /// <param name="filePath">File path</param>
+    public static FileResult FileNotFoundResult(string filePath) => new(FileOperationStatus.NotFound, new NotFoundFileInfo(filePath));
 }
 
 /// <summary>
@@ -87,5 +93,10 @@ public enum FileOperationStatus
     /// <summary>
     /// Operation resulted with error
     /// </summary>
-    Error
+    Error,
+
+    /// <summary>
+    /// File not found
+    /// </summary>
+    NotFound
 }

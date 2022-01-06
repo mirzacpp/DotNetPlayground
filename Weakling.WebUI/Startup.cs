@@ -1,6 +1,5 @@
 ﻿using Serilog;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Weakling.WebUI.Configuration;
 
 namespace Weakling.WebUI;
@@ -20,11 +19,11 @@ public class Startup
     {
         services
             .AddControllersWithViews()
-            .AddFeatureFolders()            
+            .AddFeatureFolders()
             .AddAreaFeatureFolders()
             .Services
             //.AddDatabaseDeveloperPageExceptionFilter() Use when db is configured
-            .AddPocoOptions<AppConfig>(nameof(AppConfig), _configuration)            
+            .AddPocoOptions<AppConfig>(nameof(AppConfig), _configuration)
             .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
     }
 
@@ -32,7 +31,7 @@ public class Startup
     {
         app
            // This should be conditional. For more info see https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
-           //.UseHostFiltering() 
+           //.UseHostFiltering()
            .UseIf(_webHostEnvironment.IsDevelopment(), app.UseDeveloperExceptionPage)
            // TODO: Conditional builder with params
            //.UseIf(!_webHostEnvironment.IsDevelopment(), app.UseExceptionHandler("/Home/Error"))
@@ -53,8 +52,8 @@ public class Startup
 
                endpoints.MapGet("testovka", async (context) =>
                {
-                   var logFact = context.RequestServices.GetRequiredService<AppConfig>();                   
-                   var value  = JsonSerializer.Serialize(logFact);
+                   var logFact = context.RequestServices.GetRequiredService<AppConfig>();
+                   var value = JsonSerializer.Serialize(logFact);
                    await context.Response.WriteAsync(value);
                });
            });
