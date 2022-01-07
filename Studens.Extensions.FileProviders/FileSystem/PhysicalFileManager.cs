@@ -5,12 +5,29 @@ using Studens.Commons.Extensions;
 
 namespace Studens.Extensions.FileProviders.FileSystem;
 
-public class PhysicalFileManager : PhysicalFileProvider, IFileManager
+/// <summary>
+/// File system implementation of <see cref="IFileManager"/>
+/// </summary>
+/// <remarks>
+/// <see cref="https://github.com/dotnet/runtime/blob/main/src/libraries/Microsoft.Extensions.FileProviders.Physical/src/PhysicalFileProvider.cs"/>
+/// <see cref="https://github.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/IO/File.cs"/>
+/// </remarks>
+public class PhysicalFileManager : IFileManager
 {
     #region Fields
 
+    private static readonly char[] _pathSeparators = new[]
+            {Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar};
+
+    private string Root { get; init; }
+
     private readonly FileProviderErrorDescriber _errorDescriber;
-    private readonly FileIOExecutor _fileIOExecutor;    
+    private readonly FileIOExecutor _fileIOExecutor;
+
+    /// <summary>
+    /// File provider used for built-in file provider.
+    /// </summary>
+    private readonly IFileProvider _fileProvider;
 
     #endregion Fields
 
@@ -19,8 +36,9 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
     public PhysicalFileManager(IOptions<PhysicalFileManagerOptions> optionsAccessor,
         FileProviderErrorDescriber errorDescriber,
         FileIOExecutor fileIOExecutor)
-        : base(optionsAccessor.Value.RootPath)
     {
+        _fileProvider = new PhysicalFileProvider(optionsAccessor.Value.RootPath);
+        Root = optionsAccessor.Value.RootPath;
         _errorDescriber = errorDescriber ?? new FileProviderErrorDescriber();
         _fileIOExecutor = fileIOExecutor;
     }
@@ -39,7 +57,14 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
     {
         Guard.Against.Null(fileInfo, nameof(fileInfo));
 
-        var path = fileInfo.Path;
+        // Relative paths starting with leading slashes are okay
+        var path = fileInfo.Path.TrimStart(_pathSeparators);
+
+        // Absolute paths not permitted.
+        if (Path.IsPathRooted(path))
+        {
+            return new FileResult(_errorDescriber.InvalidPath());
+        }
 
         var fullPath = GetFullPath(path);
 
@@ -50,7 +75,7 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
 
         EnsureDirectoryExists(fullPath);
         var relativeFileName = Path.Combine(path, fileInfo.Name);
-        IFileInfo existingFileInfo = GetFileInfo(relativeFileName);
+        IFileInfo existingFileInfo = await GetFileInfoAsync(relativeFileName);
 
         if (!fileInfo.OverwriteExisting && existingFileInfo.Exists && !existingFileInfo.IsDirectory)
         {
@@ -62,9 +87,9 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
         using var stream = fileInfo.CreateReadStream();
         var bytes = await stream.GetAllBytesAsync(cancellationToken);
 
-        Func<FileResult> successResult = existingFileInfo.Exists && !existingFileInfo.IsDirectory ?
-            () => FileResult.FileModifiedResult(GetFileInfo(relativeFileName)) :
-            () => FileResult.FileCreatedResult(GetFileInfo(relativeFileName));
+        Func<ValueTask<FileResult>> successResult = existingFileInfo.Exists && !existingFileInfo.IsDirectory ?
+            async () => FileResult.FileModifiedResult(await GetFileInfoAsync(relativeFileName)) :
+            async () => FileResult.FileCreatedResult(await GetFileInfoAsync(relativeFileName));
 
         return await _fileIOExecutor.TryExecuteAsync(
             ioAction: () => File.WriteAllBytesAsync(fullFileName, bytes, cancellationToken),
@@ -106,6 +131,16 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
             fullPath,
             searchPattern,
             topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories));
+    }
+
+    public ValueTask<IFileInfo> GetFileInfoAsync(string filePath)
+    {
+        return ValueTask.FromResult(_fileProvider.GetFileInfo(filePath));
+    }
+
+    public ValueTask<IDirectoryContents> GetDirectoryContentsAsync(string path)
+    {
+        return ValueTask.FromResult(_fileProvider.GetDirectoryContents(path));
     }
 
     #endregion Methods

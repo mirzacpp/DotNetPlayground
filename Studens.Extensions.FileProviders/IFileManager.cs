@@ -5,7 +5,7 @@ namespace Studens.Extensions.FileProviders
     /// <summary>
     /// Extends existing radonly only <see cref="IFileProvider"/> with write operations.
     /// </summary>
-    public interface IFileManager : IFileProvider
+    public interface IFileManager /*: IFileProvider*/
     {
         /// <summary>
         /// Persist file to selected location and then returns it.
@@ -30,5 +30,19 @@ namespace Studens.Extensions.FileProviders
         /// <param name="topDirectoryOnly">Indicates if only top directory should be enumerated</param>
         /// <returns>Files</returns>
         Task<IEnumerable<string>> EnumerateFilesAsync(string path, string searchPattern, bool topDirectoryOnly = true);
+
+        /// <summary>
+        /// Returns file info for given path.
+        /// </summary>
+        /// <param name="path">Relative file path.</param>
+        /// <returns>File info</returns>
+        ValueTask<IFileInfo> GetFileInfoAsync(string path);
+
+        /// <summary>
+        /// Returns all files for a directory at given path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        ValueTask<IDirectoryContents> GetDirectoryContentsAsync(string path);
     }
 }

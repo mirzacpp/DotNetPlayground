@@ -1,10 +1,11 @@
-﻿using Amazon.S3;
+﻿using Amazon.Runtime.Internal;
+using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
+using System.Net;
 
 namespace Studens.Extensions.FileProviders.Amazon;
 
@@ -46,7 +47,7 @@ public class AmazonFileManager : IFileManager
     {
         try
         {
-            var fullPath = GetFullPath(fileInfo.Path);
+            var fullPath = PathUtils.Combine(fileInfo.Path, fileInfo.Name);
             var transferUtility = new TransferUtility(_amazonS3);
             using var stream = fileInfo.CreateReadStream();
 
@@ -61,7 +62,7 @@ public class AmazonFileManager : IFileManager
             await transferUtility.UploadAsync(uploadRequest, cancellationToken);
 
             // Create new file info and return
-            return FileResult.FileCreatedResult(new AmazonFileInfo(fullPath));
+            return FileResult.FileCreatedResult(new AmazonFileInfo(GetObjectUrl(fullPath), DateTimeOffset.UtcNow, fileInfo.Length));
         }
         catch (AmazonS3Exception ex)
         {
@@ -82,7 +83,7 @@ public class AmazonFileManager : IFileManager
             return FileResult.FileNotFoundResult(filePath);
         }
 
-        var fullPath = GetFullPath(filePath);
+        var fullPath = GetObjectUrl(filePath);
 
         try
         {
@@ -118,32 +119,60 @@ public class AmazonFileManager : IFileManager
         throw new NotImplementedException();
     }
 
-    /// <inheritdoc/>
-    /// <remarks>
-    ///
-    /// </remarks>
-    public IFileInfo GetFileInfo(string subpath)
+    ///<inheritdoc/>
+    public async ValueTask<IFileInfo> GetFileInfoAsync(string path)
     {
-        //var fullPath = GetFullPath(subpath);
+        // Absolute paths not permitted.
+        if (Path.IsPathRooted(path))
+        {
+            return new NotFoundFileInfo(path);
+        }
 
-        //var request = new GetObjectMetadataRequest
-        //{
-        //    BucketName = _options.BucketName,
-        //    Key = fullPath
-        //};
+        var request = new GetObjectMetadataRequest
+        {
+            BucketName = _options.BucketName,
+            Key = path
+        };
 
-        //using var response = _amazonS3.GetObjectMetadataAsync(request);
+        try
+        {
+            var response = await _amazonS3.GetObjectMetadataAsync(request);
 
-        return null;
+            if (response is null)
+            {
+                return new NotFoundFileInfo(path);
+            }
+
+            return new AmazonFileInfo(GetObjectUrl(path), response.LastModified, response.ContentLength);
+        }
+        catch (HttpErrorResponseException ex)
+        {
+            throw;
+        }
+        catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            // Log
+            return new NotFoundFileInfo(path);
+        }
+    }
+
+    public ValueTask<IDirectoryContents> GetDirectoryContentsAsync(string path)
+    {
+        throw new NotImplementedException();
     }
 
     /// <inheritdoc/>
-    public IChangeToken Watch(string filter) => NullChangeToken.Singleton;
+    //public IChangeToken Watch(string filter) => NullChangeToken.Singleton;
 
     /// <summary>
     /// Combines amazon root path directory with given subpath
     /// </summary>
     /// <param name="path">Subpath</param>
     /// <returns>Absolute path</returns>
-    private string GetFullPath(string path) => Path.Combine(_options.RootPath, path);
+    private string GetObjectUrl(string path)
+    {
+        // GEnerate URL based on access type
+        // Public url
+        return _options.PublicAccessUrlPrefix + path;
+    }
 }

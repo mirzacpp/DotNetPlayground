@@ -8,15 +8,17 @@ namespace Studens.Extensions.FileProviders.Amazon;
 /// </summary>
 public class AmazonFileInfo : IFileInfo
 {
-    public AmazonFileInfo(string path)
+    public AmazonFileInfo(string path, DateTimeOffset lastModified, long length)
     {
         PhysicalPath = path;
+        LastModified = lastModified;
+        Length = length;
         Name = Path.GetFileName(path);
     }
 
     public bool Exists => true;
 
-    public long Length => -1;
+    public long Length { get; init; }
 
     /// <summary>
     /// Object URL
@@ -25,7 +27,7 @@ public class AmazonFileInfo : IFileInfo
 
     public string Name { get; init; }
 
-    public DateTimeOffset LastModified => DateTime.MinValue;
+    public DateTimeOffset LastModified { get; init; }
 
     public bool IsDirectory => false;
 

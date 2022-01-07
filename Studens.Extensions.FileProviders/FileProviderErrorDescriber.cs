@@ -3,6 +3,9 @@
 /// <summary>
 /// Represents a service used to localize errors occured in file provider.
 /// </summary>
+/// <remarks>
+/// TODO: Add extenion method to replace error describer with custom type
+/// </remarks>
 public class FileProviderErrorDescriber
 {
     public virtual FileProviderError DefaultError() => new()

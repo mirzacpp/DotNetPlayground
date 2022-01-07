@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Options;
 using Studens.AspNetCore.Identity;
 using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
@@ -37,7 +35,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 }, ServiceLifetime.Scoped);
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddPhysicalFileManager("C://ITO");
+//builder.Services.AddPhysicalFileManager("C://ITO");
+builder.Services.AddAmazonFileManager(options =>
+{
+    options.RootPath = "";
+    options.BucketName = "test.ito.dev/test";
+});
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()
@@ -61,7 +64,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UsePhysicalFileManagerBrowser("/file-browser");
+//app.UsePhysicalFileManagerBrowser("/file-browser");
 app.UseRouting();
 app.UseAuthentication();
 app.UseClaimsDisplay();
@@ -103,17 +106,20 @@ app.MapGet("/files-enum", async (context) =>
 {
     var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    var result = await fileManager.EnumerateFilesAsync("vlado/vlado2", "*.txt");
+    var result = await fileManager.GetDirectoryContentsAsync("vlado/vlado2");
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);
 });
 
-app.MapGet("/files-test", async (context) =>
+app.MapGet("/files-info", async (context) =>
 {
-    var fileManager = context.RequestServices.GetService<IWebHostEnvironment>();
+    var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    await context.Response.WriteAsync(fileManager.WebRootPath);
+    var result = await fileManager.GetFileInfoAsync("vlado/vlado2/test2.txt");
+    var converted = JsonSerializer.Serialize(result);
+
+    await context.Response.WriteAsync(converted);
 });
 
 app.Run();

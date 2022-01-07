@@ -50,6 +50,9 @@ public class PersistFileInfo : IFileInfo
 
     public string? PhysicalPath => null!;
 
+    /// <summary>
+    /// File name with extension
+    /// </summary>
     public string Name { get; }
 
     public DateTimeOffset LastModified { get; }

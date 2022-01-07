@@ -2,15 +2,29 @@
 
 public class AmazonFileManagerOptions
 {
+    public AmazonFileManagerOptions()
+    {
+        // We need to access region used for credentials
+        PublicAccessUrlPrefix = $"https://s3.eu-central-1.amazonaws.com/test.ito.dev/test/";
+    }
+
     /// <summary>
     /// Amazon bucket
     /// </summary>
-    public string BucketName { get; set; } = default!;
+    public string BucketName { get; set; }
 
     /// <summary>
-    /// Root path to resolve other directories
+    /// Remove and use bucket as a root directory.
     /// </summary>
 
-    [Obsolete("Use root path and introduce base FileManagerOptions type?")]
+    [Obsolete("Remove and use bucket as a root directory.")]
     public string RootPath { get; set; } = default!;
+
+    /// <summary>
+    /// This prop is used to build full URL to public object
+    /// </summary>
+    public string PublicAccessUrlPrefix { get; private set; }
+
+    public string AccessKeyId { get; set; }
+    public string SecretAccessKey { get; set; }
 }

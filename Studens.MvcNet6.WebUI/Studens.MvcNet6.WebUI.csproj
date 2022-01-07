@@ -23,6 +23,7 @@
     <ProjectReference Include="..\Studens.AspNetCore.Mvc.UI\Studens.AspNetCore.Mvc.UI.csproj" />
     <ProjectReference Include="..\Studens.AspNetCore.Mvc\Studens.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
+    <ProjectReference Include="..\Studens.Extensions.FileProviders.Amazon\Studens.Extensions.FileProviders.Amazon.csproj" />
     <ProjectReference Include="..\Studens.Extensions.FileProviders\Studens.Extensions.FileProviders.csproj" />
   </ItemGroup>
 

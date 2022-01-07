@@ -81,12 +81,12 @@ public sealed class FileIOExecutor
     /// <param name="ioAction">IO action task</param>
     /// <param name="successResult">Result to return if operation was successful</param>
     /// <returns>File result</returns>
-    public async Task<FileResult> TryExecuteAsync(Func<Task> ioAction, Func<FileResult> successResult)
+    public async Task<FileResult> TryExecuteAsync(Func<Task> ioAction, Func<ValueTask<FileResult>> successResult)
     {
         try
         {
             await ioAction();
-            return successResult();
+            return await successResult();
         }
         catch (FileNotFoundException ex)
         {
