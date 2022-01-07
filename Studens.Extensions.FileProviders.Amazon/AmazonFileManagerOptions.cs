@@ -2,8 +2,15 @@
 
 public class AmazonFileManagerOptions
 {
-    public string BucketName { get; set; }
+    /// <summary>
+    /// Amazon bucket
+    /// </summary>
+    public string BucketName { get; set; } = default!;
+
+    /// <summary>
+    /// Root path to resolve other directories
+    /// </summary>
 
     [Obsolete("Use root path and introduce base FileManagerOptions type?")]
-    public string DomainPrefix { get; set; }
+    public string RootPath { get; set; } = default!;
 }

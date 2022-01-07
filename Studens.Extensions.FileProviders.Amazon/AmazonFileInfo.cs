@@ -8,17 +8,26 @@ namespace Studens.Extensions.FileProviders.Amazon;
 /// </summary>
 public class AmazonFileInfo : IFileInfo
 {
+    public AmazonFileInfo(string path)
+    {
+        PhysicalPath = path;
+        Name = Path.GetFileName(path);
+    }
+
     public bool Exists => true;
 
     public long Length => -1;
 
-    public string PhysicalPath => throw new NotImplementedException();
+    /// <summary>
+    /// Object URL
+    /// </summary>
+    public string PhysicalPath { get; init; }
 
-    public string Name => throw new NotImplementedException();
+    public string Name { get; init; }
 
-    public DateTimeOffset LastModified => throw new NotImplementedException();
+    public DateTimeOffset LastModified => DateTime.MinValue;
 
-    public bool IsDirectory => throw new NotImplementedException();
+    public bool IsDirectory => false;
 
     [DoesNotReturn]
     public Stream CreateReadStream()

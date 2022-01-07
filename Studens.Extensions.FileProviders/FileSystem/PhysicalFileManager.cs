@@ -10,7 +10,7 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
     #region Fields
 
     private readonly FileProviderErrorDescriber _errorDescriber;
-    private readonly FileIOExecutor _fileIOExecutor;
+    private readonly FileIOExecutor _fileIOExecutor;    
 
     #endregion Fields
 
@@ -29,6 +29,12 @@ public class PhysicalFileManager : PhysicalFileProvider, IFileManager
 
     #region Methods
 
+    /// <summary>
+    /// Persist file to selected location and then returns it.
+    /// </summary>
+    /// <param name="fileInfo"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Operation result</returns>
     public async Task<FileResult> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
     {
         Guard.Against.Null(fileInfo, nameof(fileInfo));
