@@ -15,7 +15,7 @@ namespace Studens.Extensions.FileProviders.Amazon;
 /// <remarks>
 /// <see cref="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html"/>
 /// </remarks>
-public class AmazonFileManager : IFileManager
+public class AmazonFileManager : IFileManager<AmazonPersistFileInfo>
 {
     private readonly AmazonFileManagerOptions _options;
     private readonly IAmazonS3 _amazonS3;
@@ -43,7 +43,7 @@ public class AmazonFileManager : IFileManager
     /// See <see cref="https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpu-upload-object.html"/>
     /// TODO: There are some useful stuff in <see cref="TransferUtilityUploadRequest"/> like tags, metadata etc.
     /// </remarks>
-    public async Task<FileResult> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
+    public async Task<FileResult> SaveAsync(AmazonPersistFileInfo fileInfo, CancellationToken cancellationToken = default)
     {
         try
         {
@@ -56,13 +56,13 @@ public class AmazonFileManager : IFileManager
                 InputStream = stream,
                 Key = fullPath,
                 BucketName = _options.BucketName,
-                CannedACL = S3CannedACL.PublicRead
-            };
+                CannedACL = fileInfo.CannedACL,
+            };            
 
             await transferUtility.UploadAsync(uploadRequest, cancellationToken);
 
             // Create new file info and return
-            return FileResult.FileCreatedResult(new AmazonFileInfo(GetObjectUrl(fullPath), DateTimeOffset.UtcNow, fileInfo.Length));
+            return FileResult.FileCreatedResult(new AmazonFileInfo(GetObjectUrl(fullPath, true), DateTimeOffset.UtcNow, fileInfo.Length));
         }
         catch (AmazonS3Exception ex)
         {
@@ -83,7 +83,7 @@ public class AmazonFileManager : IFileManager
             return FileResult.FileNotFoundResult(filePath);
         }
 
-        var fullPath = GetObjectUrl(filePath);
+        var fullPath = GetObjectUrl(filePath, true);
 
         try
         {
@@ -109,9 +109,58 @@ public class AmazonFileManager : IFileManager
         }
     }
 
-    public Task<IEnumerable<string>> EnumerateFilesAsync(string directoryPath, string searchPattern, bool topDirectoryOnly = true)
+    /// <summary>
+    /// TODO: Finish implementation
+    /// <see cref="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html"/>
+    /// </summary>
+    /// <param name="directoryPath"></param>
+    /// <param name="searchPattern"></param>
+    /// <param name="topDirectoryOnly"></param>
+    /// <returns></returns>
+    public async Task<IEnumerable<string>> EnumerateFilesAsync(string directoryPath, string searchPattern, bool topDirectoryOnly = true)
     {
-        throw new NotImplementedException();
+        if (directoryPath.StartsWith('/'))
+        {
+            directoryPath = directoryPath.TrimStart('/');
+        }
+
+        try
+        {
+            var request = new ListObjectsV2Request
+            {
+                BucketName = _options.BucketName,
+                //MaxKeys = 10,
+                //Delimiter = "/",
+                Prefix = "vlado/"
+            };
+            ListObjectsV2Response response;
+            var objects = new List<string>();
+
+            do
+            {
+                // Pass cancellation token
+                response = await _amazonS3.ListObjectsV2Async(request);
+
+                foreach (var @object in response.S3Objects)
+                {
+                    objects.Add(@object.Key);
+                }
+
+                request.ContinuationToken = response.NextContinuationToken;
+            } while (response.IsTruncated);
+
+            return objects;
+        }
+        catch (AmazonS3Exception amazonS3Exception)
+        {
+            Console.WriteLine("S3 error occurred. Exception: " + amazonS3Exception.ToString());
+            return Enumerable.Empty<string>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.ToString());
+            return Enumerable.Empty<string>();
+        }
     }
 
     public IDirectoryContents GetDirectoryContents(string subpath)
@@ -143,7 +192,7 @@ public class AmazonFileManager : IFileManager
                 return new NotFoundFileInfo(path);
             }
 
-            return new AmazonFileInfo(GetObjectUrl(path), response.LastModified, response.ContentLength);
+            return new AmazonFileInfo(GetObjectUrl(path, true), response.LastModified, response.ContentLength);
         }
         catch (HttpErrorResponseException ex)
         {
@@ -168,11 +217,24 @@ public class AmazonFileManager : IFileManager
     /// Combines amazon root path directory with given subpath
     /// </summary>
     /// <param name="path">Subpath</param>
+    /// <param name="isPublic">Indicates whether this object is allowed for public read.</param>
     /// <returns>Absolute path</returns>
-    private string GetObjectUrl(string path)
+    private string GetObjectUrl(string path, bool isPublic)
     {
-        // GEnerate URL based on access type
-        // Public url
-        return _options.PublicAccessUrlPrefix + path;
+        // We do not have to use s3 method for public reads.
+        if (isPublic)
+        {
+            return _options.PublicAccessUrlPrefix + path;
+        }
+
+        var urlRequest = new GetPreSignedUrlRequest
+        {
+            BucketName = _options.BucketName,
+            Key = path,
+            Expires = DateTime.Now.AddMinutes(15), // Move to options
+            Protocol = Protocol.HTTPS
+        };
+
+        return _amazonS3.GetPreSignedURL(urlRequest);
     }
 }

@@ -36,4 +36,6 @@ public class AmazonFileInfo : IFileInfo
     {
         throw new NotSupportedException("File content cannot be opened as a stream.");
     }
+
+    public override string ToString() => $"File '{Name}' with size of {Length} bytes.";
 }

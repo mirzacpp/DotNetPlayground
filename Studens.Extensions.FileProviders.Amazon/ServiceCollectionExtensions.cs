@@ -17,13 +17,13 @@ public static class ServiceCollectionExtensions
         Guard.Against.Null(services, nameof(services));
         Guard.Against.Null(optionsAction, nameof(optionsAction));
 
+        services.Configure(optionsAction);
         // Validate credentials... and throw if not present
-        var awsCredentials = new BasicAWSCredentials("AKIA5OYXIOXZ6HJ6YNYE", "Ss69Uhi0voo+ofLZGP3dEU4pqDdAaaU5uV9s/C8p");
+        var awsCredentials = new BasicAWSCredentials("", "");
 
         services.AddSingleton<IAmazonS3>(new AmazonS3Client(awsCredentials, RegionEndpoint.EUCentral1));
-        services.AddScoped<IFileManager, AmazonFileManager>();
+        services.AddScoped<IFileManager<AmazonPersistFileInfo>, AmazonFileManager>();
         services.AddScoped<FileProviderErrorDescriber>();
-        services.Configure(optionsAction);
 
         return services;
     }

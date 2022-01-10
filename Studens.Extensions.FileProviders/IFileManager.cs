@@ -5,7 +5,7 @@ namespace Studens.Extensions.FileProviders
     /// <summary>
     /// Extends existing radonly only <see cref="IFileProvider"/> with write operations.
     /// </summary>
-    public interface IFileManager /*: IFileProvider*/
+    public interface IFileManager<TPersistFileInfo> where TPersistFileInfo : IFileInfo
     {
         /// <summary>
         /// Persist file to selected location and then returns it.
@@ -13,7 +13,7 @@ namespace Studens.Extensions.FileProviders
         /// <param name="fileInfo"></param>
         /// <param name="cancellationToken"></param>
         /// <returns>Operation result</returns>
-        Task<FileResult> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default);
+        Task<FileResult> SaveAsync(TPersistFileInfo fileInfo, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes file at given path.

@@ -3,7 +3,7 @@
 namespace Studens.Extensions.FileProviders;
 
 /// <summary>
-/// Represents file info used for persistance
+/// Represents base file info used for persistance
 /// </summary>
 public class PersistFileInfo : IFileInfo
 {

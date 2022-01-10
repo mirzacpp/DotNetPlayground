@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Studens.AspNetCore.Identity;
 using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
-using Studens.Commons.Extensions;
 using Studens.Extensions.FileProviders;
 using Studens.MvcNet6.WebUI.Data;
 using System.Text.Json;
@@ -40,6 +39,8 @@ builder.Services.AddAmazonFileManager(options =>
 {
     options.RootPath = "";
     options.BucketName = "test.ito.dev/test";
+    options.AccessKeyId = builder.Configuration["AmazonOptions:AccessKeyId"];
+    options.SecretAccessKey = builder.Configuration["AmazonOptions:SecretAccessKey"];
 });
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
@@ -81,12 +82,12 @@ app.MapControllerRoute(
 
 app.MapGet("/files", async (context) =>
 {
-    var fileManager = context.RequestServices.GetService<IFileManager>();
+    var fileManager = context.RequestServices.GetService<IFileManager<Amazon>();
     var fileName = Path.Combine(Directory.GetCurrentDirectory(), "upload.txt");
     using var fs = File.OpenRead(fileName);
     var bytes = fs.GetAllBytes();
 
-    var result = await fileManager.SaveAsync(new PersistFileInfo(bytes, "tests.txt", "vlado/vlado2", false));
+    var result = await fileManager.SaveAsync(new PersistFileInfo(bytes, "tests2.txt", "vlado/vlado2", false));
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);
@@ -96,7 +97,7 @@ app.MapGet("/files-delete", async (context) =>
 {
     var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    var result = await fileManager.DeleteAsync("/vlado/vlado2/test.txt");
+    var result = await fileManager.DeleteAsync("/vlado/vlado2/test2.txt");
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);
@@ -106,7 +107,7 @@ app.MapGet("/files-enum", async (context) =>
 {
     var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    var result = await fileManager.GetDirectoryContentsAsync("vlado/vlado2");
+    var result = await fileManager.EnumerateFilesAsync("vlado/vlado2", "*", true);
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);
@@ -116,7 +117,7 @@ app.MapGet("/files-info", async (context) =>
 {
     var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    var result = await fileManager.GetFileInfoAsync("vlado/vlado2/test2.txt");
+    var result = await fileManager.GetFileInfoAsync("vlado/vlado2/tests.txt");
     var converted = JsonSerializer.Serialize(result);
 
     await context.Response.WriteAsync(converted);

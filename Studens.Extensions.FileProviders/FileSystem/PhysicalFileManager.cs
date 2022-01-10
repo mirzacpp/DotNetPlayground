@@ -12,7 +12,7 @@ namespace Studens.Extensions.FileProviders.FileSystem;
 /// <see cref="https://github.com/dotnet/runtime/blob/main/src/libraries/Microsoft.Extensions.FileProviders.Physical/src/PhysicalFileProvider.cs"/>
 /// <see cref="https://github.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/IO/File.cs"/>
 /// </remarks>
-public class PhysicalFileManager : IFileManager
+public class PhysicalFileManager : IFileManager<PersistFileInfo>
 {
     #region Fields
 
