@@ -1,7 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.FileProviders.Physical;
 using Microsoft.Extensions.Options;
-using Studens.Commons.Extensions;
 
 namespace Studens.Extensions.FileProviders.FileSystem;
 
@@ -11,8 +11,11 @@ namespace Studens.Extensions.FileProviders.FileSystem;
 /// <remarks>
 /// <see cref="https://github.com/dotnet/runtime/blob/main/src/libraries/Microsoft.Extensions.FileProviders.Physical/src/PhysicalFileProvider.cs"/>
 /// <see cref="https://github.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/IO/File.cs"/>
+/// <see cref="https://docs.microsoft.com/en-us/dotnet/api/system.io.file?view=net-6.0"/>
+/// <see cref="https://docs.microsoft.com/en-us/dotnet/api/system.io.directory?view=net-6.0"/>
 /// </remarks>
-public class PhysicalFileManager : IFileManager<PersistFileInfo>
+public class PhysicalFileManager : IFileManager<PhysicalFileInfo, PersistFileInfo>
+
 {
     #region Fields
 
@@ -53,7 +56,7 @@ public class PhysicalFileManager : IFileManager<PersistFileInfo>
     /// <param name="fileInfo"></param>
     /// <param name="cancellationToken"></param>
     /// <returns>Operation result</returns>
-    public async Task<FileResult> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
+    public async Task<FileResult<PhysicalFileInfo>> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
     {
         Guard.Against.Null(fileInfo, nameof(fileInfo));
 
@@ -63,7 +66,7 @@ public class PhysicalFileManager : IFileManager<PersistFileInfo>
         // Absolute paths not permitted.
         if (Path.IsPathRooted(path))
         {
-            return new FileResult(_errorDescriber.InvalidPath());
+            return new FileResult<PhysicalFileInfo>(_errorDescriber.InvalidPath());
         }
 
         var fullPath = GetFullPath(path);

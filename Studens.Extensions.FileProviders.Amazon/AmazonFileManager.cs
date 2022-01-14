@@ -14,6 +14,7 @@ namespace Studens.Extensions.FileProviders.Amazon;
 /// </summary>
 /// <remarks>
 /// <see cref="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html"/>
+/// <see cref="https://stackoverflow.com/questions/9944671/amazon-s3-creating-folder-through-net-sdk-vs-through-management-console"/>
 /// </remarks>
 public class AmazonFileManager : IFileManager<AmazonPersistFileInfo>
 {

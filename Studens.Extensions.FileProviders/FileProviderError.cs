@@ -5,6 +5,12 @@
     /// </summary>
     public class FileProviderError
     {
+        public FileProviderError(string code, string description)
+        {
+            Code = code;
+            Description = description;
+        }
+
         /// <summary>
         /// Gets or sets the code for this error.
         /// </summary>

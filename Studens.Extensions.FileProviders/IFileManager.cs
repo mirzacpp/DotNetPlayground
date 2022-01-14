@@ -3,9 +3,13 @@
 namespace Studens.Extensions.FileProviders
 {
     /// <summary>
-    /// Extends existing radonly only <see cref="IFileProvider"/> with write operations.
+    /// Represents file managing abstractions.
     /// </summary>
-    public interface IFileManager<TPersistFileInfo> where TPersistFileInfo : IFileInfo
+    /// <typeparam name="TPersistFileInfo">Type of the persistance file</typeparam>
+    /// <typeparam name="TFileInfo">Type of the return file info</typeparam>
+    public interface IFileManager<TFileInfo, TPersistFileInfo>
+        where TPersistFileInfo : IFileInfo
+        where TFileInfo : IFileInfo
     {
         /// <summary>
         /// Persist file to selected location and then returns it.
@@ -13,7 +17,7 @@ namespace Studens.Extensions.FileProviders
         /// <param name="fileInfo"></param>
         /// <param name="cancellationToken"></param>
         /// <returns>Operation result</returns>
-        Task<FileResult> SaveAsync(TPersistFileInfo fileInfo, CancellationToken cancellationToken = default);
+        Task<FileResult<TFileInfo>> SaveAsync(TPersistFileInfo fileInfo, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes file at given path.

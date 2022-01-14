@@ -4,7 +4,6 @@ using Studens.AspNetCore.Identity;
 using Studens.AspNetCore.Mvc.Filters;
 using Studens.MvcNet6.WebUI.Models;
 using System.Diagnostics;
-using System.Net;
 
 namespace Studens.MvcNet6.WebUI.Controllers
 {
@@ -31,7 +30,7 @@ namespace Studens.MvcNet6.WebUI.Controllers
         {
             var users = await _roleManager.GetAsync(0, 100, "Ad");
 
-            return Json(users);
+            return View();
         }
 
         [HttpPost]

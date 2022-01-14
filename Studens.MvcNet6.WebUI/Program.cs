@@ -80,47 +80,47 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapGet("/files", async (context) =>
-{
-    var fileManager = context.RequestServices.GetService<IFileManager<Amazon>();
-    var fileName = Path.Combine(Directory.GetCurrentDirectory(), "upload.txt");
-    using var fs = File.OpenRead(fileName);
-    var bytes = fs.GetAllBytes();
+//app.MapGet("/files", async (context) =>
+//{
+//    var fileManager = context.RequestServices.GetService<IFileManager<Amazon>();
+//    var fileName = Path.Combine(Directory.GetCurrentDirectory(), "upload.txt");
+//    using var fs = File.OpenRead(fileName);
+//    var bytes = fs.GetAllBytes();
 
-    var result = await fileManager.SaveAsync(new PersistFileInfo(bytes, "tests2.txt", "vlado/vlado2", false));
-    var converted = JsonSerializer.Serialize(result);
+//    var result = await fileManager.SaveAsync(new PersistFileInfo(bytes, "tests2.txt", "vlado/vlado2", false));
+//    var converted = JsonSerializer.Serialize(result);
 
-    await context.Response.WriteAsync(converted);
-});
+//    await context.Response.WriteAsync(converted);
+//});
 
-app.MapGet("/files-delete", async (context) =>
-{
-    var fileManager = context.RequestServices.GetService<IFileManager>();
+//app.MapGet("/files-delete", async (context) =>
+//{
+//    var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    var result = await fileManager.DeleteAsync("/vlado/vlado2/test2.txt");
-    var converted = JsonSerializer.Serialize(result);
+//    var result = await fileManager.DeleteAsync("/vlado/vlado2/test2.txt");
+//    var converted = JsonSerializer.Serialize(result);
 
-    await context.Response.WriteAsync(converted);
-});
+//    await context.Response.WriteAsync(converted);
+//});
 
-app.MapGet("/files-enum", async (context) =>
-{
-    var fileManager = context.RequestServices.GetService<IFileManager>();
+//app.MapGet("/files-enum", async (context) =>
+//{
+//    var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    var result = await fileManager.EnumerateFilesAsync("vlado/vlado2", "*", true);
-    var converted = JsonSerializer.Serialize(result);
+//    var result = await fileManager.EnumerateFilesAsync("vlado/vlado2", "*", true);
+//    var converted = JsonSerializer.Serialize(result);
 
-    await context.Response.WriteAsync(converted);
-});
+//    await context.Response.WriteAsync(converted);
+//});
 
-app.MapGet("/files-info", async (context) =>
-{
-    var fileManager = context.RequestServices.GetService<IFileManager>();
+//app.MapGet("/files-info", async (context) =>
+//{
+//    var fileManager = context.RequestServices.GetService<IFileManager>();
 
-    var result = await fileManager.GetFileInfoAsync("vlado/vlado2/tests.txt");
-    var converted = JsonSerializer.Serialize(result);
+//    var result = await fileManager.GetFileInfoAsync("vlado/vlado2/tests.txt");
+//    var converted = JsonSerializer.Serialize(result);
 
-    await context.Response.WriteAsync(converted);
-});
+//    await context.Response.WriteAsync(converted);
+//});
 
 app.Run();
