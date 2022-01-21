@@ -16,6 +16,9 @@ https://github.com/aspnetrun/run-aspnetcore
 https://aspnetboilerplate.com/Pages/Documents/Introduction
 https://github.com/Dotnet-Boxed/ (# Template)
 https://github.com/louthy/language-ext
+https://github.com/MoienTajik/AspNetCore-Developer-Roadmap (ROADMAP)
+https://github.com/zzzprojects/Z.ExtensionMethods (EXTENSIONS)
+https://github.com/bharatdwarkani/awesome-libraries-to-build-sass-application-dotnet-core (LIBRARIES)
 ASP NET CORE SAMPLES: 
 https://github.com/dodyg/practical-aspnetcore/issues
 https://github.com/aspnet/Entropy
@@ -133,6 +136,8 @@ https://www.stevejgordon.co.uk/creating-strings-with-no-allocation-overhead-usin
 https://andrewlock.net/aligning-strings-within-string-format-and-interpolated-strings/
 https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/ (.NET6)
 https://mattwarren.org/2019/04/25/ASCII-Art-in-.NET-Code/
+https://www.youtube.com/watch?v=24D7u3y3mhI&ab_channel=NickChapsas (.NET6,
+https://github.com/dotnet/runtime/issues/50601)
 }
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -156,8 +161,10 @@ https://exceptionnotfound.net/const-vs-static-vs-readonly-in-c-sharp-application
 https://www.stum.de/2009/01/14/const-strings-a-very-convenient-way-to-shoot-yourself-in-the-foot/
 Enum perf: https://www.youtube.com/watch?v=BoE5Y6Xkm6w
 }
+CLI {
+https://www.youtube.com/watch?v=JNDgcBDZPkU&ab_channel=NickChapsas
 }
-
+}
 ASP.NET CORE {
 Samples {
 HOSTING {
@@ -218,6 +225,7 @@ https://gunnarpeipman.com/aspnet-core-notepad-logger/
 https://blog.stephencleary.com/2020/06/a-new-pattern-for-exception-logging.html
 https://docs.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator
 https://andrewlock.net/exploring-dotnet-6-part-8-improving-logging-performance-with-source-generators/
+https://github.com/thepirat000/Audit.NET
 SERILOG {
 https://nblumhardt.com/2020/10/bootstrap-logger/
 https://app.pluralsight.com/library/courses/serilog-enrichers-getting-info-into-log-entries/table-of-contents
@@ -406,7 +414,7 @@ https://devblogs.microsoft.com/dotnet/introducing-c-source-generators/
 VERSIONING {
 https://edi.wang/post/2018/9/27/get-app-version-net-core
 }
-Performanse {
+PERFORMANSE {
 https://www.stevejgordon.co.uk/writing-high-performance-csharp-and-dotnet-code
 https://www.youtube.com/watch?v=NVWQRbqcXJ4
 https://www.youtube.com/watch?v=nK54s84xRRs
@@ -414,6 +422,7 @@ https://medium.com/@noomerzx/the-easiest-way-to-benchmarking-your-server-with-bo
 https://mattwarren.org/2017/12/15/How-does-.NET-JIT-a-method-and-Tiered-Compilation/
 https://michaelscodingspot.com/avoid-gc-pressure/
 https://www.tabsoverspaces.com/233833-best-way-to-create-an-empty-collection-array-and-list-in-csharp-net
+https://docs.microsoft.com/en-us/dotnet/csharp/write-safe-efficient-code
 PROFILING {
 https://devblogs.microsoft.com/visualstudio/analyze-cpu-memory-while-debugging/
 }
@@ -422,6 +431,7 @@ https://www.stevejgordon.co.uk/analysing-the-large-object-heap-in-jetbrains-dotm
 https://adamsitnik.com/Array-Pool/
 https://www.philosophicalgeek.com/2015/02/06/announcing-microsoft-io-recycablememorystream/
 https://csharp.christiannagel.com/2017/05/31/arraypool/#comments
+https://www.youtube.com/watch?v=jONSIhMST9E&ab_channel=NickChapsas (DATA TYPES ALLOCATIONS)
 }
 }
 RUNTIME {
@@ -630,6 +640,7 @@ Immutable: https://www.youtube.com/watch?v=O89-zG84QK4&ab_channel=DotNext (#)
 
 KOLEKCIJE {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
+https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/guidelines-for-collections?redirectedfrom=MSDN
 https://code-maze.com/csharp-async-enumerable-yield/
 }
 
