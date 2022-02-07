@@ -1,16 +1,13 @@
-﻿using Microsoft.Extensions.FileProviders;
-
-namespace Studens.Extensions.FileProviders;
+﻿namespace Studens.Extensions.FileProviders;
 
 /// <summary>
 /// Represents an file result
 /// </summary>
 public class FileResult
 {
-    public FileResult(FileOperationStatus operationStatus, IFileInfo? fileInfo = null)
+    public FileResult(FileOperationStatus operationStatus)
     {
         OperationStatus = operationStatus;
-        File = fileInfo;
         Success = operationStatus != FileOperationStatus.Error && operationStatus != FileOperationStatus.NotFound;
     }
 
@@ -23,8 +20,6 @@ public class FileResult
     }
 
     public bool Success { get; }
-
-    public IFileInfo? File { get; }
 
     public FileOperationStatus OperationStatus { get; }
 
@@ -46,87 +41,69 @@ public class FileResult
     /// <summary>
     /// Returns file created operation result
     /// </summary>
-    public static FileResult FileCreatedResult(IFileInfo fileInfo) => new(FileOperationStatus.Created, fileInfo);
+    public static FileResult<TFileInfo> FileCreatedResult<TFileInfo>(TFileInfo fileInfo) => new(FileOperationStatus.Created, fileInfo);
 
     /// <summary>
     /// Returns file modified operation result
     /// </summary>
-    public static FileResult FileModifiedResult(IFileInfo fileInfo) => new(FileOperationStatus.Modified, fileInfo);
+    public static FileResult<TFileInfo> FileModifiedResult<TFileInfo>(TFileInfo fileInfo) => new(FileOperationStatus.Modified, fileInfo);
 
     /// <summary>
     /// Returns file unmodified operation result
     /// </summary>
-    public static FileResult FileUnmodifiedResult(IFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);
+    public static FileResult<TFileInfo> FileUnmodifiedResult<TFileInfo>(TFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);
 
     /// <summary>
     /// Returns file not found result
     /// </summary>
     /// <param name="filePath">File path</param>
-    public static FileResult FileNotFoundResult(string filePath) => new(FileOperationStatus.NotFound, new NotFoundFileInfo(filePath));
+    public static FileResult FileNotFoundResult(string filePath) => new(FileOperationStatus.NotFound);
 }
 
 /// <summary>
 /// Represents an generic file result
 /// </summary>
 /// <typeparam name="TFileInfo">Type of model to return</typeparam>
-public class FileResult<TFileInfo> where TFileInfo : IFileInfo
+public class FileResult<TFileInfo> : FileResult
 {
-    public FileResult(FileOperationStatus operationStatus, TFileInfo fileInfo)
+    protected internal FileResult(FileOperationStatus operationStatus, TFileInfo fileInfo)
+        : base(operationStatus)
     {
-        OperationStatus = operationStatus;
-        File = fileInfo;
-        Success = operationStatus != FileOperationStatus.Error && operationStatus != FileOperationStatus.NotFound;
+        _fileInfo = fileInfo;
     }
 
-    public FileResult(FileProviderError error, Exception? exception = null)
-    {
-        Error = error;
-        Exception = exception;
-        Success = false;
-        OperationStatus = FileOperationStatus.Error;
-    }
+    private TFileInfo _fileInfo;
 
-    public bool Success { get; }
-
-    public TFileInfo File { get; }
-
-    public FileOperationStatus OperationStatus { get; }
-
-    /// <summary>
-    /// Error that occured in file operation
-    /// </summary>
-    public FileProviderError? Error { get; }
-
-    /// <summary>
-    /// Exception that occured in file operation
-    /// </summary>
-    public Exception? Exception { get; }
+    public TFileInfo File => Success ? _fileInfo : throw new Exception("Cannot access file when status is not success.");
 
     /// <summary>
     /// Returns file deleted operation result
     /// </summary>
-    public static FileResult FileDeleteResult() => new(FileOperationStatus.Deleted);
+    //public static FileResult<TFileInfo> FileDeleteResult() => new(FileOperationStatus.Deleted, NotFoundFileInfo);
 
     /// <summary>
     /// Returns file created operation result
     /// </summary>
-    public static FileResult FileCreatedResult(TFileInfo fileInfo) => new(FileOperationStatus.Created, fileInfo);
+    //public static FileResult<TFileInfo> FileCreatedResult(TFileInfo fileInfo) => new(FileOperationStatus.Created, fileInfo);
 
     /// <summary>
     /// Returns file modified operation result
     /// </summary>
-    public static FileResult FileModifiedResult(TFileInfo fileInfo) => new(FileOperationStatus.Modified, fileInfo);
+    //public static FileResult<TFileInfo> FileModifiedResult(TFileInfo fileInfo) => new(FileOperationStatus.Modified, fileInfo);
 
     /// <summary>
     /// Returns file unmodified operation result
     /// </summary>
-    public static FileResult FileUnmodifiedResult(TFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);
+    //public static FileResult<TFileInfo> FileUnmodifiedResult(TFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);
 
     /// <summary>
     /// Returns file not found result
     /// </summary>
     /// <param name="filePath">File path</param>
-    public static FileResult FileNotFoundResult(string filePath) => new(FileOperationStatus.NotFound, new NotFoundFileInfo(filePath));
+    //public static FileResult<TFileInfo> FileNotFoundResult(string filePath)
+    //{
+    //    return new(FileOperationStatus.NotFound, default!);
+    //}
 }
 
 /// <summary>
