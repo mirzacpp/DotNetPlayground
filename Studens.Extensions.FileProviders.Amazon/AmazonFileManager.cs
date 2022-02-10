@@ -44,7 +44,7 @@ public class AmazonFileManager : IFileManager<AmazonFileInfo, AmazonPersistFileI
     /// See <see cref="https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpu-upload-object.html"/>
     /// TODO: There are some useful stuff in <see cref="TransferUtilityUploadRequest"/> like tags, metadata etc.
     /// </remarks>
-    public async Task<FileResult> SaveAsync(AmazonPersistFileInfo fileInfo, CancellationToken cancellationToken = default)
+    public async Task<FileResult<AmazonFileInfo>> SaveAsync(AmazonPersistFileInfo fileInfo, CancellationToken cancellationToken = default)
     {
         try
         {
