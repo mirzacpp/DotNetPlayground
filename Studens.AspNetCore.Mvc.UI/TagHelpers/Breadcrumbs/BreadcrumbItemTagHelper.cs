@@ -62,6 +62,8 @@ public class BreadcrumbItemTagHelper : TagHelper
 
     #endregion Methods
 
+    #region Utils
+
     private string GetInnerHtml(TagHelperContext context, TagHelperOutput output)
     {
         if (string.IsNullOrWhiteSpace(Href))
@@ -76,4 +78,6 @@ public class BreadcrumbItemTagHelper : TagHelper
 
         return link.ToHtmlString();
     }
+
+    #endregion Utils
 }

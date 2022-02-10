@@ -40,13 +40,6 @@ namespace Studens.Extensions.FileProviders
         /// </summary>
         /// <param name="path">Relative file path.</param>
         /// <returns>File info</returns>
-        ValueTask<IFileInfo> GetFileInfoAsync(string path);
-
-        /// <summary>
-        /// Returns all files for a directory at given path.
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        ValueTask<IDirectoryContents> GetDirectoryContentsAsync(string path);
+        ValueTask<TFileInfo> GetFileInfoAsync(string path);        
     }
 }

@@ -28,6 +28,7 @@ https://github.com/DamianEdwards/MinimalApiPlayground
 }
 
 Blogs {
+https://jeremybytes.blogspot.com/
 https://www.ryadel.com/en/author/ryan/
 http://blog.freakcode.com/
 https://blog.sapiensworks.com/
@@ -110,6 +111,13 @@ https://dunnhq.com/
 https://blog.paranoidcoding.com
 https://devblogs.microsoft.com/premier-developer/author/seteplia/
  https://www.youtube.com/channel/UCw6BnEkURLprFGx_il2OyUw (#)
+}
+
+KONCEPTI
+{
+https://exceptionnotfound.net/csharp-in-simple-terms-9-inheritance-and-polymorphism/
+https://exceptionnotfound.net/csharp-in-simple-terms-10-interfaces-and-abstract-classes/
+https://jeremybytes.blogspot.com/2020/10/abstract-classes-vs-interfaces-in-c.html (Prati linkove)
 }
 
 Span i memory {
