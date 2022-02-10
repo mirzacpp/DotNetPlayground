@@ -15,7 +15,6 @@ namespace Studens.Extensions.FileProviders.FileSystem;
 /// <see cref="https://docs.microsoft.com/en-us/dotnet/api/system.io.directory?view=net-6.0"/>
 /// </remarks>
 public class PhysicalFileManager : IFileManager<PhysicalFileInfo, PersistFileInfo>
-
 {
     #region Fields
 
@@ -73,16 +72,18 @@ public class PhysicalFileManager : IFileManager<PhysicalFileInfo, PersistFileInf
 
         if (string.IsNullOrEmpty(fullPath))
         {
-            return new FileResult(_errorDescriber.InvalidPath());
+            return new FileResult<PhysicalFileInfo>(_errorDescriber.InvalidPath());
         }
 
         EnsureDirectoryExists(fullPath);
         var relativeFileName = Path.Combine(path, fileInfo.Name);
-        IFileInfo existingFileInfo = await GetFileInfoAsync(relativeFileName);
+        var existingFileInfo = await GetFileInfoAsync(relativeFileName);
 
         if (!fileInfo.OverwriteExisting && existingFileInfo.Exists && !existingFileInfo.IsDirectory)
         {
-            return FileResult.FileUnmodifiedResult(existingFileInfo);
+            //return new FileResult<PhysicalFileInfo>(FileOperationStatus.Unmodified, existingFileInfo);
+
+            return FileResult.FileUnmodifiedResult<PhysicalFileInfo>(new PhysicalFileInfo(existingFileInfo));
         }
 
         var fullFileName = Path.Combine(fullPath, fileInfo.Name);
@@ -129,6 +130,8 @@ public class PhysicalFileManager : IFileManager<PhysicalFileInfo, PersistFileInf
     {
         // Return FileOptions ?
         var fullPath = GetFullPath(path);
+
+        // If path null, return empty collection
 
         return Task.FromResult(Directory.EnumerateFiles(
             fullPath,

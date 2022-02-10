@@ -159,6 +159,7 @@ https://www.youtube.com/watch?v=uFHtFOmH2OI
 https://blog.paranoidcoding.com/2019/04/08/string-vs-String-is-not-about-style.html
 https://exceptionnotfound.net/const-vs-static-vs-readonly-in-c-sharp-applications/
 https://www.stum.de/2009/01/14/const-strings-a-very-convenient-way-to-shoot-yourself-in-the-foot/
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions
 Enum perf: https://www.youtube.com/watch?v=BoE5Y6Xkm6w
 }
 CLI {
@@ -174,6 +175,9 @@ https://edi.wang/post/2021/2/3/aspnet-core-50-throughput-test-in-kestrel-iis-ngi
 https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
 https://marketplace.visualstudio.com/items?itemName=vs-publisher-1448185.ConveyorbyKeyoti&ssr=false#review-details
 https://khalidabuhakmeh.com/adding-clarity-to-dotnet-minimal-hosting
+STARTUP {
+https://www.strathweb.com/2020/02/asp-net-core-mvc-3-x-addmvc-addmvccore-addcontrollers-and-other-bootstrapping-approaches/
+}
 }
 ObjectPool {
 https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0
@@ -181,6 +185,7 @@ https://developpaper.com/detailed-explanation-of-object-pools-various-usages-in-
 }
 RAZOR {
 https://devblogs.microsoft.com/visualstudio/introducing-the-new-razor-editor-in-visual-studio-2022/
+https://stackoverflow.com/questions/50778521/how-to-disable-precompiled-views-in-net-core-2-1-net-5-for-debugging
 }
 Api Versioning {
 https://gingter.org/2018/06/18/asp-net-core-api-versioning/
@@ -236,6 +241,9 @@ Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 https://andrewlock.net/understanding-your-middleware-pipeline-with-the-middleware-analysis-package/
 https://andrewlock.net/inserting-middleware-between-userouting-and-useendpoints-as-a-library-author-part-1/
+INDEPENDENT PIPELINES {
+https://www.strathweb.com/2017/04/running-multiple-independent-asp-net-core-pipelines-side-by-side-in-the-same-application/
+}
 }
 HTTPCLIENT {
 https://josefottosson.se/you-are-probably-still-using-httpclient-wrong-and-it-is-destabilizing-your-software/
@@ -253,27 +261,25 @@ Json
 https://codeburst.io/working-with-json-in-net-core-3-2fd1236126c1
 302 vs 301
 http://www.dotnetbull.com/2013/08/301-permanent-vs-302-temporary-status-code-aspnet-csharp-Implementation.html
-VIEWS 
+VIEWS/RENDERING
 https://gunnarpeipman.com/aspnet-core-compile-modified-views/
 https://github.com/aspnet/Entropy/tree/master/samples/Mvc.RenderViewToString
 https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-using-ASPNET-Core-that-can-be-used-in-the-c-controlle-7173969632
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEntityFrameworkDbGeographySpatialTypes.aspx
 https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
+DEFERED RENDERING{
+https://github.com/dotnet/aspnetcore/blob/93c377011976312d999167da149189953b06322d/src/Mvc/test/WebSites/TagHelpersWebSite/Views/Home/Index.cshtml
+}
+https://github.com/ridercz/Altairis.RazorPages.EditorTemplates
+https://www.codeproject.com/Articles/1079909/ASP-NET-MVC-Partial-Views-with-Partial-Models
+https://github.com/soundaranbu/RazorTemplating
+https://khalidabuhakmeh.com/htmx-and-aspnet-core-swapping-techniques
 Email: {
 https://scottsauber.com/2018/07/07/walkthrough-creating-an-html-email-template-with-razor-and-razor-class-libraries-and-rendering-it-from-a-net-standard-class-library/
 https://ethereal.email/
 https://codewithmukesh.com/blog/send-emails-with-aspnet-core/
 https://scottsauber.com/2018/07/07/walkthrough-creating-an-html-email-template-with-razor-and-razor-class-libraries-and-rendering-it-from-a-net-standard-class-library/
-}
-Auth
-CONTENT RENDERING {
-https://github.com/ridercz/Altairis.RazorPages.EditorTemplates
-https://www.codeproject.com/Articles/1079909/ASP-NET-MVC-Partial-Views-with-Partial-Models
-https://github.com/soundaranbu/RazorTemplating
-AJAX{
-https://khalidabuhakmeh.com/htmx-and-aspnet-core-swapping-techniques
-}
 }
 AUTH {
 https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in-asp-net-core/
@@ -477,6 +483,7 @@ MediatR {
 https://jonhilton.net/2016/08/31/how-to-easily-extend-your-app-using-mediatr-notifications/
 https://ardalis.com/using-mediatr-in-aspnet-core-apps
 https://dotnetcoretutorials.com/2019/04/30/the-mediator-pattern-in-net-core-part-1-whats-a-mediator/
+https://www.youtube.com/watch?v=baiH3f_TFfY&ab_channel=NickChapsas (PERF)
 }
 System.Collections.Generic Namespace {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
@@ -488,6 +495,7 @@ https://www.nimaara.com/high-resolution-clock-in-net/
 https://www.hackcraft.net/web/datetime/#uri
 https://zachholman.com/talk/utc-is-enough-for-everyone-right
 https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/#time-zone-conversion-apis
+https://ardalis.com/why-use-datetimeoffset/
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
@@ -709,6 +717,7 @@ JMETER: https://jmeter.apache.org/
 
 JS/JQUERY {
 https://modernweb.com/5-things-stop-jquery/
+https://www.paulirish.com/2010/duck-punching-with-jquery/
 }
 
 EXTENSIONS {

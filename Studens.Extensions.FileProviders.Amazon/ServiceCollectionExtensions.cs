@@ -20,7 +20,7 @@ public static class ServiceCollectionExtensions
         services.Configure(optionsAction);
         // Validate credentials... and throw if not present
         var awsCredentials = new BasicAWSCredentials("", "");
-
+        
         services.AddSingleton<IAmazonS3>(new AmazonS3Client(awsCredentials, RegionEndpoint.EUCentral1));
         services.AddScoped<IFileManager<AmazonPersistFileInfo>, AmazonFileManager>();
         services.AddScoped<FileProviderErrorDescriber>();
