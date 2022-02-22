@@ -276,6 +276,7 @@ https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-usi
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEntityFrameworkDbGeographySpatialTypes.aspx
 https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
+https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
 DEFERED RENDERING{
 https://github.com/dotnet/aspnetcore/blob/93c377011976312d999167da149189953b06322d/src/Mvc/test/WebSites/TagHelpersWebSite/Views/Home/Index.cshtml
 }
@@ -319,7 +320,8 @@ IFileProviders {
 https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
 https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at-Runtime-in-RazorPages
-}
+
+}https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
 Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
 ROUTING {
@@ -360,6 +362,7 @@ https://www.cloudwards.net/what-is-webdav/
 }
 CONTROLLERS {
 https://andrewlock.net/post-redirect-get-using-tempdata-in-asp-net-core/
+https://github.com/aspnet/Entropy/tree/master/samples/Mvc.GenericControllers
 }
 FILTERS {
 https://www.andybutland.dev/2020/06/dependency-injection-in-aspnet-core-attributes.html
@@ -470,6 +473,7 @@ https://medium.com/@bharatdwarkani/top-10-code-quality-static-analysers-for-asp-
 Cache {
 https://blog.novanet.no/asp-net-core-memory-cache-is-get-or-create-thread-safe/
 https://www.hanselman.com/blog/eyes-wide-open-correct-caching-is-always-hard
+https://en.algorithmica.org/hpc/cpu-cache/associativity/
 }
 Host Startup errors {
 https://github.com/aspnet/EntityFrameworkCore/issues/12331
