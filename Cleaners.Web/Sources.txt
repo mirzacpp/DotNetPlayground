@@ -391,6 +391,7 @@ https://benjii.me/2018/01/expression-projection-magic-entity-framework-core/
 https://docs.microsoft.com/en-us/ef/core/modeling/backing-field?tabs=data-annotations
 https://exceptionnotfound.net/integers-vs-guids-the-great-primary-key-debate/
 https://www.thereformedprogrammer.net/building-asp-net-core-and-ef-core-multi-tenant-apps-part1-the-database/
+https://www.youtube.com/watch?v=p1EMNZm15C8&ab_channel=HassanHabib
 Drop PK:https://github.com/dotnet/efcore/issues/2100
 https://weblogs.asp.net/dixin/entity-framework-core-and-linq-to-entities-4-query-methods-7
 Subqueries N+1 problem
@@ -584,6 +585,7 @@ https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancel
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/october/asynchronous-programming-async-performance-understanding-the-costs-of-async-and-await
 https://medium.com/@deep_blue_day/long-story-short-async-await-best-practices-in-net-1f39d7d84050
 https://markheath.net/post/constraining-concurrent-threads-csharp
+https://www.dotnetcurry.com/dotnet/1360/concurrent-programming-dotnet-core
 https://app.pluralsight.com/library/courses/getting-started-with-asynchronous-programming-dotnet/table-of-contents
 https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-5-asyncsemaphore/
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/february/msdn-magazine-parallel-computing-it-s-all-about-the-synchronizationcontext
