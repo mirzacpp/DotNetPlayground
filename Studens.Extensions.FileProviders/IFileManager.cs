@@ -8,7 +8,7 @@ namespace Studens.Extensions.FileProviders
     /// <typeparam name="TPersistFileInfo">Type of the persistance file</typeparam>
     /// <typeparam name="TFileInfo">Type of the return file info</typeparam>
     public interface IFileManager<TFileInfo, TPersistFileInfo>
-        where TPersistFileInfo : IFileInfo
+        where TPersistFileInfo : PersistFileInfoBase
         where TFileInfo : IFileInfo
     {
         /// <summary>

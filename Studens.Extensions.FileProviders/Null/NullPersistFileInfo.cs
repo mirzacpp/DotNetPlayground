@@ -1,24 +1,18 @@
-﻿using Microsoft.Extensions.FileProviders;
+﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Studens.Extensions.FileProviders.Null
+namespace Studens.Extensions.FileProviders.Null;
+
+/// <summary>
+/// Null persist file info
+/// </summary>
+public class NullPersistFileInfo : PersistFileInfoBase
 {
-    public class NullPersistFileInfo : IFileInfo
+    public NullPersistFileInfo()
+        : base(Array.Empty<byte>(), string.Empty, string.Empty, false)
     {
-        public bool Exists => throw new NotImplementedException();
-
-        public long Length => throw new NotImplementedException();
-
-        public string PhysicalPath => throw new NotImplementedException();
-
-        public string Name => throw new NotImplementedException();
-
-        public DateTimeOffset LastModified => throw new NotImplementedException();
-
-        public bool IsDirectory => throw new NotImplementedException();
-
-        public Stream CreateReadStream()
-        {
-            throw new NotImplementedException();
-        }
     }
+
+    [DoesNotReturn]
+    public override Stream CreateReadStream() =>
+        throw new NotSupportedException("Null persist file info cannot be read.");
 }

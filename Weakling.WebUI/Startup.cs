@@ -24,7 +24,7 @@ public class Startup
             .Services
             //.AddDatabaseDeveloperPageExceptionFilter() Use when db is configured
             .AddPocoOptions<AppConfig>(nameof(AppConfig), _configuration)
-            .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
+            .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);        
     }
 
     public virtual void Configure(IApplicationBuilder app)

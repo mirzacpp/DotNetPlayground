@@ -530,6 +530,7 @@ http://thingsihateaboutmicrosoft.blogspot.com/2009/08/pathcombine-is-essentially
 https://volosoft.com/blog/File-Upload-Download-with-BLOB-Storage-in-ASP.NET-Core-and-ABP
 https://jonskeet.uk/csharp/readbinary.html
 https://josef.codes/sorting-really-large-files-with-c-sharp/
+https://www.meziantou.net/simplifying-path-manipulations-with-the-fullpath-type.htm
 }
 BUNDLING: {
 https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/

@@ -14,7 +14,7 @@ namespace Studens.Extensions.FileProviders.FileSystem;
 /// <see cref="https://docs.microsoft.com/en-us/dotnet/api/system.io.file?view=net-6.0"/>
 /// <see cref="https://docs.microsoft.com/en-us/dotnet/api/system.io.directory?view=net-6.0"/>
 /// </remarks>
-public class PhysicalFileManager : IFileManager<PhysicalFileInfo, PersistFileInfo>
+public class PhysicalFileManager : FileManagerBase<PhysicalFileInfo, PersistFileInfo>
 {
     #region Fields
 
