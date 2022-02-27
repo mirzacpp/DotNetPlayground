@@ -5,6 +5,7 @@ namespace Studens.AspNetCore.Mvc.Cookies;
 
 /// <summary>
 /// Default cookie manager implementation
+/// TODO: Add service collection extension methods for registration
 /// </summary>
 public class CookieManager : ICookieManager
 {
