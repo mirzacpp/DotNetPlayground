@@ -24,7 +24,10 @@ https://github.com/dodyg/practical-aspnetcore/issues
 https://github.com/aspnet/Entropy
 https://github.com/abpframework/abp-samples
 https://github.com/OrchardCMS/OrchardCore
+Minimal API {
+https://www.youtube.com/watch?v=z32_7KgCr6c&ab_channel=NickChapsas
 https://github.com/DamianEdwards/MinimalApiPlayground
+}
 }
 
 Blogs {
@@ -132,6 +135,7 @@ https://codinghelmet.com/articles/from-dispose-pattern-to-auto-disposable-object
 http://reedcopsey.com/2009/03/28/idisposable-part-1-releasing-unmanaged-resources/
 http://reedcopsey.com/2009/03/30/idisposable-part-2-subclass-from-an-idisposable-class/
 https://stackoverflow.com/questions/151051/when-should-i-use-gc-suppressfinalize
+https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose
 }
 
 TEXT {
@@ -276,6 +280,7 @@ https://dotnetstories.com/blog/Generate-a-HTML-string-from-cshtml-razor-view-usi
 https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEntityFrameworkDbGeographySpatialTypes.aspx
 https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
+https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
 DEFERED RENDERING{
 https://github.com/dotnet/aspnetcore/blob/93c377011976312d999167da149189953b06322d/src/Mvc/test/WebSites/TagHelpersWebSite/Views/Home/Index.cshtml
 }
@@ -319,7 +324,8 @@ IFileProviders {
 https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
 https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at-Runtime-in-RazorPages
-}
+
+}https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
 Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
 ROUTING {
@@ -360,6 +366,7 @@ https://www.cloudwards.net/what-is-webdav/
 }
 CONTROLLERS {
 https://andrewlock.net/post-redirect-get-using-tempdata-in-asp-net-core/
+https://github.com/aspnet/Entropy/tree/master/samples/Mvc.GenericControllers
 }
 FILTERS {
 https://www.andybutland.dev/2020/06/dependency-injection-in-aspnet-core-attributes.html
@@ -388,6 +395,8 @@ https://benjii.me/2018/01/expression-projection-magic-entity-framework-core/
 https://docs.microsoft.com/en-us/ef/core/modeling/backing-field?tabs=data-annotations
 https://exceptionnotfound.net/integers-vs-guids-the-great-primary-key-debate/
 https://www.thereformedprogrammer.net/building-asp-net-core-and-ef-core-multi-tenant-apps-part1-the-database/
+https://www.youtube.com/watch?v=p1EMNZm15C8&ab_channel=HassanHabib
+https://github.com/borisdj/EFCore.BulkExtensions (Bulk operations)
 Drop PK:https://github.com/dotnet/efcore/issues/2100
 https://weblogs.asp.net/dixin/entity-framework-core-and-linq-to-entities-4-query-methods-7
 Subqueries N+1 problem
@@ -470,6 +479,7 @@ https://medium.com/@bharatdwarkani/top-10-code-quality-static-analysers-for-asp-
 Cache {
 https://blog.novanet.no/asp-net-core-memory-cache-is-get-or-create-thread-safe/
 https://www.hanselman.com/blog/eyes-wide-open-correct-caching-is-always-hard
+https://en.algorithmica.org/hpc/cpu-cache/associativity/
 }
 Host Startup errors {
 https://github.com/aspnet/EntityFrameworkCore/issues/12331
@@ -519,6 +529,7 @@ https://www.meziantou.net/don-t-use-method-with-side-effect-in-linq.htm
 http://www.scip.be/index.php?Page=ArticlesNET23
 https://alicebobandmallory.com/articles/2012/10/18/merge-collections-without-duplicates-in-c
 https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/introduction-to-plinq
+https://www.albahari.com/nutshell/10linqmyths.aspx
 Dynamic https://github.com/alirezanet/Gridify/
 COOL: https://github.com/dotnet/aspnetcore/blob/6427d9cc718f8093c506b62b6fd12544411b477f/src/Http/Http.Features/src/IHeaderDictionary.Keyed.cs
 http://nessos.github.io/LinqOptimizer/
@@ -581,6 +592,7 @@ https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancel
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/october/asynchronous-programming-async-performance-understanding-the-costs-of-async-and-await
 https://medium.com/@deep_blue_day/long-story-short-async-await-best-practices-in-net-1f39d7d84050
 https://markheath.net/post/constraining-concurrent-threads-csharp
+https://www.dotnetcurry.com/dotnet/1360/concurrent-programming-dotnet-core
 https://app.pluralsight.com/library/courses/getting-started-with-asynchronous-programming-dotnet/table-of-contents
 https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-5-asyncsemaphore/
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/february/msdn-magazine-parallel-computing-it-s-all-about-the-synchronizationcontext
@@ -589,7 +601,9 @@ https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
 https://www.meziantou.net/links-async-await-csharp.htm
 }
 THREADING {
+albahari.com/threading/
 http://www.albahari.com/threading/part5.aspx#_SpinLock_and_SpinWait
+https://www.linkedin.com/pulse/c-threading-tasks-async-code-synchronization-part-4-meikopoulos
 }
 
 GARBAGE COLLECTION {
