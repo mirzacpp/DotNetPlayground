@@ -218,6 +218,7 @@ https://docs.fluentvalidation.net/en/latest/localization.html
 https://dejanstojanovic.net/aspnet/2020/april/validate-configurations-with-fluentvalidation-in-aspnet-core/
 https://enterprisecraftsmanship.com/posts/always-valid-domain-model/
 https://enterprisecraftsmanship.com/posts/advanced-error-handling-techniques/
+https://medium.com/hackernoon/the-100-correct-way-to-validate-email-addresses-7c4818f24643 (EMAIL)
 }
 Headers {
 https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-headers-asp-net-core/
