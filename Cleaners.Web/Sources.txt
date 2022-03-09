@@ -31,6 +31,7 @@ https://github.com/DamianEdwards/MinimalApiPlayground
 }
 
 Blogs {
+https://philosopherdeveloper.com/
 https://jeremybytes.blogspot.com/
 https://www.ryadel.com/en/author/ryan/
 http://blog.freakcode.com/
@@ -148,8 +149,9 @@ https://www.stevejgordon.co.uk/creating-strings-with-no-allocation-overhead-usin
 https://andrewlock.net/aligning-strings-within-string-format-and-interpolated-strings/
 https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/ (.NET6)
 https://mattwarren.org/2019/04/25/ASCII-Art-in-.NET-Code/
-https://www.youtube.com/watch?v=24D7u3y3mhI&ab_channel=NickChapsas (.NET6,
+https://www.youtube.com/watch?v=24D7u3y3mhI&ab_channel=NickChapsas (.NET6
 https://github.com/dotnet/runtime/issues/50601)
+https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/#comments
 }
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -634,6 +636,7 @@ https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tip
 https://blog.ploeh.dk/2014/05/19/conforming-container/
 https://blog.ploeh.dk/2014/05/19/di-friendly-library/
 https://jimmybogard.com/constrained-open-generics-support-merged-in-net-core-di-container/
+https://www.youtube.com/watch?v=nqvnqzRNBls&ab_channel=NickChapsas
 Auto registration
 https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/
 }
@@ -674,6 +677,10 @@ KOLEKCIJE {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
 https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/guidelines-for-collections?redirectedfrom=MSDN
 https://code-maze.com/csharp-async-enumerable-yield/
+}
+DIAGNOSTICS/DEBUGGING {
+https://devblogs.microsoft.com/visualstudio/debugging-external-sources-with-visual-studio/
+https://www.youtube.com/watch?v=ErrABoJ9HZw&ab_channel=NickChapsas
 }
 
 Benchmarking {
