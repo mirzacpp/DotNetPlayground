@@ -32,6 +32,10 @@
 
 using Studens.Net6.ConsoleUI;
 
-LeetCode.RunPalindromeProblem();
+LeetCode.RunLengthOfLastWordProblem();
+
+//var str = "Hello a sd   world ";
+//Console.WriteLine("Hello a sd   world ".LastIndexOf(' '));
+
 
 Console.ReadLine();

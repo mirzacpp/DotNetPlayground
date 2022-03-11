@@ -521,6 +521,7 @@ https://ardalis.com/why-use-datetimeoffset/
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
 https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core
+https://github.com/tmenier/Flurl (Wrapper)
 }
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
