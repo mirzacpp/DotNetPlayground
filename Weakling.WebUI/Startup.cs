@@ -20,7 +20,8 @@ public class Startup
         services
             .AddControllersWithViews()
             .AddFeatureFolders()
-            .AddAreaFeatureFolders()
+            .AddAreaFeatureFolders()            
+            .AddApplicationPart(typeof(Startup).Assembly)
             .Services
             //.AddDatabaseDeveloperPageExceptionFilter() Use when db is configured
             .AddPocoOptions<AppConfig>(nameof(AppConfig), _configuration)

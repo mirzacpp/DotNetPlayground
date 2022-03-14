@@ -327,8 +327,12 @@ IFileProviders {
 https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
 https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at-Runtime-in-RazorPages
+https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
+}
+SHARED LIBRARIES {
+https://andrewlock.net/when-asp-net-core-cant-find-your-controller-debugging-application-parts/
+}
 
-}https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
 Comma and point on form validation
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
 ROUTING {
@@ -374,7 +378,7 @@ https://github.com/aspnet/Entropy/tree/master/samples/Mvc.GenericControllers
 FILTERS {
 https://www.andybutland.dev/2020/06/dependency-injection-in-aspnet-core-attributes.html
 }
-TESTS {
+STRESS TESTING {
 https://www.youtube.com/watch?v=r-Jte8Y8zag
 https://github.com/tmenier/Flurl
 }
