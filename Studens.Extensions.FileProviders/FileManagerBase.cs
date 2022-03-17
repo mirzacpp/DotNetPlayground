@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.FileProviders;
-
-namespace Studens.Extensions.FileProviders;
+﻿namespace Studens.Extensions.FileProviders;
 
 /// <summary>
 /// Base implementation for file management.
@@ -8,7 +6,7 @@ namespace Studens.Extensions.FileProviders;
 public abstract class FileManagerBase<TFileInfo, TPersistFileInfo>
     : IFileManager<TFileInfo, TPersistFileInfo>
     where TPersistFileInfo : PersistFileInfoBase
-    where TFileInfo : IFileInfo
+    where TFileInfo : IFile
 {
     public abstract Task<FileResult<TFileInfo>> SaveAsync(TPersistFileInfo fileInfo, CancellationToken cancellationToken = default);
 
