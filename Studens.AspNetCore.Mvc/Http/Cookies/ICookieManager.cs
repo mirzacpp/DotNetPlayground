@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Studens.AspNetCore.Mvc.Cookies;
+namespace Studens.AspNetCore.Mvc.Http.Cookies;
 
 /// <summary>
 /// Defines methods for cookies collection manipualtion.

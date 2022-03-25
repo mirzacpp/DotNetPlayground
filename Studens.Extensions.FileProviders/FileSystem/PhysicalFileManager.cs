@@ -1,6 +1,5 @@
 ﻿using Ardalis.GuardClauses;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.FileProviders.Physical;
 using Microsoft.Extensions.Options;
 
 namespace Studens.Extensions.FileProviders.FileSystem;
@@ -14,7 +13,7 @@ namespace Studens.Extensions.FileProviders.FileSystem;
 /// <see cref="https://docs.microsoft.com/en-us/dotnet/api/system.io.file?view=net-6.0"/>
 /// <see cref="https://docs.microsoft.com/en-us/dotnet/api/system.io.directory?view=net-6.0"/>
 /// </remarks>
-public class PhysicalFileManager : FileManagerBase<PhysicalFileInfo, PersistFileInfo>
+public class PhysicalFileManager : FileManagerBase<PhysicalFile, PersistFileInfo>
 {
     #region Fields
 
@@ -55,35 +54,35 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFileInfo, PersistFile
     /// <param name="fileInfo"></param>
     /// <param name="cancellationToken"></param>
     /// <returns>Operation result</returns>
-    public async Task<FileResult<PhysicalFileInfo>> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
+    public override async Task<FileResult<PhysicalFile>> SaveAsync(PersistFileInfo fileInfo, CancellationToken cancellationToken = default)
     {
         Guard.Against.Null(fileInfo, nameof(fileInfo));
 
         // Relative paths starting with leading slashes are okay
-        var path = fileInfo.Path.TrimStart(_pathSeparators);
+        var path = fileInfo.Subpath.TrimStart(_pathSeparators);
 
         // Absolute paths not permitted.
         if (Path.IsPathRooted(path))
         {
-            return new FileResult<PhysicalFileInfo>(_errorDescriber.InvalidPath());
+            return FileResult<PhysicalFile>.ErrorResult(_errorDescriber.InvalidPath());
+
+            //return new FileResult<PhysicalFile>(_errorDescriber.InvalidPath());
         }
 
         var fullPath = GetFullPath(path);
 
         if (string.IsNullOrEmpty(fullPath))
         {
-            return new FileResult<PhysicalFileInfo>(_errorDescriber.InvalidPath());
+            return new FileResult(_errorDescriber.InvalidPath());
         }
 
         EnsureDirectoryExists(fullPath);
         var relativeFileName = Path.Combine(path, fileInfo.Name);
-        var existingFileInfo = await GetFileInfoAsync(relativeFileName);
+        var existingFileInfo = GetFileInfoInternal(relativeFileName);
 
         if (!fileInfo.OverwriteExisting && existingFileInfo.Exists && !existingFileInfo.IsDirectory)
         {
-            //return new FileResult<PhysicalFileInfo>(FileOperationStatus.Unmodified, existingFileInfo);
-
-            return FileResult.FileUnmodifiedResult<PhysicalFileInfo>(new PhysicalFileInfo(existingFileInfo));
+            return FileResult.FileUnmodifiedResult(new PhysicalFile(existingFileInfo));
         }
 
         var fullFileName = Path.Combine(fullPath, fileInfo.Name);
@@ -105,7 +104,7 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFileInfo, PersistFile
     /// </summary>
     /// <param name="filePath">File path</param>
     /// <returns>Operation result</returns>
-    public Task<FileResult> DeleteAsync(string filePath)
+    public override Task<FileResult> DeleteAsync(string filePath)
     {
         var fullFileName = GetFullPath(filePath);
 
@@ -126,7 +125,7 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFileInfo, PersistFile
     /// <param name="searchPattern">Search pattern</param>
     /// <param name="topDirectoryOnly">Indicates if only top directory should be enumerated</param>
     /// <returns>Files</returns>
-    public Task<IEnumerable<string>> EnumerateFilesAsync(string path, string searchPattern, bool topDirectoryOnly = true)
+    public override Task<IEnumerable<string>> EnumerateFilesAsync(string path, string searchPattern, bool topDirectoryOnly = true)
     {
         // Return FileOptions ?
         var fullPath = GetFullPath(path);
@@ -139,7 +138,7 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFileInfo, PersistFile
             topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories));
     }
 
-    public ValueTask<IFileInfo> GetFileInfoAsync(string filePath)
+    public override ValueTask<PhysicalFile> GetFileInfoAsync(string filePath)
     {
         return ValueTask.FromResult(_fileProvider.GetFileInfo(filePath));
     }
@@ -194,6 +193,11 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFileInfo, PersistFile
     }
 
     private bool IsUnderneathRoot(string fullPath) => fullPath.StartsWith(Root, StringComparison.OrdinalIgnoreCase);
+
+    private IFileInfo GetFileInfoInternal(string filePath)
+    {
+        return _fileProvider.GetFileInfo(filePath);
+    }
 
     #endregion Utils
 }

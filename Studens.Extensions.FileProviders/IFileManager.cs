@@ -9,7 +9,7 @@ namespace Studens.Extensions.FileProviders
     /// <typeparam name="TFileInfo">Type of the return file info</typeparam>
     public interface IFileManager<TFileInfo, TPersistFileInfo>
         where TPersistFileInfo : PersistFileInfoBase
-        where TFileInfo : IFileInfo
+        where TFileInfo : IFile
     {
         /// <summary>
         /// Persist file to selected location and then returns it.

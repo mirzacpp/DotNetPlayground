@@ -124,6 +124,57 @@
             }
         }
 
+        public static void RunShuffledArrayProblem()
+        {
+            var testCases = new List<int[]>
+            {
+               new[] { 2, 5, 4, 8 }
+            };
+
+            static int[] GetShuffledArray(int[] array)
+            {
+                var random = new Random();
+                var len = array.Length - 1;
+
+                for (int i = 0; i <= len; i++)
+                {
+                    var randomIndex = random.Next(i == len ? i : i + 1, array.Length);
+
+                    var cpy = array[i];
+                    array[i] = array[randomIndex];
+                    array[randomIndex] = cpy;
+                }
+
+                return array;
+            }
+
+            foreach (var test in testCases)
+            {
+                Console.WriteLine($"Shuffled array for [{string.Join(", ", test)}] is  [{string.Join(", ", GetShuffledArray(test))}]");
+            }
+        }
+
+        public static void RunLengthOfLastWordProblem()
+        {
+            var testCases = new List<string>
+            {
+               "Hello world",
+               "Hello a  sd   w sd world      ",
+            };           
+
+            static int lengthOfLastWord(string s)
+            {
+                s = s.TrimEnd();               
+                var lastSpaceIndex = s.LastIndexOf(' ');
+                return s.Substring(lastSpaceIndex + 1).Length;                
+            }
+
+            foreach (var test in testCases)
+            {
+                Console.WriteLine($"Length of the last word is {lengthOfLastWord(test)} characters.");
+            }
+        }        
+
         public static void RunShuffleStringProblem()
         {
             var testCases = new Dictionary<string, int[]>

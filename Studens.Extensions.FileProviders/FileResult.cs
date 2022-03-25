@@ -58,52 +58,31 @@ public class FileResult
     /// </summary>
     /// <param name="filePath">File path</param>
     public static FileResult FileNotFoundResult(string filePath) => new(FileOperationStatus.NotFound);
+
+    public static FileResult<TFile> ErrorResult<TFile>(FileProviderError error, Exception? exception = null) => new(error, exception);
 }
 
 /// <summary>
 /// Represents an generic file result
 /// </summary>
-/// <typeparam name="TFileInfo">Type of model to return</typeparam>
-public class FileResult<TFileInfo> : FileResult
+/// <typeparam name="TFile">Type of model to return</typeparam>
+public class FileResult<TFile> : FileResult
 {
-    protected internal FileResult(FileOperationStatus operationStatus, TFileInfo fileInfo)
+    protected internal FileResult(FileProviderError error, Exception? exception = null)
+        : base(error, exception)
+    {
+        _fileInfo = default!;
+    }
+
+    protected internal FileResult(FileOperationStatus operationStatus, TFile fileInfo)
         : base(operationStatus)
     {
         _fileInfo = fileInfo;
     }
 
-    private TFileInfo _fileInfo;
+    private readonly TFile _fileInfo;
 
-    public TFileInfo File => Success ? _fileInfo : throw new Exception("Cannot access file when status is not success.");
-
-    /// <summary>
-    /// Returns file deleted operation result
-    /// </summary>
-    //public static FileResult<TFileInfo> FileDeleteResult() => new(FileOperationStatus.Deleted, NotFoundFileInfo);
-
-    /// <summary>
-    /// Returns file created operation result
-    /// </summary>
-    //public static FileResult<TFileInfo> FileCreatedResult(TFileInfo fileInfo) => new(FileOperationStatus.Created, fileInfo);
-
-    /// <summary>
-    /// Returns file modified operation result
-    /// </summary>
-    //public static FileResult<TFileInfo> FileModifiedResult(TFileInfo fileInfo) => new(FileOperationStatus.Modified, fileInfo);
-
-    /// <summary>
-    /// Returns file unmodified operation result
-    /// </summary>
-    //public static FileResult<TFileInfo> FileUnmodifiedResult(TFileInfo fileInfo) => new(FileOperationStatus.Unmodified, fileInfo);
-
-    /// <summary>
-    /// Returns file not found result
-    /// </summary>
-    /// <param name="filePath">File path</param>
-    //public static FileResult<TFileInfo> FileNotFoundResult(string filePath)
-    //{
-    //    return new(FileOperationStatus.NotFound, default!);
-    //}
+    public TFile File => Success ? _fileInfo : throw new Exception("Cannot access file when status is not success.");
 }
 
 /// <summary>

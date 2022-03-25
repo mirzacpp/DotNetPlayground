@@ -32,6 +32,9 @@ https://github.com/DamianEdwards/MinimalApiPlayground
 
 Blogs {
 https://sergeytihon.com
+https://devblogs.microsoft.com/dotnet/category/aspnet/
+https://damienbod.com/
+https://philosopherdeveloper.com/
 https://jeremybytes.blogspot.com/
 https://www.ryadel.com/en/author/ryan/
 http://blog.freakcode.com/
@@ -151,8 +154,9 @@ https://www.stevejgordon.co.uk/creating-strings-with-no-allocation-overhead-usin
 https://andrewlock.net/aligning-strings-within-string-format-and-interpolated-strings/
 https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/ (.NET6)
 https://mattwarren.org/2019/04/25/ASCII-Art-in-.NET-Code/
-https://www.youtube.com/watch?v=24D7u3y3mhI&ab_channel=NickChapsas (.NET6,
+https://www.youtube.com/watch?v=24D7u3y3mhI&ab_channel=NickChapsas (.NET6
 https://github.com/dotnet/runtime/issues/50601)
+https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/#comments
 }
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -167,6 +171,7 @@ Info {
 https://www.youtube.com/watch?v=t3zj0c244UE&ab_channel=kudvenkat
 https://dusted.codes/dotnet-basics
 https://dunnhq.com/posts/2021/anatomy-of-a-dotnet-app/
+https://www.fearofoblivion.com/understanding-cross-platform-NET-and-why-NET-5-is-important
 https://dotnettutorials.net/lesson/dotnet-framework/
 https://msbuildlog.com/
 }
@@ -209,7 +214,8 @@ https://dev.to/moe23/asp-net-core-5-api-versioning-3jnp
 https://github.com/dotnet/aspnet-api-versioning
 }
 REQUEST {
-https://medium.com/@rm.dev/re-reading-asp-net-core-request-bodies-with-enablebuffering-987d8668bf85
+https://medium.com/@rm.dev/re-reading-asp-net-core-request-bodies-with-enablebuffering-987d8668bf85 (HttpRequest buffering)
+https://devblogs.microsoft.com/dotnet/re-reading-asp-net-core-request-bodies-with-enablebuffering/
 }
 https://andrewlock.net/controller-activation-and-dependency-injection-in-asp-net-core-mvc/
 https://andrewlock.net/using-cancellationtokens-in-asp-net-core-mvc-controllers/
@@ -222,6 +228,7 @@ https://docs.fluentvalidation.net/en/latest/localization.html
 https://dejanstojanovic.net/aspnet/2020/april/validate-configurations-with-fluentvalidation-in-aspnet-core/
 https://enterprisecraftsmanship.com/posts/always-valid-domain-model/
 https://enterprisecraftsmanship.com/posts/advanced-error-handling-techniques/
+https://medium.com/hackernoon/the-100-correct-way-to-validate-email-addresses-7c4818f24643 (EMAIL)
 }
 Headers {
 https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-headers-asp-net-core/
@@ -247,6 +254,7 @@ https://blog.stephencleary.com/2020/06/a-new-pattern-for-exception-logging.html
 https://docs.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator
 https://andrewlock.net/exploring-dotnet-6-part-8-improving-logging-performance-with-source-generators/
 https://github.com/thepirat000/Audit.NET
+https://www.youtube.com/watch?v=6zoMd_FwSwQ&ab_channel=NickChapsas
 SERILOG {
 https://nblumhardt.com/2020/10/bootstrap-logger/
 https://app.pluralsight.com/library/courses/serilog-enrichers-getting-info-into-log-entries/table-of-contents
@@ -311,6 +319,7 @@ https://github.com/JonPSmith/PermissionAccessControl2
 https://odetocode.com/blogs/scott/archive/2019/01/02/experimenting-with-asp-net-core-authentication-schemes.aspx
 https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-5.0
 https://tech.trailmax.info/2017/07/user-impersonation-in-asp-net-core/
+https://damienbod.com/2022/03/16/transforming-identity-claims-in-asp-net-core-and-cache/ (Claim transform OpenID)
 Global authorize policy: https://rimdev.io/defaulting-aspnet-core-31-to-require-authentication-for-a-safer-developer-experience/
 https://devblogs.microsoft.com/aspnet/asp-net-core-6-and-authentication-servers/
 https://josef.codes/asp-net-core-protect-your-api-with-api-keys/
@@ -328,10 +337,16 @@ IFileProviders {
 https://weblog.west-wind.com/posts/2019/Sep/30/Serving-ASPNET-Core-Web-Content-from-External-Folders
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.0
 https://weblog.west-wind.com/posts/2019/Nov/05/Dynamically-Loading-Assemblies-at-Runtime-in-RazorPages
+https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
+}
+SHARED LIBRARIES {
+https://andrewlock.net/when-asp-net-core-cant-find-your-controller-debugging-application-parts/
+}
 
-}https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
-Comma and point on form validation
+Comma and point on form validation {
 https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420
+https://gist.github.com/AndreasAmMueller/38c1a8d76ecd4450b4f75a479f3293c1
+}
 ROUTING {
 https://weblog.west-wind.com/posts/2019/May/15/Accessing-RouteData-in-an-ASPNET-Core-Controller-Constructor
 https://andrewlock.net/converting-a-terminal-middleware-to-endpoint-routing-in-aspnetcore-3/
@@ -375,7 +390,7 @@ https://github.com/aspnet/Entropy/tree/master/samples/Mvc.GenericControllers
 FILTERS {
 https://www.andybutland.dev/2020/06/dependency-injection-in-aspnet-core-attributes.html
 }
-TESTS {
+STRESS TESTING {
 https://www.youtube.com/watch?v=r-Jte8Y8zag
 https://github.com/tmenier/Flurl
 }
@@ -400,7 +415,9 @@ https://docs.microsoft.com/en-us/ef/core/modeling/backing-field?tabs=data-annota
 https://exceptionnotfound.net/integers-vs-guids-the-great-primary-key-debate/
 https://www.thereformedprogrammer.net/building-asp-net-core-and-ef-core-multi-tenant-apps-part1-the-database/
 https://www.youtube.com/watch?v=p1EMNZm15C8&ab_channel=HassanHabib
+https://www.fearofoblivion.com/dont-let-ef-call-the-shots (TIPS)
 https://github.com/borisdj/EFCore.BulkExtensions (Bulk operations)
+https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-6-0-preview-4-performance-edition/ (.NET6)
 Drop PK:https://github.com/dotnet/efcore/issues/2100
 https://weblogs.asp.net/dixin/entity-framework-core-and-linq-to-entities-4-query-methods-7
 Subqueries N+1 problem
@@ -518,10 +535,12 @@ https://www.hackcraft.net/web/datetime/#uri
 https://zachholman.com/talk/utc-is-enough-for-everyone-right
 https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/#time-zone-conversion-apis
 https://ardalis.com/why-use-datetimeoffset/
+https://codeblog.jonskeet.uk/2019/03/27/storing-utc-is-not-a-silver-bullet/
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
 https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core
+https://github.com/tmenier/Flurl (Wrapper)
 }
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
@@ -546,6 +565,7 @@ https://volosoft.com/blog/File-Upload-Download-with-BLOB-Storage-in-ASP.NET-Core
 https://jonskeet.uk/csharp/readbinary.html
 https://josef.codes/sorting-really-large-files-with-c-sharp/
 https://www.meziantou.net/simplifying-path-manipulations-with-the-fullpath-type.htm
+https://josef.codes/using-embedded-files-in-dotnet-core/ (Embedded)
 }
 BUNDLING: {
 https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/
@@ -643,6 +663,7 @@ https://medium.com/volosoft/asp-net-core-dependency-injection-best-practices-tip
 https://blog.ploeh.dk/2014/05/19/conforming-container/
 https://blog.ploeh.dk/2014/05/19/di-friendly-library/
 https://jimmybogard.com/constrained-open-generics-support-merged-in-net-core-di-container/
+https://www.youtube.com/watch?v=nqvnqzRNBls&ab_channel=NickChapsas
 Auto registration
 https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/
 }
@@ -676,6 +697,8 @@ https://docs.microsoft.com/en-us/archive/blogs/ericlippert/arrays-considered-som
 https://devblogs.microsoft.com/dotnet/embracing-nullable-reference-types/
 https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-between-class-and-struct?redirectedfrom=MSDN
 https://dotnetcoretutorials.com/2021/04/03/i-wish-i-knew-about-debugger-launch-earlier/
+https://www.youtube.com/watch?v=lRUfRlp5BXc&ab_channel=NickChapsas (NULL CHECKS)
+https://www.youtube.com/watch?v=6avJHaC3C2U&ab_channel=NDCConferences
 Immutable: https://www.youtube.com/watch?v=O89-zG84QK4&ab_channel=DotNext (#)
 }
 
@@ -684,6 +707,10 @@ https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netc
 https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/guidelines-for-collections?redirectedfrom=MSDN
 https://code-maze.com/csharp-async-enumerable-yield/
 https://www.dotnetcurry.com/csharp/1362/hashset-csharp-with-examples
+}
+DIAGNOSTICS/DEBUGGING {
+https://devblogs.microsoft.com/visualstudio/debugging-external-sources-with-visual-studio/
+https://www.youtube.com/watch?v=ErrABoJ9HZw&ab_channel=NickChapsas
 }
 
 Benchmarking {
