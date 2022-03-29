@@ -12,12 +12,12 @@ namespace Studens.Extensions.FileProviders.FileSystem
             Name = fileInfo.Name;
             Path = fileInfo.PhysicalPath;
             LastModified = fileInfo.LastModified;
+            Length = fileInfo.Length;
         }
 
         public string Name { get; }
-
-        public string Path { get; }
-
+        public string? Path { get; }
         public DateTimeOffset LastModified { get; }
+        public long Length { get; }
     }
 }

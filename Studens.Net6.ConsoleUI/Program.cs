@@ -1,40 +1,29 @@
-﻿//int RomanToInt(string s)
-//{
-//    var dicto = new Dictionary<string, int>
-//    {
-//        { "I", 1 },
-//        { "V", 5 },
-//        { "X", 10 },
-//        { "L", 50 },
-//        { "C", 100 },
-//        { "D", 500 },
-//        { "M", 1000 },
-//        { "IV", 4 },
-//        { "IX", 9 },
-//        { "XL", 40 },
-//        { "XC", 90 },
-//        { "CD", 400 },
-//        { "CM", 900 },
-//    };
+﻿//LeetCode.RunLengthOfLastWordProblem();
 
-//    var ss = s.ToCharArray();
-//    var sum = 0;
+var cts = new CancellationTokenSource();
 
-//    for (int i = 0; i < s.Length; i++)
-//    {
-//    }
+ThreadPool.QueueUserWorkItem(_ => Count(cts.Token, 1000));
+Console.WriteLine("Press enter to cancel the operation.");
+Console.ReadKey();
+cts.Cancel();
 
-//    return sum;
-//}
-//Console.WriteLine($"{RomanToInt("III")} == 3");
-//Console.WriteLine($"{RomanToInt("LVIII")} == 58");
-//Console.WriteLine($"{RomanToInt("MCMXCIV")} == 1994");
+Console.WriteLine("Main done.");
+Console.ReadKey();
 
-using Studens.Net6.ConsoleUI;
+static void Count(CancellationToken token, int countTo)
+{
+    token.Register(() => Console.WriteLine("Tokens register event."));
 
-LeetCode.RunLengthOfLastWordProblem();
+    for (int i = 0; i < countTo; i++)
+    {
+        if (token.IsCancellationRequested)
+        {
+            Console.WriteLine("Count is cancelled");
+            break;
+        }
 
-//var str = "Hello a sd   world ";
-//Console.WriteLine("Hello a sd   world ".LastIndexOf(' '));
-
-Console.ReadLine();
+        Console.WriteLine(i);
+        Thread.Sleep(200);
+    }
+    Console.WriteLine("COunt is done.");
+}

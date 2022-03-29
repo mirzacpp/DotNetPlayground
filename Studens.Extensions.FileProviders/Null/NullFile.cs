@@ -2,10 +2,10 @@
 {
     public class NullFile : IFile
     {
-        public string Name => throw new NotImplementedException();
+        public string Name => string.Empty;
+        public string Path => string.Empty;
+        public DateTimeOffset LastModified => DateTimeOffset.MinValue;
 
-        public string Path => throw new NotImplementedException();
-
-        public DateTimeOffset LastModified => throw new NotImplementedException();
+        public long Length => throw new NotImplementedException();
     }
 }
