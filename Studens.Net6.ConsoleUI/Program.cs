@@ -7,23 +7,29 @@ Console.WriteLine("Press enter to cancel the operation.");
 Console.ReadKey();
 cts.Cancel();
 
-Console.WriteLine("Main done.");
-Console.ReadKey();
+//LeetCode.RunShuffleStringProblem();
 
-static void Count(CancellationToken token, int countTo)
+Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+var task = new Task(() => Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is printing message."));
+task.Start();
+
+Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+
+Console.ReadLine();
+
+void Print()
 {
-    token.Register(() => Console.WriteLine("Tokens register event."));
+    Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is printing message.");
+}
 
-    for (int i = 0; i < countTo; i++)
-    {
-        if (token.IsCancellationRequested)
-        {
-            Console.WriteLine("Count is cancelled");
-            break;
-        }
+async void AwaitVoid()
+{
+    await Task.CompletedTask;
+    Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is awaiting void.");
+}
 
-        Console.WriteLine(i);
-        Thread.Sleep(200);
-    }
-    Console.WriteLine("COunt is done.");
+async Task AwaitTask()
+{
+    await Task.CompletedTask;
+    Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is awaiting Task.");
 }

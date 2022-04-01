@@ -174,5 +174,58 @@
                 Console.WriteLine($"Length of the last word is {lengthOfLastWord(test)} characters.");
             }
         }        
+
+        public static void RunShuffleStringProblem()
+        {
+            var testCases = new Dictionary<string, int[]>
+            {
+                { "codeleet", new [] { 4, 5, 6, 7, 0, 2, 1, 3 } },
+                { "abc", new [] { 0, 1, 2 } },
+                { "aiohn", new [] { 3, 1, 4, 2, 0 } },
+            };
+
+            static string RestoreString(string s, int[] indices)
+            {
+                var charArray = new char[s.Length];
+
+                for (int i = 0; i < s.Length; i++)
+                {
+                    charArray[indices[i]] = s[i];
+                }
+
+                return new string(charArray);
+            }
+
+            foreach (var test in testCases)
+            {
+                Console.WriteLine($"Restored string for '{test.Key}' is '{RestoreString(test.Key, test.Value)}'");
+            }
+        }
+
+        public static void RunTwoSumProblem()
+        {
+            var testCases = new Dictionary<int[], int>
+            {
+                { new [] { 2,7,11,15 }, 9 },
+            };
+
+            static int[] TwoSum(int[] nums, int target)
+            {
+                var lessThanTarget = nums.Where(n => n < target).ToArray();
+                var sum = nums.Sum(n => n < target ? n : 0);
+
+                for (int i = 0; i < lessThanTarget.Length; i++)
+                {
+                }
+
+                return Array.Empty<int>();
+            }
+
+            foreach (var test in testCases)
+            {
+                Console.WriteLine(
+                    $"For sum of {test.Value} use indicies ${string.Join(",", TwoSum(test.Key, test.Value))}");
+            }
+        }
     }
 }

@@ -31,6 +31,7 @@ https://github.com/DamianEdwards/MinimalApiPlayground
 }
 
 Blogs {
+https://sergeytihon.com
 https://devblogs.microsoft.com/dotnet/category/aspnet/
 https://damienbod.com/
 https://philosopherdeveloper.com/
@@ -124,6 +125,7 @@ KONCEPTI
 https://exceptionnotfound.net/csharp-in-simple-terms-9-inheritance-and-polymorphism/
 https://exceptionnotfound.net/csharp-in-simple-terms-10-interfaces-and-abstract-classes/
 https://jeremybytes.blogspot.com/2020/10/abstract-classes-vs-interfaces-in-c.html (Prati linkove)
+https://jeremybytes.blogspot.com/2019/09/c-8-interfaces-properties-and-default.html
 }
 
 Span i memory {
@@ -131,6 +133,7 @@ https://www.codemag.com/article/1807051/Introducing-.NET-Core-2.1-Flagship-Types
 https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t
 https://www.meziantou.net/some-performance-tricks-with-dotnet-strings.htm
 https://adamsitnik.com/Span/
+https://www.youtube.com/watch?v=FM5dpxJMULY
 }
 
 Dispose {
@@ -169,6 +172,7 @@ https://www.youtube.com/watch?v=t3zj0c244UE&ab_channel=kudvenkat
 https://dusted.codes/dotnet-basics
 https://dunnhq.com/posts/2021/anatomy-of-a-dotnet-app/
 https://www.fearofoblivion.com/understanding-cross-platform-NET-and-why-NET-5-is-important
+https://dotnettutorials.net/lesson/dotnet-framework/
 https://msbuildlog.com/
 }
 DATA TYPES {
@@ -631,6 +635,12 @@ https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/february/msdn-magazi
 https://gigi.nullneuron.net/gigilabs/common-mistakes-in-asynchronous-programming-with-net/
 https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
 https://www.meziantou.net/links-async-await-csharp.htm
+https://www.pluralsight.com/guides/advanced-tips-using-task-run-async-wait
+CANCELLATION {
+https://docs.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads?WT.mc_id=DT-MVP-5000058
+https://andrewlock.net/just-because-you-stopped-waiting-for-it-doesnt-mean-the-task-stopped-running/
+https://blog.stephencleary.com/2022/02/cancellation-1-overview.html
+}
 }
 THREADING {
 albahari.com/threading/
@@ -709,6 +719,7 @@ KOLEKCIJE {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
 https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/guidelines-for-collections?redirectedfrom=MSDN
 https://code-maze.com/csharp-async-enumerable-yield/
+https://www.dotnetcurry.com/csharp/1362/hashset-csharp-with-examples
 }
 DIAGNOSTICS/DEBUGGING {
 https://devblogs.microsoft.com/visualstudio/debugging-external-sources-with-visual-studio/
