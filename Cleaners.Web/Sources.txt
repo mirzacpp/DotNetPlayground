@@ -134,6 +134,8 @@ https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t
 https://www.meziantou.net/some-performance-tricks-with-dotnet-strings.htm
 https://adamsitnik.com/Span/
 https://www.youtube.com/watch?v=FM5dpxJMULY
+https://github.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Runtime/InteropServices/MemoryMarshal.cs
+https://www.youtube.com/watch?v=B2yOjLyEZk0&ab_channel=NickChapsas
 }
 
 Dispose {
