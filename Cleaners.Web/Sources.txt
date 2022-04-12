@@ -134,6 +134,8 @@ https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t
 https://www.meziantou.net/some-performance-tricks-with-dotnet-strings.htm
 https://adamsitnik.com/Span/
 https://www.youtube.com/watch?v=FM5dpxJMULY
+https://github.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Runtime/InteropServices/MemoryMarshal.cs
+https://www.youtube.com/watch?v=B2yOjLyEZk0&ab_channel=NickChapsas
 }
 
 Dispose {
@@ -243,6 +245,7 @@ https://www.talkingdotnet.com/build-query-string-asp-net-core/
 Architecture {
 https://github.com/jasontaylordev/CleanArchitecture
 https://jasontaylor.dev/clean-architecture-getting-started/
+https://www.youtube.com/playlist?list=PLThyvG1mlMznIDBtd5HadrmC5hayjpCtI(*)
 }
 Include static resources
 https://www.mikesdotnetting.com/article/330/including-static-resources-in-razor-class-libraries-in-asp-net-core
@@ -329,6 +332,7 @@ https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-wi
 https://devblogs.microsoft.com/aspnet/jwt-validation-and-authorization-in-asp-net-core/
 https://www.youtube.com/watch?v=AU0TIOZhGqs
 https://github.com/VahidN/ASPNETCore2JwtAuthentication
+https://dejanstojanovic.net/aspnet/2021/december/supporting-multiple-authentication-schemes-in-aspnet-core-webapi/
 }
 }
 Migracije i seed 
@@ -394,6 +398,11 @@ STRESS TESTING {
 https://www.youtube.com/watch?v=r-Jte8Y8zag
 https://github.com/tmenier/Flurl
 }
+
+MINIMAL APIS {
+https://benfoster.io/tags/minimal-apis/
+}
+
 }
 
 ENTITYFRAMEWORK
@@ -415,6 +424,8 @@ https://docs.microsoft.com/en-us/ef/core/modeling/backing-field?tabs=data-annota
 https://exceptionnotfound.net/integers-vs-guids-the-great-primary-key-debate/
 https://www.thereformedprogrammer.net/building-asp-net-core-and-ef-core-multi-tenant-apps-part1-the-database/
 https://www.youtube.com/watch?v=p1EMNZm15C8&ab_channel=HassanHabib
+https://dejanstojanovic.net/aspnet/2020/november/accessing-multiple-databases-from-the-same-dbcontext-in-ef-core/
+https://dejanstojanovic.net/aspnet/2021/december/controlling-the-flow-of-migrations-in-ef-core/
 https://www.fearofoblivion.com/dont-let-ef-call-the-shots (TIPS)
 https://github.com/borisdj/EFCore.BulkExtensions (Bulk operations)
 https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-6-0-preview-4-performance-edition/ (.NET6)
@@ -467,6 +478,7 @@ https://mattwarren.org/2017/12/15/How-does-.NET-JIT-a-method-and-Tiered-Compilat
 https://michaelscodingspot.com/avoid-gc-pressure/
 https://www.tabsoverspaces.com/233833-best-way-to-create-an-empty-collection-array-and-list-in-csharp-net
 https://docs.microsoft.com/en-us/dotnet/csharp/write-safe-efficient-code
+https://github.com/PragmaticFlow/NBomber (Load testing)
 PROFILING {
 https://devblogs.microsoft.com/visualstudio/analyze-cpu-memory-while-debugging/
 }
@@ -476,6 +488,8 @@ https://adamsitnik.com/Array-Pool/
 https://www.philosophicalgeek.com/2015/02/06/announcing-microsoft-io-recycablememorystream/
 https://csharp.christiannagel.com/2017/05/31/arraypool/#comments
 https://www.youtube.com/watch?v=jONSIhMST9E&ab_channel=NickChapsas (DATA TYPES ALLOCATIONS)
+https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
+https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/
 }
 }
 RUNTIME {
@@ -639,6 +653,7 @@ https://www.linkedin.com/pulse/c-threading-tasks-async-code-synchronization-part
 GARBAGE COLLECTION {
 https://www.nimaara.com/per-object-garbage-collection-notification-in-net/
 https://devblogs.microsoft.com/dotnet/large-object-heap/
+https://devblogs.microsoft.com/premier-developer/understanding-different-gc-modes-with-concurrency-visualizer/#comments
 }
 
 SOLID {

@@ -18,7 +18,7 @@ namespace Studens.Extensions.FileProviders.Amazon;
 /// </remarks>
 public class AmazonFileManager : FileManagerBase<AmazonFileInfo, AmazonPersistFileInfo>
 {
-    private readonly AmazonFileManagerOptions _options;
+    private readonly AmazonFileManagerOptions _options; 
     private readonly IAmazonS3 _amazonS3;
     private readonly ILogger<AmazonFileManager> _logger;
     private readonly FileProviderErrorDescriber _errorDescriber;

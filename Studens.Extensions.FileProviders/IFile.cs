@@ -13,11 +13,16 @@
         /// <summary>
         /// Represents a file path
         /// </summary>
-        string Path { get; }
+        string? Path { get; }
 
         /// <summary>
         /// Last date of file modification
         /// </summary>
         DateTimeOffset LastModified { get; }
+
+        /// <summary>
+        /// The length of the file in bytes, or -1 for a directory or non-existing files.
+        /// </summary>
+        public long Length { get; }
     }
 }

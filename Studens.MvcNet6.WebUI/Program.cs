@@ -1,11 +1,11 @@
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Studens.AspNetCore.Identity;
 using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
-using Studens.Extensions.FileProviders;
 using Studens.MvcNet6.WebUI.Data;
-using System.Text.Json;
+using Studens.MvcNet6.WebUI.MediatR.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +27,9 @@ builder.Services.Configure<GoogleMapsOptions>(options =>
     options.ApiKeys.Add("miki1", "miki1-value");
 });
 
+builder.Services.AddMediatR(typeof(Program).Assembly);
+builder.Services.AddSingleton<ICustomerService, CustomerService>();
+
 // Add db context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -35,13 +38,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //builder.Services.AddPhysicalFileManager("C://ITO");
-builder.Services.AddAmazonFileManager(options =>
-{
-    options.RootPath = "";
-    options.BucketName = "test.ito.dev/test";
-    options.AccessKeyId = builder.Configuration["AmazonOptions:AccessKeyId"];
-    options.SecretAccessKey = builder.Configuration["AmazonOptions:SecretAccessKey"];
-});
+//builder.Services.AddAmazonFileManager(options =>
+//{
+//    options.RootPath = "";
+//    options.BucketName = "test.ito.dev/test";
+//    options.AccessKeyId = builder.Configuration["AmazonOptions:AccessKeyId"];
+//    options.SecretAccessKey = builder.Configuration["AmazonOptions:SecretAccessKey"];
+//});
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()
@@ -70,6 +73,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseClaimsDisplay();
 app.UseAuthorization();
+
+app.UseMediatRTestEndpoints();
 
 app.MapAreaControllerRoute(
     name: "auth_area",
