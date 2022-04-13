@@ -17,7 +17,7 @@ public static class PhysicalFileManagerServiceCollectionExtensions
     /// <returns>Application services</returns>
     public static IServiceCollection AddPhysicalFileManager(this IServiceCollection services, Action<PhysicalFileManagerOptions> optionsAction)
     {
-        services.TryAddScoped<IFileManager<PersistFileInfo>, PhysicalFileManager>();
+        //services.TryAddScoped<IFileManager<PersistFileInfo>, PhysicalFileManager>();
         services.TryAddScoped<FileProviderErrorDescriber>();
         services.TryAddScoped<FileIOExecutor>();
 

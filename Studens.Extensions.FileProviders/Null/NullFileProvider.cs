@@ -19,5 +19,5 @@ public class NullFileProvider : FileManagerBase<NullFile, NullPersistFileInfo>
         => ValueTask.FromResult(new NullFile());
 
     public override Task<FileResult<NullFile>> SaveAsync(NullPersistFileInfo fileInfo, CancellationToken cancellationToken = default) =>
-        Task.FromResult(new FileResult<NullFile>(FileOperationStatus.Created, new NotFoundFileInfo(string.Empty)));
+        Task.FromResult(new FileResult<NullFile>(FileOperationStatus.Created, new NullFile()));
 }

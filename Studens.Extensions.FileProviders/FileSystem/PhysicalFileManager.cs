@@ -64,8 +64,8 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFile, PersistFileInfo
         // Absolute paths not permitted.
         if (Path.IsPathRooted(path))
         {
-            return FileResult<PhysicalFile>.ErrorResult(_errorDescriber.InvalidPath());
-
+            //return FileResult<PhysicalFile>.ErrorResult(_errorDescriber.InvalidPath());
+            return null;
             //return new FileResult<PhysicalFile>(_errorDescriber.InvalidPath());
         }
 
@@ -73,7 +73,8 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFile, PersistFileInfo
 
         if (string.IsNullOrEmpty(fullPath))
         {
-            return new FileResult(_errorDescriber.InvalidPath());
+            //return new FileResult(_errorDescriber.InvalidPath());
+            return null;
         }
 
         EnsureDirectoryExists(fullPath);
@@ -94,9 +95,10 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFile, PersistFileInfo
             async () => FileResult.FileModifiedResult(await GetFileInfoAsync(relativeFileName)) :
             async () => FileResult.FileCreatedResult(await GetFileInfoAsync(relativeFileName));
 
-        return await _fileIOExecutor.TryExecuteAsync(
-            ioAction: () => File.WriteAllBytesAsync(fullFileName, bytes, cancellationToken),
-            successResult);
+        return null;
+        //return await _fileIOExecutor.TryExecuteAsync(
+        //    ioAction: () => File.WriteAllBytesAsync(fullFileName, bytes, cancellationToken),
+        //    successResult);
     }
 
     /// <summary>
@@ -140,7 +142,7 @@ public class PhysicalFileManager : FileManagerBase<PhysicalFile, PersistFileInfo
 
     public override ValueTask<PhysicalFile> GetFileInfoAsync(string filePath)
     {
-        return ValueTask.FromResult(_fileProvider.GetFileInfo(filePath));
+        return ValueTask.FromResult(new PhysicalFile(_fileProvider.GetFileInfo(filePath)));
     }
 
     public ValueTask<IDirectoryContents> GetDirectoryContentsAsync(string path)

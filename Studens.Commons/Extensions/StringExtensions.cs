@@ -1,4 +1,6 @@
-﻿namespace Studens.Commons.Extensions;
+﻿using System.Text;
+
+namespace Studens.Commons.Extensions;
 
 /// <summary>
 /// Extension methods for <see cref="string"/> class
@@ -90,5 +92,27 @@ public static class StringExtensions
         }
 
         return Enum.TryParse(value, ignoreCase, out T _);
+    }
+
+    /// <summary>
+    /// Encodes a givne string to a base64 value
+    /// </summary>
+    /// <param name="value">Value to encode</param>
+    /// <returns>Encoded base64</returns>
+    public static string EncodeBase64(this string value)
+    {
+        var bytes = Encoding.UTF8.GetBytes(value);
+        return Convert.ToBase64String(bytes);
+    }
+
+    /// <summary>
+    /// Decodes a givne base64 to a string value
+    /// </summary>
+    /// <param name="value">Value to decode</param>
+    /// <returns>Decoded text</returns>
+    public static string DecodeBase64(this string value)
+    {
+        var bytes = Convert.FromBase64String(value);
+        return Encoding.UTF8.GetString(bytes);
     }
 }

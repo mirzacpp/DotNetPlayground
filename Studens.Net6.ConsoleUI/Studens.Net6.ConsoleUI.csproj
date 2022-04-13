@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Studens.AspNetCore.Authentication.JwtBearer\Studens.AspNetCore.Authentication.JwtBearer.csproj" />
     <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
   </ItemGroup>
 

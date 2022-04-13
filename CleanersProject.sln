@@ -64,11 +64,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.Extensions.FileProv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{66273D5B-ADF5-4A11-8A69-0EEF62C3B277}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.AspNetCore.Authentication.JwtBearer", "Studens.AspNetCore.Authentication.JwtBearer\Studens.AspNetCore.Authentication.JwtBearer.csproj", "{01DAF044-1727-4DC4-9F96-7B86567C5335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.AspNetCore.Authentication.JwtBearer", "Studens.AspNetCore.Authentication.JwtBearer\Studens.AspNetCore.Authentication.JwtBearer.csproj", "{01DAF044-1727-4DC4-9F96-7B86567C5335}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.XUnit.Tests", "Studens.XUnit.Tests\Studens.XUnit.Tests.csproj", "{48E9259A-419B-4E26-BDCD-0D8AFD0C3FB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studens.XUnit.Tests", "Studens.XUnit.Tests\Studens.XUnit.Tests.csproj", "{48E9259A-419B-4E26-BDCD-0D8AFD0C3FB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weakling.Domain", "Weakling.Domain\Weakling.Domain.csproj", "{2D8EE537-F4D2-463B-BBEA-A90BDD0DDCF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weakling.Domain", "Weakling.Domain\Weakling.Domain.csproj", "{2D8EE537-F4D2-463B-BBEA-A90BDD0DDCF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studens.Net6.WebApi", "Studens.Net6.WebApi\Studens.Net6.WebApi.csproj", "{E30C5E64-A149-426B-A99D-BD5B51086B53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -176,6 +178,10 @@ Global
 		{2D8EE537-F4D2-463B-BBEA-A90BDD0DDCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D8EE537-F4D2-463B-BBEA-A90BDD0DDCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D8EE537-F4D2-463B-BBEA-A90BDD0DDCF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E30C5E64-A149-426B-A99D-BD5B51086B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E30C5E64-A149-426B-A99D-BD5B51086B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E30C5E64-A149-426B-A99D-BD5B51086B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E30C5E64-A149-426B-A99D-BD5B51086B53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -212,6 +218,7 @@ Global
 		{01DAF044-1727-4DC4-9F96-7B86567C5335} = {66273D5B-ADF5-4A11-8A69-0EEF62C3B277}
 		{48E9259A-419B-4E26-BDCD-0D8AFD0C3FB8} = {A7590D3F-4739-4FD7-A685-A71E01846AD7}
 		{2D8EE537-F4D2-463B-BBEA-A90BDD0DDCF9} = {1B33C103-FABA-4F21-A241-633B80121BF5}
+		{E30C5E64-A149-426B-A99D-BD5B51086B53} = {A7590D3F-4739-4FD7-A685-A71E01846AD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F20F244-5BF0-459F-AA50-F3C32A6903E5}
