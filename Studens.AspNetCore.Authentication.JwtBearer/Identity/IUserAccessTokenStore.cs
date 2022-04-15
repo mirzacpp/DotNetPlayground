@@ -2,13 +2,16 @@
 
 namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
 {
-    public interface IUserAccessTokenStore<TUser, TUserAccessToken> : IUserStore<TUser>
-        where TUser : class
-        where TUserAccessToken : class
+    public interface IUserAccessTokenStore<TUser> : IUserStore<TUser> where TUser : class
     {
-        Task<IdentityResult> AddAcessTokenAsync(TUser user, TUserAccessToken accessToken, CancellationToken cancellationToken);
+        Task<IdentityResult> AddAcessTokenAsync(TUser user,
+            string accessTokenValue,
+            DateTime accessTokenExpiresAtUtc,
+            string refreshTokenValue,
+            DateTime refreshTokenExpiresAtUtc,
+            CancellationToken cancellationToken);
 
-        Task<TUserAccessToken> GetAccessTokenAsync(TUser user, CancellationToken cancellationToken);
+        Task<string?> GetAccessTokenAsync(TUser user, CancellationToken cancellationToken);
 
         //public virtual string AccessTokenValue { get; set; } = default!;
 
@@ -32,6 +35,5 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
         ///// Gets or sets the expiration date for refresh token.
         ///// </summary>
         //public virtual DateTime RefreshTokenExpiresAtUtc { get; set; }
-
     }
 }

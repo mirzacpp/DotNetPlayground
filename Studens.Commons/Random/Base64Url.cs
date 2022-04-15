@@ -1,4 +1,4 @@
-﻿namespace Studens.AspNetCore.Identity.PasswordGenerator
+﻿namespace Studens.Commons.Random
 {
     /// <summary>
     /// Base64Url encoder/decoder
@@ -26,7 +26,7 @@
         /// </summary>
         /// <param name="arg">The argument.</param>
         /// <returns></returns>
-        /// <exception cref="System.Exception">Illegal base64url string!</exception>
+        /// <exception cref="Exception">Illegal base64url string!</exception>
         public static byte[] Decode(string arg)
         {
             var s = arg;

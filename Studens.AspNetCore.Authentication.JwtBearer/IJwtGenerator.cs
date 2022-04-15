@@ -13,12 +13,6 @@ namespace Studens.AspNetCore.Authentication.JwtBearer
         /// </summary>
         /// <param name="claims">Claims to include in token.</param>
         /// <returns>Generated token resource</returns>
-        TokenResource GenerateToken(IEnumerable<Claim> claims);
-
-        /// <summary>
-        /// Generates a refresh token.
-        /// </summary>
-        /// <returns>Refresh token</returns>
-        TokenResource GenerateRefreshToken();
+        TokenResource GenerateTokens(IEnumerable<Claim> claims);        
     }
 }

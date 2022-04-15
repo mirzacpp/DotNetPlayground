@@ -1,17 +1,19 @@
 ﻿namespace Studens.AspNetCore.Authentication.JwtBearer.Models
 {
     /// <summary>
-    /// Represents a token
+    /// Represents a token resource
     /// </summary>
     public class TokenResource
     {
-        public TokenResource(string token, int expiresInSeconds)
+        public TokenResource(string accessTokenValue, string refreshTokenValue, int expiresInSeconds)
         {
-            Token = token;
+            AccessTokenValue = accessTokenValue;
+            RefreshTokenValue = refreshTokenValue;
             ExpiresInSeconds = expiresInSeconds;
         }
 
-        public string Token { get; set; }
+        public string AccessTokenValue { get; set; }
+        public string RefreshTokenValue { get; set; }
         public int ExpiresInSeconds { get; set; }
     }
 }

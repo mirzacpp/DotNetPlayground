@@ -8,9 +8,8 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
     /// Provides the APIs for managing user in a persistence store.
     /// </summary>
     /// <typeparam name="TUser">The type encapsulating a user.</typeparam>
-    public class JwtUserManager<TUser, TUserAccessToken> : UserManager<TUser>, IDisposable
-        where TUser : class
-        where TUserAccessToken : class
+    public class JwtUserManager<TUser> : UserManager<TUser>, IDisposable
+        where TUser : class        
     {
         public JwtUserManager(
             IUserStore<TUser> store,
@@ -34,9 +33,9 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
         {
         }
 
-        private IUserAccessTokenStore<TUser, TUserAccessToken> GetAccessTokenStore()
+        private IUserAccessTokenStore<TUser> GetAccessTokenStore()
         {
-            var cast = Store as IUserAccessTokenStore<TUser, TUserAccessToken>;
+            var cast = Store as IUserAccessTokenStore<TUser>;
             if (cast == null)
             {
                 throw new NotSupportedException("Resource error here mate.");
@@ -44,7 +43,11 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
             return cast;
         }
 
-        public async Task<IdentityResult> AddAcessTokenAsync(TUser user, TUserAccessToken accessToken)
+        public async Task<IdentityResult> AddAcessTokenAsync(TUser user, string
+            accessTokenValue,
+            DateTime accessTokenExpiresAtUtc,
+            string refreshTokenValue,
+            DateTime refreshTokenExpiresAtUtc)
         {
             ThrowIfDisposed();
             var store = GetAccessTokenStore();
@@ -54,12 +57,12 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
                 throw new ArgumentNullException(nameof(user));
             }
 
-            if (accessToken == null)
-            {
-                throw new ArgumentNullException(nameof(accessToken));
-            }
-
-            await store.AddAcessTokenAsync(user, accessToken, CancellationToken);
+            await store.AddAcessTokenAsync(user, 
+                accessTokenValue, 
+                accessTokenExpiresAtUtc, 
+                refreshTokenValue, 
+                refreshTokenExpiresAtUtc, 
+                CancellationToken);
             return await UpdateUserAsync(user);
         }
 

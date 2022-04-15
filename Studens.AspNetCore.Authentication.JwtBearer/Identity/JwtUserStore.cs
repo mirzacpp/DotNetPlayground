@@ -78,9 +78,8 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
     public class JwtUserStore<TUser, TUserAccessToken, TRole, TContext, TKey, TUserClaim, TUserRole, TUserLogin, TUserToken, TRoleClaim> :
         UserStore<TUser, TRole, TContext, TKey, TUserClaim, TUserRole, TUserLogin, TUserToken, TRoleClaim>,
         IProtectedUserStore<TUser>,
-        IUserAccessTokenStore<TUser, TUserAccessToken>
+        IUserAccessTokenStore<TUser>
         where TUser : IdentityUser<TKey>
-        where TUserAccessToken : IdentityUserAccessToken<TKey>
         where TRole : IdentityRole<TKey>
         where TContext : DbContext
         where TKey : IEquatable<TKey>
@@ -89,6 +88,7 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
         where TUserLogin : IdentityUserLogin<TKey>, new()
         where TUserToken : IdentityUserToken<TKey>, new()
         where TRoleClaim : IdentityRoleClaim<TKey>, new()
+        where TUserAccessToken : IdentityUserAccessToken<TKey>, new()
     {
         public JwtUserStore(TContext context, IdentityErrorDescriber? describer = null) : base(context, describer)
         {
@@ -96,7 +96,12 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
 
         private DbSet<TUserAccessToken> UserAccessTokens => Context.Set<TUserAccessToken>();
 
-        public async Task<IdentityResult> AddAcessTokenAsync(TUser user, TUserAccessToken accessToken, CancellationToken cancellationToken = default)
+        public async Task<IdentityResult> AddAcessTokenAsync(TUser user,
+            string accessTokenValue,
+            DateTime accessTokenExpiresAtUtc,
+            string refreshTokenValue,
+            DateTime refreshTokenExpiresAtUtc,
+            CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
             ThrowIfDisposed();
@@ -106,20 +111,23 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
                 throw new ArgumentNullException(nameof(user));
             }
 
-            if (accessToken == null)
+            var accessToken = new TUserAccessToken
             {
-                throw new ArgumentNullException(nameof(accessToken));
-            }
+                AccessTokenValue = accessTokenValue,
+                AccessTokenExpiresAtUtc = accessTokenExpiresAtUtc,
+                RefreshTokenValue = refreshTokenValue,
+                RefreshTokenExpiresAtUtc = refreshTokenExpiresAtUtc,
+                CreatedAtUtc = DateTime.UtcNow,
+                UserId = user.Id
+            };
 
-            accessToken.CreatedAtUtc = DateTime.UtcNow;
-
-            UserAccessTokens.Add(accessToken);
+            UserAccessTokens.Add(accessToken);  
             await SaveChanges(cancellationToken);
 
-            return IdentityResult.Success;  
+            return IdentityResult.Success;
         }
 
-        public Task<TUserAccessToken> GetAccessTokenAsync(TUser user, CancellationToken cancellationToken = default)
+        public async Task<string?> GetAccessTokenAsync(TUser user, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
             ThrowIfDisposed();
@@ -129,7 +137,7 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Identity
                 throw new ArgumentNullException(nameof(user));
             }
 
-            return UserAccessTokens.FirstOrDefaultAsync(cancellationToken);
+            return (await UserAccessTokens.FirstOrDefaultAsync(uat => uat.UserId.Equals(user.Id), cancellationToken))?.AccessTokenValue;
         }
     }
 }

@@ -444,7 +444,10 @@ IDesignTimeDbContextFactory {
 https://gunnarpeipman.com/ef-core-console-application/
 https://github.com/aspnet/EntityFrameworkCore/issues/9467
 EF 5.0: https://www.codemag.com/Article/2010042/EF-Core-5-Building-on-the-Foundation
-EF 6.0: https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-6.0/whatsnew
+EF 6.0: {
+https://devblogs.microsoft.com/dotnet/get-to-know-ef-core-6/,
+https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-6.0/whatsnew
+}
 REPO PATTERN: {
 https://www.edgesidesolutions.com/repository-pattern-dead-with-entity-framework/
 https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-entity-framework-core/

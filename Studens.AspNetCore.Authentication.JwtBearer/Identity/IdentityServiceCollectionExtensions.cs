@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.IdentityModel.Tokens;
 using Studens.AspNetCore.Authentication.JwtBearer.Identity;
-using System.Text;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -21,12 +18,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <typeparam name="TRole">The type representing a Role in the system.</typeparam>
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IdentityBuilder"/> for creating and configuring the identity system.</returns>
-        public static IdentityBuilder AddJwtIdentity<TUser, TRole, TUserAccessToken>(
+        public static IdentityBuilder AddJwtBearerIdentity<TUser, TRole, TUserAccessToken>(
             this IServiceCollection services)
             where TUser : class
             where TRole : class
             where TUserAccessToken : class
-            => services.AddJwtIdentity<TUser, TRole, TUserAccessToken>(setupAction: null);
+            => services.AddJwtBearerIdentity<TUser, TRole, TUserAccessToken>(setupAction: null);
 
         /// <summary>
         /// Adds and configures the JWT identity system for the specified User and Role types.
@@ -36,38 +33,15 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services">The services available in the application.</param>
         /// <param name="setupAction">An action to configure the <see cref="IdentityOptions"/>.</param>
         /// <returns>An <see cref="IdentityBuilder"/> for creating and configuring the identity system.</returns>
-        public static IdentityBuilder AddJwtIdentity<TUser, TRole, TUserAccessToken>(
+        public static IdentityBuilder AddJwtBearerIdentity<TUser, TRole, TUserAccessToken>(
             this IServiceCollection services,
             Action<IdentityOptions>? setupAction)
             where TUser : class
             where TRole : class
             where TUserAccessToken : class
         {
-            // Services used by identity
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            // Configure JWT Bearer
-            .AddJwtBearer(opt =>
-            {
-                opt.RequireHttpsMetadata = false;
-                opt.SaveToken = true;
-                opt.Audience = "Audience";
-                opt.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("Secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret")),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateLifetime = true,
-                    // When token expiration time is being validated it is added on ClockSkew(default 5min. + token set expiration)
-                    ClockSkew = TimeSpan.Zero,
-                    RequireExpirationTime = true
-                };
-            });
+            // Register jwt auth handlers
+            services.AddJwtBearerAuthentication(opt => { }); // Options cannot be empty here ... fix
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.AddHttpContextAccessor();
@@ -85,10 +59,11 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddScoped<IUserConfirmation<TUser>, DefaultUserConfirmation<TUser>>();
 
             //C
-            services.TryAddScoped<JwtUserManager<TUser, TUserAccessToken>>();
-            services.TryAddScoped<UserManager<TUser>>();
-            services.TryAddScoped<SignInManager<TUser>>();
-            services.TryAddScoped<RoleManager<TRole>>();            
+            services.TryAddScoped<JwtUserManager<TUser>>();
+            services.TryAddScoped<UserManager<TUser>>(); // Leave default UserManager for internal usage
+            services.TryAddScoped<JwtSignInManager<TUser>>();
+            services.TryAddScoped<SignInManager<TUser>>(); // Leave default SignInManager for internal usage
+            services.TryAddScoped<RoleManager<TRole>>();
 
             if (setupAction != null)
             {
@@ -103,7 +78,6 @@ namespace Microsoft.Extensions.DependencyInjection
             where TUserAccessToken : class
         {
             AddStores(builder.Services, builder.UserType, builder.RoleType, typeof(TUserAccessToken), typeof(TContext));
-
 
             return builder;
         }
@@ -151,7 +125,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 }
                 services.TryAddScoped(typeof(IUserStore<>).MakeGenericType(userType), userStoreType);
                 services.TryAddScoped(typeof(IRoleStore<>).MakeGenericType(roleType), roleStoreType);
-            }            
+            }
         }
 
         private static Type FindGenericBaseType(Type currentType, Type genericBaseType)

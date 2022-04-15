@@ -1,12 +1,12 @@
 ﻿using System.Security.Cryptography;
 
-namespace Studens.AspNetCore.Identity.PasswordGenerator;
+namespace Studens.Commons.Random;
 
 /// <summary>
 /// A class that mimics the standard Random class in the .NET Framework - but uses a random number generator internally.
 /// Taken from IdentityModel (ref.: https://github.com/IdentityModel/IdentityModel/ )
 /// </summary>
-public class CryptoRandom : Random
+public class CryptoRandom : System.Random
 {
     private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
     private readonly byte[] _uint32Buffer = new byte[4];
@@ -125,13 +125,13 @@ public class CryptoRandom : Random
         while (true)
         {
             Rng.GetBytes(_uint32Buffer);
-            UInt32 rand = BitConverter.ToUInt32(_uint32Buffer, 0);
+            uint rand = BitConverter.ToUInt32(_uint32Buffer, 0);
 
-            long max = (1 + (long)UInt32.MaxValue);
+            long max = 1 + (long)uint.MaxValue;
             long remainder = max % diff;
             if (rand < max - remainder)
             {
-                return (Int32)(minValue + (rand % diff));
+                return (int)(minValue + rand % diff);
             }
         }
     }

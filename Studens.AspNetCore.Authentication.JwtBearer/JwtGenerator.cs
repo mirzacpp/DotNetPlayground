@@ -1,64 +1,52 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Studens.AspNetCore.Authentication.JwtBearer.Models;
+using Studens.Commons.Random;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
 namespace Studens.AspNetCore.Authentication.JwtBearer
 {
-    public class JwtGenerator : IJwtGenerator
+    public class JwtGenerator
     {
-        private readonly JwtAuthenticationOptions _options;
+        private readonly JwtBearerAuthOptions _options;
 
-        public JwtGenerator(IOptions<JwtAuthenticationOptions> optionsAccessor)
+        public JwtGenerator(IOptions<JwtBearerAuthOptions> optionsAccessor)
         {
             _options = optionsAccessor.Value;
         }
 
         /// <summary>
-        /// Generates a JWT token with defined claims.
+        /// Generates a JWT access and refresh tokens with defined claims.
         /// </summary>
         /// <param name="claims">Claims to include in token.</param>
-        /// <returns>Generated token resource</returns>
-        public TokenResource GenerateToken(IEnumerable<Claim> claims)
+        /// <returns>Generated tokens</returns>
+        public (string accessToken, string refreshToken) GenerateTokens(IEnumerable<Claim> claims)
         {
             if (claims is null)
             {
                 throw new ArgumentNullException(nameof(claims));
             }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_options.Secret);
             var utcNow = DateTime.UtcNow;
-            var expiresAtUtc = utcNow.Add(_options.TokenGenerator.AccessTokenDuration);
+            var refreshTokenId = CryptoRandom.CreateUniqueId(format: CryptoRandom.OutputFormat.Base64);
+            var extendedClaims = claims.ToList();
 
-            //var tokenDescriptor = new SecurityTokenDescriptor
-            //{
-            //    Subject = new ClaimsIdentity(claims),
-            //    Expires = DateTime.UtcNow.Add(_options.TokenGenerator.AccessTokenDuration),
-            //    IssuedAt = DateTime.UtcNow,
-            //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            //};
+            // Append token related info
+            extendedClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, refreshTokenId, ClaimValueTypes.String, _options.Issuer));
+            extendedClaims.Add(new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64, _options.Issuer));
 
-            var jwtToken = new JwtSecurityToken(
-             issuer: _options.Bearer.ClaimsIssuer,
-             audience: _options.Bearer.Audience,
-             claims: claims,
+            var token = new JwtSecurityToken(
+             issuer: _options.Issuer,
+             audience: _options.Audience,
+             claims: extendedClaims,
              notBefore: utcNow,
-             expires: expiresAtUtc,
-             signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature));         
+             expires: utcNow.Add(_options.AccessTokenDuration),
+             signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256));
 
-            return new TokenResource(
-                tokenHandler.WriteToken(jwtToken),
-                (int)_options.TokenGenerator.AccessTokenDuration.TotalSeconds);
-        }
-
-        public TokenResource GenerateRefreshToken()
-        {
-            return new TokenResource(
-                Guid.NewGuid().ToString(),
-                (int)_options.TokenGenerator.RefreshTokenDuration.TotalSeconds);
+            return (new JwtSecurityTokenHandler().WriteToken(token), refreshTokenId);            
         }
     }
 }

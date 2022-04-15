@@ -16,40 +16,9 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddDbContext<ApplicationContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddJwtIdentity<IdentityUser, IdentityRole, IdentityUserAccessToken<string>>()
-    .AddJwtEntityFrameworkStores<IdentityUserAccessToken<string>, ApplicationContext >();    
-
+builder.Services.AddJwtBearerIdentity<IdentityUser, IdentityRole, IdentityUserAccessToken<string>>()
+    .AddJwtEntityFrameworkStores<IdentityUserAccessToken<string>, ApplicationContext>();
 builder.Services.AddAuthorization();
-
-builder.Services.Configure<IdentityOptions>(opt =>
-{
-    opt.Stores.ProtectPersonalData = true;
-});
-
-//builder.Services.ConfigureJwtOptions ...
-
-//builder.Services.AddAuthentication(opt =>
-//{
-//    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//})
-//.AddJwtBearer(opt =>
-//{
-//    opt.RequireHttpsMetadata = false;
-//    opt.SaveToken = true;
-//    opt.Audience = "Audience";
-//    opt.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("Secret brato")),
-//        ValidateIssuer = false,
-//        ValidateAudience = false,
-//        ValidateLifetime = true,
-//        // When token expiration time is being validated it is added on ClockSkew(default 5min. + token set expiration)
-//        ClockSkew = TimeSpan.Zero,
-//        RequireExpirationTime = true
-//    };
-//});
 
 var app = builder.Build();
 
@@ -57,16 +26,31 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();    
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapPost("/auth/token", async ([FromServices] JwtUserManager<IdentityUser, IdentityUserAccessToken<string>> manager) =>
+app.MapPost("/users/create", async ([FromServices] JwtUserManager<IdentityUser> manager) =>
 {
-    var token = await manager.GetAccessTokenAsync(new IdentityUser("vlado"));
+    var user = new IdentityUser("miki")
+    {
+        Email = "miki@miki.miki",
+        PhoneNumber = "000-000-000"
+    };
+
+    await manager.CreateAsync(user, "Password123!");
+
+    return user.ToString();
+})
+.WithName("CreteUser");
+
+app.MapPost("/auth/token", async ([FromServices] JwtSignInManager<IdentityUser> manager) =>
+{
+    var user = await manager.UserManager.FindByIdAsync("bc09a8ca-2461-416f-ba4c-02dc66a64fff");
+    var token = await manager.CreateAccessTokenAsync(user);
 
     return token;
 })
@@ -83,8 +67,3 @@ app.MapGet("/authorized-value", [Authorize]() =>
 });
 
 app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

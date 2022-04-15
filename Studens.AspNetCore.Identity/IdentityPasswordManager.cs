@@ -1,4 +1,4 @@
-﻿using Studens.AspNetCore.Identity.PasswordGenerator;
+﻿using Studens.Commons.Random;
 
 namespace Studens.AspNetCore.Identity;
 
