@@ -21,13 +21,21 @@ public static class ServiceCollectionExtensions
 
         services.Configure(configureOptions);
 
-        //Bind settings here
+        // We will build options manually
+        JwtBearerAuthOptions authOptions = new();
+        configureOptions(authOptions);
+
+        var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(authOptions.Secret));
+        var securityOptions = new JwtBearerAuthSecurityOptions
+        {
+            SecurityKey = securityKey,
+            SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256)
+        };
 
         services.Configure<JwtBearerAuthSecurityOptions>(options =>
-        {
-            var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(""));
-            options.SecurityKey = securityKey;
-            options.SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        {            
+            options.SecurityKey = securityOptions.SecurityKey;
+            options.SigningCredentials = securityOptions.SigningCredentials;
         });
 
         services
@@ -40,19 +48,21 @@ public static class ServiceCollectionExtensions
         })
          .AddJwtBearer(opt =>
          {
-             opt.RequireHttpsMetadata = false;
+             opt.RequireHttpsMetadata = false; // False should be only in dev ...
              opt.SaveToken = true;
-             opt.Audience = "Audience";// from opt
+             opt.Audience = authOptions.Audience;
              opt.TokenValidationParameters = new TokenValidationParameters
              {
                  ValidateIssuerSigningKey = true,
-                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("Secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret")),
-                 ValidateIssuer = false,
-                 ValidateAudience = false,
+                 IssuerSigningKey = securityOptions.SecurityKey,
+                 ValidateIssuer = !string.IsNullOrEmpty(authOptions.Issuer),
+                 ValidIssuer = authOptions.Issuer,
+                 ValidateAudience = !string.IsNullOrEmpty(authOptions.Audience),
+                 ValidAudience = authOptions.Audience,
                  ValidateLifetime = true,
                  // When token expiration time is being validated it is added on ClockSkew(default 5min. + token expiration time)
                  ClockSkew = TimeSpan.Zero,
-                 RequireExpirationTime = true
+                 RequireExpirationTime = true,
              };
          });
 

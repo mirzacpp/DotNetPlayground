@@ -16,8 +16,16 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddDbContext<ApplicationContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddJwtBearerIdentity<IdentityUser, IdentityRole, IdentityUserAccessToken<string>>()
-    .AddJwtEntityFrameworkStores<IdentityUserAccessToken<string>, ApplicationContext>();
+
+
+builder.Services.Configure<JwtBearerAuthOptions>(builder.Configuration.GetSection(nameof(JwtBearerAuthOptions)));
+
+builder.Services.AddJwtBearerIdentity<IdentityUser, IdentityRole, IdentityUserAccessToken<string>>(opt =>
+{
+    opt.Issuer = builder.Configuration[""];
+})
+.AddJwtEntityFrameworkStores<IdentityUserAccessToken<string>, ApplicationContext>();
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -61,7 +69,7 @@ app.MapGet("/unauthorized-value", () =>
     return "This is public message";
 });
 
-app.MapGet("/authorized-value", [Authorize]() =>
+app.MapGet("/authorized-value", [Authorize] () =>
 {
     return "If you see this message, that means you are authorized.";
 });

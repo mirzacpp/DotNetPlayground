@@ -20,31 +20,33 @@ public class Startup
         services
             .AddControllersWithViews()
             .AddFeatureFolders()
-            .AddAreaFeatureFolders()            
+            .AddAreaFeatureFolders()
             .AddApplicationPart(typeof(Startup).Assembly)
             .Services
-            //.AddDatabaseDeveloperPageExceptionFilter() Use when db is configured
+            //.AddDatabaseDeveloperPageExceptionFilter() // Use when db is configured
             .AddPocoOptions<AppConfig>(nameof(AppConfig), _configuration)
-            .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);        
+            .AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
     }
 
     public virtual void Configure(IApplicationBuilder app)
     {
+        var isDevelopment = _webHostEnvironment.IsDevelopment();
+
         app
            // This should be conditional. For more info see https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
            //.UseHostFiltering()
-           .UseIf(_webHostEnvironment.IsDevelopment(), app.UseDeveloperExceptionPage)
+           .UseSerilogRequestLogging()
+           .UseIf(isDevelopment, app.UseDeveloperExceptionPage)
            // TODO: Conditional builder with params
            //.UseIf(!_webHostEnvironment.IsDevelopment(), app.UseExceptionHandler("/Home/Error"))
-           .UseIf(!_webHostEnvironment.IsDevelopment(), app.UseHsts)
+           .UseIf(!isDevelopment, app.UseHsts)
            .UseHttpsRedirection()
            .UseStaticFiles()
            .UseRouting()
-           .UseIf(_webHostEnvironment.IsDevelopment(), app.UseMiniProfiler)
+           .UseIf(isDevelopment, app.UseMiniProfiler)
            .UseAuthentication()
-           .UseIf(_webHostEnvironment.IsDevelopment(), app.UseClaimsDisplay)
+           .UseIf(isDevelopment, app.UseClaimsDisplay)
            .UseAuthorization()
-           .UseSerilogRequestLogging()
            .UseEndpoints(endpoints =>
            {
                endpoints.MapControllerRoute(

@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Auth\Views\Shared\" />
+    <Folder Include="Htmx\" />
   </ItemGroup>
 
   <ItemGroup>

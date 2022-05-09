@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Htmx Page";
+}
+
+<button class="btn btn-primary"
+        hx-get="@Url.Action("HelloMessage")"
+        hx-target="#replaceMe"
+        hx-swap="innerHTML">
+    Load fast :)
+</button>
+<button class="btn btn-primary"
+        hx-get="@Url.Action("HelloMessageDelayed")"
+        hx-target="#replaceMe"
+        hx-swap="innerHTML">
+    Load slow :(
+<img class="htmx-indicator" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif" alt="File:Loader.gif - Wikimedia Commons" />
+</button>
+<div id="replaceMe">
+    Click the Load button and watch me disappear.
+</div>
+
+@section Scripts {
+    <script src="~/lib/htmx/htmx.min.js"></script>
+}
