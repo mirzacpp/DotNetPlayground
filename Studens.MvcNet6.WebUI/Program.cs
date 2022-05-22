@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Studens.AspNetCore.Identity;
 using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
+using Studens.Data.Migration;
+using Studens.Data.Seed;
 using Studens.MvcNet6.WebUI.Data;
 using Studens.MvcNet6.WebUI.MediatR.Services;
 
@@ -52,7 +54,14 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddStudensEntityFrameworkStores<ApplicationDbContext>()
     .AddStudensRoleManager()
     .AddStudensUserManager()
-    .AddStudensPasswordManager();
+    .AddStudensPasswordManager()
+    .Services.AddScoped<IDataMigrationManager, DataMigrationManager>()
+    .AddScoped<IDataSeedManager, DataSeedManager>()
+    .AddDataSeedContributorFromMarkers(typeof(Program));
+    //.AddDataSeedContributor<RoleDataSeedContributor>()
+    //.AddDataSeedContributor<Role2DataSeedContributor>();
+
+builder.Services.AddDisplayRegisteredServices("/testovka");
 
 var app = builder.Build();
 
@@ -84,6 +93,8 @@ app.MapAreaControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseDisplayRegisteredServices();
 
 //app.MapGet("/files", async (context) =>
 //{
@@ -127,5 +138,20 @@ app.MapControllerRoute(
 
 //    await context.Response.WriteAsync(converted);
 //});
+
+// Run migrator
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
+        await migrator.MigrateAsync();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+        throw;
+    }
+}
 
 app.Run();

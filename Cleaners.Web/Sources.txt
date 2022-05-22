@@ -271,6 +271,7 @@ SERILOG {
 https://nblumhardt.com/2020/10/bootstrap-logger/
 https://app.pluralsight.com/library/courses/serilog-enrichers-getting-info-into-log-entries/table-of-contents
 https://github.com/serilog-contrib/serilog-sinks-notepad
+https://nblumhardt.com/2020/10/bootstrap-logger/
 }
 }
 Middleware {
@@ -512,6 +513,7 @@ https://csharp.christiannagel.com/2017/05/31/arraypool/#comments
 https://www.youtube.com/watch?v=jONSIhMST9E&ab_channel=NickChapsas (DATA TYPES ALLOCATIONS)
 https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
 https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/
+https://blog.marcgravell.com/2013/11/allocaction-allocation-allocation.html
 }
 }
 RUNTIME {
@@ -664,6 +666,7 @@ https://gigi.nullneuron.net/gigilabs/common-mistakes-in-asynchronous-programming
 https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
 https://www.meziantou.net/links-async-await-csharp.htm
 https://www.pluralsight.com/guides/advanced-tips-using-task-run-async-wait
+https://andrewlock.net/cancelling-await-calls-in-dotnet-6-with-task-waitasync/ (.NET 6)
 CANCELLATION {
 https://docs.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads?WT.mc_id=DT-MVP-5000058
 https://andrewlock.net/just-because-you-stopped-waiting-for-it-doesnt-mean-the-task-stopped-running/
@@ -695,6 +698,7 @@ https://adamstorr.azurewebsites.net/blog/strategy-pattern-with-enum-constraints
 https://gigi.nullneuron.net/gigilabs/the-adapter-design-pattern-for-dtos-in-c/
 https://volosoft.com/blog/Prefer-Singleton-Pattern-over-Static-Class
 https://dunnhq.com/posts/2021/primitive-obsession/
+https://blog.ploeh.dk/2020/02/10/builder-isomorphisms/
 }
 
 Dependency Injection {

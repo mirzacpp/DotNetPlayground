@@ -26,11 +26,18 @@
     <ProjectReference Include="..\Studens.AspNetCore.Mvc.UI\Studens.AspNetCore.Mvc.UI.csproj" />
     <ProjectReference Include="..\Studens.AspNetCore.Mvc\Studens.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
+    <ProjectReference Include="..\Studens.Data\Studens.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Auth\Views\Shared\" />
     <Folder Include="Htmx\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Data\roles.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
