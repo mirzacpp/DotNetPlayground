@@ -15,6 +15,7 @@
 		<Product>PROJECT-TITLE-XML</Product>
 		<Description>PROJECT-DESCRIPTION-XML</Description>
 		<Copyright>Copyright © PROJECT-AUTHOR-XML. All rights Reserved</Copyright>
+		<UserSecretsId>f14944be-09b1-49a3-b229-2364bd1a9a06</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
