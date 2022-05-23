@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using JetBrains.Annotations;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -29,7 +30,7 @@ public class AjaxLoaderTagHelper : TagHelper
         _urlHelperFactory = urlHelperFactory;
     }
 
-    [HtmlAttributeName(AjaxActionAttributeName)]
+    [HtmlAttributeName(AjaxActionAttributeName)]    
     public string Action { get; set; }
 
     [HtmlAttributeName(AjaxControllerAttributeName)]

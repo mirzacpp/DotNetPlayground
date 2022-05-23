@@ -1,4 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace Studens.AspNetCore.Authentication.JwtBearer.Models
 {
@@ -13,6 +15,7 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Models
             RefreshTokenDuration = TimeSpan.FromMinutes(24 * 60);
             Issuer = "Not null";
             Audience = "Not null";
+            ///TODO: Validate secret is set on startup
             Secret = new string('S', 32);
         }
 
@@ -57,5 +60,13 @@ namespace Studens.AspNetCore.Authentication.JwtBearer.Models
     {
         public SigningCredentials SigningCredentials { get; set; }
         public SymmetricSecurityKey SecurityKey { get; set; }
+    }
+
+    public class Testovka : IConfigureOptions<JwtBearerAuthOptions>
+    {
+        public void Configure(JwtBearerAuthOptions options)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

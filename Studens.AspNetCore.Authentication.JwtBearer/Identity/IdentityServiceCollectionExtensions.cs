@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Studens.AspNetCore.Authentication.JwtBearer.Identity;
+using Studens.AspNetCore.Authentication.JwtBearer.Models;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -19,11 +20,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IdentityBuilder"/> for creating and configuring the identity system.</returns>
         public static IdentityBuilder AddJwtBearerIdentity<TUser, TRole, TUserAccessToken>(
-            this IServiceCollection services)
+            this IServiceCollection services,
+            Action<JwtBearerAuthOptions> bearerSetupAction)
             where TUser : class
             where TRole : class
             where TUserAccessToken : class
-            => services.AddJwtBearerIdentity<TUser, TRole, TUserAccessToken>(setupAction: null);
+            => services.AddJwtBearerIdentity<TUser, TRole, TUserAccessToken>(bearerSetupAction, setupAction: null);
 
         /// <summary>
         /// Adds and configures the JWT identity system for the specified User and Role types.
@@ -35,13 +37,14 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>An <see cref="IdentityBuilder"/> for creating and configuring the identity system.</returns>
         public static IdentityBuilder AddJwtBearerIdentity<TUser, TRole, TUserAccessToken>(
             this IServiceCollection services,
+            Action<JwtBearerAuthOptions> bearerSetupAction,
             Action<IdentityOptions>? setupAction)
             where TUser : class
             where TRole : class
             where TUserAccessToken : class
         {
             // Register jwt auth handlers
-            services.AddJwtBearerAuthentication(opt => { }); // Options cannot be empty here ... fix
+            services.AddJwtBearerAuthentication(bearerSetupAction); 
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.AddHttpContextAccessor();
@@ -57,8 +60,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddScoped<ITwoFactorSecurityStampValidator, TwoFactorSecurityStampValidator<TUser>>();
             services.TryAddScoped<IUserClaimsPrincipalFactory<TUser>, UserClaimsPrincipalFactory<TUser, TRole>>();
             services.TryAddScoped<IUserConfirmation<TUser>, DefaultUserConfirmation<TUser>>();
-
-            //C
+          
             services.TryAddScoped<JwtUserManager<TUser>>();
             services.TryAddScoped<UserManager<TUser>>(); // Leave default UserManager for internal usage
             services.TryAddScoped<JwtSignInManager<TUser>>();
@@ -87,7 +89,7 @@ namespace Microsoft.Extensions.DependencyInjection
             var identityUserType = FindGenericBaseType(userType, typeof(IdentityUser<>));
             if (identityUserType == null)
             {
-                throw new InvalidOperationException("NotIdentityUser");
+                throw new InvalidOperationException("Resoruces.NotIdentityUser");
             }
 
             var keyType = identityUserType.GenericTypeArguments[0];
@@ -100,9 +102,10 @@ namespace Microsoft.Extensions.DependencyInjection
                     throw new InvalidOperationException("Resources.NotIdentityRole");
                 }
 
-                Type userStoreType = null;
-                Type roleStoreType = null;
+                Type? userStoreType;
+                Type? roleStoreType;
                 var identityContext = FindGenericBaseType(contextType, typeof(IdentityDbContext<,,,,,,,>));
+
                 if (identityContext == null)
                 {
                     // If its a custom DbContext, we can only add the default POCOs
@@ -128,7 +131,7 @@ namespace Microsoft.Extensions.DependencyInjection
             }
         }
 
-        private static Type FindGenericBaseType(Type currentType, Type genericBaseType)
+        private static Type? FindGenericBaseType(Type currentType, Type genericBaseType)
         {
             var type = currentType;
             while (type != null)

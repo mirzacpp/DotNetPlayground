@@ -1,6 +1,7 @@
 ﻿// Usefull sources
 https://www.youtube.com/watch?v=uS0hRJqamfU&ab_channel=IAmTimCorey
 https://www.oreilly.com/library/view/framework-design-guidelines/9780135896457/
+https://khalidabuhakmeh.com/aspnet-core-interview-questions-and-answers (INTERVIEW)
 
 Live IL transform: https://sharplab.io/
 
@@ -161,6 +162,7 @@ https://www.youtube.com/watch?v=24D7u3y3mhI&ab_channel=NickChapsas (.NET6
 https://github.com/dotnet/runtime/issues/50601)
 https://devblogs.microsoft.com/dotnet/string-interpolation-in-c-10-and-net-6/#comments
 https://datatracker.ietf.org/doc/html/rfc4648#section-1 (Base encodings)
+https://www.dotnetcurry.com/ShowArticle.aspx?ID=463
 }
 Feature management
 https://andrewlock.net/introducing-the-microsoft-featuremanagement-library-adding-feature-flags-to-an-asp-net-core-app-part-1/
@@ -185,6 +187,7 @@ https://blog.paranoidcoding.com/2019/04/08/string-vs-String-is-not-about-style.h
 https://exceptionnotfound.net/const-vs-static-vs-readonly-in-c-sharp-applications/
 https://www.stum.de/2009/01/14/const-strings-a-very-convenient-way-to-shoot-yourself-in-the-foot/
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions
+https://blog.maartenballiauw.be/post/2022/05/03/techniques-and-tools-to-update-your-csharp-project-migrating-to-nullable-reference-types-part-4.html (NULLABLES)
 Enum perf: https://www.youtube.com/watch?v=BoE5Y6Xkm6w
 }
 CLI {
@@ -211,6 +214,9 @@ https://developpaper.com/detailed-explanation-of-object-pools-various-usages-in-
 RAZOR {
 https://devblogs.microsoft.com/visualstudio/introducing-the-new-razor-editor-in-visual-studio-2022/
 https://stackoverflow.com/questions/50778521/how-to-disable-precompiled-views-in-net-core-2-1-net-5-for-debugging
+}
+SignalR {
+https://www.youtube.com/watch?v=RaXx_f3bIRU&ab_channel=IAmTimCorey
 }
 Api Versioning {
 https://gingter.org/2018/06/18/asp-net-core-api-versioning/
@@ -265,6 +271,7 @@ SERILOG {
 https://nblumhardt.com/2020/10/bootstrap-logger/
 https://app.pluralsight.com/library/courses/serilog-enrichers-getting-info-into-log-entries/table-of-contents
 https://github.com/serilog-contrib/serilog-sinks-notepad
+https://nblumhardt.com/2020/10/bootstrap-logger/
 }
 }
 Middleware {
@@ -299,6 +306,7 @@ https://ppolyzos.com/2016/09/09/asp-net-core-render-view-to-string/
 https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEntityFrameworkDbGeographySpatialTypes.aspx
 https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
 https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
+https://khalidabuhakmeh.com/aspnet-core-javascript-collocated-taghelper
 DEFERED RENDERING{
 https://github.com/dotnet/aspnetcore/blob/93c377011976312d999167da149189953b06322d/src/Mvc/test/WebSites/TagHelpersWebSite/Views/Home/Index.cshtml
 }
@@ -370,6 +378,7 @@ Model binding
 https://asp.net-hacker.rocks/2018/10/17/customizing-aspnetcore-08-modelbinders.html
 https://www.strathweb.com/2017/07/customizing-query-string-parameter-binding-in-asp-net-core-mvc/
 https://github.com/dotnet/aspnetcore/issues/11584
+https://josef.codes/model-bind-multiple-sources-to-a-single-class-in-asp-net-core/
 PathBase {
 https://stackoverflow.com/questions/58614864/whats-the-difference-between-httprequest-path-and-httprequest-pathbase-in-asp-n
 https://github.com/dotnet/aspnetcore/blob/425c196cba530b161b120a57af8f1dd513b96f67/src/Http/Http.Abstractions/src/Extensions/UsePathBaseMiddleware.cs
@@ -505,6 +514,7 @@ https://csharp.christiannagel.com/2017/05/31/arraypool/#comments
 https://www.youtube.com/watch?v=jONSIhMST9E&ab_channel=NickChapsas (DATA TYPES ALLOCATIONS)
 https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
 https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/
+https://blog.marcgravell.com/2013/11/allocaction-allocation-allocation.html
 }
 }
 RUNTIME {
@@ -595,6 +605,7 @@ https://jonskeet.uk/csharp/readbinary.html
 https://josef.codes/sorting-really-large-files-with-c-sharp/
 https://www.meziantou.net/simplifying-path-manipulations-with-the-fullpath-type.htm
 https://josef.codes/using-embedded-files-in-dotnet-core/ (Embedded)
+https://khalidabuhakmeh.com/verify-user-file-uploads-with-dotnet
 }
 BUNDLING: {
 https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/
@@ -602,6 +613,8 @@ https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scrip
 OPTIONS {
 https://andrewlock.net/delaying-strongly-typed-options-configuration-using-postconfigure-in-asp-net-core/
 https://ofpinewood.com/blog/creating-a-custom-configurationprovider-for-a-entity-framework-core-source
+https://andrewlock.net/viewing-overriden-configuration-values-in-aspnetcore/
+https://andrewlock.net/debugging-configuration-values-in-aspnetcore/
 }
 DATA PROTECTION {
 https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1#persistkeystofilesystem
@@ -654,6 +667,7 @@ https://gigi.nullneuron.net/gigilabs/common-mistakes-in-asynchronous-programming
 https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
 https://www.meziantou.net/links-async-await-csharp.htm
 https://www.pluralsight.com/guides/advanced-tips-using-task-run-async-wait
+https://andrewlock.net/cancelling-await-calls-in-dotnet-6-with-task-waitasync/ (.NET 6)
 CANCELLATION {
 https://docs.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads?WT.mc_id=DT-MVP-5000058
 https://andrewlock.net/just-because-you-stopped-waiting-for-it-doesnt-mean-the-task-stopped-running/
@@ -685,6 +699,7 @@ https://adamstorr.azurewebsites.net/blog/strategy-pattern-with-enum-constraints
 https://gigi.nullneuron.net/gigilabs/the-adapter-design-pattern-for-dtos-in-c/
 https://volosoft.com/blog/Prefer-Singleton-Pattern-over-Static-Class
 https://dunnhq.com/posts/2021/primitive-obsession/
+https://blog.ploeh.dk/2020/02/10/builder-isomorphisms/
 }
 
 Dependency Injection {
