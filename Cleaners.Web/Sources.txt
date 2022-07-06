@@ -459,6 +459,7 @@ https://www.fearofoblivion.com/dont-let-ef-call-the-shots (TIPS)
 https://github.com/borisdj/EFCore.BulkExtensions (Bulk operations)
 https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-6-0-preview-4-performance-edition/ (.NET6)
 https://jasontaylor.dev/ef-core-database-initialisation-strategies/
+https://www.thereformedprogrammer.net/part6-using-sharding-to-build-multi-tenant-apps-using-asp-net-core-and-ef-core/
 https://github.com/dotnet/efcore/issues/4711 (DateTime, Kind, UTC)
 https://mehdi.me/ambient-dbcontext-in-ef6/ (Lifetime)
 https://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/ (Disposal)
