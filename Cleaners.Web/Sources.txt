@@ -32,7 +32,11 @@ https://github.com/DamianEdwards/MinimalApiPlayground
 }
 
 Blogs {
+https://blog.adamfurmanek.pl/
+https://swimburger.net/blog
+https://codeofmatt.com/
 https://jasontaylor.dev/posts/
+https://www.mrlacey.com/
 https://sergeytihon.com
 https://devblogs.microsoft.com/dotnet/category/aspnet/
 https://damienbod.com/
@@ -239,6 +243,9 @@ https://dejanstojanovic.net/aspnet/2020/april/validate-configurations-with-fluen
 https://enterprisecraftsmanship.com/posts/always-valid-domain-model/
 https://enterprisecraftsmanship.com/posts/advanced-error-handling-techniques/
 https://medium.com/hackernoon/the-100-correct-way-to-validate-email-addresses-7c4818f24643 (EMAIL)
+https://erraticdev.blogspot.com/2010/11/handling-validation-errors-on-ajax.html (AJAX)
+https://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html (Unobtrusive)
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs
 }
 Headers {
 https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-headers-asp-net-core/
@@ -274,6 +281,7 @@ https://github.com/serilog-contrib/serilog-sinks-notepad
 https://nblumhardt.com/2020/10/bootstrap-logger/
 }
 }
+
 Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 https://andrewlock.net/understanding-your-middleware-pipeline-with-the-middleware-analysis-package/
@@ -307,13 +315,18 @@ https://www.hanselman.com/blog/ASPNETMVCDisplayTemplateAndEditorTemplatesForEnti
 https://www.red-gate.com/simple-talk/dotnet/asp-net/action-control-asp-net-core/
 https://github.com/aspnet/Entropy/tree/master/samples/Mvc.EmbeddedViewSample.Web
 https://khalidabuhakmeh.com/aspnet-core-javascript-collocated-taghelper
+https://weblog.west-wind.com/posts/2022/Jun/21/Back-to-Basics-Rendering-Razor-Views-to-String-in-ASPNET-Core
+https://github.com/toddams/RazorLight (Render outside the web)
 DEFERED RENDERING{
 https://github.com/dotnet/aspnetcore/blob/93c377011976312d999167da149189953b06322d/src/Mvc/test/WebSites/TagHelpersWebSite/Views/Home/Index.cshtml
 }
 https://github.com/ridercz/Altairis.RazorPages.EditorTemplates
 https://www.codeproject.com/Articles/1079909/ASP-NET-MVC-Partial-Views-with-Partial-Models
 https://github.com/soundaranbu/RazorTemplating
+HTMX {
 https://khalidabuhakmeh.com/htmx-and-aspnet-core-swapping-techniques
+https://www.jerriepelser.com/blog/htmx-inline-editing/
+}
 Email: {
 https://scottsauber.com/2018/07/07/walkthrough-creating-an-html-email-template-with-razor-and-razor-class-libraries-and-rendering-it-from-a-net-standard-class-library/
 https://ethereal.email/
@@ -344,6 +357,8 @@ https://dejanstojanovic.net/aspnet/2021/december/supporting-multiple-authenticat
 https://mannharleen.github.io/2020-03-19-handling-jwt-securely-part-1/
 https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in-asp-net-core/
 https://www.jerriepelser.com/blog/using-roles-with-the-jwt-middleware/
+https://weblog.west-wind.com/posts/2021/Mar/09/Role-based-JWT-Tokens-in-ASPNET-Core
+https://weblog.west-wind.com/posts/2022/Mar/29/Combining-Bearer-Token-and-Cookie-Auth-in-ASPNET (JWT + Cookie, Multi scheme auth)
 }
 }
 Migracije i seed 
@@ -391,6 +406,7 @@ https://nblumhardt.com/2016/11/ilogger-beginscope/#comment-3012254418
 https://twitter.com/bradwilson/status/1353588311940427776
 https://mikevallotton.wordpress.com/2009/07/08/net-exceptions-all-of-them/
 https://andrewlock.net/handling-web-api-exceptions-with-problemdetails-middleware/
+https://github.com/altmann/FluentResults (Result solution)
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
@@ -443,6 +459,9 @@ https://www.fearofoblivion.com/dont-let-ef-call-the-shots (TIPS)
 https://github.com/borisdj/EFCore.BulkExtensions (Bulk operations)
 https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-6-0-preview-4-performance-edition/ (.NET6)
 https://jasontaylor.dev/ef-core-database-initialisation-strategies/
+https://github.com/dotnet/efcore/issues/4711 (DateTime, Kind, UTC)
+https://mehdi.me/ambient-dbcontext-in-ef6/ (Lifetime)
+https://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/ (Disposal)
 Drop PK:https://github.com/dotnet/efcore/issues/2100
 https://weblogs.asp.net/dixin/entity-framework-core-and-linq-to-entities-4-query-methods-7
 Subqueries N+1 problem
@@ -482,6 +501,8 @@ https://docs.microsoft.com/en-us/visualstudio/debugger/debugger-tips-and-tricks?
 }
 SOURCE GENERATION {
 https://devblogs.microsoft.com/dotnet/introducing-c-source-generators/
+https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md
+https://blog.marcgravell.com/2021/05/is-era-of-reflection-heavy-c-libraries.html
 } 
 VERSIONING {
 https://edi.wang/post/2018/9/27/get-app-version-net-core
@@ -574,11 +595,20 @@ https://zachholman.com/talk/utc-is-enough-for-everyone-right
 https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/#time-zone-conversion-apis
 https://ardalis.com/why-use-datetimeoffset/
 https://codeblog.jonskeet.uk/2019/03/27/storing-utc-is-not-a-silver-bullet/
+https://codeofmatt.com/five-common-daylight-saving-time-antipatterns-of-net-developers/
+https://docs.microsoft.com/en-gb/windows/win32/sysinfo/acquiring-high-resolution-time-stamps?redirectedfrom=MSDN
+https://codeofmatt.com/utc-vs-gmt/
+https://codeofmatt.com/beware-the-edge-cases-of-time/
+https://codeofmatt.com/the-case-against-datetime-now/
+https://www.youtube.com/watch?v=64X8rCy1jSA&ab_channel=NDCConferences
 }
 HTTP CLIENT {
 https://rehansaeed.com/optimally-configuring-asp-net-core-httpclientfactory/
 https://www.stevejgordon.co.uk/httpclient-connection-pooling-in-dotnet-core
 https://github.com/tmenier/Flurl (Wrapper)
+Antiforgery {
+https://swimburger.net/blog/dotnet/harden-anti-forgery-tokens-with-iantiforgeryadditionaldataprovider-in-aspnet-core
+}
 }
 LINQ {
 https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/
@@ -605,6 +635,7 @@ https://josef.codes/sorting-really-large-files-with-c-sharp/
 https://www.meziantou.net/simplifying-path-manipulations-with-the-fullpath-type.htm
 https://josef.codes/using-embedded-files-in-dotnet-core/ (Embedded)
 https://khalidabuhakmeh.com/verify-user-file-uploads-with-dotnet
+https://swimburger.net/blog/dotnet/create-zip-files-on-http-request-without-intermediate-files-using-aspdotnet-mvc-razor-pages-and-endpoints (File download)
 }
 BUNDLING: {
 https://andrewlock.net/using-jquery-and-bootstrap-from-a-cdn-with-fallback-scripts-in-asp-net-core-3/
@@ -667,10 +698,12 @@ https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
 https://www.meziantou.net/links-async-await-csharp.htm
 https://www.pluralsight.com/guides/advanced-tips-using-task-run-async-wait
 https://andrewlock.net/cancelling-await-calls-in-dotnet-6-with-task-waitasync/ (.NET 6)
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/start-multiple-async-tasks-and-process-them-as-they-complete?pivots=dotnet-6-0
 CANCELLATION {
 https://docs.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads?WT.mc_id=DT-MVP-5000058
 https://andrewlock.net/just-because-you-stopped-waiting-for-it-doesnt-mean-the-task-stopped-running/
 https://blog.stephencleary.com/2022/02/cancellation-1-overview.html
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/cancel-an-async-task-or-a-list-of-tasks
 }
 }
 THREADING {
@@ -710,6 +743,7 @@ https://blog.ploeh.dk/2014/05/19/conforming-container/
 https://blog.ploeh.dk/2014/05/19/di-friendly-library/
 https://jimmybogard.com/constrained-open-generics-support-merged-in-net-core-di-container/
 https://www.youtube.com/watch?v=nqvnqzRNBls&ab_channel=NickChapsas
+https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root/ (Service locator)
 Auto registration
 https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/
 }
@@ -745,6 +779,7 @@ https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-betw
 https://dotnetcoretutorials.com/2021/04/03/i-wish-i-knew-about-debugger-launch-earlier/
 https://www.youtube.com/watch?v=lRUfRlp5BXc&ab_channel=NickChapsas (NULL CHECKS)
 https://www.youtube.com/watch?v=6avJHaC3C2U&ab_channel=NDCConferences
+https://mattwarren.org/2016/09/14/Subverting-.NET-Type-Safety-with-System.Runtime.CompilerServices.Unsafe/ (Casting)
 Immutable: https://www.youtube.com/watch?v=O89-zG84QK4&ab_channel=DotNext (#)
 }
 
@@ -779,6 +814,7 @@ https://github.com/dotnet/aspnetcore/tree/v5.0.0/src/ProjectTemplates
 DATA {
 https://jasonwatmore.com/post/2018/10/17/c-pure-pagination-logic-in-c-aspnet
 https://gunnarpeipman.com/aspnet-paging/
+https://docs.microsoft.com/en-us/ef/core/querying/pagination#keyset-pagination
 https://dev.to/praneetnadkar/generating-a-fake-data-in-net-core-api-3kba
 https://enterprisecraftsmanship.com/posts/specification-pattern-c-implementation/
 https://gunnarpeipman.com/ef-core-query-specification/
@@ -825,6 +861,10 @@ JMETER: https://jmeter.apache.org/
 JS/JQUERY {
 https://modernweb.com/5-things-stop-jquery/
 https://www.paulirish.com/2010/duck-punching-with-jquery/
+}
+
+NGROK {
+https://swimburger.net/blog/dotnet/integrate-ngrok-into-aspdotnet-core-startup-and-automatically-update-your-webhook-urls
 }
 
 EXTENSIONS {
