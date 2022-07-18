@@ -1,24 +1,202 @@
 ﻿@{
-    ViewData["Title"] = "Htmx Page";
+	ViewData["Title"] = "Htmx Page";
 }
+@section Styles {
+	<style>
+		.busy {
+			cursor: not-allowed;
+			opacity: .8;
+		}
 
-<button class="btn btn-primary"
-        hx-get="@Url.Action("HelloMessage")"
-        hx-target="#replaceMe"
-        hx-swap="innerHTML">
-    Load fast :)
-</button>
-<button class="btn btn-primary"
-        hx-get="@Url.Action("HelloMessageDelayed")"
-        hx-target="#replaceMe"
-        hx-swap="innerHTML">
-    Load slow :(
-<img class="htmx-indicator" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif" alt="File:Loader.gif - Wikimedia Commons" />
-</button>
-<div id="replaceMe">
-    Click the Load button and watch me disappear.
+		.smooth {
+			transition: all 1s ease-in;
+		}
+	</style>
+}
+<div class="row">
+	<div class="col-md-8">
+		<div class="d-block">
+			<p id="indicator" class="htmx-indicator">Loading...</p>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Action</th>
+					<th>Result</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<button class="btn btn-primary"
+								hx-get="@Url.Action("HelloMessage")"
+								hx-target="#loadFastResult"
+								hx-indicator="#indicator"
+								hx-swap="innerHTML swap:1s">
+							Load fast :)
+						</button>
+					</td>
+					<td id="loadFastResult" class="smooth">Hit the button</td>
+				</tr>
+				<tr>
+					<td>
+						<button class="btn btn-secondary"
+								hx-get="@Url.Action("HelloMessageDelayed")"
+								hx-target="#loadSlowResult"
+								hx-indicator="#indicator"
+								hx-swap="innerHTML">
+							Load slow :(
+						</button>
+					</td>
+					<td id="loadSlowResult" class="smooth">Hit the button</td>
+				</tr>
+				<tr>
+					<td>
+						<button class="btn btn-danger"
+								hx-get="@Url.Action("FetchMeAnError")"
+								hx-target="#loadErrorResult"
+								hx-indicator="#indicator"
+								hx-swap="innerHTML">
+							Error me :(
+						</button>
+					</td>
+					<td id="loadErrorResult" class="smooth">Hit the button</td>
+				</tr>
+				<tr>
+					<td>
+						<button class="btn btn-warning"
+								hx-get="@Url.Action("Go404")"
+								hx-indicator="#indicator"
+								hx-target="#load404Result"
+								hx-swap="innerHTML">
+							Error me :(
+						</button>
+					</td>
+					<td id="load404Result" class="smooth">Hit the button</td>
+				</tr>
+				<tr>
+					<td>
+						<button class="btn btn-warning"
+								hx-get="@Url.Action("Go400")"
+								hx-target="#load400Result"
+								hx-indicator="#indicator"
+								hx-swap="innerHTML">
+							Go 400
+						</button>
+					</td>
+					<td id="load400Result" class="smooth">Hit the button</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="text-primary"
+							  hx-get="@Url.Action("HelloMessageDelayed")"
+							  hx-target="#loadMouseEnterResult"
+							  hx-indicator="#indicator"
+							  hx-trigger="mouseenter"
+							  hx-swap="innerHTML">
+							Hover over me
+						</span>
+					</td>
+					<td id="loadMouseEnterResult" class="smooth">Drag the mouse inside</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="text-warning"
+							  hx-get="@Url.Action("HelloMessageDelayed")"
+							  hx-target="#loadMouseEnterOnceResult"
+							  hx-indicator="#indicator"
+							  hx-trigger="mouseenter once"
+							  hx-swap="innerHTML">
+							Hover over me
+						</span>
+					</td>
+					<td id="loadMouseEnterOnceResult" class="smooth">Drag the mouse inside, but this will trigger only once.</td>
+				</tr>
+				<tr>
+					<td>
+						Random color every 5s
+					</td>
+					<td>
+						@*<partial name="_ColorPoll" model="@("#333")" />*@
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="text-success"
+							  hx-get="@Url.Action("HelloMessage")"
+							  hx-target="#ctrClickResult"
+							  hx-indicator="#indicator"
+							  hx-trigger="click[ctrlKey]"
+							  hx-swap="innerHTML">
+							Control Click me
+						</span>
+					</td>
+					<td id="ctrClickResult" class="smooth">This will only work with CTRL + mouse click.</td>
+				</tr>
+				<tr>
+					<td>
+						Try some form validation
+					</td>
+					<td>
+						<p>Form example</p>
+						<partial name="_Form" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-4">
+		<div class="d-block">
+			<p>Server requests</p>
+		</div>
+		<ul class="list-group" id="ajax-requests">
+		</ul>
+	</div>
 </div>
-
 @section Scripts {
-    <script src="~/lib/htmx/htmx.min.js"></script>
+	<script src="~/lib/htmx/htmx.min.js"></script>
+	@*<script src="~/lib/jquery-validation/jquery.validate.js"></script>
+	<script src="~/lib/jquery-validation/jquery.validate.unobtrusive.js"></script>
+	<script src="~/lib/jquery-validation/additional-methods.js"></script>*@
+	<script>
+		//htmx.logAll();
+		document.body.addEventListener("htmx:beforeSend", function (event) {
+			$('#ajax-requests')
+				.html($('<li />', { class: 'list-group-item text-success' }).text(event.detail.pathInfo.path));
+			$(event.target).prop('disabled', true);
+		});
+
+		//Attach an global error handler. Note that all requests resulted with non 200 status code will be catched here.
+		document.body.addEventListener("htmx:responseError", function (event) {
+			var _xhr = event.detail.xhr;
+			console.log(event);
+
+			if (_xhr.status == 400) {	
+				$(event.detail.target).html(_xhr.response);
+
+				//$(event.detail.target).text('Looks like this content is trash.')
+				//	.addClass('bg-warning');
+			}
+
+			if (_xhr.status == 404) {
+				$(event.detail.target).text('Looks like this content does not exist.')
+					.addClass('bg-warning');
+			}
+
+			if (_xhr.status >= 500) {
+				var response = JSON.parse(event.detail.xhr.response);
+				$(event.detail.target).text(response.errorMessage)
+					.addClass('text-white')
+					.addClass('bg-danger');
+			}
+		});
+
+		document.body.addEventListener("htmx:afterRequest", function (event) {
+			$(event.target).prop('disabled', false);
+		});
+
+		document.body.addEventListener("htmx:validation:validate", function (event) {
+			console.log('htmx:validation:validate');
+		});
+	</script>
 }

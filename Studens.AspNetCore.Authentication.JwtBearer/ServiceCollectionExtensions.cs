@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
 
         // We will build options manually
         JwtBearerAuthOptions authOptions = new();
-        configureOptions(authOptions);
+        configureOptions(authOptions);        
 
         var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(authOptions.Secret));
         var securityOptions = new JwtBearerAuthSecurityOptions
