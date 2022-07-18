@@ -21,8 +21,6 @@ namespace Studens.Data.Seed
         {
             using (var scope = ServiceScopeFactory.CreateScope())
             {
-                var test = scope.ServiceProvider.GetRequiredService<IDataSeedManager>();                
-
                 // grab contributor and seed data
                 foreach (var contributorType in Options.Contributors)
                 {

@@ -13,7 +13,7 @@ namespace Studens.MvcNet6.WebUI.MediatR.Services
 
         public async Task<IList<CustomerDto>> Handle(GetCustomerByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _customerService.GetCustomer(string.Empty);
+            return await _customerService.GetCustomer(page: 3, pageSize: 1);
         }
     }
 }
