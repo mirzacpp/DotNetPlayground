@@ -5,13 +5,17 @@ https://khalidabuhakmeh.com/aspnet-core-interview-questions-and-answers (INTERVI
 
 Live IL transform: https://sharplab.io/
 
+ARCH {
+https://github.com/ardalis/CleanArchitecture
+https://github.com/jasontaylordev/CleanArchitecture
+https://www.youtube.com/channel/UC3RKA4vunFAfrfxiJhPEplw
+}
+
 REPOS {
 https://codejack.com/
 https://kristian.hellang.com/
 https://github.com/skimedic/presentations/tree/master/DOTNETCORE
 https://github.com/EdiWang/Moonglade
-https://github.com/ardalis/CleanArchitecture
-https://github.com/jasontaylordev/CleanArchitecture
 https://github.com/jasontaylordev/NorthwindTraders
 https://github.com/aspnetrun/run-aspnetcore
 https://aspnetboilerplate.com/Pages/Documents/Introduction
@@ -201,7 +205,7 @@ https://www.youtube.com/watch?v=JNDgcBDZPkU&ab_channel=NickChapsas
 ASP.NET CORE {
 Samples {
 HOSTING {
-https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-6.0
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-6.0 (Environments)
 https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d#migration-to-aspnet-core-in-net-6
 https://edi.wang/post/2021/2/3/aspnet-core-50-throughput-test-in-kestrel-iis-nginx-and-caddy
 https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
@@ -209,7 +213,11 @@ https://marketplace.visualstudio.com/items?itemName=vs-publisher-1448185.Conveyo
 https://khalidabuhakmeh.com/adding-clarity-to-dotnet-minimal-hosting
 STARTUP {
 https://www.strathweb.com/2020/02/asp-net-core-mvc-3-x-addmvc-addmvccore-addcontrollers-and-other-bootstrapping-approaches/
+https://www.strathweb.com/2022/02/using-an-existing-startup-class-with-asp-net-6-minimal-hosting-model/ (.NET6 startup)
 }
+}
+REFERENCE MANAGEMENT {
+https://www.youtube.com/watch?v=GolKKJmqxoc&ab_channel=CodeOpinion
 }
 ObjectPool {
 https://docs.microsoft.com/en-us/aspnet/core/performance/objectpool?view=aspnetcore-5.0
@@ -326,6 +334,8 @@ https://github.com/soundaranbu/RazorTemplating
 HTMX {
 https://khalidabuhakmeh.com/htmx-and-aspnet-core-swapping-techniques
 https://www.jerriepelser.com/blog/htmx-inline-editing/
+https://youtu.be/uS6m37jhdqM
+https://youtu.be/nUTI70v6ZCg
 }
 Email: {
 https://scottsauber.com/2018/07/07/walkthrough-creating-an-html-email-template-with-razor-and-razor-class-libraries-and-rendering-it-from-a-net-standard-class-library/
@@ -359,6 +369,7 @@ https://andrewlock.net/a-look-behind-the-jwt-bearer-authentication-middleware-in
 https://www.jerriepelser.com/blog/using-roles-with-the-jwt-middleware/
 https://weblog.west-wind.com/posts/2021/Mar/09/Role-based-JWT-Tokens-in-ASPNET-Core
 https://weblog.west-wind.com/posts/2022/Mar/29/Combining-Bearer-Token-and-Cookie-Auth-in-ASPNET (JWT + Cookie, Multi scheme auth)
+https://gunnarpeipman.com/aspnet-core-adding-claims-to-existing-identity/ (Claims extending)
 }
 }
 Migracije i seed 
@@ -667,6 +678,7 @@ ASYNC/AWAIT {
 https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md,
 https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AspNetCoreGuidance.md
 ]
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/task-asynchronous-programming-model
 https://devblogs.microsoft.com/dotnet/configureawait-faq/
 https://devblogs.microsoft.com/pfxteam/crafting-a-task-timeoutafter-method/
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
@@ -700,6 +712,9 @@ https://www.meziantou.net/links-async-await-csharp.htm
 https://www.pluralsight.com/guides/advanced-tips-using-task-run-async-wait
 https://andrewlock.net/cancelling-await-calls-in-dotnet-6-with-task-waitasync/ (.NET 6)
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/start-multiple-async-tasks-and-process-them-as-they-complete?pivots=dotnet-6-0
+https://devblogs.microsoft.com/pfxteam/executioncontext-vs-synchronizationcontext/ (Asynclocal)
+https://blog.stephencleary.com/2013/04/implicit-async-context-asynclocal.html (Asynclocal)
+https://blog.stephencleary.com/2016/12/eliding-async-await.html (Await or Task)
 CANCELLATION {
 https://docs.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads?WT.mc_id=DT-MVP-5000058
 https://andrewlock.net/just-because-you-stopped-waiting-for-it-doesnt-mean-the-task-stopped-running/
@@ -733,6 +748,9 @@ https://gigi.nullneuron.net/gigilabs/the-adapter-design-pattern-for-dtos-in-c/
 https://volosoft.com/blog/Prefer-Singleton-Pattern-over-Static-Class
 https://dunnhq.com/posts/2021/primitive-obsession/
 https://blog.ploeh.dk/2020/02/10/builder-isomorphisms/
+Interceptors {
+https://www.youtube.com/watch?v=m77s48tTdfU&ab_channel=NickChapsas
+}
 }
 
 Dependency Injection {
