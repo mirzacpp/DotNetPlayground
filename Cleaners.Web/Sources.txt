@@ -39,6 +39,8 @@ Blogs {
 https://blog.adamfurmanek.pl/
 https://swimburger.net/blog
 https://codeofmatt.com/
+https://cpratt.co/
+https://www.wouterdekort.com/
 https://jasontaylor.dev/posts/
 https://www.mrlacey.com/
 https://sergeytihon.com
@@ -294,6 +296,7 @@ Middleware {
 https://www.devtrends.co.uk/blog/conditional-middleware-based-on-request-in-asp.net-core
 https://andrewlock.net/understanding-your-middleware-pipeline-with-the-middleware-analysis-package/
 https://andrewlock.net/inserting-middleware-between-userouting-and-useendpoints-as-a-library-author-part-1/
+https://andrewlock.net/exploring-istartupfilter-in-asp-net-core/ (Startup filter)
 INDEPENDENT PIPELINES {
 https://www.strathweb.com/2017/04/running-multiple-independent-asp-net-core-pipelines-side-by-side-in-the-same-application/
 }
@@ -474,6 +477,11 @@ https://www.thereformedprogrammer.net/part6-using-sharding-to-build-multi-tenant
 https://github.com/dotnet/efcore/issues/4711 (DateTime, Kind, UTC)
 https://mehdi.me/ambient-dbcontext-in-ef6/ (Lifetime)
 https://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/ (Disposal)
+https://docs.microsoft.com/en-us/ef/core/performance/efficient-querying#use-indexes-properly (INDEXES)
+Migrations {
+https://www.youtube.com/watch?v=mSsGERmrhnE&ab_channel=.NETFoundation
+https://www.sqlshack.com/how-to-compare-two-sql-databases-from-visual-studio/
+}
 Drop PK:https://github.com/dotnet/efcore/issues/2100
 https://weblogs.asp.net/dixin/entity-framework-core-and-linq-to-entities-4-query-methods-7
 Subqueries N+1 problem
@@ -561,6 +569,7 @@ https://khalidabuhakmeh.com/creating-random-numbers-with-dotnet-core
 https://www.youtube.com/watch?v=tCYxc-2-3fY&ab_channel=Questpond
 https://devblogs.microsoft.com/pfxteam/getting-random-numbers-in-a-thread-safe-way/
 https://gist.github.com/niik/1017834
+https://codeblog.jonskeet.uk/2009/11/04/revisiting-randomness/
 }
 Numerics formating {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
@@ -589,11 +598,15 @@ https://www.youtube.com/watch?v=fyuS18uSLLE&feature=youtu.be
 https://docs.microsoft.com/en-us/dotnet/csharp/write-safe-efficient-code
 https://miniprofiler.com/dotnet/AspDotNetCore
 }
-MediatR {
+CQRS/MediatR {
 https://jonhilton.net/2016/08/31/how-to-easily-extend-your-app-using-mediatr-notifications/
 https://ardalis.com/using-mediatr-in-aspnet-core-apps
 https://dotnetcoretutorials.com/2019/04/30/the-mediator-pattern-in-net-core-part-1-whats-a-mediator/
 https://www.youtube.com/watch?v=baiH3f_TFfY&ab_channel=NickChapsas (PERF)
+https://code-maze.com/cqrs-mediatr-fluentvalidation/
+http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/
+https://web.archive.org/web/20160729165044/https://goodenoughsoftware.net/2012/03/02/cqrs/
+https://youtu.be/ngeEYUy9hI8 (MediatR + Hangfire)
 }
 System.Collections.Generic Namespace {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1

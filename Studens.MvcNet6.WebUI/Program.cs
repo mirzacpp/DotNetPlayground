@@ -6,6 +6,7 @@ using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
 using Studens.Data.Migration;
 using Studens.Data.Seed;
+using Studens.MediatR;
 using Studens.MvcNet6.WebUI.Data;
 using Studens.MvcNet6.WebUI.MediatR.Services;
 
@@ -13,9 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseDefaultServiceProvider((context, options) =>
 {
-    var isDevelopment = context.HostingEnvironment.IsDevelopment();
-    options.ValidateScopes = isDevelopment;
-    options.ValidateOnBuild = isDevelopment;
+	var isDevelopment = context.HostingEnvironment.IsDevelopment();
+	options.ValidateScopes = isDevelopment;
+	options.ValidateOnBuild = isDevelopment;
 });
 
 // Add services to the container.
@@ -25,17 +26,18 @@ builder.Services.AddDisplayRegisteredServices();
 
 builder.Services.Configure<GoogleMapsOptions>(options =>
 {
-    options.UrlPlaceholder = "https://localhost:7132/";
-    options.ApiKeys.Add("miki1", "miki1-value");
+	options.UrlPlaceholder = "https://localhost:7132/";
+	options.ApiKeys.Add("miki1", "miki1-value");
 });
 
-builder.Services.AddMediatR(typeof(Program).Assembly);
+builder.Services.AddMediatR(typeof(Program).Assembly, typeof(StudensMediatrModule).Assembly);
+builder.Services.AddTransient(typeof(IRequestHandler<CreateCommand<CustomerCreateDto, string>, string>), typeof(DummyCreateHandler<CustomerCreateDto, string>));
 builder.Services.AddSingleton<ICustomerService, CustomerService>();
 
 // Add db context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("StudensMvc6"));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("StudensMvc6"));
 }, ServiceLifetime.Scoped);
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -49,17 +51,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //});
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddDefaultTokenProviders()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddStudensEntityFrameworkStores<ApplicationDbContext>()
-    .AddStudensRoleManager()
-    .AddStudensUserManager()
-    .AddStudensPasswordManager()
-    .Services.AddScoped<IDataMigrationManager, DataMigrationManager>()
-    .AddScoped<IDataSeedManager, DataSeedManager>()
-    .AddDataSeedContributorFromMarkers(typeof(Program));
-    //.AddDataSeedContributor<RoleDataSeedContributor>()
-    //.AddDataSeedContributor<Role2DataSeedContributor>();
+	.AddDefaultTokenProviders()
+	.AddEntityFrameworkStores<ApplicationDbContext>()
+	.AddStudensEntityFrameworkStores<ApplicationDbContext>()
+	.AddStudensRoleManager()
+	.AddStudensUserManager()
+	.AddStudensPasswordManager()
+	.Services.AddScoped<IDataMigrationManager, DataMigrationManager>()
+	.AddScoped<IDataSeedManager, DataSeedManager>()
+	.AddDataSeedContributorFromMarkers(typeof(Program));
+//.AddDataSeedContributor<RoleDataSeedContributor>()
+//.AddDataSeedContributor<Role2DataSeedContributor>();
 
 builder.Services.AddDisplayRegisteredServices("/testovka");
 
@@ -68,11 +70,11 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    //app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-    app.UseDisplayRegisteredServices();
+	app.UseDeveloperExceptionPage();
+	//app.UseExceptionHandler("/Home/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
+	app.UseDisplayRegisteredServices();
 }
 
 app.UseHttpsRedirection();
@@ -86,13 +88,13 @@ app.UseAuthorization();
 app.UseMediatRTestEndpoints();
 
 app.MapAreaControllerRoute(
-    name: "auth_area",
-    areaName: "Auth",
-    pattern: "Auth/{controller=Account}/{action=Index}/{id?}");
+	name: "auth_area",
+	areaName: "Auth",
+	pattern: "Auth/{controller=Account}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+	name: "default",
+	pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.UseDisplayRegisteredServices();
 
@@ -142,16 +144,16 @@ app.UseDisplayRegisteredServices();
 // Run migrator
 using (var scope = app.Services.CreateScope())
 {
-    try
-    {
-        var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
-        await migrator.MigrateAsync();
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.Message);
-        throw;
-    }
+	try
+	{
+		var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
+		await migrator.MigrateAsync();
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine(ex.Message);
+		throw;
+	}
 }
 
 app.Run();

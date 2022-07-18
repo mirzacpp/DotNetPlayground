@@ -2,7 +2,7 @@
 {
     public interface ICustomerService
     {
-        Task<IList<CustomerDto>> GetCustomer(string customerId);
+        Task<IList<CustomerDto>> GetCustomer(int page, int pageSize);
 
         Task AddCustomerAsync(CustomerDto customer);
     }
@@ -28,8 +28,8 @@
             return Task.CompletedTask;
         }
 
-        public Task<IList<CustomerDto>> GetCustomer(string customerId) =>
-            Task.FromResult(_customerList);
+        public Task<IList<CustomerDto>> GetCustomer(int page, int pageSize) =>
+            Task.FromResult<IList<CustomerDto>>(_customerList.Skip((page - 1) * pageSize).Take(pageSize).ToList());
     }
 
     public record CustomerDto
