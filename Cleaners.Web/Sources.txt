@@ -36,6 +36,7 @@ https://github.com/DamianEdwards/MinimalApiPlayground
 }
 
 Blogs {
+https://michaelscodingspot.com/
 https://blog.adamfurmanek.pl/
 https://swimburger.net/blog
 https://codeofmatt.com/
@@ -421,6 +422,7 @@ https://twitter.com/bradwilson/status/1353588311940427776
 https://mikevallotton.wordpress.com/2009/07/08/net-exceptions-all-of-them/
 https://andrewlock.net/handling-web-api-exceptions-with-problemdetails-middleware/
 https://github.com/altmann/FluentResults (Result solution)
+https://youtu.be/MfTLob6teJE
 Secrets
 https://wakeupandcode.com/your-web-app-secrets-in-asp-net-core/
 }
@@ -499,6 +501,7 @@ https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-6.0/whatsnew
 REPO PATTERN: {
 https://www.edgesidesolutions.com/repository-pattern-dead-with-entity-framework/
 https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-entity-framework-core/
+https://app.pluralsight.com/library/courses/ef-core-6-encapsulating-usage/discussion (To or not to)
 }
 }
 }
@@ -545,6 +548,7 @@ https://www.youtube.com/watch?v=2IgfrnG-128&list=PLokQFRpAsul4fn_CSEwXw33VNbG1DB
 }
 PROFILING {
 https://devblogs.microsoft.com/visualstudio/analyze-cpu-memory-while-debugging/
+https://michaelscodingspot.com/memory-profilers-principles/
 }
 MEMORY {
 https://www.stevejgordon.co.uk/analysing-the-large-object-heap-in-jetbrains-dotmemory
@@ -563,6 +567,7 @@ https://docs.microsoft.com/en-us/dotnet/core/dependency-loading/understanding-as
 ASSEMBLIES {
 https://weblog.west-wind.com/posts/2016/dec/12/loading-net-assemblies-out-of-seperate-folders
 https://github.com/natemcmaster/DotNetCorePlugins
+https://michaelscodingspot.com/assemblies-load-in-dotnet/ (How it works)
 }
 RANDOM {
 https://khalidabuhakmeh.com/creating-random-numbers-with-dotnet-core
@@ -606,7 +611,10 @@ https://www.youtube.com/watch?v=baiH3f_TFfY&ab_channel=NickChapsas (PERF)
 https://code-maze.com/cqrs-mediatr-fluentvalidation/
 http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/
 https://web.archive.org/web/20160729165044/https://goodenoughsoftware.net/2012/03/02/cqrs/
-https://youtu.be/ngeEYUy9hI8 (MediatR + Hangfire)
+https://youtu.be/ngeEYUy9hI8 (MediatR + Hangfire OutOfProcess)
+https://youtu.be/kG4WLiZEAuc (OutOfProcess)
+https://cezarypiatek.github.io/post/why-i-dont-use-mediatr-for-cqrs/ (About)
+https://www.infoq.com/presentations/8-lines-code-refactoring/
 }
 System.Collections.Generic Namespace {
 https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic?view=netcore-3.1
@@ -650,6 +658,9 @@ Dynamic https://github.com/alirezanet/Gridify/
 COOL: https://github.com/dotnet/aspnetcore/blob/6427d9cc718f8093c506b62b6fd12544411b477f/src/Http/Http.Features/src/IHeaderDictionary.Keyed.cs
 http://nessos.github.io/LinqOptimizer/
 https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/ranges-indexes
+https://blog.jeremylikness.com/blog/dynamically-build-linq-expressions/ (Dynamic expressions)
+https://michaelscodingspot.com/when-to-use-c-linq-with-query-syntax-over-method-syntax/ (LINQ query sv LINQ method)
+https://michaelscodingspot.com/dynamic-queries/ (Expressions)
 }
 FILES {
 https://dejanstojanovic.net/aspnet/2020/january/mocking-systemio-filesystem-in-unit-tests-in-aspnet-core/
@@ -824,6 +835,7 @@ https://www.dotnetcurry.com/csharp/1362/hashset-csharp-with-examples
 DIAGNOSTICS/DEBUGGING {
 https://devblogs.microsoft.com/visualstudio/debugging-external-sources-with-visual-studio/
 https://www.youtube.com/watch?v=ErrABoJ9HZw&ab_channel=NickChapsas
+https://michaelscodingspot.com/application-memory-health/
 }
 
 Benchmarking {

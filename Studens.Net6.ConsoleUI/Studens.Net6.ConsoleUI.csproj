@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NBomber" Version="2.1.5" />
+    <PackageReference Include="NBomber.Http" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Studens.AspNetCore.Authentication.JwtBearer\Studens.AspNetCore.Authentication.JwtBearer.csproj" />
     <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
     <ProjectReference Include="..\Studens.MediatR\Studens.MediatR.csproj" />

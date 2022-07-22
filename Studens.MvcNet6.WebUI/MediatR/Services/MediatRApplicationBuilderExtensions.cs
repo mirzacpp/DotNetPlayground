@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Studens.MediatR;
+using Studens.MvcNet6.WebUI.MediatR.Books;
 using Studens.MvcNet6.WebUI.MediatR.Services;
 
 namespace Microsoft.AspNetCore.Builder
@@ -15,15 +15,16 @@ namespace Microsoft.AspNetCore.Builder
 				  await context.Response.WriteAsJsonAsync(await mediatR.Send(new GetCustomerByIdQuery()));
 			  });
 
-			_ = app.MapGet("/mediatr-post", async (context) =>
+			_ = app.MapGet("/books/{lang}/{page}/{pageSize}", async (HttpContext context, string lang, int page, int pageSize) =>
 			{
 				var mediatR = context.RequestServices.GetRequiredService<IMediator>();
 
-				await context.Response.WriteAsJsonAsync(await mediatR.Send(new CreateCommand<CustomerCreateDto, string>(new CustomerCreateDto
+				await context.Response.WriteAsJsonAsync(await mediatR.Send(new BooksQuery
 				{
-					FirstName = "Jone",
-					LastName = "Doe"
-				})));
+					LangCode = lang,
+					Page = page,
+					PageSize = pageSize
+				}));
 			});
 
 			return app;

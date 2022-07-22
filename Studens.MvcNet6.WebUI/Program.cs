@@ -6,7 +6,6 @@ using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
 using Studens.Data.Migration;
 using Studens.Data.Seed;
-using Studens.MediatR;
 using Studens.MvcNet6.WebUI.Data;
 using Studens.MvcNet6.WebUI.MediatR.Services;
 
@@ -30,8 +29,7 @@ builder.Services.Configure<GoogleMapsOptions>(options =>
 	options.ApiKeys.Add("miki1", "miki1-value");
 });
 
-builder.Services.AddMediatR(typeof(Program).Assembly, typeof(StudensMediatrModule).Assembly);
-builder.Services.AddTransient(typeof(IRequestHandler<CreateCommand<CustomerCreateDto, string>, string>), typeof(DummyCreateHandler<CustomerCreateDto, string>));
+builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.AddSingleton<ICustomerService, CustomerService>();
 
 // Add db context
@@ -142,18 +140,18 @@ app.UseDisplayRegisteredServices();
 //});
 
 // Run migrator
-using (var scope = app.Services.CreateScope())
-{
-	try
-	{
-		var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
-		await migrator.MigrateAsync();
-	}
-	catch (Exception ex)
-	{
-		Console.WriteLine(ex.Message);
-		throw;
-	}
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//	try
+//	{
+//		var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
+//		await migrator.MigrateAsync();
+//	}
+//	catch (Exception ex)
+//	{
+//		Console.WriteLine(ex.Message);
+//		throw;
+//	}
+//}
 
 app.Run();

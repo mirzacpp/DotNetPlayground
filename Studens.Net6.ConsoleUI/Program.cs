@@ -1,32 +1,20 @@
-﻿var cts = new CancellationTokenSource();
+﻿using NBomber.Contracts;
+using NBomber.CSharp;
+using NBomber.Plugins.Http.CSharp;
 
-//var tasks = new[] { 2000, 1000, 3000, 4000, 5000 }
-//.Select(t => DoSomeWorkAsync(t));
+var httpFactory = HttpClientFactory.Create();
 
-Console.WriteLine("=====> Application started");
-Console.WriteLine("=====> Press ENTER key to cancel ...");
-
-Task cancelTask = Task.Run(() =>
+var step = Step.Create("stresiraj_api", httpFactory, async ctx =>
 {
-	while (Console.ReadKey().Key != ConsoleKey.Enter)
-	{
-		Console.WriteLine("=====> Press ENTER key to cancel ...");
-	}
+	var response = await ctx.Client.GetAsync("https://localhost:7132/books/it/107/5", ctx.CancellationToken);
 
-	Console.WriteLine("\n\n\n=====> ENTER pressed, cancelling ...");
-	cts.Cancel();	
+	return response.IsSuccessStatusCode
+	? Response.Ok(statusCode: (int)response.StatusCode)
+	: Response.Fail(statusCode: (int)response.StatusCode);
 });
 
-await Task.WhenAny(new[] { cancelTask, DoSomeWorkAsync() });
+var scenario = ScenarioBuilder.CreateScenario("test_scene", step)
+.WithWarmUpDuration(TimeSpan.FromSeconds(5))
+.WithLoadSimulations(Simulation.KeepConstant(15, during: TimeSpan.FromSeconds(60)));
 
-Console.WriteLine("=====> Application stopped");
-
-async Task DoSomeWorkAsync()
-{
-	foreach (var delay in new[] { 2000, 1000, 3000, 4000, 5000, 10_000 })
-	{
-		Console.WriteLine($"I will delay for {delay}");
-		await Task.Delay(delay, cts!.Token);
-		Console.WriteLine($"I have completed after delay of {delay}ms");
-	}
-}
+NBomberRunner.RegisterScenarios(scenario).Run();

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Studens.MvcNet6.WebUI.Data;
 
@@ -11,9 +12,10 @@ using Studens.MvcNet6.WebUI.Data;
 namespace Studens.MvcNet6.WebUI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220721072348_Locale_Test")]
+    partial class Locale_Test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,48 +222,6 @@ namespace Studens.MvcNet6.WebUI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Author", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Author", (string)null);
-                });
-
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.AuthorBooks", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("AuthorBooks");
-                });
-
             modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Book", b =>
                 {
                     b.Property<int>("Id")
@@ -270,26 +230,10 @@ namespace Studens.MvcNet6.WebUI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfPages")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("PublishDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PublisherId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("PublisherId");
 
                     b.ToTable("Book", (string)null);
                 });
@@ -321,64 +265,6 @@ namespace Studens.MvcNet6.WebUI.Migrations
                         .HasFilter("[LanguageCode] IS NOT NULL");
 
                     b.ToTable("BookLocales", (string)null);
-                });
-
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Category", (string)null);
-                });
-
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.CategoryLocales", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("LanguageCode")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ParentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
-
-                    b.HasIndex("LanguageCode", "ParentId")
-                        .IsUnique()
-                        .HasFilter("[LanguageCode] IS NOT NULL");
-
-                    b.ToTable("CategoryLocales", (string)null);
-                });
-
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Publisher", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Publisher", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -432,44 +318,6 @@ namespace Studens.MvcNet6.WebUI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.AuthorBooks", b =>
-                {
-                    b.HasOne("Studens.MvcNet6.WebUI.Domain.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Studens.MvcNet6.WebUI.Domain.Book", "Book")
-                        .WithMany("Authors")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-
-                    b.Navigation("Book");
-                });
-
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Book", b =>
-                {
-                    b.HasOne("Studens.MvcNet6.WebUI.Domain.Category", "Category")
-                        .WithMany("Books")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Studens.MvcNet6.WebUI.Domain.Publisher", "Publisher")
-                        .WithMany("Books")
-                        .HasForeignKey("PublisherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Publisher");
-                });
-
             modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.BookLocales", b =>
                 {
                     b.HasOne("Studens.MvcNet6.WebUI.Domain.Book", "Parent")
@@ -481,39 +329,9 @@ namespace Studens.MvcNet6.WebUI.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.CategoryLocales", b =>
-                {
-                    b.HasOne("Studens.MvcNet6.WebUI.Domain.Category", "Parent")
-                        .WithMany("Locales")
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Parent");
-                });
-
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Author", b =>
-                {
-                    b.Navigation("Books");
-                });
-
             modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Book", b =>
                 {
-                    b.Navigation("Authors");
-
                     b.Navigation("Locales");
-                });
-
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Category", b =>
-                {
-                    b.Navigation("Books");
-
-                    b.Navigation("Locales");
-                });
-
-            modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Publisher", b =>
-                {
-                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }
