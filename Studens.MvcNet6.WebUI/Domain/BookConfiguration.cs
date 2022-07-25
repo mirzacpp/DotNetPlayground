@@ -21,7 +21,7 @@ namespace Studens.MvcNet6.WebUI.Domain
 			builder.Property(b => b.Price).IsRequired();
 
 			//TODO: This can now be auto configured ?
-			builder.HasMany(b => b.Locales).WithOne(bl => bl.Parent).HasForeignKey(bl => bl.ParentId);
+			builder.HasMany(b => b.Translations).WithOne(bl => bl.Parent).HasForeignKey(bl => bl.ParentId);
 			builder.HasMany(b => b.Authors).WithOne(bl => bl.Book).HasForeignKey(bl => bl.BookId);
 		}
 	}
@@ -71,7 +71,7 @@ namespace Studens.MvcNet6.WebUI.Domain
 			builder.HasKey(b => b.Id);
 
 			//TODO: This can now be auto configured ?
-			builder.HasMany(b => b.Locales).WithOne(bl => bl.Parent).HasForeignKey(bl => bl.ParentId);
+			builder.HasMany(b => b.Translations).WithOne(bl => bl.Parent).HasForeignKey(bl => bl.ParentId);
 			builder.HasMany(b => b.Books).WithOne(b => b.Category).HasForeignKey(b => b.CategoryId);
 		}
 	}

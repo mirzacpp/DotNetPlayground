@@ -30,7 +30,7 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 			{
 				var cat = new Category
 				{
-					Locales = catLocales.Select(l => new CategoryLocales
+					Translations = catLocales.Select(l => new CategoryLocales
 					{
 						LanguageCode = l.Key,
 						Name = string.Format(l.Value, i)
@@ -99,7 +99,7 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 					PublishDateTime = new DateTime(random.Next(1650, 2022), random.Next(1, 12), random.Next(1, 28)),
 					Price = Convert.ToDecimal(random.Next(10, 50)),
 					CategoryId = categories[random.Next(1, 1000)].Id,
-					Locales = bookLocales.Select(l => new BookLocales
+					Translations = bookLocales.Select(l => new BookLocales
 					{
 						LanguageCode = l.Key,
 						Title = string.Format(l.Value, i)

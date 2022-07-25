@@ -553,7 +553,7 @@ https://michaelscodingspot.com/memory-profilers-principles/
 MEMORY {
 https://www.stevejgordon.co.uk/analysing-the-large-object-heap-in-jetbrains-dotmemory
 https://adamsitnik.com/Array-Pool/
-https://www.philosophicalgeek.com/2015/02/06/announcing-microsoft-io-recycablememorystream/
+https://www.philosophicalgeek.com/2015/02/06/announcing-microsoft-io-recycablememorystream/ (Stream Optimization)
 https://csharp.christiannagel.com/2017/05/31/arraypool/#comments
 https://www.youtube.com/watch?v=jONSIhMST9E&ab_channel=NickChapsas (DATA TYPES ALLOCATIONS)
 https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet

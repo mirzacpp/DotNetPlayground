@@ -6,11 +6,11 @@ namespace Studens.MvcNet6.WebUI.Domain
 	/// <summary>
 	/// Defines base entity
 	/// </summary>
-	public class Book : IEntity<int>, IHasLocales<BookLocales>
+	public class Book : IEntity<int>, ITranslatableEntity<BookLocales>
 	{
 		public Book()
 		{
-			Locales = new HashSet<BookLocales>();
+			Translations = new HashSet<BookLocales>();
 		}
 
 		public int Id { get; set; }
@@ -22,12 +22,12 @@ namespace Studens.MvcNet6.WebUI.Domain
 
 		public Category Category { get; set; }
 		public Publisher Publisher { get; set; }
-		public ICollection<BookLocales> Locales { get; set; }
+		public ICollection<BookLocales> Translations { get; set; }
 		public ICollection<AuthorBooks> Authors { get; set; }
 	}
 
 	// Holds all translatable properties
-	public class BookLocales : ILocalizedEntity<Book, int>
+	public class BookLocales : IEntityTranslation<Book, int>
 	{
 		public int Id { get; set; }
 		public string LanguageCode { get; set; }
@@ -64,20 +64,20 @@ namespace Studens.MvcNet6.WebUI.Domain
 		public ICollection<Book> Books { get; set; }
 	}
 
-	public class Category : IEntity<int>, IHasLocales<CategoryLocales>
+	public class Category : IEntity<int>, ITranslatableEntity<CategoryLocales>
 	{
 		public Category()
 		{
-			Locales = new HashSet<CategoryLocales>();
+			Translations = new HashSet<CategoryLocales>();
 		}
 
 		public int Id { get; set; }
-		public ICollection<CategoryLocales> Locales { get; set; }
+		public ICollection<CategoryLocales> Translations { get; set; }
 		public ICollection<Book> Books { get; set; }
 	}
 
 	// Holds all translatable properties
-	public class CategoryLocales : ILocalizedEntity<Category, int>
+	public class CategoryLocales : IEntityTranslation<Category, int>
 	{
 		public int Id { get; set; }
 		public string LanguageCode { get; set; }
