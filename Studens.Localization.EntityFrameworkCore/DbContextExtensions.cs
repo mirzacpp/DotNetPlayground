@@ -10,21 +10,14 @@ namespace Studens.Localization.EntityFrameworkCore
 	/// </summary>
 	public static class DbContextExtensions
 	{
-		//public static IQueryable<QueryTranslationPair<TTranslatableEntity, TTranslatableEntityKey, TTranslation>> Localized<TTranslatableEntity, TTranslatableEntityKey, TTranslation>(
-		//this DbContext dbContext,
-		//string? culture = null)
-		//where TTranslatableEntity : class, ITranslatableEntity<TTranslation>, IEntity<TTranslatableEntityKey>
-		//where TTranslation : class, IEntityTranslation<TTranslatableEntity, TTranslatableEntityKey>
-		//{
-		//	// Note that we can use CultureInfo.CurrentUICulture for current culture and CultureInfo.CurrentUICulture.Parent as fallback
-		//	culture ??= CultureInfo.CurrentUICulture.Name;
-
-		//	return from parent in dbContext.Set<TTranslatableEntity>()
-		//		   join child in dbContext.Set<TTranslation>() on parent.Id equals child.ParentId
-		//		   where child.LanguageCode == culture
-		//		   select new QueryTranslationPair<TTranslatableEntity, TTranslatableEntityKey, TTranslation>(parent, child);
-		//}
-
+		/// <summary>
+		/// Returns localized <see cref="IQueryable{QueryTranslationPair}"/> for entity <typeparamref name="TTranslatableEntity"/> and translation <typeparamref name="TTranslation"/>.
+		/// </summary>
+		/// <typeparam name="TTranslatableEntity">Translatable entity type</typeparam>
+		/// <typeparam name="TTranslation">Entity translation type</typeparam>
+		/// <param name="dbContext">Current DbContext instance</param>
+		/// <param name="culture">Culture used for filtering. If null, uses	<see cref="CultureInfo.CurrentUICulture"/> to obtain current culture.</param>
+		/// <returns></returns>
 		public static IQueryable<QueryTranslationPair<TTranslatableEntity, TTranslation>> Localized<TTranslatableEntity, TTranslation>(
 		this DbContext dbContext,
 		string? culture = null)
@@ -36,8 +29,9 @@ namespace Studens.Localization.EntityFrameworkCore
 
 			return from entity in dbContext.Set<TTranslatableEntity>()
 				   join translation in dbContext.Set<TTranslation>() on entity.Id equals translation.ParentId
-				   where translation.LanguageCode == culture
-				   select new QueryTranslationPair<TTranslatableEntity, TTranslation>(entity, translation);
+				   where translation.LanguageCode.Equals(culture)
+				   // NOTE that we do not use ctor for QueryTranslationPair since they cannot be translated to SQL.
+				   select new QueryTranslationPair<TTranslatableEntity, TTranslation> { Entity = entity, Translation = translation };
 		}
 	}
 }

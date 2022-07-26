@@ -21,12 +21,11 @@ namespace Studens.MvcNet6.WebUI.Domain
 			builder.Property(b => b.Price).IsRequired();
 
 			//TODO: This can now be auto configured ?
-			builder.HasMany(b => b.Translations).WithOne(bl => bl.Parent).HasForeignKey(bl => bl.ParentId);
 			builder.HasMany(b => b.Authors).WithOne(bl => bl.Book).HasForeignKey(bl => bl.BookId);
 		}
 	}
 
-	public class BookLocalesConfiguration : IEntityTypeConfiguration<BookLocales>
+	public class BookLocalesConfiguration : TranslatableEntityConfiguration<BookLocales, Book>
 	{
 		public void Configure(EntityTypeBuilder<BookLocales> builder)
 		{
@@ -34,8 +33,6 @@ namespace Studens.MvcNet6.WebUI.Domain
 			// No need for primary key?
 			builder.HasKey(b => b.Id);
 			builder.Property(b => b.Title).IsRequired();
-			// Combine these two so we can not add duplicate translations
-			builder.HasIndex(b => new { b.LanguageCode, b.ParentId }).IsUnique();
 		}
 	}
 
@@ -71,21 +68,18 @@ namespace Studens.MvcNet6.WebUI.Domain
 			builder.HasKey(b => b.Id);
 
 			//TODO: This can now be auto configured ?
-			builder.HasMany(b => b.Translations).WithOne(bl => bl.Parent).HasForeignKey(bl => bl.ParentId);
 			builder.HasMany(b => b.Books).WithOne(b => b.Category).HasForeignKey(b => b.CategoryId);
 		}
 	}
 
-	public class CategoryLocalesConfiguration : IEntityTypeConfiguration<CategoryLocales>
+	public class CategoryLocalesConfiguration : TranslatableEntityConfiguration<CategoryLocales, Category>
 	{
 		public void Configure(EntityTypeBuilder<CategoryLocales> builder)
 		{
 			builder.ToTable(nameof(CategoryLocales));
 			// No need for primary key?
 			builder.HasKey(b => b.Id);
-			builder.Property(b => b.Name).IsRequired();
-			// Combine these two so we can not add duplicate translations
-			builder.HasIndex(b => new { b.LanguageCode, b.ParentId }).IsUnique();
+			builder.Property(b => b.Name).IsRequired();				
 		}
 	}
 }

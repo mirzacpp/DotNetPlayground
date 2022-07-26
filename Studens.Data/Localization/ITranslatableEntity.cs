@@ -4,7 +4,6 @@
 	{
 		/// <summary>
 		/// Represents translation language code.
-		/// TODO: Rename to Language ?
 		/// </summary>
 		string LanguageCode { get; set; }
 	}
@@ -13,19 +12,19 @@
 	/// Marks entity as localized.
 	/// Entity implementing this interface will store all translatable data.
 	/// </summary>
-	/// <typeparam name="TEntity">Parent entity type</typeparam>
-	/// <typeparam name="TEntityKey">Parent key type</typeparam>
-	public interface IEntityTranslation<TEntity, TEntityKey> : IEntityTranslation
+	/// <typeparam name="TTranslatableEntity">Parent entity type</typeparam>
+	/// <typeparam name="TTranslatableEntityKey">Parent key type</typeparam>
+	public interface IEntityTranslation<TTranslatableEntity, TTranslatableEntityKey> : IEntityTranslation
 	{
 		/// <summary>
 		/// Parents navigation property
 		/// </summary>
-		public TEntity Parent { get; set; }
+		public TTranslatableEntity Parent { get; set; }
 
 		/// <summary>
 		/// Parents FK property
 		/// </summary>
-		public TEntityKey ParentId { get; set; }
+		public TTranslatableEntityKey ParentId { get; set; }
 	}
 
 	/// <summary>

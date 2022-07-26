@@ -24,15 +24,16 @@ namespace Microsoft.EntityFrameworkCore
 	}
 
 	public abstract class TranslatableEntityConfiguration<TTranslation, TEntity> : IEntityTypeConfiguration<TTranslation>
-		where TTranslation : class, IEntityTranslation<TEntity>
+		where TTranslation : class, IEntityTranslation<TEntity, int>
 		where TEntity : class, ITranslatableEntity<TTranslation>
 	{
 		public virtual void Configure(EntityTypeBuilder<TTranslation> builder)
 		{
 			//3-chars should be enough for 2/3digit iso codes.
+			//builder.ToTable()
 			builder.Property(p => p.LanguageCode).HasMaxLength(3);
 			builder.HasIndex(p => new { p.LanguageCode, p.ParentId }).IsUnique();
-			//builder.HasOne(p => p.Parent).WithMany(c => c.Translations).HasForeignKey(p => p.ParentId);
+			builder.HasOne(p => p.Parent).WithMany(c => c.Translations).HasForeignKey(p => p.ParentId);
 		}
 	}
 }
