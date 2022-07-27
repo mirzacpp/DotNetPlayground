@@ -25,12 +25,11 @@ namespace Studens.MvcNet6.WebUI.Domain
 		}
 	}
 
-	public class BookLocalesConfiguration : TranslatableEntityConfiguration<BookLocales, Book>
+	public class BookLocalesConfiguration : TranslatableEntityConfiguration<BookLocales, Book, int>
 	{
 		public void Configure(EntityTypeBuilder<BookLocales> builder)
 		{
-			builder.ToTable(nameof(BookLocales));
-			// No need for primary key?
+			base.Configure(builder);
 			builder.HasKey(b => b.Id);
 			builder.Property(b => b.Title).IsRequired();
 		}
@@ -56,7 +55,7 @@ namespace Studens.MvcNet6.WebUI.Domain
 			builder.HasKey(b => b.Id);
 
 			//TODO: This can now be auto configured ?
-			builder.HasMany(b => b.Books).WithOne(bl => bl.Publisher).HasForeignKey(bl => bl.PublisherId);			
+			builder.HasMany(b => b.Books).WithOne(bl => bl.Publisher).HasForeignKey(bl => bl.PublisherId);
 		}
 	}
 
@@ -72,14 +71,17 @@ namespace Studens.MvcNet6.WebUI.Domain
 		}
 	}
 
-	public class CategoryLocalesConfiguration : TranslatableEntityConfiguration<CategoryLocales, Category>
+	public class CategoryLocalesConfiguration : TranslatableEntityConfiguration<CategoryLocales, Category, int>
 	{
 		public void Configure(EntityTypeBuilder<CategoryLocales> builder)
 		{
-			builder.ToTable(nameof(CategoryLocales));
+			base.Configure(builder);
+
 			// No need for primary key?
 			builder.HasKey(b => b.Id);
-			builder.Property(b => b.Name).IsRequired();				
+			// To avoid scnearios when translation is not present, we will allow to store null records.
+			// This way we won't break paging, and we can post populate with default language if neccessary.
+			builder.Property(b => b.Name).IsRequired(false);
 		}
 	}
 }

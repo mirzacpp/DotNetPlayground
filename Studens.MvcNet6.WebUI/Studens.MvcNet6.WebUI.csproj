@@ -25,8 +25,8 @@
     <ProjectReference Include="..\Studens.AspNetCore.Mvc.UI\Studens.AspNetCore.Mvc.UI.csproj" />
     <ProjectReference Include="..\Studens.AspNetCore.Mvc\Studens.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
+    <ProjectReference Include="..\Studens.Data.EntityFrameworkCore\Studens.Data.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Studens.Data\Studens.Data.csproj" />
-    <ProjectReference Include="..\Studens.Localization.EntityFrameworkCore\Studens.Localization.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Studens.MediatR\Studens.MediatR.csproj" />
   </ItemGroup>
 

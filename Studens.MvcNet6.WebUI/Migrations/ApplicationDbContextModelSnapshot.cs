@@ -303,8 +303,8 @@ namespace Studens.MvcNet6.WebUI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("LanguageCode")
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
@@ -320,7 +320,7 @@ namespace Studens.MvcNet6.WebUI.Migrations
                         .IsUnique()
                         .HasFilter("[LanguageCode] IS NOT NULL");
 
-                    b.ToTable("BookLocales");
+                    b.ToTable("BookLocales", (string)null);
                 });
 
             modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Category", b =>
@@ -345,8 +345,8 @@ namespace Studens.MvcNet6.WebUI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("LanguageCode")
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -362,7 +362,7 @@ namespace Studens.MvcNet6.WebUI.Migrations
                         .IsUnique()
                         .HasFilter("[LanguageCode] IS NOT NULL");
 
-                    b.ToTable("CategoryLocales");
+                    b.ToTable("CategoryLocales", (string)null);
                 });
 
             modelBuilder.Entity("Studens.MvcNet6.WebUI.Domain.Publisher", b =>

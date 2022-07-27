@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Studens.MvcNet6.WebUI.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -199,7 +199,7 @@ namespace Studens.MvcNet6.WebUI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LanguageCode = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
+                    LanguageCode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ParentId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -275,7 +275,7 @@ namespace Studens.MvcNet6.WebUI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LanguageCode = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
+                    LanguageCode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ParentId = table.Column<int>(type: "int", nullable: false)
                 },

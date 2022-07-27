@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Studens.Localization.EntityFrameworkCore;
+using Studens.Data.EntityFrameworkCore;
 using Studens.MediatR;
 using Studens.MvcNet6.WebUI.Data;
 using Studens.MvcNet6.WebUI.Domain;

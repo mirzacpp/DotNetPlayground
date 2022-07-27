@@ -1,5 +1,4 @@
-﻿using Studens.Data.Localization;
-using Studens.Domain.Entities;
+﻿using Studens.Domain.Entities;
 
 namespace Studens.MvcNet6.WebUI.Domain
 {

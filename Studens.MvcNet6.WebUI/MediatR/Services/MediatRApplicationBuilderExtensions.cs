@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Studens.MvcNet6.WebUI.MediatR.Books;
+using Studens.MvcNet6.WebUI.MediatR.Categories;
 using Studens.MvcNet6.WebUI.MediatR.Services;
 
 namespace Microsoft.AspNetCore.Builder
@@ -20,6 +21,18 @@ namespace Microsoft.AspNetCore.Builder
 				var mediatR = context.RequestServices.GetRequiredService<IMediator>();
 
 				await context.Response.WriteAsJsonAsync(await mediatR.Send(new BooksQuery
+				{
+					LangCode = lang,
+					Page = page,
+					PageSize = pageSize
+				}));
+			});
+
+			_ = app.MapGet("/categories/{lang}/{page}/{pageSize}", async (HttpContext context, string lang, int page, int pageSize) =>
+			{
+				var mediatR = context.RequestServices.GetRequiredService<IMediator>();
+
+				await context.Response.WriteAsJsonAsync(await mediatR.Send(new CategoryQuery
 				{
 					LangCode = lang,
 					Page = page,

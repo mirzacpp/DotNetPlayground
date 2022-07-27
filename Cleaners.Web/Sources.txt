@@ -263,6 +263,7 @@ https://www.red-gate.com/simple-talk/dotnet/net-development/http-response-header
 }
 LOCALIZATION {
 https://hendrikbulens.com/2018/12/08/injecting-resource-files-as-plain-javascript-objects-in-asp-net-core/
+https://phrase.com/blog/posts/all-you-need-to-know-about-cultureinfo-in-net-applications/#Current_culture_vs_current_UI_culture (Culture info)
 }
 Urls {
 https://edi.wang/post/2018/11/25/netcore-webutility-urlencode-httputility-urlencode

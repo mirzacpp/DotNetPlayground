@@ -139,7 +139,7 @@ app.UseDisplayRegisteredServices();
 //    await context.Response.WriteAsync(converted);
 //});
 
-// Run migrator
+//Run migrator
 //using (var scope = app.Services.CreateScope())
 //{
 //	try

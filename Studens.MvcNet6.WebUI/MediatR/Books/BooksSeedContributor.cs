@@ -17,16 +17,17 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 		{
 			//var catLocales = new[] { "en", "bs", "fr", "it", "de" };
 			var catLocales = new Dictionary<string, string> {
-				{"en", "Category {0}" },
+				{"en-GB", "Category {0}" },
+				{"en-US", "Category {0}" },
 				{"bs", "Kategorija {0}" },
 				{"fr", "Catégorie {0}" },
 				{"it", "Category {0}" },
 				{"de", "Categoria {0}" }
 			};
 
-			var categories = new List<Category>(1000);
+			var categories = new List<Category>(50);
 
-			foreach (var i in Enumerable.Range(1, 1000))
+			foreach (var i in Enumerable.Range(1, 50))
 			{
 				var cat = new Category
 				{
@@ -42,9 +43,9 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 			}
 
 			await DbContext.SaveChangesAsync();
-			var pubs = new List<Publisher>(1000);
+			var pubs = new List<Publisher>(10);
 
-			foreach (var i in Enumerable.Range(1, 1000))
+			foreach (var i in Enumerable.Range(1, 10))
 			{
 				var cat = new Publisher
 				{
@@ -56,9 +57,9 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 			}
 
 			await DbContext.SaveChangesAsync();
-			var authors = new List<Author>(400);
+			var authors = new List<Author>(20);
 
-			foreach (var i in Enumerable.Range(1, 400))
+			foreach (var i in Enumerable.Range(1, 20))
 			{
 				var aut = new Author
 				{
@@ -82,23 +83,23 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 
 			var random = new Random();
 
-			foreach (var i in Enumerable.Range(1, 100_000))
+			foreach (var i in Enumerable.Range(1, 200))
 			{
 				var book = new Book
 				{
 					Authors = new List<AuthorBooks> {
 						new AuthorBooks {
-							AuthorId = authors[random.Next(1, 400)].Id
+							AuthorId = authors[random.Next(1, 20)].Id
 						},
 						new AuthorBooks {
-							AuthorId = authors[random.Next(1, 400)].Id
+							AuthorId = authors[random.Next(1, 20)].Id
 						}
 					},
-					PublisherId = pubs[random.Next(1, 1000)].Id,
+					PublisherId = pubs[random.Next(1, 10)].Id,
 					NumberOfPages = random.Next(99, 510),
 					PublishDateTime = new DateTime(random.Next(1650, 2022), random.Next(1, 12), random.Next(1, 28)),
 					Price = Convert.ToDecimal(random.Next(10, 50)),
-					CategoryId = categories[random.Next(1, 1000)].Id,
+					CategoryId = categories[random.Next(1, 50)].Id,
 					Translations = bookLocales.Select(l => new BookLocales
 					{
 						LanguageCode = l.Key,

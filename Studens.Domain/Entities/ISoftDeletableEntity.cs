@@ -1,4 +1,4 @@
-﻿namespace Cleaners.Core.Interfaces
+﻿namespace Studens.Domain.Entities
 {
 	/// <summary>
 	/// Marks entity as soft deleteable.
