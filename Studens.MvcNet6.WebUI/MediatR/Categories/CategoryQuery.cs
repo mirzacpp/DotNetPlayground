@@ -46,7 +46,7 @@ namespace Studens.MvcNet6.WebUI.MediatR.Categories
 		{
 			_dbContext = dbContext;
 			// Add reg ext
-			_translationProcessor = new EfTranslationProcessor<ApplicationDbContext>(_dbContext);
+			_translationProcessor = new EfTranslationManager<ApplicationDbContext>(_dbContext);
 		}
 
 		public async Task<IList<CategoryDto>> Handle(CategoryQuery request, CancellationToken cancellationToken)

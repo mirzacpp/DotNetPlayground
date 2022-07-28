@@ -732,6 +732,8 @@ https://app.pluralsight.com/library/courses/getting-started-with-asynchronous-pr
 https://devblogs.microsoft.com/pfxteam/building-async-coordination-primitives-part-5-asyncsemaphore/
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2011/february/msdn-magazine-parallel-computing-it-s-all-about-the-synchronizationcontext
 https://gigi.nullneuron.net/gigilabs/common-mistakes-in-asynchronous-programming-with-net/
+https://gigi.nullneuron.net/gigilabs/patterns-for-asynchronous-composite-tasks-in-c/
+https://gigi.nullneuron.net/gigilabs/motivation-for-async-await-in-c/
 https://blog.cdemi.io/async-waiting-inside-c-sharp-locks/
 https://www.meziantou.net/links-async-await-csharp.htm
 https://www.pluralsight.com/guides/advanced-tips-using-task-run-async-wait
@@ -740,6 +742,8 @@ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
 https://devblogs.microsoft.com/pfxteam/executioncontext-vs-synchronizationcontext/ (Asynclocal)
 https://blog.stephencleary.com/2013/04/implicit-async-context-asynclocal.html (Asynclocal)
 https://blog.stephencleary.com/2016/12/eliding-async-await.html (Await or Task)
+https://devblogs.microsoft.com/premier-developer/dissecting-the-async-methods-in-c/
+https://github.com/StephenCleary/AsyncEx
 CANCELLATION {
 https://docs.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads?WT.mc_id=DT-MVP-5000058
 https://andrewlock.net/just-because-you-stopped-waiting-for-it-doesnt-mean-the-task-stopped-running/

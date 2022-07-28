@@ -7,10 +7,6 @@ namespace Studens.Domain
 	/// </summary>
 	public interface ITranslationManager
 	{
-		//Task<IList<TTranslation>> GetTranslationsAsync<TTranslatableEntity, TTranslatableEntityKey, TTranslation>(IList<TTranslatableEntity> entities)
-		//where TTranslation : class, IEntityTranslation<TTranslatableEntity, TTranslatableEntityKey>
-		//where TTranslatableEntity : class, ITranslatableEntity<TTranslation>;
-
 		/// <summary>
 		/// Returns missing translations either by parent culture or by default culture.
 		/// </summary>
@@ -25,10 +21,6 @@ namespace Studens.Domain
 		IList<TTranslatableEntityKey> entityIds,
 		CancellationToken cancellationToken = default)
 		where TTranslation : class, IEntityTranslation<TTranslatableEntity, TTranslatableEntityKey>
-		where TTranslatableEntity : class, ITranslatableEntity<TTranslation>;
-
-		//Task<IList<TTranslation>> GetTranslationsAsync<TTranslatableEntity, TTranslatableEntityKey, TTranslation>(TTranslatableEntity entity)
-		//where TTranslation : class, IEntityTranslation<TTranslatableEntity, TTranslatableEntityKey>
-		//where TTranslatableEntity : class, ITranslatableEntity<TTranslation>;
+		where TTranslatableEntity : class, ITranslatableEntity<TTranslation>;			
 	}
 }

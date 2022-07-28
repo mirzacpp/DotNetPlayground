@@ -5,14 +5,18 @@ using System.Globalization;
 
 namespace Studens.Data.EntityFrameworkCore.Localization
 {
-	public class EfTranslationProcessor<TDbContext> : ITranslationManager
+	public class EfTranslationManager<TDbContext> : ITranslationManager
 		where TDbContext : DbContext
 	{
 		private readonly TDbContext _dbContext;
 
+		/// <summary>
+		/// Determines depth of parent culture fallback.
+		/// This number is same as number for Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.
+		/// </summary>
 		protected const int MaxCultureFallbackDepth = 5;
 
-		public EfTranslationProcessor(TDbContext dbContext)
+		public EfTranslationManager(TDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
@@ -29,8 +33,9 @@ namespace Studens.Data.EntityFrameworkCore.Localization
 			}
 
 			// Add performance note here
-
+			// Add resolver for current language
 			var culture = CultureInfo.CurrentUICulture.Parent;
+			// Add resolver for default language
 			var defaultCulture = new CultureInfo("bs");
 			var translations = new List<TTranslation>();
 
@@ -44,13 +49,12 @@ namespace Studens.Data.EntityFrameworkCore.Localization
 			cancellationToken);
 
 			// Last we can try is to get default language translations that should always be present.
-			// Add resolver for default language
-			// TODO: should we check parent cultures for default culture ?
-			if (entityIds.Count != translations.Count)
-			{
-				entityIds = entityIds.Where(id => translations.Any(t => !t.ParentId.Equals(id))).ToList();
-				translations.AddRange(await GetTranslations<TTranslatableEntity, TTranslatableEntityKey, TTranslation>(entityIds, defaultCulture.Name, cancellationToken));
-			}
+			await GetTranslationsRecursive<TTranslatableEntity, TTranslatableEntityKey, TTranslation>(
+			translations,
+			entityIds,
+			defaultCulture,
+			currentDepth: 0,
+			cancellationToken);			
 
 			return translations;
 		}

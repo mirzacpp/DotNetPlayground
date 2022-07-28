@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Studens.Application.Contracts\Studens.Application.Contracts.csproj" />
     <ProjectReference Include="..\Studens.AspNetCore.Identity.EntityFrameworkCore\Studens.AspNetCore.Identity.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Studens.AspNetCore.Identity\Studens.AspNetCore.Identity.csproj" />
     <ProjectReference Include="..\Studens.AspNetCore.Mvc.UI\Studens.AspNetCore.Mvc.UI.csproj" />
