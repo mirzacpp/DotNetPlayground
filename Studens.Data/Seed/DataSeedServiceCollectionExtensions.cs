@@ -35,8 +35,6 @@ public static class DataSeedServiceCollectionExtensions
     }
 
 
-    // Registers all seed contributors within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/>.
-
     /// <summary>
     /// Registers all seed contributors within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/>.
     /// </summary>

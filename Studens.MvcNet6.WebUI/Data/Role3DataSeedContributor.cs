@@ -5,6 +5,7 @@ using System.Text.Json;
 
 namespace Studens.MvcNet6.WebUI.Data
 {
+	[DataSeed(Ignore = true)]
     public class Role3DataSeedContributor : IDataSeedContributor
     {
         protected ApplicationDbContext DbContext { get; }

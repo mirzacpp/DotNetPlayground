@@ -140,18 +140,18 @@ app.UseDisplayRegisteredServices();
 //});
 
 //Run migrator
-//using (var scope = app.Services.CreateScope())
-//{
-//	try
-//	{
-//		var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
-//		await migrator.MigrateAsync();
-//	}
-//	catch (Exception ex)
-//	{
-//		Console.WriteLine(ex.Message);
-//		throw;
-//	}
-//}
+using (var scope = app.Services.CreateScope())
+{
+	try
+	{
+		var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
+		await migrator.MigrateAsync();
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine(ex.Message);
+		throw;
+	}
+}
 
 app.Run();

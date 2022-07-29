@@ -4,6 +4,7 @@ using Studens.MvcNet6.WebUI.Domain;
 
 namespace Studens.MvcNet6.WebUI.MediatR.Books
 {
+	[DataSeed(Order = -40)]
 	public class BooksSeedContributor : IDataSeedContributor
 	{
 		protected ApplicationDbContext DbContext { get; }
