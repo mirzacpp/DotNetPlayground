@@ -40,7 +40,7 @@ namespace Studens.MvcNet6.WebUI.MediatR.Categories
 	public class CategoryHandler : IRequestHandler<CategoryQuery, IList<CategoryDto>>
 	{
 		private readonly ApplicationDbContext _dbContext;
-		private readonly ITranslationManager _translationProcessor;
+		private readonly ITranslationManager _translationProcessor;		
 
 		public CategoryHandler(ApplicationDbContext dbContext)
 		{
@@ -51,7 +51,7 @@ namespace Studens.MvcNet6.WebUI.MediatR.Categories
 
 		public async Task<IList<CategoryDto>> Handle(CategoryQuery request, CancellationToken cancellationToken)
 		{
-			Guard.Against.Null(request, nameof(request));
+			Guard.Against.Null(request, nameof(request));		
 
 			var categories = await _dbContext.Localized<Category, CategoryLocales>(request.LangCode).Select(cl => new CategoryDto
 			{

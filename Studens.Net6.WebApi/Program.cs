@@ -17,7 +17,6 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<ApplicationContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-
 builder.Services.Configure<JwtBearerAuthOptions>(builder.Configuration.GetSection(nameof(JwtBearerAuthOptions)));
 
 builder.Services.AddJwtBearerIdentity<IdentityUser, IdentityRole, IdentityUserAccessToken<string>>(opt =>

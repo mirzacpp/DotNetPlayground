@@ -32,6 +32,7 @@ https://github.com/OrchardCMS/OrchardCore
 Minimal API {
 https://www.youtube.com/watch?v=z32_7KgCr6c&ab_channel=NickChapsas
 https://github.com/DamianEdwards/MinimalApiPlayground
+https://dev.to/djnitehawk/building-rest-apis-in-net-6-the-easy-way-3h0d (FastEndpoints)
 }
 }
 
@@ -849,6 +850,7 @@ https://www.stevejgordon.co.uk/introduction-to-benchmarking-csharp-code-with-ben
 
 DATA-TYPES {
 https://medium.com/@semuserable/c-journey-into-struct-equality-comparison-deep-dive-9693f74562f1
+https://andrewlock.net/generating-sortable-guids-using-newid/
 }
 
 Operatori {
