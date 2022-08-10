@@ -1,0 +1,74 @@
+﻿@model IList<Studens.MvcNet6.WebUI.MediatR.Books.BookDto>
+@{
+	ViewData["Title"] = "Localization Page";
+}
+<div class="row">
+	<div class="col-md-12">
+		@*<div class="d-block">
+				<p id="indicator" class="htmx-indicator">Loading...</p>
+			</div>*@
+		<a asp-action="Create" class="btn btn-primary">Create</a>
+		<form asp-action="Index" method="get">
+			<input type="hidden" name="Page" value="2" />
+			<input type="hidden" name="PageSize" value="10" />
+			<input type="hidden" name="LangCode" value="it" />
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-title">Books</h5>
+				</div>
+				<div class="card-body">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>@Html.DisplayNameForInnerType((Studens.MvcNet6.WebUI.MediatR.Books.BookDto m) => m.Title)</th>
+								<th>Price</th>
+								<th>Publish date</th>
+								<th>Number of pages</th>
+								<th>Category</th>
+								<th>Publisher</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr>
+									<td>@item.Id</td>
+									<td>@item.Title</td>
+									<td>@item.Price</td>
+									<td>@item.PublishDateTime.ToShortDateString()</td>
+									<td>@item.NumberOfPages</td>
+									<td>@item.Category</td>
+									<td>@item.Publisher.FirstName</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+				<div class="card-footer">
+					<button type="submit" class="btn btn-info">
+						Submit
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+@section Scripts {
+	<script>
+		$('#input-group-localized #dropdown-lang li').on('click', function () {
+			var _lang = this.innerText;
+			console.log(_lang)
+			//console.log(this)
+			//console.log($(this).parent())
+			//console.log($(this).parent().prev('.dropdown-toggle'));
+			//console.log($(this).parent().closest('.form-control'))
+			console.log(this)
+			var $target = $(this).parent().parent().find('#input-' + _lang);
+			console.log($target)
+
+			$target.attr('type', 'text');
+			$target.val(_lang);
+		});
+	</script>
+}

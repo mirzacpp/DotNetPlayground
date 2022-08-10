@@ -14,27 +14,27 @@ namespace Studens.Data.EntityFrameworkCore.Repositories
 			_dbContext = dbContext;
 		}
 
-		public async Task DeleteAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default)
+		public async Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
 		{
 			await _dbContext.SaveChangesAsync();
 		}
 
-		public Task<TEntity> InsertAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default)
+		public Task<TEntity> InsertAsync(TEntity entity, CancellationToken cancellationToken = default)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task InsertManyAsync<TEntity>(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+		public Task InsertManyAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task<TEntity> UpdateAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default)
+		public Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task UpdateManyAsync<TEntity>(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+		public Task UpdateManyAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
 		{
 			throw new NotImplementedException();
 		}

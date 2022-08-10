@@ -16,5 +16,12 @@
 		/// Gets or sets flag indicating if contributor should be ignored on seed.
 		/// </summary>
 		public bool Ignore { get; set; }
+
+		/// <summary>
+		/// Gets or sets environment in which contributor should be used.
+		/// This could be existing framework values as Development, Staging etc.
+		/// If value is not specified, contributor will be used in all environments.
+		/// </summary>
+		public string? Environment { get; set; }
 	}
 }

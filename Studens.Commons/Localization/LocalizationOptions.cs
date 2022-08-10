@@ -4,7 +4,7 @@ namespace Studens.Commons.Localization
 {
 	/// <summary>
 	/// Defines localization options.
-	//1/ </summary>
+	/// </summary>
 	public class LocalizationOptions
 	{
 		/// <summary>
@@ -17,7 +17,7 @@ namespace Studens.Commons.Localization
 		/// Gets or sets the <see cref="CultureInfo"/> used for text, i.e. language;
 		/// Defaults to <see cref="CultureInfo.CurrentUICulture"/>.
 		/// </summary>
-		public CultureInfo DefaultUICulture { get; set; }
+		public CultureInfo DefaultUICulture { get; set; } = CultureInfo.CurrentUICulture;
 
 		/// <summary>
 		/// Gets or sets depth of parent culture fallback.

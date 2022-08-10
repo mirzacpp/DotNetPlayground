@@ -47,7 +47,7 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 
 		public async Task<IList<BookDto>> Handle(BooksQuery request, CancellationToken cancellationToken)
 		{
-			var datko = new DateTime(1900, 1, 1);
+			var datko = new DateTime(1200, 1, 1);
 
 			var querko = (from bl in _dbContext.Localized<Book, BookLocales>(culture: request.LangCode)
 						  join cl in _dbContext.Localized<Category, CategoryLocales>(culture: request.LangCode)
@@ -68,8 +68,7 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 							  },
 							  Category = cl.Translation.Name
 						  })
-						 .Skip((request.Page - 1) * request.PageSize)
-						 .Take(request.PageSize);
+						  .PageBy((request.Page - 1) * request.PageSize, request.PageSize);
 
 			var data = await querko.ToListAsync(cancellationToken);
 

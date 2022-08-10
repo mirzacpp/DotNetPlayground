@@ -1,0 +1,54 @@
+﻿@model BookCreateUpdateViewModel
+@{
+	ViewData["Title"] = "Localization Page";
+}
+<div class="row">
+	<div class="col-md-12">
+		<form asp-action="Create">
+			<div class="form-group">
+				<label asp-for="Title"></label>
+				<input asp-for-localized="Title" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label asp-for="Description"></label>
+				<textarea asp-for-localized="Description" class="form-control"></textarea>
+			</div>
+			<button type="submit" class="btn btn-info">Go</button>
+		</form>
+	</div>
+</div>
+@section Scripts {
+	<script>
+		// Move this code to form tag helper and make sure to filter elements only inside the form.
+		var $languageGroups = $("div[id^='input-group-localized-']");
+
+		$("div[id^='input-group-localized-'] ul li").on('click', function () {
+			var _lang = this.lang;			
+			// Set all form language switch buttons to
+			$languageGroups.find("button.dropdown-toggle").text(_lang);
+
+			// Find input for selected lang and show it, and hide other inputs
+			var _$targetInputs = $languageGroups.find(`textarea:lang(${_lang}), input:lang(${_lang})`);
+			_$targetInputs.each(function (_) {
+				if ($(this).is('input')) {
+					$(this).attr('type', 'text');
+				}
+				else {
+					$(this).removeAttr('hidden'); //Textarea
+				}
+			});
+
+			$languageGroups
+				.find('textarea,input')
+				.not(_$targetInputs)
+				.each(function (_) {
+					if ($(this).is('input')) {
+						$(this).attr('type', 'hidden');
+					}
+					else {
+						$(this).attr('hidden', true); //Textarea
+					}
+				});
+		});
+	</script>
+}

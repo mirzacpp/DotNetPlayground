@@ -22,7 +22,7 @@ namespace Studens.Data.Seed
 		[LoggerMessage(
 				EventId = 202,
 				Level = LogLevel.Error,
-				Message = "Error occured while trying to seed data for contributor {contributorType}. {exception}")]
-		public static partial void DataSeedError(this ILogger logger, Type contributorType, Exception exception);
+				Message = "Error occured while trying to seed data for contributor {contributorType}")]
+		public static partial void DataSeedError(this ILogger logger, Type contributorType, Exception ex);
 	}
 }

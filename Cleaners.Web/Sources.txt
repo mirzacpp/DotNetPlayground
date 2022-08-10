@@ -37,6 +37,8 @@ https://dev.to/djnitehawk/building-rest-apis-in-net-6-the-easy-way-3h0d (FastEnd
 }
 
 Blogs {
+https://asp.net-hacker.rocks/
+https://www.fiyazhasan.me/
 https://michaelscodingspot.com/
 https://blog.adamfurmanek.pl/
 https://swimburger.net/blog
@@ -287,6 +289,7 @@ https://docs.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator
 https://andrewlock.net/exploring-dotnet-6-part-8-improving-logging-performance-with-source-generators/
 https://github.com/thepirat000/Audit.NET
 https://www.youtube.com/watch?v=6zoMd_FwSwQ&ab_channel=NickChapsas
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/loggermessage?view=aspnetcore-6.0
 SERILOG {
 https://nblumhardt.com/2020/10/bootstrap-logger/
 https://app.pluralsight.com/library/courses/serilog-enrichers-getting-info-into-log-entries/table-of-contents

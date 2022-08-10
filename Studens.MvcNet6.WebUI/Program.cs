@@ -19,9 +19,11 @@ builder.Host.UseDefaultServiceProvider((context, options) =>
 });
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-
-builder.Services.AddDisplayRegisteredServices();
+builder.Services
+.AddControllersWithViews()
+.AddFeatureFolders()
+.AddAreaFeatureFolders()
+.Services.AddDisplayRegisteredServices();
 
 builder.Services.Configure<GoogleMapsOptions>(options =>
 {
@@ -56,6 +58,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 	.AddStudensUserManager()
 	.AddStudensPasswordManager()
 	.Services.AddScoped<IDataMigrationManager, DataMigrationManager>()
+	.Configure<DataSeedOptions>(options => options.Environment = builder.Environment.EnvironmentName)
 	.AddScoped<IDataSeedManager, DataSeedManager>()
 	.AddDataSeedContributorFromMarkers(typeof(Program));
 //.AddDataSeedContributor<RoleDataSeedContributor>()
@@ -140,18 +143,18 @@ app.UseDisplayRegisteredServices();
 //});
 
 //Run migrator
-using (var scope = app.Services.CreateScope())
-{
-	try
-	{
-		var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
-		await migrator.MigrateAsync();
-	}
-	catch (Exception ex)
-	{
-		Console.WriteLine(ex.Message);
-		throw;
-	}
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//	try
+//	{
+//		var migrator = scope.ServiceProvider.GetRequiredService<IDataMigrationManager>();
+//		await migrator.MigrateAsync();
+//	}
+//	catch (Exception ex)
+//	{
+//		Console.WriteLine(ex.Message);
+//		throw;
+//	}
+//}
 
 app.Run();

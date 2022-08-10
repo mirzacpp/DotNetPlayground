@@ -30,7 +30,7 @@ namespace Studens.Data.Seed
 		{
 			using var scope = ServiceScopeFactory.CreateScope();
 			// Filter out contributors and seed data
-			var contributors = Options.Contributors.Active().Ordered();
+			var contributors = Options.Contributors.Active().WithEnvironment(Options.Environment).Ordered();
 
 			foreach (var contributorType in contributors)
 			{
