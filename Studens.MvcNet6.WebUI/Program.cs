@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Studens.AspNetCore.Identity;
 using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
 using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
+using Studens.AspNetCore.Mvc.UI.TagHelpers.Localization;
+using Studens.Commons.Localization;
 using Studens.Data.Migration;
 using Studens.Data.Seed;
 using Studens.MvcNet6.WebUI.Data;
@@ -60,11 +62,19 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 	.Services.AddScoped<IDataMigrationManager, DataMigrationManager>()
 	.Configure<DataSeedOptions>(options => options.Environment = builder.Environment.EnvironmentName)
 	.AddScoped<IDataSeedManager, DataSeedManager>()
-	.AddDataSeedContributorFromMarkers(typeof(Program));
-//.AddDataSeedContributor<RoleDataSeedContributor>()
-//.AddDataSeedContributor<Role2DataSeedContributor>();
+	.AddTransient<ILanguageProvider, DefaultLanguageProvider>()
+	.Configure<LocalizationOptions>(options =>
+	{
+		var defaultLango = new LanguageInfo("bs-Latn-BA", "bs-Latn-BA", "Bosnian, Latin", "ba");
 
-builder.Services.AddDisplayRegisteredServices("/testovka");
+		options.DefaultLanguage = defaultLango;
+		options.Languages.Add(defaultLango);
+		options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English, GB", "gb-eng"));
+		options.Languages.Add(new LanguageInfo("ar-EG", "ar-EG", "Arabic, Egypt", "ar"));
+	})
+	.AddSingleton<IInputControlGenerator, Bootstrap5ControlGenerator>()
+	.AddDataSeedContributorFromMarkers(typeof(Program))
+	.AddDisplayRegisteredServices("/testovka");
 
 var app = builder.Build();
 

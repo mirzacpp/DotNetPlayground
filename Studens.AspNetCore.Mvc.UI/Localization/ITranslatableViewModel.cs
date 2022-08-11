@@ -1,11 +1,6 @@
 ﻿namespace Studens.AspNetCore.Mvc.UI.Localization
 {
-	public interface ITranslatableViewModel<TTranslationViewModel> where TTranslationViewModel : class, new()
-	{
-		TTranslationViewModel Translations { get; set; }
-	}
-
-	public interface IViewModelTranslation
+	public interface ITranslatableViewModel
 	{
 	}
 

@@ -11,13 +11,7 @@ namespace Studens.Commons.Localization
 		/// Gets or sets the <see cref="CultureInfo"/> used for formatting.
 		/// Defaults to <see cref="CultureInfo.CurrentCulture"/>.
 		/// </summary>
-		public CultureInfo DefaultCulture { get; set; } = CultureInfo.CurrentCulture;
-
-		/// <summary>
-		/// Gets or sets the <see cref="CultureInfo"/> used for text, i.e. language;
-		/// Defaults to <see cref="CultureInfo.CurrentUICulture"/>.
-		/// </summary>
-		public CultureInfo DefaultUICulture { get; set; } = CultureInfo.CurrentUICulture;
+		public LanguageInfo DefaultLanguage { get; set; } = LanguageInfo.EnglishCulture;		
 
 		/// <summary>
 		/// Gets or sets depth of parent culture fallback.
@@ -32,15 +26,9 @@ namespace Studens.Commons.Localization
 		public bool FallBackToParentCultures { get; set; } = true;
 
 		/// <summary>
-		/// The cultures supported by the application.
+		/// The languages supported by the application.
 		/// Defaults to <see cref="CultureInfo.CurrentCulture"/>.
 		/// </summary>
-		public IList<CultureInfo>? SupportedCultures { get; set; } = new List<CultureInfo> { CultureInfo.CurrentCulture };
-
-		/// <summary>
-		/// The UI cultures supported by the application.
-		/// Defaults to <see cref="CultureInfo.CurrentUICulture"/>.
-		/// </summary>
-		public IList<CultureInfo>? SupportedUICultures { get; set; } = new List<CultureInfo> { CultureInfo.CurrentUICulture };
+		public IList<LanguageInfo> Languages { get; set; } = new List<LanguageInfo> { LanguageInfo.EnglishCulture };		
 	}
 }
