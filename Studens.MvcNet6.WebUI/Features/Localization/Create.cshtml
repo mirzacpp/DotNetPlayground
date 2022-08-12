@@ -5,9 +5,14 @@
 <div class="row">
 	<div class="col-md-12">
 		<form asp-action="Create">
+			<p class="text-info">Selecting language from any dropdown will change language for all dropdowns.</p>
 			<div class="form-group">
 				<label asp-for="Title"></label>
 				<input asp-for-localized="Title" class="form-control" />
+			</div>
+			<div class="form-group mb-3">
+				<label asp-for="NumberOfPages"></label>
+				<input asp-for="NumberOfPages" class="form-control"/>
 			</div>
 			<div class="form-group">
 				<label asp-for="Description"></label>
@@ -23,9 +28,11 @@
 		var $languageGroups = $("div[id^='input-group-localized-']");
 
 		$("div[id^='input-group-localized-'] ul li").on('click', function () {
-			var _lang = this.lang;			
+			var _lang = this.lang;
+			var _flagIcon = $(this).data('langFlagIcon');
+			
 			// Set all form language switch buttons to
-			$languageGroups.find("button.dropdown-toggle").text(_lang);
+			$languageGroups.find("button.dropdown-toggle").html(`<span class='fi fi-${_flagIcon} fis'></span>`);
 
 			// Find input for selected lang and show it, and hide other inputs
 			var _$targetInputs = $languageGroups.find(`textarea:lang(${_lang}), input:lang(${_lang})`);
@@ -48,7 +55,7 @@
 					else {
 						$(this).attr('hidden', true); //Textarea
 					}
-				});
+			});
 		});
 	</script>
 }

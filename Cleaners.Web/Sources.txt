@@ -508,6 +508,8 @@ https://www.edgesidesolutions.com/repository-pattern-dead-with-entity-framework/
 https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-entity-framework-core/
 https://app.pluralsight.com/library/courses/ef-core-6-encapsulating-usage/discussion (To or not to)
 }
+DOMAIN {
+https://enterprisecraftsmanship.com/posts/entity-base-class/
 }
 }
 

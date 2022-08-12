@@ -70,7 +70,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 		options.DefaultLanguage = defaultLango;
 		options.Languages.Add(defaultLango);
 		options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English, GB", "gb-eng"));
-		options.Languages.Add(new LanguageInfo("ar-EG", "ar-EG", "Arabic, Egypt", "ar"));
+		options.Languages.Add(new LanguageInfo("ar-EG", "ar-EG", "Arabic, Egypt", "ar"));		
 	})
 	.AddSingleton<IInputControlGenerator, Bootstrap5ControlGenerator>()
 	.AddDataSeedContributorFromMarkers(typeof(Program))

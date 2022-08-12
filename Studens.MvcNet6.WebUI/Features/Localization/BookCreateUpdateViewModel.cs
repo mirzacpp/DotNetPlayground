@@ -15,6 +15,8 @@ namespace Studens.MvcNet6.WebUI.Features.Localization
 		/// </summary>
 		public TranslationModel Title { get; set; }
 
+		public int NumberOfPages { get; set; }
+
 		public TranslationModel Description { get; set; }
 	}
 }

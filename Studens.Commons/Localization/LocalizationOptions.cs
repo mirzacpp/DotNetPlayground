@@ -7,11 +7,16 @@ namespace Studens.Commons.Localization
 	/// </summary>
 	public class LocalizationOptions
 	{
+		public LocalizationOptions()
+		{
+			Languages = new List<LanguageInfo>();
+		}
+
 		/// <summary>
 		/// Gets or sets the <see cref="CultureInfo"/> used for formatting.
 		/// Defaults to <see cref="CultureInfo.CurrentCulture"/>.
 		/// </summary>
-		public LanguageInfo DefaultLanguage { get; set; } = LanguageInfo.EnglishCulture;		
+		public LanguageInfo DefaultLanguage { get; set; }
 
 		/// <summary>
 		/// Gets or sets depth of parent culture fallback.
@@ -29,6 +34,6 @@ namespace Studens.Commons.Localization
 		/// The languages supported by the application.
 		/// Defaults to <see cref="CultureInfo.CurrentCulture"/>.
 		/// </summary>
-		public IList<LanguageInfo> Languages { get; set; } = new List<LanguageInfo> { LanguageInfo.EnglishCulture };		
+		public IList<LanguageInfo> Languages { get; set; }
 	}
 }
