@@ -3,6 +3,9 @@ using Studens.Commons.Localization;
 
 namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 {
+	/// <summary>
+	/// <see cref="ITagHelper"/> implementation targeting &lt;input&gt; elements with an <c>asp-for-localized</c> attribute.
+	/// </summary>
 	[HtmlTargetElement(HtmlTagNames.Input, Attributes = AspLocalizedAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
 	[HtmlTargetElement(HtmlTagNames.Textarea, Attributes = AspLocalizedAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
 	public class TranslationInputEditorTagHelper : TagHelper
@@ -12,11 +15,9 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 		private readonly IInputControlGenerator _inputControlGenerator;
 
 		public TranslationInputEditorTagHelper(
-		IHtmlGenerator generator,
 		ILanguageProvider languageProvider,
 		IInputControlGenerator inputControlGenerator)
 		{
-			Generator = generator;
 			_languageProvider = languageProvider;
 			_inputControlGenerator = inputControlGenerator;
 		}
@@ -24,22 +25,13 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 		[HtmlAttributeName(AspLocalizedAttributeName)]
 		public ModelExpression For { get; set; }
 
-		/// <summary>
-		/// Gets the <see cref="IHtmlGenerator"/> used to generate the <see cref="InputTagHelper"/>'s output.
-		/// </summary>
-		protected IHtmlGenerator Generator { get; }
-
 		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			// Throw if property is not of type TranslationModel
 			if (For.Metadata.UnderlyingOrModelType != typeof(TranslationModel))
 			{
-				throw new InvalidOperationException($"Member is not of type {typeof(TranslationModel)}");
+				throw new InvalidOperationException($"Member is not of type {typeof(TranslationModel)}.");
 			}
-
-			//TODO: Add check if there are no available languages. Should we inherit InputTagHelper and just invoke it ?
-			// One language should always be present if localization is configured,
-			// but instead of dropdown we can just generate basic input group?
 
 			//Preserve original html tag (input or textarea)
 			var tagName = output.TagName;
@@ -48,10 +40,11 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 			output.TagName = HtmlTagNames.Div;
 			output.TagMode = TagMode.StartTagAndEndTag;
 			//TODO: Use guid if UniqueId is too long or use some random 5/6 digit number?
-			output.Attributes.Add(TagAttributeNames.Id, "input-group-localized-" + Guid.NewGuid().ToString("N"));
+			output.Attributes.Add(TagAttributeNames.Id, "language-control-" + Guid.NewGuid().ToString("N"));
 
+			// TODO: No languages check ?
 			var languages = await _languageProvider.GetLanguagesAsync();
-			var currentLanguage = languages.First();
+			var currentLanguage = languages[0];
 
 			var inputWrapper = _inputControlGenerator
 			.Generate(new LocalizationControlContext(For, languages, currentLanguage, tagName));

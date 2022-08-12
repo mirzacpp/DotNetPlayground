@@ -13,9 +13,12 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 		{
 			Guard.Against.Null(context, nameof(context));
 
+			var inputIdPrefix = $"{context.For.Name}_{nameof(TranslationModel.Translations)}_{{0}}_{{1}}";
+			var inputNamePrefix = $"{context.For.Name}.{nameof(TranslationModel.Translations)}[{{0}}].{{1}}";
+
 			// Create parent input group container
 			var inputGroupTag = new TagBuilder(HtmlTagNames.Div);
-			inputGroupTag.AddCssClass("input-group mb-3");
+			inputGroupTag.AddCssClass("input-group input-group-localized mb-3");
 
 			// Prepened before input if language is ltr. Note that bootstrap 5 relies on actual html element position instead of prepend/append classes.
 			if (!context.CurrentLanguage.IsRtl)
@@ -26,20 +29,12 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 			for (int i = 0; i < context.Languages.Count; i++)
 			{
 				var lang = context.Languages[i];
-				var propertyName = context.For.Name;
 				var textDirection = lang.IsRtl ? TagAttributeValues.Rtl : TagAttributeValues.Ltr;
 
-				var inputValueId = $"{propertyName}_{nameof(TranslationModel.Translations)}_{i}_{nameof(TranslationEntryModel.Value)}";
-				var inputValueName = $"{propertyName}.{nameof(TranslationModel.Translations)}[{i}].{nameof(TranslationEntryModel.Value)}";
-
-				// Create input for lang code
-				var inputLangCodeId = $"{propertyName}_{nameof(TranslationModel.Translations)}_{i}_{nameof(TranslationEntryModel.LangCode)}";
-				var inputLangCodeName = $"{propertyName}.{nameof(TranslationModel.Translations)}[{i}].{nameof(TranslationEntryModel.LangCode)}";
-
 				var input = new TagBuilder(context.TagName)
-				.WithId(inputValueId)
-				.WithName(inputValueName)
-				.WithClass("form-control localized")
+				.WithId(string.Format(inputIdPrefix, i, nameof(TranslationEntryModel.Value)))
+				.WithName(string.Format(inputNamePrefix, i, nameof(TranslationEntryModel.Value)))
+				.WithClass("form-control form-control-localized")
 				.WithAttribute(TagAttributeNames.Lang, lang.CultureName)
 				.WithAttribute(TagAttributeNames.Dir, textDirection)
 				.WithAttribute(TagAttributeNames.Placeholder, lang.DisplayName);
@@ -63,8 +58,8 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				//Generate hidden input for language
 				var langInput = new TagBuilder(HtmlTagNames.Input)
 				.AsInput(TagAttributeValues.Hidden)
-				.WithId(inputLangCodeId)
-				.WithName(inputLangCodeName)
+				.WithId(string.Format(inputIdPrefix, i, nameof(TranslationEntryModel.LangCode)))
+				.WithName(string.Format(inputNamePrefix, i, nameof(TranslationEntryModel.LangCode)))
 				.WithValue(lang.CultureName);
 
 				inputGroupTag.InnerHtml.AppendHtml(langInput);
@@ -92,9 +87,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				<span class='fi fi-{language.FlagIcon} fis'></span>
 				</button>");
 
-			var ulTag = new TagBuilder(HtmlTagNames.Ul)
-			.WithClass("dropdown-menu")
-			.WithId("dropdown-lang"); // Combine with parent guid ?
+			var ulTag = new TagBuilder(HtmlTagNames.Ul).WithClass("dropdown-menu");
 
 			// Right align dropdown if rtl
 			if (language.IsRtl)
