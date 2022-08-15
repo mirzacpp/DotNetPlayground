@@ -1,3 +1,5 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -63,6 +65,10 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 	.Configure<DataSeedOptions>(options => options.Environment = builder.Environment.EnvironmentName)
 	.AddScoped<IDataSeedManager, DataSeedManager>()
 	.AddTransient<ILanguageProvider, DefaultLanguageProvider>()
+	.AddFluentValidationAutoValidation(cfg => {
+		cfg.DisableDataAnnotationsValidation = true;		
+	})
+	.AddValidatorsFromAssemblyContaining<Program>()
 	.Configure<LocalizationOptions>(options =>
 	{
 		var defaultLango = new LanguageInfo("bs-Latn-BA", "bs-Latn-BA", "Bosnian, Latin", "ba");

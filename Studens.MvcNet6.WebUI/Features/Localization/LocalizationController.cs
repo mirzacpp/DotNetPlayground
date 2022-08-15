@@ -31,6 +31,11 @@ namespace Studens.MvcNet6.WebUI.Features.Localization
 		[HttpPost]
 		public IActionResult Create(BookCreateUpdateViewModel model)
 		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
 			return Ok(model);
 		}
 	}

@@ -1,21 +1,8 @@
-﻿using NBomber.Contracts;
-using NBomber.CSharp;
-using NBomber.Plugins.Http.CSharp;
-using Studens.Commons.Collections;
+﻿using System.Globalization;
 
-var httpFactory = HttpClientFactory.Create();
+var culture = new CultureInfo("fr-FR");
+//var timeZoneInfo = new TimeZoneInfo()
 
-var step = Step.Create("stresiraj_api", httpFactory, async ctx =>
-{
-	var response = await ctx.Client.GetAsync("https://localhost:7132/books/it/107/5", ctx.CancellationToken);
+Console.WriteLine(culture.DisplayName);
 
-	return response.IsSuccessStatusCode
-	? Response.Ok(statusCode: (int)response.StatusCode)
-	: Response.Fail(statusCode: (int)response.StatusCode);
-});
-
-var scenario = ScenarioBuilder.CreateScenario("test_scene", step)
-.WithWarmUpDuration(TimeSpan.FromSeconds(5))
-.WithLoadSimulations(Simulation.KeepConstant(15, during: TimeSpan.FromSeconds(60)));
-
-NBomberRunner.RegisterScenarios(scenario).Run();
+Console.ReadKey();

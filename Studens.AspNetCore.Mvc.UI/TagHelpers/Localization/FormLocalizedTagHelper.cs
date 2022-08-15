@@ -11,11 +11,11 @@
 		{
 		}
 
-		public override void Process(TagHelperContext context, TagHelperOutput output)
+		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			// Get dropdown .js per css framework type
 			var assembly = typeof(FormLocalizedTagHelper).Assembly;
-			using var resource = assembly.GetManifestResourceStream("Bootstrap5Dropdown");
+			using var resource = assembly.GetManifestResourceStream("Bootstrap5Dropdown");			
 
 			if (resource is not null)
 			{
