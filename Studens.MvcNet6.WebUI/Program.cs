@@ -70,7 +70,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 		options.DefaultLanguage = defaultLango;
 		options.Languages.Add(defaultLango);
 		options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English, GB", "gb-eng"));
-		options.Languages.Add(new LanguageInfo("ar-EG", "ar-EG", "Arabic, Egypt", "ar"));		
+		options.Languages.Add(new LanguageInfo("ar-EG", "ar-EG", "Arabic, Egypt", "ar"));
 	})
 	.AddSingleton<IInputControlGenerator, Bootstrap5ControlGenerator>()
 	.AddDataSeedContributorFromMarkers(typeof(Program))
@@ -86,6 +86,7 @@ if (app.Environment.IsDevelopment())
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
 	app.UseDisplayRegisteredServices();
+	app.LogConfiguration();
 }
 
 app.UseHttpsRedirection();

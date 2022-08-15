@@ -30,7 +30,7 @@ public class Startup
 
     public virtual void Configure(IApplicationBuilder app)
     {
-        var isDevelopment = _webHostEnvironment.IsDevelopment();
+        var isDevelopment = _webHostEnvironment.IsDevelopment();		
 
         app
            // This should be conditional. For more info see https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
