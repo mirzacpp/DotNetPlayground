@@ -775,6 +775,7 @@ https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-prin
 HTTPS://APP.PLURALSIGHT.COM/LIBRARY/COURSES/ENCAPSULATION-SOLID/TABLE-OF-CONTENTS
 https://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/
 https://dunnhq.com/posts/2021/solid-relevance/
+https://vimeo.com/157708450
 }
 
 PATTERNS {
@@ -902,6 +903,9 @@ https://github.com/VahidN/EFCoreSecondLevelCacheInterceptor
 }
 LINQ2DB {
 https://linq2db.github.io/
+}
+SQL {
+https://www.mssqltips.com/sqlservertip/4331/sql-server-index-fragmentation-overview/
 }
 
 SECURING CODE {
