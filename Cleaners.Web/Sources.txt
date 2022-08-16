@@ -37,6 +37,7 @@ https://dev.to/djnitehawk/building-rest-apis-in-net-6-the-easy-way-3h0d (FastEnd
 }
 
 Blogs {
+https://codeopinion.com/
 https://asp.net-hacker.rocks/
 https://www.fiyazhasan.me/
 https://michaelscodingspot.com/
@@ -776,6 +777,7 @@ HTTPS://APP.PLURALSIGHT.COM/LIBRARY/COURSES/ENCAPSULATION-SOLID/TABLE-OF-CONTENT
 https://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/
 https://dunnhq.com/posts/2021/solid-relevance/
 https://vimeo.com/157708450
+https://jeremydmiller.com/2022/08/10/putting-solid-into-perspective/
 }
 
 PATTERNS {

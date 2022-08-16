@@ -6,9 +6,18 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 	/// <summary>
 	/// Generates translatable input based on bootstrap 5 input group components.
 	/// For more info see https://getbootstrap.com/docs/5.0/forms/input-group/.
+	/// Note that Bootstrap5 by default supports rtl direction, so all we have to do is add dir="rtl" to html tag.
+	/// This way we can avoid having multiple rendering checks regarding direction.
 	/// </summary>
 	public class Bootstrap5ControlGenerator : IInputControlGenerator
 	{
+		private readonly IHtmlGenerator _htmlGenerator;
+
+		public Bootstrap5ControlGenerator(IHtmlGenerator htmlGenerator)
+		{
+			_htmlGenerator = htmlGenerator;
+		}
+
 		public TagBuilder Generate(LocalizationControlContext context)
 		{
 			Guard.Against.Null(context, nameof(context));
@@ -21,10 +30,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 			inputGroupTag.AddCssClass("input-group input-group-localized mb-3");
 
 			// Prepened before input if language is ltr. Note that bootstrap 5 relies on actual html element position instead of prepend/append classes.
-			if (!context.CurrentLanguage.IsRtl)
-			{
-				inputGroupTag.InnerHtml.AppendHtml(GenerateLanguageDropDown(context.Languages, context.CurrentLanguage));
-			}
+			inputGroupTag.InnerHtml.AppendHtml(GenerateLanguageDropDown(context.Languages, context.CurrentLanguage));
 
 			for (int i = 0; i < context.Languages.Count; i++)
 			{
@@ -36,6 +42,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				.WithName(string.Format(inputNamePrefix, i, nameof(TranslationEntryModel.Value)))
 				.WithClass("form-control form-control-localized")
 				.WithAttribute(TagAttributeNames.Lang, lang.CultureName)
+				// Should we use current language direction for all inputs or go by culture?
 				.WithAttribute(TagAttributeNames.Dir, textDirection)
 				.WithAttribute(TagAttributeNames.Placeholder, lang.DisplayName);
 
@@ -65,11 +72,13 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				inputGroupTag.InnerHtml.AppendHtml(langInput);
 			}
 
-			//Append after input if language is rtl.
-			if (context.CurrentLanguage.IsRtl)
-			{
-				inputGroupTag.InnerHtml.AppendHtml(GenerateLanguageDropDown(context.Languages, context.CurrentLanguage));
-			}
+			//inputGroupTag.InnerHtml.AppendHtml(_htmlGenerator.GenerateValidationMessage(
+			//	context.ViewContext,
+			//	context.For.ModelExplorer,
+			//	context.For.Name,
+			//	null,
+			//	"div",
+			//	new Dictionary<string, object> { { "class", "invalid-feedback" } }));
 
 			return inputGroupTag;
 		}
@@ -84,16 +93,10 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 			var btnGroupTag = new TagBuilder(HtmlTagNames.Div).WithClass("btn-group");
 
 			btnGroupTag.InnerHtml.AppendHtml(@$"<button class='btn btn-outline-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
-				<span class='fi fi-{language.FlagIcon} fis'></span>
+				<span class='fi fi-{language.FlagIcon}'></span>
 				</button>");
 
 			var ulTag = new TagBuilder(HtmlTagNames.Ul).WithClass("dropdown-menu");
-
-			// Right align dropdown if rtl
-			if (language.IsRtl)
-			{
-				ulTag.WithClass("dropdown-menu-end");
-			}
 
 			// Append languages. No need for TagBuilder here ...
 			foreach (var lang in languages)
@@ -101,7 +104,10 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				ulTag.InnerHtml.AppendHtml(
 				@$"<li lang='{lang.CultureName}' data-lang-flag-icon='{lang.FlagIcon}'>
 							<button type='button' class='dropdown-item'>
-								<span class='fi fi-{lang.FlagIcon} fis me-2'></span>{lang.DisplayName}
+								<span class='d-inline-flex gap-2'>
+									<span class='fi fi-{lang.FlagIcon}'></span>
+									<span>{lang.DisplayName}</span>
+								</span>
 							</button>
 						</li>");
 			}

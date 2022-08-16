@@ -25,6 +25,10 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 		[HtmlAttributeName(AspLocalizedAttributeName)]
 		public ModelExpression For { get; set; }
 
+		[HtmlAttributeNotBound]
+		[ViewContext]
+		public ViewContext ViewContext { get; set; }
+
 		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
 			// Throw if property is not of type TranslationModel
@@ -47,7 +51,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 			var currentLanguage = languages[0];
 
 			var inputWrapper = _inputControlGenerator
-			.Generate(new LocalizationControlContext(For, languages, currentLanguage, tagName));
+			.Generate(new LocalizationControlContext(For, ViewContext, languages, currentLanguage, tagName));
 
 			// Append all to parent
 			output.Content.AppendHtml(inputWrapper);
