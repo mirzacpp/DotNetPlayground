@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>    
+    <PackageReference Include="Finbuckle.MultiTenant" Version="6.7.3" />    
+    <PackageReference Include="Finbuckle.MultiTenant.AspNetCore" Version="6.7.3" />    
+    <PackageReference Include="Finbuckle.MultiTenant.EntityFrameworkCore" Version="6.7.3" />    
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.1" />    
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.0" />    
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
