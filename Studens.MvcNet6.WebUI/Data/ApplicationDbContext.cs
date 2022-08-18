@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Finbuckle.MultiTenant;
+using Finbuckle.MultiTenant.Stores;
 
 namespace Studens.MvcNet6.WebUI.Data
 {

@@ -1,3 +1,4 @@
+using Finbuckle.MultiTenant;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -44,6 +45,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("StudensMvc6"));
 }, ServiceLifetime.Scoped);
 
+builder.Services.AddMultiTenant<TenantInfo>(options =>
+{
+	options.Events.OnTenantResolved = ctx =>
+	{
+		Console.WriteLine($"Resolved tenant {ctx.TenantInfo.Name}");
+		return Task.CompletedTask;
+	};
+})
+.WithHeaderStrategy("X-Tenant")
+.WithEFCoreStore<ApplicationDbContext, TenantInfo>();
+
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //builder.Services.AddPhysicalFileManager("C://ITO");
 //builder.Services.AddAmazonFileManager(options =>
@@ -65,8 +77,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 	.Configure<DataSeedOptions>(options => options.Environment = builder.Environment.EnvironmentName)
 	.AddScoped<IDataSeedManager, DataSeedManager>()
 	.AddTransient<ILanguageProvider, DefaultLanguageProvider>()
-	.AddFluentValidationAutoValidation(cfg => {
-		cfg.DisableDataAnnotationsValidation = true;		
+	.AddFluentValidationAutoValidation(cfg =>
+	{
+		cfg.DisableDataAnnotationsValidation = true;
 	})
 	.AddValidatorsFromAssemblyContaining<Program>()
 	.Configure<LocalizationOptions>(options =>

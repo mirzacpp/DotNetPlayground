@@ -9,6 +9,10 @@ ARCH {
 https://github.com/ardalis/CleanArchitecture
 https://github.com/jasontaylordev/CleanArchitecture
 https://www.youtube.com/channel/UC3RKA4vunFAfrfxiJhPEplw
+MULTITENANT {
+https://www.thereformedprogrammer.net/building-asp-net-core-and-ef-core-multi-tenant-apps-part1-the-database/
+https://github.com/Finbuckle/Finbuckle.MultiTenant
+}
 }
 
 REPOS {
@@ -594,6 +598,8 @@ Cache {
 https://blog.novanet.no/asp-net-core-memory-cache-is-get-or-create-thread-safe/
 https://www.hanselman.com/blog/eyes-wide-open-correct-caching-is-always-hard
 https://en.algorithmica.org/hpc/cpu-cache/associativity/
+https://www.thereformedprogrammer.net/a-net-distributed-cache-with-a-25-nanosecond-read-time/ (File cache)
+https://towardsdatascience.com/system-design-basics-getting-started-with-caching-c2c3e934064a
 }
 Host Startup errors {
 https://github.com/aspnet/EntityFrameworkCore/issues/12331
