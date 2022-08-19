@@ -11,13 +11,6 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 	/// </summary>
 	public class Bootstrap5ControlGenerator : IInputControlGenerator
 	{
-		private readonly IHtmlGenerator _htmlGenerator;
-
-		public Bootstrap5ControlGenerator(IHtmlGenerator htmlGenerator)
-		{
-			_htmlGenerator = htmlGenerator;
-		}
-
 		public TagBuilder Generate(LocalizationControlContext context)
 		{
 			Guard.Against.Null(context, nameof(context));
@@ -70,15 +63,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				.WithValue(lang.CultureName);
 
 				inputGroupTag.InnerHtml.AppendHtml(langInput);
-			}
-
-			//inputGroupTag.InnerHtml.AppendHtml(_htmlGenerator.GenerateValidationMessage(
-			//	context.ViewContext,
-			//	context.For.ModelExplorer,
-			//	context.For.Name,
-			//	null,
-			//	"div",
-			//	new Dictionary<string, object> { { "class", "invalid-feedback" } }));
+			}		
 
 			return inputGroupTag;
 		}

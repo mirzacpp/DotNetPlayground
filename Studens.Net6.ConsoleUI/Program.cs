@@ -1,8 +1,30 @@
-﻿using System.Globalization;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-var culture = new CultureInfo("fr-FR");
-//var timeZoneInfo = new TimeZoneInfo()
+var sc = new ServiceCollection();
+sc.AddSingleton(typeof(ICommand<>), typeof(GenericCommand<>));
+var sp = sc.BuildServiceProvider();
 
-Console.WriteLine(culture.DisplayName);
-
+var command = sp.GetRequiredService<ICommand<int>>();
+Console.WriteLine(command.GetMessage());
 Console.ReadKey();
+
+internal interface ICommand<TResponse> where TResponse : struct
+{
+	string GetMessage();
+}
+
+//internal class UserCommand : ICommand<int>
+//{
+//	public string GetMessage()
+//	{
+//		return "Hello from User command";
+//	}
+//}
+
+internal class GenericCommand<TResponse> : ICommand<TResponse> where TResponse : struct
+{
+	public string GetMessage()
+	{
+		return "Hello from generic";
+	}
+}

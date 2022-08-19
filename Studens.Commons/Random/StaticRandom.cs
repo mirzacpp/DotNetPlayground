@@ -10,6 +10,7 @@
 /// Credits to Jon Skeet
 /// https://codeblog.jonskeet.uk/2009/11/04/revisiting-randomness/
 /// </remarks>
+[Obsolete("Update to thread safe version.")]
 public static class StaticRandom
 {
 	private static readonly Random _random = new();

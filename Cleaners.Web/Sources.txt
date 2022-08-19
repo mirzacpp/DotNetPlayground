@@ -138,7 +138,7 @@ http://dontcodetired.com/blog
 https://dunnhq.com/
 https://blog.paranoidcoding.com
 https://devblogs.microsoft.com/premier-developer/author/seteplia/
- https://www.youtube.com/channel/UCw6BnEkURLprFGx_il2OyUw (#)
+https://www.youtube.com/channel/UCw6BnEkURLprFGx_il2OyUw (#)
 }
 
 KONCEPTI
@@ -240,6 +240,7 @@ https://stackoverflow.com/questions/50778521/how-to-disable-precompiled-views-in
 }
 SignalR {
 https://www.youtube.com/watch?v=RaXx_f3bIRU&ab_channel=IAmTimCorey
+https://codeopinion.teachable.com/courses/enrolled/351382
 }
 Api Versioning {
 https://gingter.org/2018/06/18/asp-net-core-api-versioning/
@@ -372,6 +373,8 @@ Global authorize policy: https://rimdev.io/defaulting-aspnet-core-31-to-require-
 https://devblogs.microsoft.com/aspnet/asp-net-core-6-and-authentication-servers/
 https://josef.codes/asp-net-core-protect-your-api-with-api-keys/
 JWT {
+https://www.blinkingcaret.com/2017/09/06/secure-web-api-in-asp-net-core/
+https://www.blinkingcaret.com/2018/07/18/secure-an-asp-net-core-web-api-using-cookies/
 https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-complete-guide
 https://jasonwatmore.com/post/2020/05/25/aspnet-core-3-api-jwt-authentication-with-refresh-tokens
 https://devblogs.microsoft.com/aspnet/jwt-validation-and-authorization-in-asp-net-core/
@@ -384,6 +387,7 @@ https://www.jerriepelser.com/blog/using-roles-with-the-jwt-middleware/
 https://weblog.west-wind.com/posts/2021/Mar/09/Role-based-JWT-Tokens-in-ASPNET-Core
 https://weblog.west-wind.com/posts/2022/Mar/29/Combining-Bearer-Token-and-Cookie-Auth-in-ASPNET (JWT + Cookie, Multi scheme auth)
 https://gunnarpeipman.com/aspnet-core-adding-claims-to-existing-identity/ (Claims extending)
+https://www.blinkingcaret.com/2018/05/30/refresh-tokens-in-asp-net-core-web-api/
 }
 }
 Migracije i seed 
@@ -587,6 +591,7 @@ https://www.youtube.com/watch?v=tCYxc-2-3fY&ab_channel=Questpond
 https://devblogs.microsoft.com/pfxteam/getting-random-numbers-in-a-thread-safe-way/
 https://gist.github.com/niik/1017834
 https://codeblog.jonskeet.uk/2009/11/04/revisiting-randomness/
+https://github.com/dotnet/runtime/issues/43887
 }
 Numerics formating {
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
@@ -722,7 +727,6 @@ https://devblogs.microsoft.com/pfxteam/crafting-a-task-timeoutafter-method/
 https://devblogs.microsoft.com/pfxteam/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
 https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
 https://blog.stephencleary.com/2017/03/aspnetcore-synchronization-context.html
-https://blog.stephencleary.com/2013/04/implicit-async-context-asynclocal.html
 https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/
 https://blog.stephencleary.com/2013/11/there-is-no-thread.html
 https://www.youtube.com/watch?v=J0mcYVxJEl0
@@ -778,7 +782,7 @@ https://devblogs.microsoft.com/premier-developer/understanding-different-gc-mode
 }
 
 SOLID {
-https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ 
+https://dotnetcoretutorials.com/2019/10/17/solid-in-c-single-responsibility-principle/ `
 HTTPS://APP.PLURALSIGHT.COM/LIBRARY/COURSES/ENCAPSULATION-SOLID/TABLE-OF-CONTENTS
 https://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/
 https://dunnhq.com/posts/2021/solid-relevance/

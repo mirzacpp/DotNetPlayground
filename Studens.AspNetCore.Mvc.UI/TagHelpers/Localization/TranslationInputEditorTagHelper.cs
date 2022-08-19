@@ -43,8 +43,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 			//Transform original input to wrapper
 			output.TagName = HtmlTagNames.Div;
 			output.TagMode = TagMode.StartTagAndEndTag;
-			//TODO: Use guid if UniqueId is too long or use some random 5/6 digit number?
-			output.Attributes.Add(TagAttributeNames.Id, "language-control-" + Guid.NewGuid().ToString("N"));
+			output.Attributes.Add(TagAttributeNames.Id, HtmlIdGenerator.GetRandomId("language-control"));
 
 			// TODO: No languages check ?
 			var languages = await _languageProvider.GetLanguagesAsync();

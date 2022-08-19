@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="NBomber" Version="2.1.5" />
     <PackageReference Include="NBomber.Http" Version="2.0.1" />
+    <PackageReference Include="Spectre.Console" Version="0.44.0" />
   </ItemGroup>
 
   <ItemGroup>

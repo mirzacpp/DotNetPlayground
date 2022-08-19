@@ -15,6 +15,6 @@ namespace Studens.MvcNet6.WebUI.Data
 		{
 			base.OnModelCreating(builder);
 			builder.ApplyConfigurationsFromAssembly(typeof(Program).Assembly);
-		}
+		}		
 	}
 }
