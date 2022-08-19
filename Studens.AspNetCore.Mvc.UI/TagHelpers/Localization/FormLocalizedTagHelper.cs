@@ -49,7 +49,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				output.PostContent.AppendHtml(@$"<script>{jsScript.Replace("__formId__", formId)}</script>");
 			}
 
-			// We will not throw if null since some approaches may not require .js.
+			// Do nothing if null since some approaches may not require .js.
 		}
 	}
 }

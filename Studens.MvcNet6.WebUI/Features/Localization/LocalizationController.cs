@@ -33,7 +33,7 @@ namespace Studens.MvcNet6.WebUI.Features.Localization
 		{
 			if (!ModelState.IsValid)
 			{
-				return View(model);
+				return BadRequest(ModelState);
 			}
 
 			return Ok(model);

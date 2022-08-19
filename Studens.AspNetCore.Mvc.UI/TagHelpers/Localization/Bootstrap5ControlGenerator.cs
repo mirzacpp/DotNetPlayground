@@ -1,4 +1,5 @@
 ﻿using Studens.AspNetCore.Mvc.UI.Localization;
+using Studens.Commons.Extensions;
 using Studens.Commons.Localization;
 
 namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
@@ -25,10 +26,13 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 			// Prepened before input if language is ltr. Note that bootstrap 5 relies on actual html element position instead of prepend/append classes.
 			inputGroupTag.InnerHtml.AppendHtml(GenerateLanguageDropDown(context.Languages, context.CurrentLanguage));
 
+			// Cast to translation model and fetch translations.
+			var translations = ((TranslationModel)context.For.Model).Translations;
+
 			for (int i = 0; i < context.Languages.Count; i++)
 			{
 				var lang = context.Languages[i];
-				var textDirection = lang.IsRtl ? TagAttributeValues.Rtl : TagAttributeValues.Ltr;
+				var textDirection = lang.IsRtl ? TagAttributeValues.Rtl : TagAttributeValues.Ltr;				
 
 				var input = new TagBuilder(context.TagName)
 				.WithId(string.Format(inputIdPrefix, i, nameof(TranslationEntryModel.Value)))
@@ -39,14 +43,25 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				.WithAttribute(TagAttributeNames.Dir, textDirection)
 				.WithAttribute(TagAttributeNames.Placeholder, lang.DisplayName);
 
+				var value = translations.FirstOrDefault(t => t.LangCode.Equals(lang.CultureName))?.Value;			
 				var isCurrentLanguage = lang.CultureName == context.CurrentLanguage.CultureName;
 
 				if (context.TagName == HtmlTagNames.Input)
 				{
+					if (value.IsNotNullOrEmpty())
+					{
+						input.WithValue(value);
+					}
+
 					input.Attributes.Add(TagAttributeNames.Type, isCurrentLanguage ? TagAttributeValues.Text : TagAttributeValues.Hidden);
 				}
 				else
 				{
+					if (value.IsNotNullOrEmpty())
+					{
+						input.InnerHtml.AppendHtml(value);
+					}
+
 					if (!isCurrentLanguage)
 					{
 						input.Attributes.Add(TagAttributeValues.Hidden, TagAttributeValues.Hidden);
@@ -63,7 +78,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 				.WithValue(lang.CultureName);
 
 				inputGroupTag.InnerHtml.AppendHtml(langInput);
-			}		
+			}
 
 			return inputGroupTag;
 		}

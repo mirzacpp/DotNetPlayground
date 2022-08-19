@@ -31,10 +31,10 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 
 		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
-			// Throw if property is not of type TranslationModel
+			// Throw if member is not of type TranslationModel
 			if (For.Metadata.UnderlyingOrModelType != typeof(TranslationModel))
 			{
-				throw new InvalidOperationException($"Member is not of type {typeof(TranslationModel)}.");
+				throw new InvalidOperationException($"Model is not of type {typeof(TranslationModel)}.");
 			}
 
 			//Preserve original html tag (input or textarea)
@@ -47,6 +47,7 @@ namespace Studens.AspNetCore.Mvc.UI.TagHelpers.Localization
 
 			// TODO: No languages check ?
 			var languages = await _languageProvider.GetLanguagesAsync();
+			// TODO: Implement get current language provider
 			var currentLanguage = languages[0];
 
 			var inputWrapper = _inputControlGenerator

@@ -4,29 +4,7 @@
 }
 <div class="row">
 	<div class="col-md-12">
-		<form-localized asp-action="Create">
-			<div asp-validation-summary="All"></div>
-			<p class="text-info">Selecting language from any dropdown will change language for all dropdowns.</p>
-			<div class="form-group">
-				<label asp-for="Title"></label>
-				<input asp-for-localized="Title" class="form-control" />
-				<span asp-validation-for="Title" class="invalid-feedback d-block"></span>
-			</div>
-			<div class="form-group mb-3">
-				<label asp-for="NumberOfPages"></label>
-				<input asp-for="NumberOfPages" class="form-control" />
-				<span asp-validation-for="NumberOfPages" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Description"></label>
-				<textarea asp-for-localized="Description" class="form-control"></textarea>
-				<span asp-validation-for="Description" class="text-danger"></span>
-			</div>
-			<button type="submit" class="btn btn-info">Go</button>
-		</form-localized>
-	</div>
-	<div class="col-md-12">
-		<form-localized asp-action="Create">
+		<form-localized asp-action="Create" id="form-book-create">
 			<div asp-validation-summary="All"></div>
 			<p class="text-info">Selecting language from any dropdown will change language for all dropdowns.</p>
 			<div class="form-group">
