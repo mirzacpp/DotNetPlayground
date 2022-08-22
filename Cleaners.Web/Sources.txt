@@ -455,6 +455,7 @@ https://www.andybutland.dev/2020/06/dependency-injection-in-aspnet-core-attribut
 STRESS TESTING {
 https://www.youtube.com/watch?v=r-Jte8Y8zag
 https://github.com/tmenier/Flurl
+https://github.com/PragmaticFlow/NBomber
 }
 
 MINIMAL APIS {
@@ -511,6 +512,9 @@ EF 5.0: https://www.codemag.com/Article/2010042/EF-Core-5-Building-on-the-Founda
 EF 6.0: {
 https://devblogs.microsoft.com/dotnet/get-to-know-ef-core-6/,
 https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-6.0/whatsnew
+Repo pattern {
+https://app.pluralsight.com/library/courses/ef-core-testing/table-of-contents
+}
 }
 REPO PATTERN: {
 https://www.edgesidesolutions.com/repository-pattern-dead-with-entity-framework/
