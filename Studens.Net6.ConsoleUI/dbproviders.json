@@ -1,0 +1,20 @@
+[
+	{
+		"name": "SqlServer",
+		"timeout": 1000,
+		"encrypt": true,
+		"timeStamp": "f233407f-21f2-4be0-914f-47712befc92b"
+	},
+	{
+		"name": "PostgreSql",
+		"timeout": 2000,
+		"encrypt": true,
+		"timeStamp": "f233407f-21f2-4be0-914f-47712befc92b"
+	},
+	{
+		"name": "SqlLite",
+		"timeout": 3000,
+		"encrypt": false,
+		"timeStamp": "f233407f-21f2-4be0-914f-47712befc92b"
+	}
+]

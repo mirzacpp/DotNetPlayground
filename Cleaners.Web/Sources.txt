@@ -777,6 +777,7 @@ http://albahari.com/threading/
 http://www.albahari.com/threading/part5.aspx#_SpinLock_and_SpinWait
 https://duongnt.com/interlocked-synchronization/
 https://www.linkedin.com/pulse/c-threading-tasks-async-code-synchronization-part-4-meikopoulos
+https://app.pluralsight.com/library/courses/building-multithreaded-c-sharp-applications-task-parallel-library/table-of-contents
 }
 
 GARBAGE COLLECTION {

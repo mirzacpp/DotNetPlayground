@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Studens.MvcNet6.WebUI.MediatR.Books;
+using System.Text.Json;
 
 namespace Studens.MvcNet6.WebUI.Features.Localization
 {
@@ -34,7 +35,7 @@ namespace Studens.MvcNet6.WebUI.Features.Localization
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
-			}
+			}			
 
 			return Ok(model);
 		}
