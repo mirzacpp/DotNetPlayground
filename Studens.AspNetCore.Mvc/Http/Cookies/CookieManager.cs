@@ -22,7 +22,7 @@ public class CookieManager : ICookieManager
         IsEssential = false,
         Secure = true,
         SameSite = SameSiteMode.Strict,
-        Expires = DateTimeOffset.UtcNow.AddMinutes(30)
+        Expires = DateTime.UtcNow.AddMinutes(30)
     };
 
     public CookieManager(IHttpContextAccessor httpContextAccessor)

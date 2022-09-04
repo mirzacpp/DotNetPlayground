@@ -1,0 +1,28 @@
+{
+	"ShardingDatabases": [
+		{
+			"Name": "Default Database",
+			"DatabaseName": null,
+			"ConnectionName": "DefaultConnection",
+			"DatabaseType": "SqlServer"
+		},
+		{
+			"Name": "DatabaseWest1",
+			"DatabaseName": "DatabaseWest",
+			"ConnectionName": "WestCoastServer",
+			"DatabaseType": "SqlServer"
+		},
+		{
+			"Name": "DatabaseCentral1",
+			"DatabaseName": "DatabaseCentral",
+			"ConnectionName": "CentralServer",
+			"DatabaseType": "SqlServer"
+		},
+		{
+			"Name": "DatabaseEast1",
+			"DatabaseName": "DatabaseEast",
+			"ConnectionName": "EastCoastServer",
+			"DatabaseType": "SqlServer"
+		}
+	]
+}

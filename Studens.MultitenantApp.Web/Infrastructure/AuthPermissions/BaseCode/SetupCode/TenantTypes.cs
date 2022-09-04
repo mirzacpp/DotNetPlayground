@@ -1,0 +1,28 @@
+﻿// Copyright (c) 2021 Jon P Smith, GitHub: JonPSmith, web: http://www.thereformedprogrammer.net/
+// Licensed under MIT license. See License.txt in the project root for license information.
+
+namespace Rev.AuthPermissions.BaseCode.SetupCode
+{
+    /// <summary>
+    /// This defines the types of tenant the AuthPermissions can handle, with optional sharding
+    /// </summary>
+    [Flags]
+    public enum TenantTypes
+    {
+        /// <summary>
+        /// Usage of tenants are turned off
+        /// </summary>
+        NotUsingTenants = 0,
+        /// <summary>
+        /// Multi-tenant with one level only, e.g. a company has different departments: sales, finance, HR etc.
+        /// A User can only be in one of these levels
+        /// </summary>
+        SingleLevel = 1,
+        /// <summary>
+        /// This turns on the sharding. Sharding allows tenants to be split across many databases, including placing a tenant's data in its own database.
+        /// 
+        /// </summary>
+        AddSharding = 4
+
+    }
+}
