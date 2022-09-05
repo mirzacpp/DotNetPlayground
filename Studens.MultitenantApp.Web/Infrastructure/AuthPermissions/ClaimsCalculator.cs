@@ -23,7 +23,7 @@ namespace Rev.AuthPermissions
     /// </summary>
     public class ClaimsCalculator : IClaimsCalculator
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AuthPermissionsDbContext _context;
         private readonly AuthPermissionsOptions _options;
         private readonly IEnumerable<IClaimsAdder> _claimsAdders;
 
@@ -33,7 +33,7 @@ namespace Rev.AuthPermissions
         /// <param name="context"></param>
         /// <param name="options"></param>
         /// <param name="claimAdders"></param>
-        public ClaimsCalculator(ApplicationDbContext context, 
+        public ClaimsCalculator(AuthPermissionsDbContext context, 
             AuthPermissionsOptions options,
                 IEnumerable<IClaimsAdder> claimAdders)
         {

@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Studens.MultitenantApp.Web.Data;
+using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 
 #nullable disable
 
-namespace Studens.MultitenantApp.Web.Migrations
+namespace Studens.MultitenantApp.Web.Infrastructure.AuthPermissions.BaseCode.Domain.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220902093600_Init")]
-    partial class Init
+    [DbContext(typeof(AuthPermissionsDbContext))]
+    [Migration("20220905093445_InitAuthSchema")]
+    partial class InitAuthSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,10 +57,12 @@ namespace Studens.MultitenantApp.Web.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<byte[]>("ConcurrencyToken")
                         .IsConcurrencyToken()
@@ -87,10 +89,12 @@ namespace Studens.MultitenantApp.Web.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<byte[]>("ConcurrencyToken")
                         .IsConcurrencyToken()
@@ -321,36 +325,6 @@ namespace Studens.MultitenantApp.Web.Migrations
                     b.HasIndex("TenantsTenantId");
 
                     b.ToTable("RoleToPermissionsTenant", "auth");
-                });
-
-            modelBuilder.Entity("Studens.MultitenantApp.Web.Data.Book", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<byte[]>("ConcurrencyToken")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("ROWVERSION");
-
-                    b.Property<string>("DataKey")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>

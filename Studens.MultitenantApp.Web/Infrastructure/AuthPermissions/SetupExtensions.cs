@@ -10,7 +10,6 @@ using Rev.AuthPermissions.BaseCode.DataLayer.Classes.SupportTypes;
 using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BaseCode.SetupCode;
 using RunMethodsSequentially;
-using Studens.MultitenantApp.Web.Data;
 
 namespace Rev.AuthPermissions
 {
@@ -53,7 +52,15 @@ namespace Rev.AuthPermissions
 
 			if (setupData.Options.InternalData.AuthPDatabaseType != AuthPDatabaseTypes.NotSet)
 				throw new AuthPermissionsException("You have already set up a database type for AuthP.");
-			
+
+			setupData.Services.AddDbContext<AuthPermissionsDbContext>(
+				options =>
+				{
+					options.UseSqlServer(connectionString, dbOptions =>
+						dbOptions.MigrationsHistoryTable(AuthDbConstants.MigrationsHistoryTableName));
+					EntityFramework.Exceptions.SqlServer.ExceptionProcessorExtensions.UseExceptionProcessor(options);
+				});
+
 			setupData.Options.InternalData.AuthPDatabaseType = AuthPDatabaseTypes.SqlServer;
 
 			setupData.Options.InternalData.RunSequentiallyOptions =
@@ -142,10 +149,10 @@ namespace Rev.AuthPermissions
 			setupData.Options.InternalData.AuthPDatabaseType = AuthPDatabaseTypes.SqliteInMemory;
 
 			//We build a local AuthPermissionsDbContext and create the database
-			var builder = new DbContextOptionsBuilder<ApplicationDbContext>()
+			var builder = new DbContextOptionsBuilder<AuthPermissionsDbContext>()
 				.UseSqlite(inMemoryConnection);
 			EntityFramework.Exceptions.Sqlite.ExceptionProcessorExtensions.UseExceptionProcessor(builder);
-			using var context = new ApplicationDbContext(builder.Options, null, null);
+			using var context = new AuthPermissionsDbContext(builder.Options);
 			context.Database.EnsureCreated();
 
 			setupData.Options.InternalData.RunSequentiallyOptions =

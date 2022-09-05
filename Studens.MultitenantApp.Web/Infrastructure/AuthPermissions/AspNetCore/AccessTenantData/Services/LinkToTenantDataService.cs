@@ -22,7 +22,7 @@ namespace AuthPermissions.AspNetCore.AccessTenantData.Services;
 /// </summary>
 public class LinkToTenantDataService : ILinkToTenantDataService
 {
-    private readonly ApplicationDbContext _context;
+    private readonly AuthPermissionsDbContext _context;
     private readonly AuthPermissionsOptions _options;
     private readonly IAccessTenantDataCookie _cookieAccessor;
 
@@ -36,7 +36,7 @@ public class LinkToTenantDataService : ILinkToTenantDataService
     /// <param name="cookieAccessor"></param>
     /// <param name="encryptorService"></param>
     public LinkToTenantDataService(
-		ApplicationDbContext context,
+		AuthPermissionsDbContext context,
         AuthPermissionsOptions options,
         IAccessTenantDataCookie cookieAccessor,
         IEncryptDecryptService encryptorService)

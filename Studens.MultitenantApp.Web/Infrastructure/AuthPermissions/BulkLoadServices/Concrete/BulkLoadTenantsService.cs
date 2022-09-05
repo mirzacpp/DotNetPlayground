@@ -6,6 +6,7 @@ using Rev.AuthPermissions.AdminCode;
 using Rev.AuthPermissions.BaseCode;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes.SupportTypes;
+using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BaseCode.SetupCode;
 using StatusGeneric;
 using Studens.MultitenantApp.Web.Data;
@@ -19,14 +20,14 @@ namespace Rev.AuthPermissions.BulkLoadServices.Concrete
 	[Obsolete("Remove this approach and use data seed contributors.")]
 	public class BulkLoadTenantsService : IBulkLoadTenantsService
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly AuthPermissionsDbContext _context;
 		private Lazy<List<RoleToPermissions>> _lazyRoles;
 
 		/// <summary>
 		/// requires access to the AuthPermissionsDbContext
 		/// </summary>
 		/// <param name="context"></param>
-		public BulkLoadTenantsService(ApplicationDbContext context)
+		public BulkLoadTenantsService(AuthPermissionsDbContext context)
 		{
 			_context = context;
 			_lazyRoles = new Lazy<List<RoleToPermissions>>(() =>

@@ -18,7 +18,7 @@ namespace Rev.AuthPermissions.BulkLoadServices.Concrete
 	/// </summary>
 	public class BulkLoadRolesService : IBulkLoadRolesService
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly AuthPermissionsDbContext _context;
 		private readonly Type _enumPermissionType;
 
 		/// <summary>
@@ -26,7 +26,7 @@ namespace Rev.AuthPermissions.BulkLoadServices.Concrete
 		/// </summary>
 		/// <param name="context"></param>
 		/// <param name="options"></param>
-		public BulkLoadRolesService(ApplicationDbContext context, AuthPermissionsOptions options)
+		public BulkLoadRolesService(AuthPermissionsDbContext context, AuthPermissionsOptions options)
 		{
 			_context = context;
 			_enumPermissionType = options.InternalData.EnumPermissionsType;

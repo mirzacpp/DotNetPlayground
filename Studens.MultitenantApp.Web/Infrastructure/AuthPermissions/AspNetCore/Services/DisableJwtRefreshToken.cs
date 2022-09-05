@@ -16,13 +16,13 @@ namespace AuthPermissions.AspNetCore.Services
     /// </summary>
     public class DisableJwtRefreshToken : IDisableJwtRefreshToken
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AuthPermissionsDbContext _context;
 
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="context"></param>
-        public DisableJwtRefreshToken(ApplicationDbContext context)
+        public DisableJwtRefreshToken(AuthPermissionsDbContext context)
         {
             _context = context;
         }

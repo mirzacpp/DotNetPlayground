@@ -36,6 +36,13 @@ public interface IShardingConnections
 	string[] GetSupportedDatabaseTypes();
 
 	/// <summary>
+	/// This returns all the database info names in the shardingsetting.json file, with a list of tenant name linked to each connection name
+	/// </summary>
+	/// <returns>List of all the database info names with the tenants (and whether its sharding) within that database data name
+	/// NOTE: The hasOwnDb is true for a database containing a single database, false for multiple tenant database and null if empty</returns>
+	Task<List<(string databaseInfoName, bool? hasOwnDb, List<string> tenantNames)>> GetDatabaseInfoNamesWithTenantNamesAsync();
+
+	/// <summary>
 	/// This method allows you to check that the <see cref="DatabaseInformation"/> will create a
 	/// a valid connection string. Useful when adding or editing the data in the shardingsettings file.
 	/// </summary>

@@ -43,8 +43,7 @@ namespace Studens.MultitenantApp.Web.Data
 
 			return new ApplicationDbContext(
 			_options,
-			   new StubGetShardingDataFromUser(connectionString, dataKey),
-			   _eventSetup);
+			   new StubGetShardingDataFromUser(connectionString, dataKey));
 		}
 
 		private class StubGetShardingDataFromUser : IGetShardingDataFromUser

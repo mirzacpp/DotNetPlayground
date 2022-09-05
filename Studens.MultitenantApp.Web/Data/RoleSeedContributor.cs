@@ -3,6 +3,7 @@ using Rev.AuthPermissions.BaseCode;
 using Rev.AuthPermissions.BaseCode.CommonCode;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes.SupportTypes;
+using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BaseCode.PermissionsCode;
 using StatusGeneric;
 using Studens.Data.Seed;
@@ -15,10 +16,10 @@ namespace Studens.MultitenantApp.Web.Data
 	[DataSeed(Order = -100)]
 	public class RoleSeedContributor : IDataSeedContributor
 	{
-		protected ApplicationDbContext DbContext { get; }
+		protected AuthPermissionsDbContext DbContext { get; }
 		private readonly Type _enumPermissionType;
 
-		public RoleSeedContributor(ApplicationDbContext dbContext, AuthPermissionsOptions options)
+		public RoleSeedContributor(AuthPermissionsDbContext dbContext, AuthPermissionsOptions options)
 		{
 			DbContext = dbContext;
 			_enumPermissionType = options.InternalData.EnumPermissionsType;

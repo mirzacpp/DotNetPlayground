@@ -10,7 +10,6 @@ using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BaseCode.SetupCode;
 using Rev.AuthPermissions.SetupCode.Factories;
 using StatusGeneric;
-using Studens.MultitenantApp.Web.Data;
 using System.Data;
 
 namespace Rev.AuthPermissions.AdminCode.Services
@@ -20,7 +19,7 @@ namespace Rev.AuthPermissions.AdminCode.Services
 	/// </summary>
 	public class AuthTenantAdminService : IAuthTenantAdminService
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly AuthPermissionsDbContext _context;
 		private readonly IAuthPServiceFactory<ITenantChangeService> _tenantChangeServiceFactory;
 		private readonly AuthPermissionsOptions _options;
 		private readonly ILogger _logger;
@@ -34,7 +33,7 @@ namespace Rev.AuthPermissions.AdminCode.Services
 		/// <param name="options"></param>
 		/// <param name="tenantChangeServiceFactory"></param>
 		/// <param name="logger"></param>
-		public AuthTenantAdminService(ApplicationDbContext context,
+		public AuthTenantAdminService(AuthPermissionsDbContext context,
 			AuthPermissionsOptions options,
 			IAuthPServiceFactory<ITenantChangeService> tenantChangeServiceFactory,
 			ILogger<AuthTenantAdminService> logger)

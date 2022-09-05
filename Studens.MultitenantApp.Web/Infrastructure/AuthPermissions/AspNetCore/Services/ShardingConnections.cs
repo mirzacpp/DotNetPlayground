@@ -2,10 +2,12 @@
 // Licensed under MIT license. See License.txt in the project root for license information.
 
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Npgsql;
 using Rev.AuthPermissions.BaseCode;
 using Rev.AuthPermissions.BaseCode.CommonCode;
+using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BaseCode.SetupCode;
 using StatusGeneric;
 using System.ComponentModel;
@@ -35,6 +37,7 @@ public class ShardingConnections : IShardingConnections
 
 	private readonly ConnectionStringsOption _connectionDict;
 	private readonly ShardingSettingsOption _shardingSettings;
+    private readonly AuthPermissionsDbContext _context;
 	private readonly AuthPermissionsOptions _options;
 
 	/// <summary>
@@ -46,7 +49,8 @@ public class ShardingConnections : IShardingConnections
 	/// <param name="options"></param>
 	public ShardingConnections(IOptionsSnapshot<ConnectionStringsOption> connectionsAccessor,
 		IOptionsSnapshot<ShardingSettingsOption> shardingSettingsAccessor,
-		AuthPermissionsOptions options)
+		AuthPermissionsOptions options,
+		AuthPermissionsDbContext context)
 	{
 		//thanks to https://stackoverflow.com/questions/37287427/get-multiple-connection-strings-in-appsettings-json-without-ef
 		_connectionDict = connectionsAccessor.Value;
@@ -59,6 +63,7 @@ public class ShardingConnections : IShardingConnections
 		{
 			new DatabaseInformation { Name = options.ShardingDefaultDatabaseInfoName }
 		};
+		_context = context;
 	}
 
 	/// <summary>
@@ -82,6 +87,41 @@ public class ShardingConnections : IShardingConnections
 	public IEnumerable<string> GetConnectionStringNames()
 	{
 		return _connectionDict.Keys;
+	}
+
+	/// <summary>
+	/// This returns all the database info names in the shardingsetting.json file, with a list of tenant name linked to each connection name
+	/// NOTE: The DatabaseInfoName which matches the <see cref="AuthPermissionsOptions.ShardingDefaultDatabaseInfoName"/> is always
+	/// returns a HasOwnDb value of false. This is because the default database has the AuthP data in it.
+	/// </summary>
+	/// <returns>List of all the database info names with the tenants using that database data name
+	/// NOTE: The hasOwnDb is true for a database containing a single database, false for multiple tenant database and null if empty</returns>
+	public async Task<List<(string databaseInfoName, bool? hasOwnDb, List<string> tenantNames)>> GetDatabaseInfoNamesWithTenantNamesAsync()
+	{
+		var nameAndConnectionName = await _context.Tenants
+			.Select(x => new { ConnectionName = x.DatabaseInfoName, x })
+			.ToListAsync();
+
+		var grouped = nameAndConnectionName.GroupBy(x => x.ConnectionName)
+			.ToDictionary(x => x.Key,
+				y => y.Select(z => new { z.x.HasOwnDb, z.x.TenantName }));
+
+		var result = new List<(string databaseInfoName, bool? hasOwnDb, List<string>)>();
+		//Add sharding database names that have no tenants in them so that you can see all the connection string  names
+		foreach (var databaseInfoName in _shardingSettings.ShardingDatabases.Select(x => x.Name))
+		{
+			result.Add(grouped.ContainsKey(databaseInfoName)
+				? (databaseInfoName,
+					databaseInfoName == _options.ShardingDefaultDatabaseInfoName
+						? false //The default DatabaseInfoName contains the AuthP information, so its a shared database
+						: grouped[databaseInfoName].FirstOrDefault()?.HasOwnDb,
+					grouped[databaseInfoName].Select(x => x.TenantName).ToList())
+				: (databaseInfoName,
+					databaseInfoName == _options.ShardingDefaultDatabaseInfoName ? false : null,
+					new List<string>()));
+		}
+
+		return result;
 	}
 
 	/// <summary>

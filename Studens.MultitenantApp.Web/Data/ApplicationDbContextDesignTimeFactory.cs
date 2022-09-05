@@ -15,7 +15,7 @@ namespace Studens.MultitenantApp.Web.Data
 
 			optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 
-			return new ApplicationDbContext(optionsBuilder.Options, null, null);
+			return new ApplicationDbContext(optionsBuilder.Options, null);
 		}
 	}
 }

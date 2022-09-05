@@ -5,6 +5,7 @@ using Rev.AuthPermissions;
 using Rev.AuthPermissions.AdminCode;
 using Rev.AuthPermissions.BaseCode;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes;
+using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BaseCode.SetupCode;
 using Rev.AuthPermissions.SupportCode.ShardingServices;
 using RunMethodsSequentially;
@@ -32,7 +33,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<User>()
-	.AddEntityFrameworkStores<ApplicationDbContext>();
+	.AddEntityFrameworkStores<AuthPermissionsDbContext>();
 
 builder.Services
 .AddControllersWithViews()
@@ -50,12 +51,7 @@ builder.Services.RegisterAuthPermissions<AppPermissions>(options =>
 	options.Configuration = builder.Configuration;
 })
 .UsingEfCoreSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-//.RegisterAuthenticationProviderReader<AuthenticationUserSyncProvider>()
-//.RegisterFindUserInfoService<UserAccountLookup>()
 .IndividualAccountsAuthentication<User>()
-//.AddSuperUserToIndividualAccounts<User>()
-//.AddRolesPermissionsIfEmpty(UserSeedDataDefinition.RolesDefinition)
-//.AddAuthUsersIfEmpty(UserSeedDataDefinition.UsersRolesDefinition)
 .SetupAspNetCoreAndDatabase(options =>
 {
 	//Migrate individual account database and seed data

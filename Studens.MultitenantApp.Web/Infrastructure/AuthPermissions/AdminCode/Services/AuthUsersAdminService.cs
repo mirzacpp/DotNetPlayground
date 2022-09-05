@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2021 Jon P Smith, GitHub: JonPSmith, web: http://www.thereformedprogrammer.net/
 // Licensed under MIT license. See License.txt in the project root for license information.
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Rev.AuthPermissions.BaseCode;
 using Rev.AuthPermissions.BaseCode.CommonCode;
@@ -8,7 +9,6 @@ using Rev.AuthPermissions.BaseCode.DataLayer.Classes;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes.SupportTypes;
 using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using StatusGeneric;
-using Studens.MultitenantApp.Web.Data;
 
 namespace Rev.AuthPermissions.AdminCode.Services
 {
@@ -17,7 +17,8 @@ namespace Rev.AuthPermissions.AdminCode.Services
 	/// </summary>
 	public class UsersAdminService : IUsersAdminService
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly AuthPermissionsDbContext _context;
+		private readonly UserManager<User> _userManager;
 		private readonly bool _isMultiTenant;
 
 		/// <summary>
@@ -26,11 +27,13 @@ namespace Rev.AuthPermissions.AdminCode.Services
 		/// <param name="context"></param>
 		/// <param name="syncAuthenticationUsersFactory">A factory to create an authentication sync provider</param>
 		/// <param name="options">auth options</param>
-		public UsersAdminService(ApplicationDbContext context,
-			AuthPermissionsOptions options)
+		public UsersAdminService(AuthPermissionsDbContext context,
+			AuthPermissionsOptions options,
+			UserManager<User> userManager)
 		{
 			_context = context ?? throw new ArgumentNullException(nameof(context));
 			_isMultiTenant = options.TenantType.IsMultiTenant();
+			_userManager = userManager;
 		}
 
 		/// <summary>
@@ -211,8 +214,12 @@ namespace Rev.AuthPermissions.AdminCode.Services
 			if (status.CombineStatuses(UserStatus).HasErrors)
 				return status;
 
-			_context.Add(UserStatus.Result);
-			status.CombineStatuses(await _context.SaveChangesWithChecksAsync());
+			//Register with user manager
+			// We will need to combine status with identity result
+			await _userManager.CreateAsync(UserStatus.Result);
+
+			//_context.Add(UserStatus.Result);
+			//status.CombineStatuses(await _context.SaveChangesWithChecksAsync());
 
 			return status;
 		}

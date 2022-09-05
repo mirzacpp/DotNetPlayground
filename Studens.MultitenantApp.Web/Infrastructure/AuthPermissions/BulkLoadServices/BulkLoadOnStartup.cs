@@ -3,6 +3,7 @@
 
 using Rev.AuthPermissions.AdminCode;
 using Rev.AuthPermissions.BaseCode;
+using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BaseCode.SetupCode;
 using Rev.AuthPermissions.BulkLoadServices.Concrete;
 using Rev.AuthPermissions.SetupCode.Factories;
@@ -23,7 +24,7 @@ namespace Rev.AuthPermissions.SetupCode
 		/// <param name="options"></param>
 		/// <param name="findUserInfoServiceFactory"></param>
 		/// <returns></returns>
-		public static async Task<IStatusGeneric> SeedRolesTenantsUsersIfEmpty(this ApplicationDbContext context,
+		public static async Task<IStatusGeneric> SeedRolesTenantsUsersIfEmpty(this AuthPermissionsDbContext context,
 			AuthPermissionsOptions options,
 			IAuthPServiceFactory<IFindUserInfoService> findUserInfoServiceFactory)
 		{

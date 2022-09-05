@@ -11,32 +11,32 @@ namespace Rev.AuthPermissions.SupportCode.ShardingServices;
 /// </summary>
 public class DemoGetDatabaseForNewTenant : IGetDatabaseForNewTenant
 {
-    private readonly ITenantShardingService	_tenantShardingService;
+    private readonly IShardingConnections _shardingConnections;
 
-    /// <summary>
-    /// ctor
-    /// </summary>
-    /// <param name="shardingService"></param>
-    public DemoGetDatabaseForNewTenant(ITenantShardingService tenantShardingService)
-    {
-		_tenantShardingService = tenantShardingService;
-    }
+	/// <summary>
+	/// ctor
+	/// </summary>
+	/// <param name="shardingService"></param>
+	public DemoGetDatabaseForNewTenant(IShardingConnections shardingConnections)
+	{
+		_shardingConnections = shardingConnections;
+	}
 
-    /// <summary>
-    /// This will look for a database for a new tenant.
-    /// If the hasOwnDb is true, then it will find an empty database,
-    /// otherwise it will look for database containing multiple tenants
-    /// </summary>
-    /// <param name="hasOwnDb">If true the tenant needs its own database. False means it shares a database.</param>
-    /// <param name="region">If not null this provides geographic information to pick the nearest database server.</param>
-    /// <param name="version">Optional: provides the version name in case that effects the database selection</param>
-    /// <returns>Status with the DatabaseInfoName, or error if it can't find a database to work with</returns>
-    public async Task<IStatusGeneric<string>> FindBestDatabaseInfoNameAsync(bool hasOwnDb, string region, string version = null)
+	/// <summary>
+	/// This will look for a database for a new tenant.
+	/// If the hasOwnDb is true, then it will find an empty database,
+	/// otherwise it will look for database containing multiple tenants
+	/// </summary>
+	/// <param name="hasOwnDb">If true the tenant needs its own database. False means it shares a database.</param>
+	/// <param name="region">If not null this provides geographic information to pick the nearest database server.</param>
+	/// <param name="version">Optional: provides the version name in case that effects the database selection</param>
+	/// <returns>Status with the DatabaseInfoName, or error if it can't find a database to work with</returns>
+	public async Task<IStatusGeneric<string>> FindBestDatabaseInfoNameAsync(bool hasOwnDb, string region, string version = null)
     {
         var status = new StatusGenericHandler<string>();
 
         //This gets the databases with the info on whether the database is available
-        var dbsWithUsers = await _tenantShardingService.GetDatabaseInfoNamesWithTenantNamesAsync();
+        var dbsWithUsers = await _shardingConnections.GetDatabaseInfoNamesWithTenantNamesAsync();
 
         var foundDatabaseInfoName = hasOwnDb
             ? // this will find the first empty database

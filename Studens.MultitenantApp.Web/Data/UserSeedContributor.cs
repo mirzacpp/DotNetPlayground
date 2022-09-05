@@ -4,6 +4,7 @@ using Rev.AuthPermissions.AdminCode;
 using Rev.AuthPermissions.BaseCode;
 using Rev.AuthPermissions.BaseCode.CommonCode;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes;
+using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BulkLoadServices.Concrete.Internal;
 using StatusGeneric;
 using Studens.Data.Seed;
@@ -15,10 +16,10 @@ namespace Studens.MultitenantApp.Web.Data
 		private const string DefaultPassword = "Password!1";
 
 		protected UserManager<User> UserManager { get; }
-		protected ApplicationDbContext DbContext { get; }
+		protected AuthPermissionsDbContext DbContext { get; }
 		protected AuthPermissionsOptions Options { get; }
 
-		public UserSeedContributor(UserManager<User> userManager, AuthPermissionsOptions options, ApplicationDbContext dbContext)
+		public UserSeedContributor(UserManager<User> userManager, AuthPermissionsOptions options, AuthPermissionsDbContext dbContext)
 		{
 			UserManager = userManager;
 			Options = options;

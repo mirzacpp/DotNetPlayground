@@ -189,7 +189,7 @@ namespace AuthPermissions.AspNetCore
 			setupData.RegisterCommonServices();
 
 			var serviceProvider = setupData.Services.BuildServiceProvider();
-			var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
+			var context = serviceProvider.GetRequiredService<AuthPermissionsDbContext>();
 			context.Database.EnsureCreated();
 
 			var findUserIdService = serviceProvider.GetService<IAuthPServiceFactory<IFindUserInfoService>>();
@@ -268,36 +268,35 @@ namespace AuthPermissions.AspNetCore
 
 				if (!setupData.Options.InternalData.OverrideShardingConnections)
 					//Don't add the default service if the developer has added their own service
-					setupData.Services.AddScoped<IShardingConnections, ShardingConnections>();
-					setupData.Services.AddScoped<ITenantShardingService, TenantShardingService>();
+					setupData.Services.AddScoped<IShardingConnections, ShardingConnections>();					
 				setupData.Services.AddScoped<ILinkToTenantDataService, LinkToTenantDataService>();
 
-				switch (setupData.Options.LinkToTenantType)
-				{
-					case LinkToTenantTypes.OnlyAppUsers:
-						setupData.Services
-							.AddScoped<IGetShardingDataFromUser, GetShardingDataUserAccessTenantData>();
-						break;
+				//switch (setupData.Options.LinkToTenantType)
+				//{
+				//	case LinkToTenantTypes.OnlyAppUsers:
+				//		setupData.Services
+				//			.AddScoped<IGetShardingDataFromUser, GetShardingDataUserAccessTenantData>();
+				//		break;
 
-					default:
+				//	default:
+				//		break;
+				//}
 						setupData.Services.AddScoped<IGetShardingDataFromUser, GetShardingDataUserNormal>();
-						break;
-				}
 			}
 			else
 			{
-				setupData.Services.AddScoped<IGetDataKeyFromUser, GetDataKeyFromUserNormal>();
+				//setupData.Services.AddScoped<IGetDataKeyFromUser, GetDataKeyFromUserNormal>();
 
-				switch (setupData.Options.LinkToTenantType)
-				{
-					case LinkToTenantTypes.OnlyAppUsers:
-						setupData.Services.AddScoped<IGetDataKeyFromUser, GetDataKeyFromAppUserAccessTenantData>();
-						break;
+				//switch (setupData.Options.LinkToTenantType)
+				//{
+				//	case LinkToTenantTypes.OnlyAppUsers:
+				//		setupData.Services.AddScoped<IGetDataKeyFromUser, GetDataKeyFromAppUserAccessTenantData>();
+				//		break;
 
-					default:
-						setupData.Services.AddScoped<IGetDataKeyFromUser, GetDataKeyFromUserNormal>();
-						break;
-				}
+				//	default:
+				//		setupData.Services.AddScoped<IGetDataKeyFromUser, GetDataKeyFromUserNormal>();
+				//		break;
+				//}
 			}
 		}
 	}

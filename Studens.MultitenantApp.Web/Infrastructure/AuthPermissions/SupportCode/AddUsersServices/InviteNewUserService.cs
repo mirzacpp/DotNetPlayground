@@ -23,7 +23,7 @@ namespace Rev.AuthPermissions.SupportCode.AddUsersServices;
 public class InviteNewUserService : IInviteNewUserService
 {
 	private readonly IEncryptDecryptService _encryptService;
-	private readonly ApplicationDbContext _context;
+	private readonly AuthPermissionsDbContext _context;
 	private readonly IUsersAdminService _usersAdmin;
 	private readonly AuthPermissionsOptions _options;
 	private readonly IAddNewUserManager _addNewUserManager;
@@ -37,7 +37,7 @@ public class InviteNewUserService : IInviteNewUserService
 	/// <param name="usersAdmin"></param>
 	/// <param name="addNewUserManager"></param>
 	public InviteNewUserService(AuthPermissionsOptions options,
-	ApplicationDbContext context,
+	AuthPermissionsDbContext context,
 		IEncryptDecryptService encryptService,
 		IUsersAdminService usersAdmin,
 		IAddNewUserManager addNewUserManager)

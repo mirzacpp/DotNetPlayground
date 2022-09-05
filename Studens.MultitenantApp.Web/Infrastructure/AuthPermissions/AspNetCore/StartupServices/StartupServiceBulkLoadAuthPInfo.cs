@@ -33,7 +33,7 @@ namespace AuthPermissions.AspNetCore.StartupServices
 		/// <returns></returns>
 		public async ValueTask ApplyYourChangeAsync(IServiceProvider scopedServices)
 		{
-			var context = scopedServices.GetRequiredService<ApplicationDbContext>();
+			var context = scopedServices.GetRequiredService<AuthPermissionsDbContext>();
 			var authOptions = scopedServices.GetRequiredService<AuthPermissionsOptions>();
 			var findUserIdServiceFactory = scopedServices.GetRequiredService<IAuthPServiceFactory<IFindUserInfoService>>();
 
