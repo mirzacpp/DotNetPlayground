@@ -26,7 +26,7 @@ namespace AuthPermissions.AspNetCore.JwtTokenCode
     {
         private readonly AuthPermissionsOptions _options;
         private readonly IClaimsCalculator _claimsCalculator;
-        private readonly ApplicationDbContext _context;
+        private readonly AuthPermissionsDbContext _context;
         private readonly ILogger _logger;
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace AuthPermissions.AspNetCore.JwtTokenCode
         /// <param name="logger"></param>
         public TokenBuilder(AuthPermissionsOptions options, 
             IClaimsCalculator claimsCalculator,
-            ApplicationDbContext context,
+			AuthPermissionsDbContext context,
             ILogger<TokenBuilder> logger)
         {
             _options = options;

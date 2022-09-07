@@ -14,7 +14,7 @@ namespace Rev.AuthPermissions.BaseCode.DataLayer.EfCode
 	/// <summary>
 	/// This forms the AuthP's EF Core database
 	/// </summary>
-	public abstract class AuthPermissionsDbContext : IdentityUserContext<User>
+	public class AuthPermissionsDbContext : IdentityUserContext<User>
 	{
 		/// <summary>
 		/// This overcomes the exception if the class used in the tests which uses the <see cref="IModelCacheKeyFactory"/>
@@ -27,7 +27,7 @@ namespace Rev.AuthPermissions.BaseCode.DataLayer.EfCode
 		/// </summary>
 		/// <param name="options"></param>
 		/// <param name="eventSetup">OPTIONAL: If provided, then a method will be run within the ctor</param>
-		public AuthPermissionsDbContext(DbContextOptions options,
+		public AuthPermissionsDbContext(DbContextOptions<AuthPermissionsDbContext> options,
 			IRegisterStateChangeEvent eventSetup = null)
 			: base(options)
 		{

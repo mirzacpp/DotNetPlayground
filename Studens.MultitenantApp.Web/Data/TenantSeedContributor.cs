@@ -2,6 +2,7 @@
 using Rev.AuthPermissions.BaseCode;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes.SupportTypes;
+using Rev.AuthPermissions.BaseCode.DataLayer.EfCode;
 using Rev.AuthPermissions.BaseCode.SetupCode;
 using StatusGeneric;
 using Studens.Data.Seed;
@@ -14,11 +15,11 @@ namespace Studens.MultitenantApp.Web.Data
 	[DataSeed(Order = -50)]
 	public class TenantSeedContributor : IDataSeedContributor
 	{
-		protected ApplicationDbContext DbContext { get; }
+		protected AuthPermissionsDbContext DbContext { get; }
 		private List<RoleToPermissions> _roles;
 		protected AuthPermissionsOptions Options { get; }
 
-		public TenantSeedContributor(ApplicationDbContext dbContext, AuthPermissionsOptions options)
+		public TenantSeedContributor(AuthPermissionsDbContext dbContext, AuthPermissionsOptions options)
 		{
 			DbContext = dbContext;
 			Options = options;

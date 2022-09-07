@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Rev.AuthPermissions.AdminCode;
 using Rev.AuthPermissions.BaseCode.CommonCode;
 using Rev.AuthPermissions.BaseCode.DataLayer.Classes;
-using Rev.AuthPermissions.BaseCode.DataLayer.Classes.SupportTypes;
 using Studens.MultitenantApp.Web.Data;
 
 namespace Studens.MultitenantApp.Web.Permissions
@@ -12,6 +11,7 @@ namespace Studens.MultitenantApp.Web.Permissions
 	public class TenantChangeService : ITenantChangeService
 	{
 		private readonly ITenantDbContextFactory _tenantDbContextFactory;
+		private readonly IUsersAdminService _usersAdminService;
 		private readonly ILogger _logger;
 
 		/// <summary>
@@ -21,10 +21,12 @@ namespace Studens.MultitenantApp.Web.Permissions
 		public int DeletedTenantId { get; private set; }
 
 		public TenantChangeService(ILogger<TenantChangeService> logger,
-			ITenantDbContextFactory dbContextFactory)
+			ITenantDbContextFactory dbContextFactory,
+			IUsersAdminService usersAdminService)
 		{
 			_logger = logger;
 			_tenantDbContextFactory = dbContextFactory;
+			_usersAdminService = usersAdminService;
 		}
 
 		/// <summary>
@@ -36,6 +38,7 @@ namespace Studens.MultitenantApp.Web.Permissions
 		{
 			using var context = _tenantDbContextFactory.CreateTenantsDbContext(null, tenant.GetTenantDataKey());
 			using var tenantsContext = _tenantDbContextFactory.CreateTenantsDbContext(tenant.DatabaseInfoName, null);
+
 			if (tenantsContext == null)
 				return $"There is no connection string with the name {tenant.DatabaseInfoName}.";
 
@@ -45,16 +48,23 @@ namespace Studens.MultitenantApp.Web.Permissions
 
 			// TODO: When migrated we should create default tenant admin with provided email...
 			// We will assign user to a tenant admin role to enable tenant management.
-			var roles = await context.RoleToPermissions.Where(y => y.RoleType == RoleTypes.TenantAutoAdd).ToListAsync();
 
-			var user = User.CreateUser(Guid.NewGuid().ToString(),
-			$"app-admin-{tenant.TenantName}@app.com",
-			null,
-			roles,
-			tenant);
+			//var roles = await context.RoleToPermissions.Where(y => y.RoleType == RoleTypes.TenantAutoAdd).ToListAsync();
 
-			tenantsContext.Users.Add(user.Result);
-			await tenantsContext.SaveChangesAsync();
+			//var user = User.CreateUser(Guid.NewGuid().ToString(),
+			//	$"app-admin-{tenant.TenantName}@app.com",
+			//	null,
+			//new List<RoleToPermissions>(),
+			//tenant);
+
+			await _usersAdminService.AddNewUserAsync(Guid.NewGuid().ToString(),
+				$"app-admin-{tenant.TenantName}@app.com",
+				null!,
+			new List<string> { ApplicationRoles.Admin },
+			tenant.TenantName);
+			
+			//tenantsContext.Users.Add(user.Result);
+			//await tenantsContext.SaveChangesAsync();
 
 			return null;
 		}

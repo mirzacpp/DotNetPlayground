@@ -30,7 +30,7 @@ namespace Rev.AuthPermissions.AspNetCore.InternalStartupServices
         /// <returns></returns>
         public async ValueTask StartupServiceAsync(IServiceProvider scopedService)
         {
-            var context = scopedService.GetRequiredService<ApplicationDbContext>();
+            var context = scopedService.GetRequiredService<AuthPermissionsDbContext>();
             var authOptions = scopedService.GetRequiredService<AuthPermissionsOptions>();
             var findUserIdServiceFactory = scopedService.GetRequiredService<IAuthPServiceFactory<IFindUserInfoService>>();
 

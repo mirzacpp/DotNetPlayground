@@ -20,18 +20,16 @@ public class AccessDatabaseInformation : IAccessDatabaseInformation
 
     private readonly string _settingsFilePath;
     private readonly IShardingConnections _connectionsService;
-    private readonly ITenantShardingService _tenantShardingService;
 
 	/// <summary>
 	/// Ctor
 	/// </summary>
 	/// <param name="env"></param>
 	/// <param name="connectionsService"></param>
-	public AccessDatabaseInformation(IWebHostEnvironment env, IShardingConnections connectionsService, ITenantShardingService tenantShardingService)
+	public AccessDatabaseInformation(IWebHostEnvironment env, IShardingConnections connectionsService)
 	{
 		_settingsFilePath = Path.Combine(env.ContentRootPath, ShardingSettingFilename);
 		_connectionsService = connectionsService;
-		_tenantShardingService = tenantShardingService;
 	}
 
 	/// <summary>
@@ -108,7 +106,7 @@ public class AccessDatabaseInformation : IAccessDatabaseInformation
             return status.AddError("Could not find a database info entry with the " +
                                    $"{nameof(DatabaseInformation.Name)} of '{databaseInfoName ?? "< null >"}'");
 
-        var tenantsUsingThis = (await _tenantShardingService.GetDatabaseInfoNamesWithTenantNamesAsync())
+        var tenantsUsingThis = (await _connectionsService.GetDatabaseInfoNamesWithTenantNamesAsync())
             .SingleOrDefault(x => x.databaseInfoName == databaseInfoName).tenantNames;
         if (tenantsUsingThis.Count > 0)
             return status.AddError("You can't delete the database information with the " +

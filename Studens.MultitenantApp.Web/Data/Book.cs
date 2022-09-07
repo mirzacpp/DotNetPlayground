@@ -8,5 +8,7 @@ namespace Studens.MultitenantApp.Web.Data
 		public string Title { get; set; }
 		public string UserId { get; set; }
 		public string DataKey { get; set; }
+
+		public ICollection<TeamMember> TeamMembers { get; set; }
 	}
 }

@@ -19,7 +19,7 @@ namespace Rev.AuthPermissions.AdminCode.Services
 	/// </summary>
 	public class AuthRolesAdminService : IAuthRolesAdminService
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly AuthPermissionsDbContext _context;
 		private readonly Type _permissionType;
 		private readonly bool _isMultiTenant;
 
@@ -28,7 +28,7 @@ namespace Rev.AuthPermissions.AdminCode.Services
 		/// </summary>
 		/// <param name="context"></param>
 		/// <param name="options"></param>
-		public AuthRolesAdminService(ApplicationDbContext context, AuthPermissionsOptions options)
+		public AuthRolesAdminService(AuthPermissionsDbContext context, AuthPermissionsOptions options)
 		{
 			_context = context;
 			_permissionType = options.InternalData.EnumPermissionsType;

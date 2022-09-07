@@ -17,9 +17,9 @@ namespace Rev.AuthPermissions.AdminCode.Services.Internal;
 /// </summary>
 internal class ChangeRoleTypeChecks
 {
-    private readonly ApplicationDbContext _context;
+    private readonly AuthPermissionsDbContext _context;
 
-    public ChangeRoleTypeChecks(ApplicationDbContext context)
+    public ChangeRoleTypeChecks(AuthPermissionsDbContext context)
     {
         _context = context;
     }

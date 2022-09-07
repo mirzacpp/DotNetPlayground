@@ -24,7 +24,7 @@ namespace Rev.AuthPermissions.BulkLoadServices.Concrete
     /// </summary>
     public class BulkLoadUsersService : IBulkLoadUsersService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AuthPermissionsDbContext _context;
         private readonly IAuthPServiceFactory<IFindUserInfoService> _findUserInfoServiceFactory;
         private readonly AuthPermissionsOptions _options;
 
@@ -34,7 +34,7 @@ namespace Rev.AuthPermissions.BulkLoadServices.Concrete
         /// <param name="context"></param>
         /// <param name="findUserInfoServiceFactory"></param>
         /// <param name="options"></param>
-        public BulkLoadUsersService(ApplicationDbContext context, IAuthPServiceFactory<IFindUserInfoService> findUserInfoServiceFactory, AuthPermissionsOptions options)
+        public BulkLoadUsersService(AuthPermissionsDbContext context, IAuthPServiceFactory<IFindUserInfoService> findUserInfoServiceFactory, AuthPermissionsOptions options)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _findUserInfoServiceFactory = findUserInfoServiceFactory;

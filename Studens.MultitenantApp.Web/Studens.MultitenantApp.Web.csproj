@@ -26,9 +26,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Studens.Data\Studens.Data.csproj" />
+    <ProjectReference Include="..\Studens.Domain\Studens.Domain.csproj" />
+    <ProjectReference Include="..\Studens.MediatR\Studens.MediatR.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\AuthPermissions\BaseCode\Domain\Migrations\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
