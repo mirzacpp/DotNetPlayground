@@ -88,6 +88,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+//Always run and login user
 app.Use(async (context, next) =>
 {
 	// Lets sign in super admin
@@ -109,24 +110,13 @@ app.MapGet("/get", async context =>
 	await context.Response.WriteAsJsonAsync(list);
 });
 
-app.MapGet("/get-new-tenant", async context =>
+app.MapGet("/get-new-tenant", async (context) =>
 {
 	var ser = context.RequestServices.GetRequiredService<IAuthTenantAdminService>();
 	var status = await ser.AddSingleTenantAsync("East", null,
 			   hasOwnDb: true, databaseInfoName: "DatabaseEast1");
 
 	await context.Response.WriteAsJsonAsync(status);
-});
-
-app.MapGet("/user-login", async ctx =>
-{
-	var userManager = ctx.RequestServices.GetRequiredService<UserManager<User>>();
-	var signInManager = ctx.RequestServices.GetRequiredService<SignInManager<User>>();
-	var user = await userManager.FindByIdAsync("7124caff-bda7-4497-a9fd-1e5c06829fdc");
-
-	await signInManager.SignInAsync(user, true);
-
-	await ctx.Response.WriteAsJsonAsync("User logged in");
 });
 
 app.MapGet("/user-claims", async ctx =>
