@@ -25,45 +25,29 @@
 ////Console.WriteLine(jsonString);
 ////Console.WriteLine(dbProviders.Count());
 
-Console.WriteLine(sizeof(ushort));
+var coord = new GeoCord("20", "21");
+var coord2 = new GeoCord("20", "20");
+
+Console.WriteLine(coord.Equals(coord2));
 
 Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
 
-internal struct EmptyPoint
+internal struct GeoCord : IEquatable<GeoCord>
 {
-}
+	private readonly string _latitude;
+	private readonly string _longitude;
 
-internal struct Point
-{
-	private int _x;
-	private int _y;
-
-	public Point(int x, int y)
+	public GeoCord(string latitude, string longitude)
 	{
-		_x = x;
-		_y = y;
+		_latitude = latitude;
+		_longitude = longitude;
 	}
 
-	public (int x, int y) Position => (_x, _y);
+	public (string lat, string lng) GetPosition() => (_latitude, _longitude);
 
-	public override string ToString() => $"x:{_x}, y: {_y}";
-}
-
-internal class Point3D
-{
-	private int _x;
-	private int _y;
-	private int _z;
-
-	public Point3D(int x, int y, int z)
+	public bool Equals(GeoCord other)
 	{
-		_x = x;
-		_y = y;
-		_z = z;
+		return _latitude == other._latitude && _longitude == other._longitude;
 	}
-
-	public override string ToString() => $"x:{_x}, y: {_y}, z: {_z}";
 }
-
-//internal record DatabaseProvider(string name, int timeout, bool encrypt, string timeStamp);

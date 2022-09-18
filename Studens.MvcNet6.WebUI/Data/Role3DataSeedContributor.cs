@@ -10,7 +10,9 @@ namespace Studens.MvcNet6.WebUI.Data
     {
         protected ApplicationDbContext DbContext { get; }
 
-        public Role3DataSeedContributor(ApplicationDbContext dbContext)
+		public int Order { get; }
+
+		public Role3DataSeedContributor(ApplicationDbContext dbContext)
         {
             DbContext = dbContext;
         }

@@ -12,7 +12,7 @@
 		/// <returns>Random id value</returns>
 		/// <remarks>
 		/// Note that we use shared instance of Random introduced in .NET6 which is thread safe,
-		/// even though this is not critical since we only use it generate random html ids that can be same for different users.
+		/// even though this is not critical since we only use it to generate random html ids that can be same for different users.
 		/// For < .NET6 versions, <see cref="Commons.Random.CryptoRandom"/>.
 		/// </remarks>
 		public static string GetRandomId(string prefix) =>

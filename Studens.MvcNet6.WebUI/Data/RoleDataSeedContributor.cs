@@ -7,7 +7,9 @@ namespace Studens.MvcNet6.WebUI.Data
     {
         protected ApplicationDbContext DbContext { get; }
 
-        public RoleDataSeedContributor(ApplicationDbContext dbContext)
+		public int Order { get; } = 10;
+
+		public RoleDataSeedContributor(ApplicationDbContext dbContext)
         {
             DbContext = dbContext;
         }

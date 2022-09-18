@@ -53,7 +53,7 @@ public class CookieManager : ICookieManager
 
         Context.Response.Cookies.Append(
            name,
-           value.To<string>(),
+           value.As<string>(),
            options ?? _options);
     }
 

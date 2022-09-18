@@ -4,10 +4,11 @@ using Studens.MvcNet6.WebUI.Domain;
 
 namespace Studens.MvcNet6.WebUI.MediatR.Books
 {
-	[DataSeed(Order = -40, Environment = "Development")]
+	[DataSeed(Environment = "Development")]
 	public class BooksSeedContributor : IDataSeedContributor
 	{
 		protected ApplicationDbContext DbContext { get; }
+		public int Order { get; }
 
 		public BooksSeedContributor(ApplicationDbContext dbContext)
 		{
@@ -113,10 +114,11 @@ namespace Studens.MvcNet6.WebUI.MediatR.Books
 		}
 	}
 
-	[DataSeed(Order = -40, Environment = "Production")]
+	[DataSeed(Environment = "Production")]
 	public class BooksSeedContributorProduction : IDataSeedContributor
 	{
 		protected ApplicationDbContext DbContext { get; }
+		public int Order { get; }
 
 		public BooksSeedContributorProduction(ApplicationDbContext dbContext)
 		{

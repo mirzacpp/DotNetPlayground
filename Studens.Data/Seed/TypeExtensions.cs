@@ -13,14 +13,8 @@ namespace Studens.Data.Seed
 			});
 		}
 
-		public static IEnumerable<Type> Ordered(this IEnumerable<Type> types)
-		{
-			return types.OrderBy(t =>
-			{
-				var attr = t.GetCustomAttributes<DataSeedAttribute>(true).FirstOrDefault();
-				return attr?.Order ?? 0;
-			});
-		}
+		public static IEnumerable<Type> Ordered(this IEnumerable<Type> types) =>
+		types.OrderBy(t => ((IDataSeedContributor)t).Order);
 
 		public static IEnumerable<Type> WithEnvironment(this IEnumerable<Type> types, string? environment)
 		{
