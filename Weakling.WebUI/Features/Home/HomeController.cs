@@ -19,6 +19,7 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
+		throw new Exception("ok vlado");
         return View();
     }
 

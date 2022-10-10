@@ -1,4 +1,3 @@
-using Finbuckle.MultiTenant;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -13,6 +12,7 @@ using Studens.Data.Migration;
 using Studens.Data.Seed;
 using Studens.MvcNet6.WebUI.Data;
 using Studens.MvcNet6.WebUI.MediatR.Services;
+using Studens.MvcNet6.WebUI.OutOfProcess;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,17 +44,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
 	options.UseSqlServer(builder.Configuration.GetConnectionString("StudensMvc6"));
 }, ServiceLifetime.Scoped);
-
-//builder.Services.AddMultiTenant<TenantInfo>(options =>
-//{
-//	options.Events.OnTenantResolved = ctx =>
-//	{
-//		Console.WriteLine($"Resolved tenant {ctx.TenantInfo.Name}");
-//		return Task.CompletedTask;
-//	};
-//})
-//.WithHeaderStrategy("X-Tenant")
-//.WithEFCoreStore<ApplicationDbContext, TenantInfo>();
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //builder.Services.AddPhysicalFileManager("C://ITO");
@@ -95,6 +84,11 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 	.AddDataSeedContributorFromMarkers(typeof(Program))
 	.AddDisplayRegisteredServices("/testovka");
 
+builder.Services
+.AddScoped<IEmailSender, DumbEmailSender>()
+.AddScoped<EmailWorker>()
+.AddHostedService<EmailBackgroundService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -104,8 +98,9 @@ if (app.Environment.IsDevelopment())
 	//app.UseExceptionHandler("/Home/Error");
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
-	app.UseDisplayRegisteredServices();	
-	app.Logger.LogDebug(((IConfigurationRoot)app.Configuration).GetDebugView());
+	app.UseDisplayRegisteredServices();
+	app.UseHttpLogging();
+	app.Logger.LogDebug((app.Configuration as IConfigurationRoot).GetDebugView());
 }
 
 app.UseHttpsRedirection();
@@ -117,6 +112,7 @@ app.UseClaimsDisplay();
 app.UseAuthorization();
 
 app.UseMediatRTestEndpoints();
+app.MapOutOfProcessEndpoints();
 
 app.MapAreaControllerRoute(
 	name: "auth_area",

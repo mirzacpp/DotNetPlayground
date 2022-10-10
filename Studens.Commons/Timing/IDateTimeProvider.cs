@@ -1,17 +1,25 @@
 ﻿namespace Studens.Commons;
 
+/// <summary>
+/// Defines contract for date-time operations.
+/// </summary>
 public interface IDateTimeProvider
 {
-    Task<DateTime> GetUtcDateTimeAsync();
+	bool TimeZoneExists(string timeZoneId);
 
-    Task<DateOnly> GetUtcDateAsync();
+	DateTime GetByTimeZone(string timeZoneId);
 
-    Task<TimeOnly> GetUtcTimeAsync();
+	DateTime ConvertToUtc(DateTime dateTime, string timeZoneId);
 
-    Task<DateTime> GetLocalDateTimeAsync();
+	/// <summary>
+	/// Converts given time to using specified <paramref name="timeZoneId"/>.
+	/// </summary>
+	/// <param name="dateTime">Date time to convert</param>
+	/// <param name="timeZoneId">Timezone id</param>
+	/// <returns>Converted date time</returns>
+	DateTime ConvertToLocal(DateTime dateTime, string? timeZoneId);
 
-    Task<DateOnly> GetLocalDateAsync();
+	bool IsInvalidTime(DateTime dateTime, string timeZoneId);
 
-    Task<TimeOnly> GetLocalTimeAsync();
+	bool IsAmbiguousTime(DateTime dateTime, string timeZoneId);
 }
-

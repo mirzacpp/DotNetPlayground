@@ -10,7 +10,7 @@
 		/// Lower values are executed first.
 		/// </summary>
 		/// <remarks>
-		/// Defaults to 0.
+		/// Defaults to <c>012</c>.
 		/// </remarks>
 		int Order { get; }
 

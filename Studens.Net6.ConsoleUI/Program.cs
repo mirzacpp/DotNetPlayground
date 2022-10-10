@@ -1,53 +1,68 @@
-﻿//using System.Text.Json;
-//using System.Text.Json.Serialization;
+﻿Task task1 = CreateTask(5000);
+Task task2 = CreateTask(6000);
+Task task3 = CreateTask(7000);
 
-//var timeStamp = Guid.NewGuid().ToString();
+await Task.WhenAll(task1, task2, task3);
 
-//var dbProviders = new List<DatabaseProvider> {
-//	new DatabaseProvider("SqlServer", 1000, true, timeStamp),
-//	new DatabaseProvider("PostgreSql", 2000, true, timeStamp),
-//	new DatabaseProvider("SqlLite", 3000, false, timeStamp)
-//};
+int worker = 0;
+int io = 0;
+ThreadPool.GetAvailableThreads(out worker, out io);
 
-//JsonSerializerOptions jOptions = new()
-//{
-//	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-//	WriteIndented = true,
-//};
-
-//var jsonString = JsonSerializer.Serialize(dbProviders, jOptions);
-
-//File.WriteAllText("my-file.json", jsonString);
-
-////var jsonString = File.ReadAllText("dbproviders.json", Encoding.UTF8);
-////var dbProviders = JsonSerializer.Deserialize<List<DatabaseProvider>>(jsonString, jOptions) ?? Enumerable.Empty<DatabaseProvider>();
-
-////Console.WriteLine(jsonString);
-////Console.WriteLine(dbProviders.Count());
-
-var coord = new GeoCord("20", "21");
-var coord2 = new GeoCord("20", "20");
-
-Console.WriteLine(coord.Equals(coord2));
-
+Console.WriteLine("Thread pool threads available at startup: ");
+Console.WriteLine("   Worker threads: {0:N0}", worker);
+Console.WriteLine("   Asynchronous I/O threads: {0:N0}", io);
 Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
 
-internal struct GeoCord : IEquatable<GeoCord>
+Task CreateTask(int delay)
 {
-	private readonly string _latitude;
-	private readonly string _longitude;
-
-	public GeoCord(string latitude, string longitude)
+	return Task.Run(async () =>
 	{
-		_latitude = latitude;
-		_longitude = longitude;
+		Console.WriteLine("I will now delay for " + delay);
+		await Task.Delay(delay);
+		Console.WriteLine("I have delayed for " + delay);
+	});
+}
+
+internal sealed class Test
+{
+	private const string Const = "Vlado";
+	private static string Static = "Statico";
+	public event EventHandler<EventArgs> Event;
+}
+
+internal struct Data : IEquatable<Data>
+{
+	private int _value;
+
+	public Data(int value) => _value = value;
+
+	public void Change(int value) => _value = value;
+
+	public override bool Equals(object? obj)
+	{
+		return obj is Data data && Equals(data);
 	}
 
-	public (string lat, string lng) GetPosition() => (_latitude, _longitude);
-
-	public bool Equals(GeoCord other)
+	public bool Equals(Data other)
 	{
-		return _latitude == other._latitude && _longitude == other._longitude;
+		return _value == other._value;
+	}
+
+	public override int GetHashCode()
+	{
+		return HashCode.Combine(_value);
+	}
+
+	public override string ToString() => $"Data is: {_value}";
+
+	public static bool operator ==(Data left, Data right)
+	{
+		return left.Equals(right);
+	}
+
+	public static bool operator !=(Data left, Data right)
+	{
+		return !(left == right);
 	}
 }

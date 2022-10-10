@@ -28,7 +28,6 @@ namespace Studens.MvcNet6.WebUI.Features.Home
 		public async Task<IActionResult> Index()
 		{
 			var users = await _roleManager.GetAsync(0, 100, "Ad");
-
 			return View();
 		}
 

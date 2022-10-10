@@ -1,63 +1,76 @@
 ﻿namespace Studens.Commons;
 
+/// <summary>
+/// Default implementation for <see cref="IDateTimeProvider"/>
+/// </summary>
 public class DateTimeProvider : IDateTimeProvider
 {
-    private readonly ITimeZoneProvider _timeZoneProvider;
+	public bool TimeZoneExists(string timeZoneId) =>
+	TimeZoneInfo.FindSystemTimeZoneById(timeZoneId) is not null;
 
-    public DateTimeProvider(ITimeZoneProvider timeZoneProvider)
-    {
-        _timeZoneProvider = timeZoneProvider;
-    }
+	/// <summary>
+	/// Returns current date time for <paramref name="timeZoneId"/>.
+	/// If timezone id is not valid, default timezone will be used.
+	/// </summary>
+	/// <param name="timeZoneId"></param>
+	/// <returns></returns>
+	public DateTime GetByTimeZone(string timeZoneId)
+	{
+		//TODO: tryc this and return default/throw
+		var timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+		var utcNow = DateTime.UtcNow;
 
-    public Task<DateTime> GetUtcDateTimeAsync() => Task.FromResult(DateTime.UtcNow);
+		return TimeZoneInfo.ConvertTimeFromUtc(utcNow, timeZone);
+	}
 
-    public async Task<DateOnly> GetUtcDateAsync()
-    {
-        var utcNow = await GetUtcDateTimeAsync();
+	public DateTime ConvertToUtc(DateTime dateTime, string timeZoneId)
+	{
+		if (dateTime.Kind == DateTimeKind.Utc)
+		{
+			return dateTime;
+		}
 
-        return DateOnly.FromDateTime(utcNow);
-    }
+		var timeZone = GetTimeZoneByIdOrDefault(timeZoneId);
 
-    public async Task<TimeOnly> GetUtcTimeAsync()
-    {
-        var utcNow = await GetUtcDateTimeAsync();
+		if (timeZone.IsInvalidTime(dateTime))
+		{
+			return dateTime;
+		}
 
-        return TimeOnly.FromDateTime(utcNow);
-    }
+		return TimeZoneInfo.ConvertTimeToUtc(dateTime, timeZone);
+	}
 
-    public async Task<DateTime> GetLocalDateTimeAsync()
-    {
-        var utcNow = await GetUtcDateTimeAsync();
+	public DateTime ConvertToLocal(DateTime dateTime, string? timeZoneId)
+	{
+		if (dateTime.Kind == DateTimeKind.Local)
+		{
+			return dateTime;
+		}
 
-        return await ConvertToLocalAsync(utcNow);
-    }
+		var timeZone = GetTimeZoneByIdOrDefault(timeZoneId);
 
-    public async Task<DateOnly> GetLocalDateAsync()
-    {
-        var local = await ConvertToLocalAsync(await GetUtcDateTimeAsync());
+		if (timeZone.IsInvalidTime(dateTime))
+		{
+			return dateTime;
+		}
 
-        return DateOnly.FromDateTime(local);
-    }
+		return TimeZoneInfo.ConvertTime(dateTime, timeZone);
+	}
 
-    public async Task<TimeOnly> GetLocalTimeAsync()
-    {
-        var local = await ConvertToLocalAsync(await GetUtcDateTimeAsync());
+	public bool IsInvalidTime(DateTime dateTime, string timeZoneId)
+	{
+		var timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
 
-        return TimeOnly.FromDateTime(local);
-    }
+		return timeZone.IsInvalidTime(dateTime);
+	}
 
-    #region Utils
+	public bool IsAmbiguousTime(DateTime dateTime, string timeZoneId)
+	{
+		var timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
 
-    /// <summary>
-    /// Converts given UTC time to local time
-    /// </summary>        
-    private async Task<DateTime> ConvertToLocalAsync(DateTime utcTime)
-    {
-        var timeZoneInfo = await _timeZoneProvider.GetCurrentAsync();
+		return timeZone.IsAmbiguousTime(dateTime);
+	}
 
-        return TimeZoneInfo.ConvertTimeFromUtc(utcTime, timeZoneInfo);
-    }
-
-    #endregion
+	private TimeZoneInfo GetTimeZoneByIdOrDefault(string timeZoneId) =>
+	TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
 }
-
