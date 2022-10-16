@@ -39,6 +39,7 @@
   <ItemGroup>
     <Folder Include="Areas\Auth\Views\Shared\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.HttpLogging;
-using Serilog;
+﻿using Serilog;
 using Weakling.WebUI.Configuration;
 
 namespace Weakling.WebUI;
@@ -25,29 +24,11 @@ public class Startup
 		services
 			.AddControllersWithViews()
 			.AddFeatureFolders()
-			.AddAreaFeatureFolders()
-			//.AddApplicationPart(typeof(Startup).Assembly)
+			.AddAreaFeatureFolders()			
 			.Services
 			//.AddDatabaseDeveloperPageExceptionFilter() // Use when db is configured
 			.AddPocoOptions<ApplicationOptions>(nameof(ApplicationOptions), _configuration)
-			.AddIf(_webHostEnvironment.IsDevelopment(), services.AddCustomMiniProfiler);
-			//.AddIf(_webHostEnvironment.IsDevelopment(), () => services.AddHttpLogging(options =>
-			//{
-			//	options.LoggingFields = HttpLoggingFields.All;
-			//}));
-
-			//services.AddHttpLogging(options =>
-			//{
-			//	options.LoggingFields = HttpLoggingFields.All;
-			//});
-
-		//if (_webHostEnvironment.IsDevelopment())
-		//{
-		//	services.AddHttpLogging(options =>
-		//	{
-		//		options.LoggingFields = HttpLoggingFields.All;
-		//	});
-		//}
+			.AddIf(_webHostEnvironment.IsDevelopment(), s => s.AddMiniProfilerConfigured());
 	}
 
 	public virtual void Configure(IApplicationBuilder app)
@@ -56,19 +37,18 @@ public class Startup
 		var appOptions = _configuration.GetRequiredOptions<ApplicationOptions>(nameof(ApplicationOptions));
 
 		app
-		   // This should be conditional. For more info see https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/
-		   .UseHostFiltering()		   
-		   //.UseSerilogRequestLogging()
-		   .UseIf(isDevelopment, app.UseDeveloperExceptionPage)		   	   
-		   .UseIf(!isDevelopment, () => app.UseExceptionHandler("/Home/Error"))
-		   .UseIf(!isDevelopment, app.UseHsts)
-		   .UseHttpsRedirection()
+		   // This should be conditional. For more info see https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/		   
+		   .UseIf(appOptions.Setup.EnableHttpLogging, app => app.UseHostFiltering())		   
+		   .UseIf(isDevelopment, app => app.UseDeveloperExceptionPage())
+		   .UseIf(!isDevelopment, app => app.UseExceptionHandler("/Home/Error"))
+		   .UseIf(!isDevelopment, app => app.UseHsts())
+		   .UseIf(appOptions.Setup.EnableHttpsRedirection, app => app.UseHttpsRedirection())		   
 		   .UseStaticFiles()
-		   .UseIf(appOptions.EnableHttpLogging, () => app.UseSerilogRequestLogging())
-		   .UseIf(appOptions.EnableMiniProfiler, app.UseMiniProfiler)
+		   .UseIf(appOptions.Setup.EnableHttpLogging, app => app.UseSerilogRequestLogging())
+		   .UseIf(appOptions.Setup.EnableMiniProfiler, app => app.UseMiniProfiler())
 		   .UseRouting()
 		   .UseAuthentication()
-		   .UseIf(isDevelopment, app.UseClaimsDisplay)
+		   .UseIf(isDevelopment, app => app.UseClaimsDisplay())
 		   .UseAuthorization()
 		   .UseEndpoints(endpoints =>
 		   {

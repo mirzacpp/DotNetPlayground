@@ -1,4 +1,5 @@
 ﻿using Studens.Commons.DependencyInjection;
+using Studens.Commons.Reflection;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -7,263 +8,104 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static partial class ServiceCollectionExtensions
 {
-    #region Fields
+	#region Methods
 
-    private static readonly Assembly[] _emptyAssemblyArray = Array.Empty<Assembly>();
+	/// <summary>
+	/// Registers all classes  within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/>.
+	/// </summary>
+	/// <remarks>
+	/// Open generics are currently not included.
+	/// When class implements multiple interfaces, all of them will be registered except the dependency marker interface. (This can be improved, or use manual registration if default behaviour is not desired.)
+	/// In case that class does not implement interface, it will be registered as self.
+	/// In case of the generic types, only types with the same arity will be registered ie. Worker<T>/IWorker<T> but not  Worker/IMessage<T>.
+	/// TODO: Enable user to expose which interfaces should be registered?
+	/// </remarks>
+	public static IServiceCollection AutoRegisterMarkedDependencies(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
+	services.AutoRegisterMarkedDependencies(assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
 
-    /// <summary>
-    /// Delegate for interface registration strategy
-    /// </summary>
-    private static readonly Func<Type, Type, bool> _interfaceRegistrationStrategy = (targetType, registrationType) =>
-                                      targetType.IsClass && registrationType.IsAssignableFrom(targetType);
+	/// <summary>
+	/// Registers all classes within <paramref name="assembliesToScan"/>.
+	/// </summary>
+	/// <remarks>
+	/// Open generics are currently not included.
+	/// When class implements multiple interfaces, all of them will be registered except the dependency marker interface. (This can be improved, or use manual registration if default behaviour is not desired.)
+	/// In case that class does not implement interface, it will be registered as self.
+	/// In case of the generic types, only types with the same arity will be registered ie. Worker<T>/IWorker<T> but not Worker/IMessage<T>.
+	/// TODO: Enable user to expose which interfaces should be registered?
+	/// </remarks>
+	public static IServiceCollection AutoRegisterMarkedDependencies(this IServiceCollection services, params Assembly[] assembliesToScan)
+	{
+		RegisterDependencies(services, assembliesToScan);
+		return services;
+	}
 
-    /// <summary>
-    /// Delegate for attribute registration strategy
-    /// </summary>
-    private static readonly Func<Type, Type, bool> _attributeRegistrationStrategy = (targetType, attributeType) =>
-                                      targetType.IsClass && targetType.GetCustomAttribute(attributeType, false) != null;
+	#endregion Methods
 
-    #endregion Fields
+	#region Utils
 
-    #region Methods
+	private static void RegisterDependencies(IServiceCollection services, Assembly[] assembliesToScan)
+	{
+		Guard.Against.Null(services, nameof(services));
 
-    #region Interface(marker) registration
+		assembliesToScan = assembliesToScan?.ToArray() ?? Array.Empty<Assembly>();
 
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> marked with <see cref="ISingletonDependency"/> interface.
-    /// </summary>
-    public static IServiceCollection AddSingletonDependenciesFromMarkers(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        RegisterDependencies(services,
-            typeof(ISingletonDependency),
-            ServiceLifetime.Singleton,
-            assembliesToScan,
-            _interfaceRegistrationStrategy);
+		if (assembliesToScan.Length > 0)
+		{
+			// Get all registration candidates
+			var implementationTypes = assembliesToScan
+				.SelectMany(assembly => AssemblyHelper.GetAllTypes(assembly))
+				.Select(type => type.GetRegistrationType())
+				.Where(type =>
+					type is not null &&
+					type.IsClass &&
+					!type.IsAbstract &&
+					!type.IsAttribute())
+				.ToList();
 
-        return services;
-    }
+			foreach (var implementationType in implementationTypes)
+			{
+				var dependencyAttribute = implementationType.GetCustomAttribute<DependencyAttribute>(true);
+				var serviceLifetime = dependencyAttribute?.Lifetime ?? implementationType.GetLifeTime();
 
-    /// <summary>
-    /// Registers all classes within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> marked with <see cref="ISingletonDependency"/> interface.
-    /// </summary>
-    public static IServiceCollection AddSingletonDependenciesFromMarkers(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddSingletonDependenciesFromMarkers(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
+				if (serviceLifetime is null)
+				{
+					continue;
+				}
 
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> marked with <see cref="IScopeDependency"/> interface.
-    /// </summary>
-    public static IServiceCollection AddScopedDependenciesFromMarkers(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        RegisterDependencies(services,
-            typeof(IScopeDependency),
-            ServiceLifetime.Scoped,
-            assembliesToScan,
-            _interfaceRegistrationStrategy);
+				// Get all interfaces for this implementation except registration type
+				var serviceTypes = implementationType
+					.GetInterfaces()
+					.Where(type => type.IsNotDependencyMarker())
+					.Where(type => type.HasMatchingGenericArity(implementationType))
+					.Select(type => type.GetRegistrationType())
+					.ToList();
 
-        return services;
-    }
+				// Append self if type does not implement interfaces
+				if (!serviceTypes.Any())
+				{
+					serviceTypes.Add(implementationType);
+				}
 
-    /// <summary>
-    /// Registers all classes within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> marked with <see cref="IScopeDependency"/> interface.
-    /// </summary>
-    public static IServiceCollection AddScopedDependenciesFromMarkers(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddScopedDependenciesFromMarkers(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
+				foreach (var serviceType in serviceTypes)
+				{
+					var serviceDescriptor = new ServiceDescriptor(serviceType, implementationType, serviceLifetime.Value);
 
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> marked with <see cref="ITransientDependency"/> interface.
-    /// </summary>
-    public static IServiceCollection AddTransientDependenciesFromMarkers(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        RegisterDependencies(services,
-            typeof(ITransientDependency),
-            ServiceLifetime.Transient,
-            assembliesToScan,
-            _interfaceRegistrationStrategy);
+					if (dependencyAttribute?.TryRegister == true)
+					{
+						services.TryAdd(serviceDescriptor);
+					}
+					else if (dependencyAttribute?.ReplaceService == true)
+					{
+						services.Replace(serviceDescriptor);
+					}
+					else
+					{
+						services.Add(serviceDescriptor);
+					}
+				}
+			}
+		}
+	}
 
-        return services;
-    }
-
-    /// <summary>
-    /// Registers all classes within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> marked with <see cref="ITransientDependency"/> interface.
-    /// </summary>
-    public static IServiceCollection AddTransientDependenciesFromMarkers(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddTransientDependenciesFromMarkers(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
-
-    #endregion Interface(marker) registration
-
-    #region Attribute registrations
-
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> decorated with <see cref="SingletonDependencyAttribute"/> attribute.
-    /// </summary>
-    public static IServiceCollection AddSingletonDependenciesFromAttributes(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        RegisterDependencies(services,
-            typeof(SingletonDependencyAttribute),
-            ServiceLifetime.Singleton,
-            assembliesToScan,
-            _attributeRegistrationStrategy);
-
-        return services;
-    }
-
-    /// <summary>
-    /// Registers all classes within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> decorated with <see cref="SingletonDependencyAttribute"/> attribute.
-    /// </summary>
-    public static IServiceCollection AddSingletonDependenciesAttributes(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddSingletonDependenciesFromAttributes(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
-
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> decorated with <see cref="ScopeDependencyAttribute"/> attribute.
-    /// </summary>
-    public static IServiceCollection AddScopedDependenciesFromAttributes(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        RegisterDependencies(services,
-            typeof(ScopeDependencyAttribute),
-            ServiceLifetime.Scoped,
-            assembliesToScan,
-            _attributeRegistrationStrategy);
-
-        return services;
-    }
-
-    /// <summary>
-    /// Registers all classes within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> decorated with <see cref="ScopeDependencyAttribute"/> attribute.
-    /// </summary>
-    public static IServiceCollection AddScopedDependenciesFromAttributes(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddScopedDependenciesFromAttributes(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
-
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> decorated with <see cref="TransientDependencyAttribute"/> attribute.
-    /// </summary>
-    public static IServiceCollection AddTransientDependenciesFromAttributes(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        RegisterDependencies(services,
-            typeof(TransientDependencyAttribute),
-            ServiceLifetime.Transient,
-            assembliesToScan,
-            _attributeRegistrationStrategy);
-
-        return services;
-    }
-
-    /// <summary>
-    /// Registers all classes within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> decorated with <see cref="TransientDependencyAttribute"/> attribute.
-    /// </summary>
-    public static IServiceCollection AddTransientDependenciesFromAttributes(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddTransientDependenciesFromAttributes(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
-
-    #endregion Attribute registrations
-
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> marked with one of the dependency markers.
-    /// </summary>
-    public static IServiceCollection AddAllDependenciesFromMarkers(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        AddSingletonDependenciesFromMarkers(services, assembliesToScan);
-        AddScopedDependenciesFromMarkers(services, assembliesToScan);
-        AddTransientDependenciesFromMarkers(services, assembliesToScan);
-
-        return services;
-    }
-
-    /// <summary>
-    /// Registers all classes within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> marked with one of the dependency markers.
-    /// </summary>
-    public static IServiceCollection AddAllDependenciesFromMarkers(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddAllDependenciesFromMarkers(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
-
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> decorated with one of the dependency attributes.
-    /// </summary>
-    public static IServiceCollection AddAllDependenciesFromAttributes(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        AddSingletonDependenciesFromAttributes(services, assembliesToScan);
-        AddScopedDependenciesFromAttributes(services, assembliesToScan);
-        AddTransientDependenciesFromAttributes(services, assembliesToScan);
-
-        return services;
-    }
-
-    /// <summary>
-    /// Registers all classes within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> decorated with one of the dependency attributes.
-    /// </summary>
-    public static IServiceCollection AddAllDependenciesFromAttributes(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddAllDependenciesFromAttributes(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
-
-    /// <summary>
-    /// Registers all classes within <paramref name="assembliesToScan"/> no matter of the decoration strategy.
-    /// </summary>
-    public static IServiceCollection AddAllDependencies(this IServiceCollection services, params Assembly[] assembliesToScan)
-    {
-        AddSingletonDependenciesFromMarkers(services, assembliesToScan);
-        AddScopedDependenciesFromMarkers(services, assembliesToScan);
-        AddTransientDependenciesFromMarkers(services, assembliesToScan);
-
-        AddSingletonDependenciesFromAttributes(services, assembliesToScan);
-        AddScopedDependenciesFromAttributes(services, assembliesToScan);
-        AddTransientDependenciesFromAttributes(services, assembliesToScan);
-
-        return services;
-    }
-
-    /// <summary>
-    /// Registers all classes  within the assemblies that contain the specified <paramref name="assemblyMarkerTypes"/> no matter of the decoration strategy.
-    /// </summary>
-    public static IServiceCollection AddAllDependencies(this IServiceCollection services, params Type[] assemblyMarkerTypes) =>
-        AddAllDependencies(services, assemblyMarkerTypes.GetAssembliesFromTypes().ToArray());
-
-    #endregion Methods
-
-    #region Utils
-
-    /// <summary>
-    /// Register dependencies of <paramref name="registrationType"/> type with <paramref name="serviceLifetime"/> lifetime in <paramref name="assembliesToScan"/>
-    /// </summary>
-    private static void RegisterDependencies(IServiceCollection services,
-        Type registrationType,
-        ServiceLifetime serviceLifetime,
-        Assembly[] assembliesToScan,
-        Func<Type, Type, bool> registrationStrategy)
-    {
-        Guard.Against.Null(services, nameof(services));
-
-        assembliesToScan = assembliesToScan?.ToArray() ?? _emptyAssemblyArray;
-
-        if (assembliesToScan.Length > 0)
-        {
-            // Get all registrationType implementations
-            var implementations = assembliesToScan
-                .SelectMany(a => a.GetTypes())
-                .Where(t => registrationStrategy(t, registrationType))
-                .ToList();
-
-            foreach (var implementation in implementations)
-            {
-                // Get all interfaces for this implementation except registration type
-                var contracts = implementation.GetInterfaces()
-                    .Where(t => t != registrationType)
-                    .ToList();
-
-                // Register as constructed type or as type definition/template
-                var typeToRegister = implementation.GetGenericTypeDefinitionOrDefault();
-
-                if (contracts.Any())
-                {
-                    foreach (var contract in contracts)
-                    {
-                        services.TryAdd(new ServiceDescriptor(
-                            contract.GetGenericTypeDefinitionOrDefault(), typeToRegister, serviceLifetime));
-                    }
-                }
-                // Otherwise, register type as itself
-                else
-                {
-                    services.TryAdd(new ServiceDescriptor(typeToRegister, typeToRegister, serviceLifetime));
-                }
-            }
-        }
-    }
-
-    #endregion Utils
+	#endregion Utils
 }

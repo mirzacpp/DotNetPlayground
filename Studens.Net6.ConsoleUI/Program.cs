@@ -1,34 +1,51 @@
-﻿Task task1 = CreateTask(5000);
-Task task2 = CreateTask(6000);
-Task task3 = CreateTask(7000);
+﻿using Microsoft.Extensions.DependencyInjection;
+using Studens.Commons.DependencyInjection;
 
-await Task.WhenAll(task1, task2, task3);
+var sc = new ServiceCollection();
+sc.AutoRegisterMarkedDependencies(typeof(Program));
+//sc.AddSingleton(typeof(IMessage<int>), typeof(Worker));
+//sc.Add(new ServiceDescriptor(typeof(IWorkerGeneric<>), typeof(WorkerD<>), ServiceLifetime.Singleton));
 
-int worker = 0;
-int io = 0;
-ThreadPool.GetAvailableThreads(out worker, out io);
+var sp = sc.BuildServiceProvider();
+//var worker = sp.GetRequiredService<IMessage<int>>();
+//worker.Handle(2);
 
-Console.WriteLine("Thread pool threads available at startup: ");
-Console.WriteLine("   Worker threads: {0:N0}", worker);
-Console.WriteLine("   Asynchronous I/O threads: {0:N0}", io);
+foreach (var item in sc)
+{
+	Console.WriteLine($"{item.ServiceType} / {item.ImplementationType} / {item.Lifetime}");
+}
+
 Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
 
-Task CreateTask(int delay)
+public class Worker : IOrderable, ISingletonDependency, IWorker, IWorkerG<int>, IMessage<int>, IMessage<string>
 {
-	return Task.Run(async () =>
+	public void Handle(string message)
 	{
-		Console.WriteLine("I will now delay for " + delay);
-		await Task.Delay(delay);
-		Console.WriteLine("I have delayed for " + delay);
-	});
+		Console.WriteLine($"Message {message} handled.");
+	}
+
+	public void Handle(int message)
+	{
+		Console.WriteLine($"Message {message} handled.");
+	}
 }
 
-internal sealed class Test
+public interface IOrderable {
+
+}
+
+public interface IWorker {
+
+}
+
+public interface IWorkerG<T> {
+
+}
+
+public interface IMessage<T>
 {
-	private const string Const = "Vlado";
-	private static string Static = "Statico";
-	public event EventHandler<EventArgs> Event;
+	void Handle(T message);
 }
 
 internal struct Data : IEquatable<Data>

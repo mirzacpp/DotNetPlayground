@@ -9,33 +9,33 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class CustomServiceCollectionExtensions
 {
-    /// <summary>
-    /// Configures services for MiniProfiler.
-    /// For more info see <see cref="https://miniprofiler.com/dotnet/AspDotNetCore"/>
-    /// </summary>
-    public static IServiceCollection AddCustomMiniProfiler(this IServiceCollection services)
-    {
-        services.AddMiniProfiler(options =>
-        {
-            options.RouteBasePath = "/profiler";
-            options.PopupRenderPosition = RenderPosition.BottomLeft;
-            options.ColorScheme = ColorScheme.Dark;
-            options.EnableDebugMode = true;
+	/// <summary>
+	/// Configures services for MiniProfiler.
+	/// For more info see <see cref="https://miniprofiler.com/dotnet/AspDotNetCore"/>
+	/// </summary>
+	public static IServiceCollection AddMiniProfilerConfigured(this IServiceCollection services)
+	{
+		services.AddMiniProfiler(options =>
+		{
+			options.RouteBasePath = "/profiler";
+			options.PopupRenderPosition = RenderPosition.BottomLeft;
+			options.ColorScheme = ColorScheme.Dark;
+			options.EnableDebugMode = true;
 
-            options.IgnoredPaths.Add("/lib");
-            options.IgnoredPaths.Add("/css");
-            options.IgnoredPaths.Add("/js");
-        });
+			options.IgnoredPaths.Add("/lib");
+			options.IgnoredPaths.Add("/css");
+			options.IgnoredPaths.Add("/js");
+		});
 
-        return services;
-    }
+		return services;
+	}
 
-    public static IServiceCollection AddCustomIdentity(this IServiceCollection services)
-    {
-        services.AddIdentity<IdentityUser, IdentityRole>()
-             .AddUserStore<IIdentityUserStore<IdentityUser>>()
-             .AddUserManager<IdentityUserManager<IdentityUser>>();
+	public static IServiceCollection AddIdentityConfigured(this IServiceCollection services)
+	{
+		services.AddIdentity<IdentityUser, IdentityRole>()
+			 .AddUserStore<IIdentityUserStore<IdentityUser>>()
+			 .AddUserManager<IdentityUserManager<IdentityUser>>();
 
-        return services;
-    }
+		return services;
+	}
 }
