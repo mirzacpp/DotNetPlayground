@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Studens.MvcNet6.WebUI.MediatR.Books;
-using Studens.MvcNet6.WebUI.MediatR.Categories;
-using Studens.MvcNet6.WebUI.MediatR.Services;
+using Simplicity.MvcNet6.WebUI.MediatR.Books;
+using Simplicity.MvcNet6.WebUI.MediatR.Categories;
+using Simplicity.MvcNet6.WebUI.MediatR.Services;
 
 namespace Microsoft.AspNetCore.Builder
 {

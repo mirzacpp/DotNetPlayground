@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Studens.Net6.ConsoleUI.MediatR.City
+namespace Simplicity.Net6.ConsoleUI.MediatR.City
 {
 	public class CityResponse
 	{

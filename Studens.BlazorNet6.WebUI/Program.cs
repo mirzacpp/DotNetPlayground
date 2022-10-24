@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using Studens.BlazorNet6.WebUI.Data;
+using Simplicity.BlazorNet6.WebUI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

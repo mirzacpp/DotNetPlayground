@@ -1,4 +1,4 @@
-﻿namespace Studens.MvcNet6.WebUI.MediatR.Services
+﻿namespace Simplicity.MvcNet6.WebUI.MediatR.Services
 {
 	public class CustomerCreateDto
 	{

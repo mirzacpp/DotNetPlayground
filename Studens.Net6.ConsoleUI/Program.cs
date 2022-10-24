@@ -1,52 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Studens.Commons.DependencyInjection;
-
-var sc = new ServiceCollection();
-sc.AutoRegisterMarkedDependencies(typeof(Program));
-//sc.AddSingleton(typeof(IMessage<int>), typeof(Worker));
-//sc.Add(new ServiceDescriptor(typeof(IWorkerGeneric<>), typeof(WorkerD<>), ServiceLifetime.Singleton));
-
-var sp = sc.BuildServiceProvider();
-//var worker = sp.GetRequiredService<IMessage<int>>();
-//worker.Handle(2);
-
-foreach (var item in sc)
-{
-	Console.WriteLine($"{item.ServiceType} / {item.ImplementationType} / {item.Lifetime}");
-}
-
-Console.WriteLine("Press any key to terminate...");
+﻿Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
-
-public class Worker : IOrderable, ISingletonDependency, IWorker, IWorkerG<int>, IMessage<int>, IMessage<string>
-{
-	public void Handle(string message)
-	{
-		Console.WriteLine($"Message {message} handled.");
-	}
-
-	public void Handle(int message)
-	{
-		Console.WriteLine($"Message {message} handled.");
-	}
-}
-
-public interface IOrderable {
-
-}
-
-public interface IWorker {
-
-}
-
-public interface IWorkerG<T> {
-
-}
-
-public interface IMessage<T>
-{
-	void Handle(T message);
-}
 
 internal struct Data : IEquatable<Data>
 {

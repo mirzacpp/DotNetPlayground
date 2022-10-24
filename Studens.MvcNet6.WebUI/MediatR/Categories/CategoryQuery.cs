@@ -1,14 +1,14 @@
 ﻿using Ardalis.GuardClauses;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Studens.Commons.Extensions;
-using Studens.Data.EntityFrameworkCore;
-using Studens.Data.EntityFrameworkCore.Localization;
-using Studens.Domain;
-using Studens.MvcNet6.WebUI.Data;
-using Studens.MvcNet6.WebUI.Domain;
+using Simplicity.Commons.Extensions;
+using Simplicity.Data.EntityFrameworkCore;
+using Simplicity.Data.EntityFrameworkCore.Localization;
+using Simplicity.Domain;
+using Simplicity.MvcNet6.WebUI.Data;
+using Simplicity.MvcNet6.WebUI.Domain;
 
-namespace Studens.MvcNet6.WebUI.MediatR.Categories
+namespace Simplicity.MvcNet6.WebUI.MediatR.Categories
 {
 	/// <summary>
 	/// Contains translatable entities

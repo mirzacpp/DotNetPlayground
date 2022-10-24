@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Studens.MvcNet6.WebUI.Features.Localization
+namespace Simplicity.MvcNet6.WebUI.Features.Localization
 {
 	public class BookCreateUpdateValidator : AbstractValidator<BookCreateUpdateViewModel>
 	{

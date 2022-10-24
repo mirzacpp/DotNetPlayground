@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Studens.Data.Seed;
+using Simplicity.Data.Seed;
 
-namespace Studens.MvcNet6.WebUI.Data
+namespace Simplicity.MvcNet6.WebUI.Data
 {
 	public class Role2DataSeedContributor : IDataSeedContributor
 	{

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Studens.MvcNet6.WebUI.Features.Htmx
+namespace Simplicity.MvcNet6.WebUI.Features.Htmx
 {
 	public class FormViewModel
 	{

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Studens.AspNetCore.Authentication.JwtBearer\Studens.AspNetCore.Authentication.JwtBearer.csproj" />
-    <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
-    <ProjectReference Include="..\Studens.MediatR\Studens.MediatR.csproj" />
+    <ProjectReference Include="..\Simplicity.AspNetCore.Authentication.JwtBearer\Simplicity.AspNetCore.Authentication.JwtBearer.csproj" />
+    <ProjectReference Include="..\Simplicity.Commons\Simplicity.Commons.csproj" />
+    <ProjectReference Include="..\Simplicity.MediatR\Simplicity.MediatR.csproj" />
   </ItemGroup>
 
   <ItemGroup>

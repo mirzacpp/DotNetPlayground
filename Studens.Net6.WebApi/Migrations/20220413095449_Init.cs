@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Studens.Net6.WebApi.Migrations
+namespace Simplicity.Net6.WebApi.Migrations
 {
     public partial class Init : Migration
     {

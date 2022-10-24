@@ -1,4 +1,4 @@
-﻿namespace Studens.MvcNet6.WebUI;
+﻿namespace Simplicity.MvcNet6.WebUI;
 
 public static partial class AreaNames
 {

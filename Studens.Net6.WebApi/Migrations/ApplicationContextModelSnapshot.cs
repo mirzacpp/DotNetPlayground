@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Studens.Net6.WebApi.Domain;
+using Simplicity.Net6.WebApi.Domain;
 
 #nullable disable
 
-namespace Studens.Net6.WebApi.Migrations
+namespace Simplicity.Net6.WebApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     partial class ApplicationContextModelSnapshot : ModelSnapshot

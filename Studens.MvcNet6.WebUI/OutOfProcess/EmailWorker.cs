@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Studens.MvcNet6.WebUI.Data;
+using Simplicity.MvcNet6.WebUI.Data;
 
-namespace Studens.MvcNet6.WebUI.OutOfProcess
+namespace Simplicity.MvcNet6.WebUI.OutOfProcess
 {
 	public class EmailWorker : INotificationHandler<UserInvited>
 	{

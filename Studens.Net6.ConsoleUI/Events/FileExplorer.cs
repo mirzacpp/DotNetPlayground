@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Studens.Net6.ConsoleUI.Events
+namespace Simplicity.Net6.ConsoleUI.Events
 {
     public class FileExplorer
     {

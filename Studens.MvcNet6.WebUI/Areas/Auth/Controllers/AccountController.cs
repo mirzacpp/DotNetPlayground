@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Studens.AspNetCore.Identity;
-using Studens.MvcNet6.WebUI.Areas.Auth.Models;
+using Simplicity.AspNetCore.Identity;
+using Simplicity.MvcNet6.WebUI.Areas.Auth.Models;
 
-namespace Studens.MvcNet6.WebUI.Areas.Auth.Controllers
+namespace Simplicity.MvcNet6.WebUI.Areas.Auth.Controllers
 {
     [Area(AreaNames.Auth)]
     public class AccountController : Controller

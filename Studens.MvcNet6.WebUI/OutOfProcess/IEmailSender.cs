@@ -1,4 +1,4 @@
-﻿namespace Studens.MvcNet6.WebUI.OutOfProcess
+﻿namespace Simplicity.MvcNet6.WebUI.OutOfProcess
 {
 	public interface IEmailSender
 	{

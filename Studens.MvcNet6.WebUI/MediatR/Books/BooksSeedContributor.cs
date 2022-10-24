@@ -1,8 +1,8 @@
-﻿using Studens.Data.Seed;
-using Studens.MvcNet6.WebUI.Data;
-using Studens.MvcNet6.WebUI.Domain;
+﻿using Simplicity.Data.Seed;
+using Simplicity.MvcNet6.WebUI.Data;
+using Simplicity.MvcNet6.WebUI.Domain;
 
-namespace Studens.MvcNet6.WebUI.MediatR.Books
+namespace Simplicity.MvcNet6.WebUI.MediatR.Books
 {
 	[DataSeed(Environment = "Development")]
 	public class BooksSeedContributor : IDataSeedContributor

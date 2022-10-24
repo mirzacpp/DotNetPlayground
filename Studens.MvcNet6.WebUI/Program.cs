@@ -3,16 +3,16 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Studens.AspNetCore.Identity;
-using Studens.AspNetCore.Mvc.Middleware.RegisteredServices;
-using Studens.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
-using Studens.AspNetCore.Mvc.UI.TagHelpers.Localization;
-using Studens.Commons.Localization;
-using Studens.Data.Migration;
-using Studens.Data.Seed;
-using Studens.MvcNet6.WebUI.Data;
-using Studens.MvcNet6.WebUI.MediatR.Services;
-using Studens.MvcNet6.WebUI.OutOfProcess;
+using Simplicity.AspNetCore.Identity;
+using Simplicity.AspNetCore.Mvc.Middleware.RegisteredServices;
+using Simplicity.AspNetCore.Mvc.UI.TagHelpers.GoogleMaps;
+using Simplicity.AspNetCore.Mvc.UI.TagHelpers.Localization;
+using Simplicity.Commons.Localization;
+using Simplicity.Data.Migration;
+using Simplicity.Data.Seed;
+using Simplicity.MvcNet6.WebUI.Data;
+using Simplicity.MvcNet6.WebUI.MediatR.Services;
+using Simplicity.MvcNet6.WebUI.OutOfProcess;
 
 var builder = WebApplication.CreateBuilder(args);
 

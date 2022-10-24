@@ -25,15 +25,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Studens.Application.Contracts\Studens.Application.Contracts.csproj" />
-    <ProjectReference Include="..\Studens.AspNetCore.Identity.EntityFrameworkCore\Studens.AspNetCore.Identity.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\Studens.AspNetCore.Identity\Studens.AspNetCore.Identity.csproj" />
-    <ProjectReference Include="..\Studens.AspNetCore.Mvc.UI\Studens.AspNetCore.Mvc.UI.csproj" />
-    <ProjectReference Include="..\Studens.AspNetCore.Mvc\Studens.AspNetCore.Mvc.csproj" />
-    <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
-    <ProjectReference Include="..\Studens.Data.EntityFrameworkCore\Studens.Data.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\Studens.Data\Studens.Data.csproj" />
-    <ProjectReference Include="..\Studens.MediatR\Studens.MediatR.csproj" />
+    <ProjectReference Include="..\Simplicity.Application.Contracts\Simplicity.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Simplicity.AspNetCore.Identity.EntityFrameworkCore\Simplicity.AspNetCore.Identity.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Simplicity.AspNetCore.Identity\Simplicity.AspNetCore.Identity.csproj" />
+    <ProjectReference Include="..\Simplicity.AspNetCore.Mvc.UI\Simplicity.AspNetCore.Mvc.UI.csproj" />
+    <ProjectReference Include="..\Simplicity.AspNetCore.Mvc\Simplicity.AspNetCore.Mvc.csproj" />
+    <ProjectReference Include="..\Simplicity.Commons\Simplicity.Commons.csproj" />
+    <ProjectReference Include="..\Simplicity.Data.EntityFrameworkCore\Simplicity.Data.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Simplicity.Data\Simplicity.Data.csproj" />
+    <ProjectReference Include="..\Simplicity.MediatR\Simplicity.MediatR.csproj" />
   </ItemGroup>
 
   <ItemGroup>

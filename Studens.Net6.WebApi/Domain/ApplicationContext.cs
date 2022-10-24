@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Studens.Net6.WebApi.Domain
+namespace Simplicity.Net6.WebApi.Domain
 {
     public class ApplicationContext : IdentityAccessTokenDbContext
     {

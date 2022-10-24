@@ -2,7 +2,7 @@
 using NBomber.CSharp;
 using NBomber.Plugins.Http.CSharp;
 
-namespace Studens.Net6.ConsoleUI.Bomber
+namespace Simplicity.Net6.ConsoleUI.Bomber
 {
 	public class BomberExecutor
 	{

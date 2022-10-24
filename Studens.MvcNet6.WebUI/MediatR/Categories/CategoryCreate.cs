@@ -1,9 +1,9 @@
 ﻿using Ardalis.GuardClauses;
 using MediatR;
-using Studens.Application.Contracts.Dtos;
-using Studens.MediatR;
+using Simplicity.Application.Contracts.Dtos;
+using Simplicity.MediatR;
 
-namespace Studens.MvcNet6.WebUI.MediatR.Categories
+namespace Simplicity.MvcNet6.WebUI.MediatR.Categories
 {
 	public class CategoryLocaleDto
 	{

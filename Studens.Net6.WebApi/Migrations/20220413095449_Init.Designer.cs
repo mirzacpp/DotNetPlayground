@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Studens.Net6.WebApi.Domain;
+using Simplicity.Net6.WebApi.Domain;
 
 #nullable disable
 
-namespace Studens.Net6.WebApi.Migrations
+namespace Simplicity.Net6.WebApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     [Migration("20220413095449_Init")]

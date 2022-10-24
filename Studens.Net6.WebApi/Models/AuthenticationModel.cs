@@ -1,4 +1,4 @@
-﻿namespace Studens.Net6.WebApi.Models
+﻿namespace Simplicity.Net6.WebApi.Models
 {
     public class AuthenticationModel
     {

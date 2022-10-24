@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Studens.Data.Migration;
-using Studens.Data.Seed;
+using Simplicity.Data.Migration;
+using Simplicity.Data.Seed;
 
-namespace Studens.MvcNet6.WebUI.Data
+namespace Simplicity.MvcNet6.WebUI.Data
 {
 	public class DataMigrationManager : IDataMigrationManager
 	{

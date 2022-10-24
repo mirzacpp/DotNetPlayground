@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Studens.MvcNet6.WebUI.Migrations
+namespace Simplicity.MvcNet6.WebUI.Migrations
 {
     public partial class Init : Migration
     {

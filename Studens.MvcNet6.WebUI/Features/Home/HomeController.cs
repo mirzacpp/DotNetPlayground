@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Studens.AspNetCore.Identity;
-using Studens.AspNetCore.Mvc.Filters;
+using Simplicity.AspNetCore.Identity;
+using Simplicity.AspNetCore.Mvc.Filters;
 using System.Diagnostics;
 
-namespace Studens.MvcNet6.WebUI.Features.Home
+namespace Simplicity.MvcNet6.WebUI.Features.Home
 {
 	public class HomeController : Controller
 	{

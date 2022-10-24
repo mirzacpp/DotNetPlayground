@@ -1,6 +1,6 @@
-﻿using Studens.Domain.Entities;
+﻿using Simplicity.Domain.Entities;
 
-namespace Studens.MvcNet6.WebUI.Domain
+namespace Simplicity.MvcNet6.WebUI.Domain
 {
 	/// <summary>
 	/// Defines base entity

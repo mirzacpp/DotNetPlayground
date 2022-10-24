@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Studens.MediatR;
+using Simplicity.MediatR;
 
-namespace Studens.MvcNet6.WebUI.OutOfProcess
+namespace Simplicity.MvcNet6.WebUI.OutOfProcess
 {
 	public class InviteUser : ICommand<Unit>
 	{

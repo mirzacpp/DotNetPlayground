@@ -1,4 +1,4 @@
-namespace Studens.BlazorNet6.WebUI.Data
+namespace Simplicity.BlazorNet6.WebUI.Data
 {
     public class WeatherForecast
     {

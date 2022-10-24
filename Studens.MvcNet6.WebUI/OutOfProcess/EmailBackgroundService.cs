@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Studens.MvcNet6.WebUI.Data;
+using Simplicity.MvcNet6.WebUI.Data;
 using System.Text.Json;
 
-namespace Studens.MvcNet6.WebUI.OutOfProcess
+namespace Simplicity.MvcNet6.WebUI.OutOfProcess
 {
 	public class EmailBackgroundService : BackgroundService
 	{

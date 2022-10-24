@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="ErrorHandling\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Simplicity.Commons\Simplicity.Commons.csproj" />
+	</ItemGroup>
+
+</Project>

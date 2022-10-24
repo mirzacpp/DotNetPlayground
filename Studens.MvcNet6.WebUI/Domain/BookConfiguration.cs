@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Studens.MvcNet6.WebUI.Domain
+namespace Simplicity.MvcNet6.WebUI.Domain
 {
 	//public abstract class LocalizedEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity>
 	//where TEntity : class, ILocalizedEntity

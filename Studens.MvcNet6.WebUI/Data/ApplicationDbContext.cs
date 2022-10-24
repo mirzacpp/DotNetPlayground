@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Studens.MvcNet6.WebUI.OutOfProcess;
+using Simplicity.MvcNet6.WebUI.OutOfProcess;
 
-namespace Studens.MvcNet6.WebUI.Data
+namespace Simplicity.MvcNet6.WebUI.Data
 {
 	public class ApplicationDbContext : IdentityDbContext
 	{

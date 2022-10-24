@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Studens.Data.Extensions;
-using Studens.Data.Seed;
+using Simplicity.Data.Extensions;
+using Simplicity.Data.Seed;
 using System.Text.Json;
 
-namespace Studens.MvcNet6.WebUI.Data
+namespace Simplicity.MvcNet6.WebUI.Data
 {
 	[DataSeed(Ignore = true)]
     public class Role3DataSeedContributor : IDataSeedContributor

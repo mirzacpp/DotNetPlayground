@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Studens.MvcNet6.WebUI.MediatR.Services
+namespace Simplicity.MvcNet6.WebUI.MediatR.Services
 {
     public class GetCustomerByIdHandler : IRequestHandler<GetCustomerByIdQuery, IList<CustomerDto>>
     {

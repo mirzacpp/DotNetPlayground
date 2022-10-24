@@ -1,6 +1,6 @@
-﻿using Studens.AspNetCore.Mvc.UI.Localization;
+﻿using Simplicity.AspNetCore.Mvc.UI.Localization;
 
-namespace Studens.MvcNet6.WebUI.Features.Localization
+namespace Simplicity.MvcNet6.WebUI.Features.Localization
 {
 	public class BookCreateUpdateViewModel : ITranslatableViewModel
 	{

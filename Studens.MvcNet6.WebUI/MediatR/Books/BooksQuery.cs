@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Studens.Data.EntityFrameworkCore;
-using Studens.MediatR;
-using Studens.MvcNet6.WebUI.Data;
-using Studens.MvcNet6.WebUI.Domain;
+using Simplicity.Data.EntityFrameworkCore;
+using Simplicity.MediatR;
+using Simplicity.MvcNet6.WebUI.Data;
+using Simplicity.MvcNet6.WebUI.Domain;
 
-namespace Studens.MvcNet6.WebUI.MediatR.Books
+namespace Simplicity.MvcNet6.WebUI.MediatR.Books
 {
 	public class PublisherDto
 	{

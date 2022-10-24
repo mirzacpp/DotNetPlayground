@@ -1,6 +1,6 @@
-﻿using Studens.MediatR;
+﻿using Simplicity.MediatR;
 
-namespace Studens.MvcNet6.WebUI.MediatR.Services
+namespace Simplicity.MvcNet6.WebUI.MediatR.Services
 {
 	public class GetCustomerByIdQuery : PagedQuery<IList<CustomerDto>>
 	{

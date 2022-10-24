@@ -1,4 +1,4 @@
-﻿namespace Studens.Net6.ConsoleUI.Events
+﻿namespace Simplicity.Net6.ConsoleUI.Events
 {
     public static class EventsExec
     {

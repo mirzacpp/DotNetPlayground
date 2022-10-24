@@ -1,4 +1,4 @@
-﻿namespace Studens.Net6.ConsoleUI
+﻿namespace Simplicity.Net6.ConsoleUI
 {
     public static class LeetCode
     {

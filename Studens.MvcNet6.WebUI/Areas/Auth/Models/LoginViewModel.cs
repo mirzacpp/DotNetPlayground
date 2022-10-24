@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using System.ComponentModel.DataAnnotations;
 
-namespace Studens.MvcNet6.WebUI.Areas.Auth.Models;
+namespace Simplicity.MvcNet6.WebUI.Areas.Auth.Models;
 
 public class LoginViewModel
 {

@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Studens.AspNetCore.Authentication.JwtBearer.Identity;
-using Studens.AspNetCore.Authentication.JwtBearer.Models;
-using Studens.Net6.WebApi.Domain;
+using Simplicity.AspNetCore.Authentication.JwtBearer.Identity;
+using Simplicity.AspNetCore.Authentication.JwtBearer.Models;
+using Simplicity.Net6.WebApi.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 

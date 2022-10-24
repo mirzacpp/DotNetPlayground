@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Studens.MvcNet6.WebUI.MediatR.Books;
+using Simplicity.MvcNet6.WebUI.MediatR.Books;
 using System.Text.Json;
 
-namespace Studens.MvcNet6.WebUI.Features.Localization
+namespace Simplicity.MvcNet6.WebUI.Features.Localization
 {
 	public class LocalizationController : Controller
 	{

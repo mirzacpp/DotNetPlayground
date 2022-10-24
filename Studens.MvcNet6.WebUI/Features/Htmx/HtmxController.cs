@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Studens.MvcNet6.WebUI.Features.Htmx;
+namespace Simplicity.MvcNet6.WebUI.Features.Htmx;
 
 public class HtmxController : Controller
 {

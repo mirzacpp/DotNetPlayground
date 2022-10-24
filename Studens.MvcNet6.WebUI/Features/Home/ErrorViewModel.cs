@@ -1,4 +1,4 @@
-namespace Studens.MvcNet6.WebUI.Features.Home
+namespace Simplicity.MvcNet6.WebUI.Features.Home
 {
 	public class ErrorViewModel
 	{
