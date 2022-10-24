@@ -1,4 +1,4 @@
-namespace Weakling.WebUI.Features.Home;
+namespace Simplicity.WebUI.Features.Home;
 
 public class ErrorViewModel
 {

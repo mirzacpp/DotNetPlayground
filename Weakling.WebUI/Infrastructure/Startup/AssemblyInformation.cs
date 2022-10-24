@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Weakling.WebUI;
+namespace Simplicity.WebUI;
 
 public record class AssemblyInformation(string Product, string Description, string Version)
 {

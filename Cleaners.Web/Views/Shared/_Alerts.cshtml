@@ -1,9 +1,0 @@
-﻿@inject IAlertManager AlertManager
-@foreach (var alert in AlertManager.GetAll())
-{
-    <alert text="@alert.Text"
-           title="@alert.Title"
-           dismissable="@alert.IsDismissable"           
-           class="no-margin">
-    </alert>
-}

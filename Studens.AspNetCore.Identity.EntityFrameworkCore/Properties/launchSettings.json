@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Studens.AspNetCore.Identity.EntityFrameworkCore": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:19711;http://localhost:19712"
+    }
+  }
+}

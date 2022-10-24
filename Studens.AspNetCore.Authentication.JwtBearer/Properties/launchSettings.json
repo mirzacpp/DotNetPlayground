@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Studens.AspNetCore.Authentication.JwtBearer": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:19709;http://localhost:19710"
+    }
+  }
+}

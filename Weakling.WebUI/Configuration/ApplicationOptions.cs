@@ -1,4 +1,4 @@
-﻿namespace Weakling.WebUI.Configuration;
+﻿namespace Simplicity.WebUI.Configuration;
 
 /// <summary>
 /// Defines application options

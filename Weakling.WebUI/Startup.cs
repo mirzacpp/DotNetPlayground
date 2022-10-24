@@ -1,7 +1,7 @@
 ﻿using Serilog;
-using Weakling.WebUI.Configuration;
+using Simplicity.WebUI.Configuration;
 
-namespace Weakling.WebUI;
+namespace Simplicity.WebUI;
 
 public class Startup
 {

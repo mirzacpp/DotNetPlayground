@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Studens.Net6.WebApi.Tests": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:19721;http://localhost:19722"
+    }
+  }
+}

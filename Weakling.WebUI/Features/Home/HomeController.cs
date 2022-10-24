@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Weakling.WebUI.Features.Home;
+namespace Simplicity.WebUI.Features.Home;
 
 public class HomeController : Controller
 {

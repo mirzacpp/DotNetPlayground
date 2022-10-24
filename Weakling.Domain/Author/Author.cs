@@ -1,4 +1,4 @@
-﻿namespace Weakling.Domain.Author
+﻿namespace Simplicity.Domain.Author
 {
     /// <summary>
     /// Represents an author entity

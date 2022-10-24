@@ -1,4 +1,4 @@
-﻿namespace Weakling.WebUI;
+﻿namespace Simplicity.WebUI;
 
 /// <summary>
 /// Extension methods for <see cref = "ILogger" />

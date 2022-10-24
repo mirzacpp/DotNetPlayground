@@ -8,12 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.10" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Studens.Commons\Studens.Commons.csproj" />
-    <ProjectReference Include="..\Studens.Domain\Studens.Domain.csproj" />
+    <ProjectReference Include="..\Studens.Data\Studens.Data.csproj" />
   </ItemGroup>
 
 </Project>

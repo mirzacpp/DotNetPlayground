@@ -1,24 +1,39 @@
-var builder = WebApplication.CreateBuilder(args);
+using Serilog;
+using Simplicity.Api.Infrastructure;
 
-// Add services to the container.
+Log.Logger = new LoggerConfiguration()
+.WriteTo.Console()
+.WriteTo.Debug()
+.CreateBootstrapLogger();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+WebApplication? app = null;
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+	Log.Information("Initialising host.");
+
+	var builder = WebApplication
+	.CreateBuilder(args)
+	.ConfigureHost()
+	.ConfigureServices();
+
+	app = builder	
+	.Build()	
+	.ConfigurePipeline();
+
+	app.LogApplicationStarted();
+	await app.RunAsync();
+	app.LogApplicationStopped();
+
+	return 0;
 }
+catch (Exception ex)
+{
+	app!.LogApplicationTerminatedUnexpectedly(ex);
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-app.MapControllers();
-
-app.Run();
+	return 1;
+}
+finally
+{
+	Log.CloseAndFlush();
+}

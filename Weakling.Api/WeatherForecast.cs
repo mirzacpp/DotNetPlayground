@@ -1,4 +1,4 @@
-namespace Weakling.Api
+namespace Simplicity.Api
 {
 	public class WeatherForecast
 	{

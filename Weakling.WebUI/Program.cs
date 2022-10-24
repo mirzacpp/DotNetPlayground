@@ -2,7 +2,7 @@ using Serilog;
 using Serilog.Extensions.Hosting;
 using Serilog.Formatting.Compact;
 
-namespace Weakling.WebUI;
+namespace Simplicity.WebUI;
 
 /// <summary>
 /// TODO: Add Serilog

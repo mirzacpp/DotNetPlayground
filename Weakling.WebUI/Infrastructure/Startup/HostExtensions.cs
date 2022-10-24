@@ -1,7 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using System.Runtime.InteropServices;
 
-namespace Weakling.WebUI;
+namespace Simplicity.WebUI;
 
 /// <summary>
 /// Logging extensions for <see cref="IHost"/>
