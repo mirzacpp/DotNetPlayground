@@ -1,5 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Serilog;
+﻿using Serilog;
 using Serilog.Formatting.Compact;
 using Simplicity.Templates.Api.Configuration;
 using System.Runtime.InteropServices;
@@ -58,10 +57,13 @@ public static class WebApplicationBuilderExtensions
 		builder.Services
 		.AddPocoOptions<ApplicationOptions>(nameof(ApplicationOptions), builder.Configuration, out var appOptions)
 		.AddApiVersioningConfigured()
+		//.AddCors()
 		// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 		.AddIf(appOptions.Setup.EnableOpenApi, services => services.AddSwaggerConfigured())
 		.AddIf(appOptions.Setup.EnableMiniProfiler, services => services.AddMiniProfilerConfigured())
 		.AddHttpContextAccessor();
+
+		builder.Services.AddHealthChecks();
 
 		return builder;
 	}
@@ -69,21 +71,29 @@ public static class WebApplicationBuilderExtensions
 	public static WebApplication ConfigurePipeline(this WebApplication app)
 	{
 		var appOptions = app.Services.GetRequiredService<ApplicationOptions>();
-		// Configure the HTTP request pipeline.
+
 		app
 		.UseIf(appOptions.Setup.EnableOpenApi, app => app.UseSwaggerConfigured())
-		.UseIf(appOptions.Setup.EnableHttpsRedirection, app => app.UseHttpsRedirection())
 		.UseIf(appOptions.Setup.EnableMiniProfiler, app => app.UseMiniProfiler())
+		.UseRouting()
+		.UseIf(app.Environment.IsDevelopment(), app => app.UseDeveloperExceptionPage())
+		//.UseStaticFiles()
+		//.UseCors()
+		//.UseAuthentication()
+		.UseIf(appOptions.Setup.EnableHttpLogging, app => app.UseSerilogRequestLogging())
 		.UseAuthorization();
 
-		//app.MapControllers();
-
+		app.MapControllers();
+		app.MapHealthChecks("/status");
 		//Map "/" request to redirect to swagger endpoint
-		app.MapGet("/", (context) =>
+		if (appOptions.Setup.EnableOpenApi)
 		{
-			context.Response.Redirect("/swagger");
-			return Task.CompletedTask;
-		});
+			app.MapGet("/", (context) =>
+			{
+				context.Response.Redirect("/swagger");
+				return Task.CompletedTask;
+			});
+		}
 
 		return app;
 	}
@@ -91,7 +101,7 @@ public static class WebApplicationBuilderExtensions
 	/// <summary>
 	/// Logs application started event
 	/// </summary>
-	/// <param name="host">Current host</param>
+	/// <param name="app">Current host</param>
 	public static void LogApplicationStarted(this WebApplication app)
 	{
 		Guard.Against.Null(app, nameof(app));
@@ -109,7 +119,7 @@ public static class WebApplicationBuilderExtensions
 	/// <summary>
 	/// Logs application stopped event
 	/// </summary>
-	/// <param name="host">Current host</param>
+	/// <param name="app">Current host</param>
 	public static void LogApplicationStopped(this WebApplication app)
 	{
 		Guard.Against.Null(app, nameof(app));
@@ -127,7 +137,7 @@ public static class WebApplicationBuilderExtensions
 	/// <summary>
 	/// Logs application terminated unexpectedly
 	/// </summary>
-	/// <param name="host">Current host</param>
+	/// <param name="app">Current host</param>
 	public static void LogApplicationTerminatedUnexpectedly(this WebApplication app, Exception exception)
 	{
 		Guard.Against.Null(app, nameof(app));

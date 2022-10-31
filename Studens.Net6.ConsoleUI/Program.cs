@@ -1,4 +1,5 @@
-﻿Console.WriteLine("Press any key to terminate...");
+﻿
+Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
 
 internal struct Data : IEquatable<Data>

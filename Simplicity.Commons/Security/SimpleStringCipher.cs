@@ -6,6 +6,7 @@ namespace Simplicity.Commons.Security;
 /// <summary>
 /// Provides simple text (de)encryption.
 /// Credits to https://github.com/aspnetboilerplate/aspnetboilerplate/blob/dev/src/Abp/Runtime/Security/SimpleStringCipher_NetStandard.cs
+/// TODO: ABSTRACT AND ENABLE ENCRYPTION PARAMETERS TO BE CONFIGURABLE!!!
 /// </summary>
 public class SimpleStringCipher
 {

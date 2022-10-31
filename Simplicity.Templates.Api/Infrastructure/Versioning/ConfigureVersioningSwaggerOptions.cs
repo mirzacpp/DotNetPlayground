@@ -10,15 +10,15 @@ namespace Simplicity.Templates.Api.Infrastructure.Versioning;
 /// </summary>
 /// <remarks>This allows API versioning to define a Swagger document per API version after the
 /// <see cref="IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
-public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
+public class ConfigureVersioningSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
 {
-	private readonly IApiVersionDescriptionProvider _provider;
+	private readonly IApiVersionDescriptionProvider _provider;	
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="ConfigureSwaggerOptions"/> class.
+	/// Initializes a new instance of the <see cref="ConfigureVersioningSwaggerOptions"/> class.
 	/// </summary>
 	/// <param name="provider">The <see cref="IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
-	public ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider) => _provider = provider;
+	public ConfigureVersioningSwaggerOptions(IApiVersionDescriptionProvider provider) => _provider = provider;
 
 	/// <inheritdoc />
 	public void Configure(SwaggerGenOptions options)
@@ -35,8 +35,12 @@ public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
 	{
 		var info = new OpenApiInfo()
 		{
-			Title = "ITOTeams Api",
-			Version = description.ApiVersion.ToString()
+			Title = "Simplicity Api Template",
+			Description = "Simplicity Api Template.",
+			Version = description.ApiVersion.ToString(),
+			Contact = new OpenApiContact {
+				Email = "contact@email.com"
+			}
 		};
 
 		if (description.IsDeprecated)

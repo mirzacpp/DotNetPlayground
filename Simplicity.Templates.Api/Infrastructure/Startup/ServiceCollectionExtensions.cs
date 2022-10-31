@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Options;
-using Simplicity.Templates.Api.Infrastructure.Versioning;
 using Simplicity.Swashbuckle.AspNetCore;
 using Simplicity.Swashbuckle.AspNetCore.OperationFilters;
+using Simplicity.Templates.Api.Infrastructure.Versioning;
 using StackExchange.Profiling;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
@@ -18,8 +18,6 @@ namespace Simplicity.Templates.Api.Infrastructure
 			.AddEndpointsApiExplorer()
 			.AddSwaggerGen(options =>
 			{
-				//options.SwaggerDoc("")	
-
 				options.OperationFilter<AcceptLanguageHeader>();
 				options.AddJwtBearerSecurityDefinition();
 
@@ -45,7 +43,7 @@ namespace Simplicity.Templates.Api.Infrastructure
 		public static IServiceCollection AddApiVersioningConfigured(this IServiceCollection services)
 		{
 			services
-			.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>()
+			.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureVersioningSwaggerOptions>()
 			.AddApiVersioning(options =>
 			{
 				// In case consumer does not specify version, fallback to default one

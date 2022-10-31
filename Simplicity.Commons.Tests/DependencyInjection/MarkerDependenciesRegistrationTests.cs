@@ -6,7 +6,7 @@ namespace Simplicity.Commons.Tests.DependencyInjection
 	public class MarkerDependenciesRegistrationTests
 	{
 		[Fact]
-		public void ShouldRegisterMarkedDependenciesFromAssembly()
+		public void Register_marked_dependencies_from_assembly()
 		{
 			//Arrange
 			var services = new ServiceCollection();
@@ -19,7 +19,7 @@ namespace Simplicity.Commons.Tests.DependencyInjection
 		}
 
 		[Fact]
-		public void ShouldRegisterMarkedDependenciesAsSelf()
+		public void Register_marked_dependencies_as_self()
 		{
 			//Arrange
 			var services = new ServiceCollection();
@@ -34,7 +34,7 @@ namespace Simplicity.Commons.Tests.DependencyInjection
 		}
 
 		[Fact]
-		public void ShouldRegisterMarkedDependenciesAsImplementation()
+		public void Register_marked_dependencies_as_implementation()
 		{
 			//Arrange
 			var services = new ServiceCollection();
@@ -51,7 +51,7 @@ namespace Simplicity.Commons.Tests.DependencyInjection
 		}
 
 		[Fact]
-		public void ShouldReplaceExistingDependencyIfSpecified()
+		public void Replace_existing_dependency_if_specified()
 		{
 			//Arrange
 			var services = new ServiceCollection();
@@ -65,7 +65,7 @@ namespace Simplicity.Commons.Tests.DependencyInjection
 		}
 
 		[Fact]
-		public void ShouldNotRegisterMultipleImplementationDependenciesIfSpecified()
+		public void Do_not_register_multiple_implementation_dependencies_if_specified()
 		{
 			//Arrange
 			var services = new ServiceCollection();
@@ -79,7 +79,7 @@ namespace Simplicity.Commons.Tests.DependencyInjection
 		}
 
 		[Fact]
-		public void ShouldNotRegisterDependenciesWithDifferentGenericArities()
+		public void Do_not_register_dependencies_with_different_generic_arities()
 		{
 			//Arrange
 			var services = new ServiceCollection();

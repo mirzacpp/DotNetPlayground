@@ -3,14 +3,16 @@
 /// <inheritdoc cref="IEntity{TKey}"/>
 public abstract class Entity<TKey> : IEntity<TKey>
 {
-	public Entity()
+	protected Entity()
 	{
 	}
 
-	public Entity(TKey id)
+	protected Entity(TKey id)
 	{
 		Id = id;
 	}
+
+	public object[] GetKeys() => new object[] { Id };
 
 	public virtual TKey Id { get; protected set; }
 
@@ -51,9 +53,15 @@ public abstract class Entity<TKey> : IEntity<TKey>
 
 	/// <inheritdoc/>
 	public override string ToString() => $"[Entity: {GetType().Name}] Id = {Id}";
+
+	public override int GetHashCode()
+	{
+		throw new NotImplementedException();
+	}
 }
 
 /// <inheritdoc/>
 public abstract class Entity : Entity<long>
 {
+
 }
