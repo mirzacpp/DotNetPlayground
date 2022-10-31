@@ -3,19 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Simplicity.Commons.Tests.Configuration
 {
-	public class ServiceCollectionExtensionsTests
+	public class ServiceCollectionExtensionsTests : ConfigurationTestBase
 	{
-		private IConfiguration Configuration { get; }
-
-		public ServiceCollectionExtensionsTests()
-		{
-			Configuration = new ConfigurationBuilder()
-			.AddJsonFile("Configuration/appsettings.json")
-			.Build();
-		}
-
 		[Fact]
-		public void ShouldAddPocoOptionsToServiceCollection()
+		public void Add_poco_options_to_service_collection()
 		{
 			var services = new ServiceCollection();			
 
@@ -30,7 +21,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldAddPocoOptionsToServiceCollectionWithOutParameter()
+		public void Add_poco_options_to_service_collection_with_out_parameter()
 		{
 			var services = new ServiceCollection();
 

@@ -1,21 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Shouldly;
 
 namespace Simplicity.Commons.Tests.Configuration
 {
-	public class ConfigurationExtensionsTests
+	public class ConfigurationExtensionsTests : ConfigurationTestBase
 	{
-		private IConfiguration Configuration { get; }
-
-		public ConfigurationExtensionsTests()
-		{
-			Configuration = new ConfigurationBuilder()
-			.AddJsonFile("Configuration/appsettings.json")
-			.Build();
-		}
-
 		[Fact]
-		public void ShouldBindIntegerCorrectly()
+		public void Bind_integer_correctly()
 		{
 			var value = Configuration.GetRequiredValue<int>(nameof(TestOptions.Int));
 
@@ -23,7 +13,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldThrowExceptionForNonExistingInteger()
+		public void Throw_exception_for_non_existing_integer()
 		{
 			var exception = Should.Throw<InvalidOperationException>(() => Configuration.GetRequiredValue<int>("NonExistingInt"));
 
@@ -31,7 +21,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldBindStringCorrectly()
+		public void Bind_string_correctly()
 		{
 			var value = Configuration.GetRequiredValue<string>(nameof(TestOptions.String));
 
@@ -39,7 +29,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldThrowExceptionForNonExistingString()
+		public void Throw_exception_for_non_existing_string()
 		{
 			var exception = Should.Throw<InvalidOperationException>(() => Configuration.GetRequiredValue<int>("NonExistingString"));
 
@@ -47,7 +37,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldBindBooleanCorrectly()
+		public void Bind_boolean_correctly()
 		{
 			var value = Configuration.GetRequiredValue<bool>(nameof(TestOptions.Bool));
 
@@ -55,7 +45,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldThrowExceptionForNonExistingBoolean()
+		public void Throw_exception_for_non_existing_boolean()
 		{
 			var exception = Should.Throw<InvalidOperationException>(() => Configuration.GetRequiredValue<bool>("NonExistingBool"));
 
@@ -63,7 +53,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldBindDateTimeOffsetCorrectly()
+		public void Bind_date_time_offset_correctly()
 		{
 			var value = Configuration.GetRequiredValue<DateTimeOffset>(nameof(TestOptions.Date));
 
@@ -71,7 +61,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldThrowExceptionForNonExistingDateTimeOffset()
+		public void Throw_exception_for_non_existing_date_time_offset()
 		{
 			var exception = Should.Throw<InvalidOperationException>(() => Configuration.GetRequiredValue<DateTimeOffset>("NonExistingDate"));
 
@@ -79,7 +69,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldBindComplexArrayCorrectly()
+		public void Bind_complex_array_correctly()
 		{
 			var values = Configuration.GetRequiredValues<TestOptions>("Collection");
 
@@ -90,7 +80,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldBindDateTimesInComplexArrayCorrectly()
+		public void Bind_date_times_in_complex_array_correctly()
 		{
 			var values = Configuration.GetRequiredValues<TestOptions>("Collection");
 
@@ -101,7 +91,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldThrowExceptionWhenTryingToBindEnumerableFromNonExistingSection()
+		public void Throw_exception_when_trying_to_bind_enumerable_from_non_existing_section()
 		{
 			var exception = Should.Throw<InvalidOperationException>(() => Configuration.GetRequiredValues<TestOptions>("nonExistingCollection"));
 
@@ -109,7 +99,7 @@ namespace Simplicity.Commons.Tests.Configuration
 		}
 
 		[Fact]
-		public void ShouldThrowExceptionWhenTryingToBindToNonExistingSection()
+		public void Throw_exception_when_trying_to_bind_to_non_existing_section()
 		{
 			var exception = Should.Throw<Exception>(() => Configuration.GetRequiredOptions<TestOptions>("nonExistingTestOptions"));
 
