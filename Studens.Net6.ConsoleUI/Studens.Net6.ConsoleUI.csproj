@@ -16,9 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NBomber" Version="2.1.5" />
-    <PackageReference Include="NBomber.Http" Version="2.0.1" />
-    <PackageReference Include="Spectre.Console" Version="0.44.0" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.2" />
+    <PackageReference Include="NBomber" Version="3.3.0" />
+    <PackageReference Include="NBomber.Http" Version="3.0.3" />
+    <PackageReference Include="Spectre.Console" Version="0.45.0" />
   </ItemGroup>
 
   <ItemGroup>

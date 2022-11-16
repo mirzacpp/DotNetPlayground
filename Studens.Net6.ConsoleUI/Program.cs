@@ -1,4 +1,8 @@
-﻿
+﻿using BenchmarkDotNet.Running;
+using Studens.Net6.ConsoleUI;
+
+BenchmarkRunner.Run<Benchmarks>();
+
 Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
 
@@ -25,7 +29,10 @@ internal struct Data : IEquatable<Data>
 		return HashCode.Combine(_value);
 	}
 
-	public override string ToString() => $"Data is: {_value}";
+	public override string ToString()
+	{		
+		return $"Data is: {_value}";
+	}
 
 	public static bool operator ==(Data left, Data right)
 	{
@@ -33,7 +40,7 @@ internal struct Data : IEquatable<Data>
 	}
 
 	public static bool operator !=(Data left, Data right)
-	{
+	{		
 		return !(left == right);
 	}
 }

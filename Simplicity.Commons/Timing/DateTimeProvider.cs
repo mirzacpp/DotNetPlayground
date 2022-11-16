@@ -5,8 +5,12 @@
 /// </summary>
 public class DateTimeProvider : IDateTimeProvider
 {
-	public bool TimeZoneExists(string timeZoneId) =>
-	TimeZoneInfo.FindSystemTimeZoneById(timeZoneId) is not null;
+	public bool TimeZoneExists(string timeZoneId) => GetTimeZoneInfo(timeZoneId) is not null;
+
+	public TimeZoneInfo? GetTimeZoneInfo(string timeZoneId)
+	{
+		return TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+	}
 
 	/// <summary>
 	/// Returns current date time for <paramref name="timeZoneId"/>.
@@ -14,7 +18,7 @@ public class DateTimeProvider : IDateTimeProvider
 	/// </summary>
 	/// <param name="timeZoneId"></param>
 	/// <returns></returns>
-	public DateTime GetByTimeZone(string timeZoneId)
+	public DateTime GetLocal(string timeZoneId)
 	{
 		//TODO: tryc this and return default/throw
 		var timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
@@ -28,9 +32,9 @@ public class DateTimeProvider : IDateTimeProvider
 		if (dateTime.Kind == DateTimeKind.Utc)
 		{
 			return dateTime;
-		}
+		}		
 
-		var timeZone = GetTimeZoneByIdOrDefault(timeZoneId);
+		var timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
 
 		if (timeZone.IsInvalidTime(dateTime))
 		{
@@ -40,14 +44,14 @@ public class DateTimeProvider : IDateTimeProvider
 		return TimeZoneInfo.ConvertTimeToUtc(dateTime, timeZone);
 	}
 
-	public DateTime ConvertToLocal(DateTime dateTime, string? timeZoneId)
+	public DateTime ConvertToLocal(DateTime dateTime, string timeZoneId)
 	{
 		if (dateTime.Kind == DateTimeKind.Local)
 		{
 			return dateTime;
 		}
 
-		var timeZone = GetTimeZoneByIdOrDefault(timeZoneId);
+		var timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
 
 		if (timeZone.IsInvalidTime(dateTime))
 		{
@@ -70,7 +74,4 @@ public class DateTimeProvider : IDateTimeProvider
 
 		return timeZone.IsAmbiguousTime(dateTime);
 	}
-
-	private TimeZoneInfo GetTimeZoneByIdOrDefault(string timeZoneId) =>
-	TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
 }

@@ -16,9 +16,10 @@ namespace Simplicity.Swashbuckle.AspNetCore
 			options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
 			{
 				In = ParameterLocation.Header,
-				Description = "Enter the word 'Bearer' followed by space and JWT value.",
+				Description = "Enter the token value without 'Bearer' prefix.",
 				Name = HeaderNames.Authorization,
-				Type = SecuritySchemeType.ApiKey
+				Type = SecuritySchemeType.ApiKey,
+				Scheme = "Bearer"
 			});
 
 			options.AddSecurityRequirement(new OpenApiSecurityRequirement
