@@ -1,0 +1,14 @@
+[
+	{
+		"outputFileName": "wwwroot/bundles/main.min.css",
+		"inputFiles": [
+			"wwwroot/lib/htmx/htmx.css"
+		]
+	},
+	{
+		"outputFileName": "wwwroot/bundles/main.min.js",
+		"inputFiles": [
+			"wwwroot/lib/htmx/htmx.js"
+		]
+	}
+]

@@ -1,0 +1,8 @@
+.busy {
+	cursor: not-allowed;
+	opacity: .8;
+}
+
+.smooth {
+	transition: all 1s ease-in;
+}

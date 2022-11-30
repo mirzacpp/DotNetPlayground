@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{1B33C103-FABA-4F21-A241-633B80121BF5}"
-	ProjectSection(SolutionItems) = preProject
-		Cleaners.Web\Sources.txt = Cleaners.Web\Sources.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4AC7BD5D-7938-4940-BB59-BCCE4AFA5BAA}"
 EndProject
@@ -29,6 +26,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.AspNetCore.Identity", "Simplicity.AspNetCore.Identity\Simplicity.AspNetCore.Identity.csproj", "{C699F646-49E5-4CB9-A06F-341B1ECAEE41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{56B171E3-6B5D-4860-BFF6-643CE09D84E3}"
+	ProjectSection(SolutionItems) = preProject
+		UsefulLinks.txt = UsefulLinks.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.Domain", "Simplicity.Domain\Simplicity.Domain.csproj", "{BC2C5DAB-905D-4E26-85B6-B46AC9C91054}"
 EndProject

@@ -8,7 +8,7 @@
 		/// <summary>
 		/// Returns an array of ordered keys for this entity.
 		/// </summary>
-		object[] GetKeys();
+		//object[] GetKeys();
 	}
 
 	/// <summary>
