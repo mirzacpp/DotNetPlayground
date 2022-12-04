@@ -91,7 +91,7 @@ public static class WebApplicationBuilderExtensions
 			app.MapGet("/", (context) =>
 			{
 				context.Response.Redirect("/swagger");
-				return Task.CompletedTask;
+				return Task.CompletedTask;                
 			});
 		}
 

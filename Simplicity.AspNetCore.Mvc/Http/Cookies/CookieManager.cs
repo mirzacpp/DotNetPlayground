@@ -16,7 +16,7 @@ public class CookieManager : ICookieManager
     /// Default cookie options
     /// TODO: Make configurable at startup
     /// </summary>
-    private static readonly CookieOptions _options = new()
+    private static readonly CookieOptions _defaultOptions = new()
     {
         HttpOnly = true,
         IsEssential = false,
@@ -35,11 +35,7 @@ public class CookieManager : ICookieManager
         get
         {
             var context = _context ?? _httpContextAccessor?.HttpContext;
-            if (context == null)
-            {
-                throw new InvalidOperationException("HttpContext must not be null.");
-            }
-            return context;
+            return context ?? throw new InvalidOperationException("HttpContext must not be null.");
         }
         set
         {
@@ -54,7 +50,7 @@ public class CookieManager : ICookieManager
         Context.Response.Cookies.Append(
            name,
            value.As<string>(),
-           options ?? _options);
+           options ?? _defaultOptions);
     }
 
     public void Delete(string name) => Context.Response.Cookies.Delete(name);

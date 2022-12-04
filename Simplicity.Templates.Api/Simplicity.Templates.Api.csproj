@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Asp.Versioning.Http" Version="6.1.0" />
+    <PackageReference Include="Asp.Versioning.Http" Version="6.3.0" />
     <PackageReference Include="Carter" Version="6.1.1" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
@@ -42,6 +42,10 @@
     <ProjectReference Include="..\Simplicity.Swashbuckle.AspNetCore\Simplicity.Swashbuckle.AspNetCore.csproj" />
     <ProjectReference Include="..\Simplicity.AspNetCore.Mvc\Simplicity.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\Simplicity.Commons\Simplicity.Commons.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Http\" />
   </ItemGroup>
 
 </Project>

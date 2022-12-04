@@ -1,0 +1,7 @@
+@hostname = localhost
+@port = 7136
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+# Comments
+GET https://{{host}}/WeatherForecast/
