@@ -1,7 +1,10 @@
-﻿using BenchmarkDotNet.Running;
-using Studens.Net6.ConsoleUI;
+﻿using DecoratorPattern = Studens.Net6.ConsoleUI.Patterns.Patterns.Decorator;
 
-BenchmarkRunner.Run<Benchmarks>();
+//BenchmarkRunner.Run<Benchmarks>();
+
+DecoratorPattern.ITextWriter textWriter = new DecoratorPattern
+	.TextWriterDecorator(new DecoratorPattern.TextWriter());
+textWriter.Write("Hello world");
 
 Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
@@ -30,7 +33,7 @@ internal struct Data : IEquatable<Data>
 	}
 
 	public override string ToString()
-	{		
+	{
 		return $"Data is: {_value}";
 	}
 
@@ -40,7 +43,7 @@ internal struct Data : IEquatable<Data>
 	}
 
 	public static bool operator !=(Data left, Data right)
-	{		
+	{
 		return !(left == right);
 	}
 }

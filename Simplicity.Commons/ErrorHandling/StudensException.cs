@@ -3,7 +3,7 @@
 namespace Simplicity.Commons.ErrorHandling;
 
 /// <summary>
-/// Represents base exception class
+/// Represents base exception classs
 /// </summary>
 public class StudensException : Exception
 {

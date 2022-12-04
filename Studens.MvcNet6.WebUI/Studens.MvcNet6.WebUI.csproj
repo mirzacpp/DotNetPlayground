@@ -6,6 +6,13 @@
     <UserSecretsId>49cfa120-d4aa-42fe-aee9-17e346bde99f</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Services\**" />
+    <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
   <ItemGroup>    
     <PackageReference Include="Finbuckle.MultiTenant" Version="6.8.1" />    
     <PackageReference Include="Finbuckle.MultiTenant.AspNetCore" Version="6.8.1" />    
@@ -39,7 +46,6 @@
   <ItemGroup>
     <Folder Include="Areas\Auth\Views\Shared\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
