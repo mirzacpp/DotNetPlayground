@@ -18,11 +18,13 @@
     <Description>Simplicity Api Template based on .NET6</Description>
     <Copyright>Copyright © Simplicity Team. All rights Reserved</Copyright>
     <UserSecretsId>f14944be-09b1-49a3-b229-2364bd1a9a06</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Asp.Versioning.Http" Version="6.3.0" />
     <PackageReference Include="Carter" Version="6.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />

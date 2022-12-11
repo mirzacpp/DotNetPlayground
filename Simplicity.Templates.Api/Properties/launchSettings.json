@@ -1,4 +1,49 @@
-﻿{
+{
+  "profiles": {
+    "App Development": {
+      "commandName": "Project",
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7136;http://localhost:5136"
+    },
+    "App Production": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7136;http://localhost:5136"
+    },
+    "App Staging": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7136;http://localhost:5136"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  },
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
@@ -7,45 +52,5 @@
       "applicationUrl": "http://localhost:30347",
       "sslPort": 44345
     }
-  },
-	"profiles": {
-		"App Development": {
-			"commandName": "Project",
-			"dotnetRunMessages": true,
-			"launchBrowser": false,
-			"launchUrl": "swagger",
-			"applicationUrl": "https://localhost:7136;http://localhost:5136",
-			"environmentVariables": {
-				"ASPNETCORE_ENVIRONMENT": "Development"
-			}
-		},
-		"App Production": {
-			"commandName": "Project",
-			"dotnetRunMessages": true,
-			"launchBrowser": true,
-			"launchUrl": "swagger",
-			"applicationUrl": "https://localhost:7136;http://localhost:5136",
-			"environmentVariables": {
-				"ASPNETCORE_ENVIRONMENT": "Production"
-			}
-		},
-		"App Staging": {
-			"commandName": "Project",
-			"dotnetRunMessages": true,
-			"launchBrowser": true,
-			"launchUrl": "swagger",
-			"applicationUrl": "https://localhost:7136;http://localhost:5136",
-			"environmentVariables": {
-				"ASPNETCORE_ENVIRONMENT": "Staging"
-			}
-		},
-		"IIS Express": {
-			"commandName": "IISExpress",
-			"launchBrowser": true,
-			"launchUrl": "swagger",
-			"environmentVariables": {
-				"ASPNETCORE_ENVIRONMENT": "Development"
-			}
-		}
-	}
+  }
 }
