@@ -8,7 +8,7 @@
 	public class AsyncOneTimeRunner
 	{
 		private volatile bool _hasRunBefore;
-		private readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1, 1);
+		private readonly SemaphoreSlim _semaphoreSlim = new(1, 1);
 
 		public async Task Run(Func<Task> action)
 		{

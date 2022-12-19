@@ -1,17 +1,9 @@
 ﻿//BenchmarkRunner.Run<Benchmarks>();
-using System.Reflection;
-
-var fields = typeof(Data)
-    .GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-foreach (var f in fields)
-{
-    Console.WriteLine(
-                $"{f.Name} (of type {f.FieldType}): " +
-                $"private? {f.IsPrivate} / static? {f.IsStatic}");
-}
 
 Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
+
+internal record Miki(int Id, string Name);
 
 internal struct Data : IEquatable<Data>
 {
