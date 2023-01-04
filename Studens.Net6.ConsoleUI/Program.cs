@@ -3,8 +3,6 @@
 Console.WriteLine("Press any key to terminate...");
 Console.ReadKey();
 
-internal record Miki(int Id, string Name);
-
 internal struct Data : IEquatable<Data>
 {
     private int _value;

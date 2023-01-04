@@ -18,8 +18,6 @@ namespace Simplicity.AspNetCore.Mvc.UI.Ajax
                 return new AjaxResponse();
             }
 
-            ValidationResult
-
             var errorInfo = new ErrorInfo();
 
             return new AjaxResponse(errorInfo);
