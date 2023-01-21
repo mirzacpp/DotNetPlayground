@@ -28,7 +28,7 @@ public class Program
 			return 0;
 		}
 		catch (Exception ex)
-		{
+        {
 			host!.LogApplicationTerminatedUnexpectedly(ex);
 
 			return 1;
