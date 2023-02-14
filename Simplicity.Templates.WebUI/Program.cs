@@ -42,10 +42,7 @@ public class Program
 
 	public static IHostBuilder CreateHostBuilder(string[] args) =>
 		   Host.CreateDefaultBuilder(args)
-				.ConfigureLogging((context, options) =>
-				{
-					options.ClearProviders();
-				})
+				.ConfigureLogging((context, options) => options.ClearProviders())
 			   .UseDefaultServiceProvider((context, options) =>
 			   {
 				   var isDevelopment = context.HostingEnvironment.IsDevelopment();
