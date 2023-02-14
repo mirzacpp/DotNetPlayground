@@ -26,7 +26,7 @@
 
         public DisposableAction(Action<T> action, T arg)
         {
-            _action = action;
+            _action = action;               
             _arg = arg;
         }
 
