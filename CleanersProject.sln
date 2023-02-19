@@ -72,7 +72,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.Swashbuckle.AspN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.EntityFrameworkCore", "Simplicity.EntityFrameworkCore\Simplicity.EntityFrameworkCore.csproj", "{9146CDA3-A66F-4C35-9CC7-AD79617B3291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplicity.Templates.Api.Tests", "Simplicity.Templates.Api.Tests\Simplicity.Templates.Api.Tests.csproj", "{08F389F6-FB0C-44A5-A0C7-5E7B62BBEA0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity.Templates.Api.Tests", "Simplicity.Templates.Api.Tests\Simplicity.Templates.Api.Tests.csproj", "{08F389F6-FB0C-44A5-A0C7-5E7B62BBEA0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

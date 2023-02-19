@@ -261,3 +261,4 @@ paket-files/
 __pycache__/
 *.pyc
 /Cleaners.Web/App_Data/Logs
+/Simplicity.Templates.WebUI/wwwroot/bundles/site.css
