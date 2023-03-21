@@ -13,7 +13,7 @@
         <div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
             <div class="pl-4">
                 <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl" href="#">
-                    Minimal Blog
+                    Simplicity
                 </a>
             </div>
             <div class="block lg:hidden pr-4">
@@ -34,54 +34,26 @@
                             Home
                         </a>
                     </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" asp-area="" asp-action="Privacy">
-                            Privacy
-                        </a>
-                    </li>
+                    @if (ApplicationOptions.Setup.EnableMiniProfiler)
+                    {
+                        <li class="mr-3">
+                            <a class="inline-block text-red-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="profiler/results-index">
+                                Profiler
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
     </nav>
-    <!--Container-->
     <div class="container w-full md:max-w-3xl mx-auto pt-20">
         @RenderBody()
     </div>
-    <!--/container-->
-    <footer class="bg-white border-t border-gray-400 shadow">
-        <div class="container max-w-4xl mx-auto flex py-8">
-            <div class="w-full mx-auto flex flex-wrap">
-                <div class="flex w-full md:w-1/2 ">
-                    <div class="px-8">
-                        <h3 class="font-bold text-gray-900">About</h3>
-                        <p class="py-4 text-gray-600 text-sm">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
-                        </p>
-                    </div>
-                </div>
-                <div class="flex w-full md:w-1/2">
-                    <div class="px-8">
-                        <h3 class="font-bold text-gray-900">Social</h3>
-                        <ul class="list-reset items-center text-sm pt-3">
-                            <li>
-                                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
-                            </li>
-                            <li>
-                                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
-                            </li>
-                            <li>
-                                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
     @await RenderSectionAsync("Scripts", required: false)
     @*Maybe configure this from custom options ?*@
-    <environment include="Development">
+    @if (ApplicationOptions.Setup.EnableMiniProfiler)
+    {
         <mini-profiler />
-    </environment>
+    }
 </body>
 </html>

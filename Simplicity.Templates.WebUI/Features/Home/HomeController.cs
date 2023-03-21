@@ -19,8 +19,7 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
-		throw new Exception("ok vlado");
-        return View();
+		throw new Exception("ok vlado");        
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

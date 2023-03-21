@@ -20,7 +20,7 @@ public static class CustomServiceCollectionExtensions
 			options.RouteBasePath = "/profiler";
 			options.PopupRenderPosition = RenderPosition.BottomLeft;
 			options.ColorScheme = ColorScheme.Dark;
-			options.EnableDebugMode = true;
+			options.EnableDebugMode = true; //TODO: This option should be configured by a flag
 
 			options.IgnoredPaths.Add("/lib");
 			options.IgnoredPaths.Add("/css");

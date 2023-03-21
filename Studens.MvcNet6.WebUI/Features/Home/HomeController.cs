@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
-
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
 using Simplicity.AspNetCore.Identity;
 using Simplicity.AspNetCore.Mvc.Filters;
 

@@ -38,7 +38,7 @@ public class Startup
 
 		app
 		   // This should be conditional. For more info see https://andrewlock.net/adding-host-filtering-to-kestrel-in-aspnetcore/		   
-		   .UseIf(appOptions.Setup.EnableHttpLogging, app => app.UseHostFiltering())		   
+		   .UseIf(appOptions.Setup.EnableHostFiltering, app => app.UseHostFiltering())		   
 		   .UseIf(isDevelopment, app => app.UseDeveloperExceptionPage())
 		   .UseIf(!isDevelopment, app => app.UseExceptionHandler("/Home/Error"))
 		   .UseIf(!isDevelopment, app => app.UseHsts())
