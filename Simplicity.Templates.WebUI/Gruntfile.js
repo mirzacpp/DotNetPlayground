@@ -8,7 +8,8 @@ module.exports = function (grunt) {
                 map: true,
                 processors: [
                     require('tailwindcss')(),
-                    require('autoprefixer')({ overrideBrowserslist: 'last 2 versions' }), // add vendor prefixes                    
+                    require('autoprefixer')({ overrideBrowserslist: 'last 2 versions' }), // add vendor prefixes      
+                    require('cssnano')()
                 ]
             },
             dist: {
@@ -32,7 +33,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks('grunt-postcss');
+    grunt.loadNpmTasks('@lodder/grunt-postcss');
 
     grunt.registerTask('compile-tailwindcss', ['clean', 'postcss'])
     grunt.registerTask('watch-tailwindcss', ['watch:postcss'])

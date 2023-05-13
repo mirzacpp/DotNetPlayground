@@ -3,17 +3,18 @@
   "name": "simplicity",
   "private": true,
   "devDependencies": {
-    "autoprefixer": "^9.8.8",
-    "cssnano": "^5.1.15",
+    "@lodder/grunt-postcss": "^3.1.1",
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
     "grunt": "^1.6.1",
     "grunt-contrib-clean": "^2.0.1",
     "grunt-contrib-concat": "^2.1.0",
     "grunt-contrib-jshint": "^3.2.0",
     "grunt-contrib-uglify": "^5.2.2",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-postcss": "^0.9.0",
     "htmx.org": "^1.8.5",
     "jquery": "^3.6.3",
-    "tailwindcss": "^3.2.7"
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2"
   }
 }
