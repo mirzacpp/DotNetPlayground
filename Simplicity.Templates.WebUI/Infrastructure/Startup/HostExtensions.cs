@@ -14,8 +14,6 @@ public static class HostExtensions
     /// <param name="host">Current host</param>
     public static void LogApplicationStarted(this IHost host)
     {
-        Guard.Against.Null(host, nameof(host));
-
         var hostEnvironment = host.Services.GetRequiredService<IHostEnvironment>();
         var logger = host.Services.GetRequiredService<ILogger<Program>>();
 
@@ -32,8 +30,6 @@ public static class HostExtensions
     /// <param name="host">Current host</param>
     public static void LogApplicationStopped(this IHost host)
     {
-        Guard.Against.Null(host, nameof(host));
-
         var hostEnvironment = host.Services.GetRequiredService<IHostEnvironment>();
         var logger = host.Services.GetRequiredService<ILogger<Program>>();
 
@@ -50,8 +46,6 @@ public static class HostExtensions
     /// <param name="host">Current host</param>
     public static void LogApplicationTerminatedUnexpectedly(this IHost host, Exception exception)
     {
-        Guard.Against.Null(host, nameof(host));
-
         // Check if host is null
         if (host == null)
         {
@@ -71,9 +65,9 @@ public static class HostExtensions
                     RuntimeInformation.FrameworkDescription,
                     RuntimeInformation.OSDescription);
             }
-            catch (Exception ex)
+            catch
             {
-                LogToConsole(ex);
+                LogToConsole(exception);
             }
         }
     }

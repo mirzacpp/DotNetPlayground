@@ -111,8 +111,6 @@ public static class WebApplicationBuilderExtensions
     /// <param name="app">Current host</param>
     public static void LogApplicationStarted(this WebApplication app)
     {
-        Guard.Against.Null(app, nameof(app));
-
         var hostEnvironment = app.Services.GetRequiredService<IHostEnvironment>();
         var logger = app.Services.GetRequiredService<ILogger<Program>>();
 
@@ -129,8 +127,6 @@ public static class WebApplicationBuilderExtensions
     /// <param name="app">Current host</param>
     public static void LogApplicationStopped(this WebApplication app)
     {
-        Guard.Against.Null(app, nameof(app));
-
         var hostEnvironment = app.Services.GetRequiredService<IHostEnvironment>();
         var logger = app.Services.GetRequiredService<ILogger<Program>>();
 
@@ -147,8 +143,6 @@ public static class WebApplicationBuilderExtensions
     /// <param name="app">Current host</param>
     public static void LogApplicationTerminatedUnexpectedly(this WebApplication app, Exception exception)
     {
-        Guard.Against.Null(app, nameof(app));
-
         // Check if host is null
         if (app == null)
         {
@@ -168,9 +162,9 @@ public static class WebApplicationBuilderExtensions
                     RuntimeInformation.FrameworkDescription,
                     RuntimeInformation.OSDescription);
             }
-            catch (Exception ex)
+            catch
             {
-                LogToConsole(ex);
+                LogToConsole(exception);
             }
         }
     }
