@@ -14,7 +14,7 @@
     "grunt-contrib-watch": "^1.1.0",
     "htmx.org": "^1.8.5",
     "jquery": "^3.6.3",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.31",
     "tailwindcss": "^3.3.2"
   }
 }
